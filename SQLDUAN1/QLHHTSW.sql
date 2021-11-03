@@ -124,7 +124,7 @@ FOREIGN KEY(MANHH) REFERENCES NHOMHANHOA (MANHH)
 )
 GO
 
-
+-- test Sua guit
 
 
 
