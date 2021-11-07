@@ -3,6 +3,7 @@ GO
 
 USE QLBHDIENMAY_DO
 GO
+select * from nhomhang
 
 CREATE TABLE NHOMHANG
 (
