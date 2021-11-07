@@ -8,7 +8,7 @@ package com.dienmaydo.entity;
  *
  * @author letha
  */
-public class ChatLuong {
+public class ChatLieu {
     private String MaChatLieu;
     private String ChatLieu;
 

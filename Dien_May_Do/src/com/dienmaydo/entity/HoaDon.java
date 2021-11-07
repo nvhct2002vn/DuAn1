@@ -1,22 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dienmaydo.entity;
 
-/**
- *
- * @author letha
- */
 import java.util.Date;
+
 public class HoaDon {
+
     private String MaHD;
     private String MaNV;
     private Date NgayLap;
     private String TrangThai_TT;
     private String HinhThuc_TT;
-    private int TongTien;
+    private float TongTien;
     private String GhiChu;
+    private String TrangThai;
+
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
+    }
 
     public String getMaHD() {
         return MaHD;
@@ -58,11 +61,11 @@ public class HoaDon {
         this.HinhThuc_TT = HinhThuc_TT;
     }
 
-    public int getTongTien() {
+    public float getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(int TongTien) {
+    public void setTongTien(float TongTien) {
         this.TongTien = TongTien;
     }
 

@@ -13,7 +13,7 @@ public class HoaDonChiTiet {
     private String MaSPCT;
     private String MaHD;
     private int SoLuong;
-    private int DonGia;
+    private float DonGia;
 
     public String getMaHDCT() {
         return MaHDCT;
@@ -47,12 +47,14 @@ public class HoaDonChiTiet {
         this.SoLuong = SoLuong;
     }
 
-    public int getDonGia() {
+    public float getDonGia() {
         return DonGia;
     }
 
-    public void setDonGia(int DonGia) {
+    public void setDonGia(float DonGia) {
         this.DonGia = DonGia;
     }
+
+  
     
 }

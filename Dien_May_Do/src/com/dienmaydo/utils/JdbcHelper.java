@@ -1,8 +1,6 @@
-
 package com.dienmaydo.utils;
 
 import java.sql.*;
-
 
 public class JdbcHelper {
 
@@ -37,7 +35,8 @@ public class JdbcHelper {
         }
 
     }
-    public static ResultSet executeQuery(String sql , Object...args){
+
+    public static ResultSet executeQuery(String sql, Object... args) {
         try {
             PreparedStatement pst = preparedStatement(sql, args);
             return pst.executeQuery();
@@ -46,4 +45,3 @@ public class JdbcHelper {
         }
     }
 }
-

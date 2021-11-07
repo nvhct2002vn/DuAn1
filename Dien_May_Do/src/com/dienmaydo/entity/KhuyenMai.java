@@ -4,17 +4,20 @@
  */
 package com.dienmaydo.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author letha
  */
 public class KhuyenMai {
+
     private String MaKM;
     private String MaDMKM;
     private String TenChuongTrinh;
-    private String ThoiGianBatDau;
-    private String ThoiGianKetThuc;
-    private String GiamGia;
+    private Date ThoiGianBatDau;
+    private Date ThoiGianKetThuc;
+    private float GiamGia;
     private boolean TrangThai;
     private String MoTa;
 
@@ -42,27 +45,27 @@ public class KhuyenMai {
         this.TenChuongTrinh = TenChuongTrinh;
     }
 
-    public String getThoiGianBatDau() {
+    public Date getThoiGianBatDau() {
         return ThoiGianBatDau;
     }
 
-    public void setThoiGianBatDau(String ThoiGianBatDau) {
+    public void setThoiGianBatDau(Date ThoiGianBatDau) {
         this.ThoiGianBatDau = ThoiGianBatDau;
     }
 
-    public String getThoiGianKetThuc() {
+    public Date getThoiGianKetThuc() {
         return ThoiGianKetThuc;
     }
 
-    public void setThoiGianKetThuc(String ThoiGianKetThuc) {
+    public void setThoiGianKetThuc(Date ThoiGianKetThuc) {
         this.ThoiGianKetThuc = ThoiGianKetThuc;
     }
 
-    public String getGiamGia() {
+    public float getGiamGia() {
         return GiamGia;
     }
 
-    public void setGiamGia(String GiamGia) {
+    public void setGiamGia(float GiamGia) {
         this.GiamGia = GiamGia;
     }
 
@@ -82,6 +85,4 @@ public class KhuyenMai {
         this.MoTa = MoTa;
     }
 
-   
-    
 }

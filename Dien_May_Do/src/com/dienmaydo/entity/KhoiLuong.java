@@ -10,7 +10,7 @@ package com.dienmaydo.entity;
  */
 public class KhoiLuong {
     private String MaKL;
-    private Float KhoiLuong;
+    private float KhoiLuong;
     private String MaDV;
 
     public String getMaKL() {

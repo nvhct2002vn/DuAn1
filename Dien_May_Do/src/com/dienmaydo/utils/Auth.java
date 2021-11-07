@@ -5,19 +5,25 @@
  */
 package com.dienmaydo.utils;
 
+import com.dienmaydo.entity.TaiKhoan;
+
 /**
  *
  * @author MSI
  */
 public class Auth {
+
     public static TaiKhoan user = null;
-    public static void clear(){
+
+    public static void clear() {
         Auth.user = null;
     }
+
     public static boolean isLogin() {
         return Auth.user != null;
     }
+
     public static boolean isManager() {
-        return Auth.isLogin() && user.isVaiTro();
+        return Auth.isLogin() && user.getMaVT() == "VT01";
     }
 }
