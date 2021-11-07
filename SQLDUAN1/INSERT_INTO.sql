@@ -179,16 +179,16 @@ VALUES  ('ID_IME01', 'MIM1', 'maylanh.png'),
 		('ID_IME10', 'MIM10', 'maychieu.png')
 
 INSERT INTO SANPHAMCHITIET
-VALUES  ('ID_SPCT01', 'ID_IME01', 'ID_SP01', 'ID_MS04', 'ID_KT01', 'ID_CL01', 'ID_TT01', 'ID_KL01', 'SPCT1', 100, 0, 2000, 3000, N'No Status', N'No Mô Tả'),
-		('ID_SPCT02', 'ID_IME02', 'ID_SP02', 'ID_MS02', 'ID_KT02', 'ID_CL02', 'ID_TT02', 'ID_KL02', 'SPCT2', 1000, 0, 2500, 4000, N'No Status', N'No Mô Tả'),
-		('ID_SPCT03', 'ID_IME03', 'ID_SP03', 'ID_MS04', 'ID_KT03', 'ID_CL03', 'ID_TT03', 'ID_KL03', 'SPCT3', 50, 1, 3400, 4000, N'No Status', N'No Mô Tả'),
-		('ID_SPCT04', 'ID_IME04', 'ID_SP04', 'ID_MS01', 'ID_KT04', 'ID_CL04', 'ID_TT04', 'ID_KL04', 'SPCT4', 90, 0, 2000, 3500, N'No Status', N'No Mô Tả'),
-		('ID_SPCT05', 'ID_IME05', 'ID_SP05', 'ID_MS02', 'ID_KT05', 'ID_CL05', 'ID_TT05', 'ID_KL05', 'SPCT5', 120, 0, 2200, 3000, N'No Status', N'No Mô Tả'),
-		('ID_SPCT06', 'ID_IME06', 'ID_SP06', 'ID_MS01', 'ID_KT06', 'ID_CL06', 'ID_TT06', 'ID_KL06', 'SPCT6', 90, 1, 1500, 2000, N'No Status', N'No Mô Tả'),
-		('ID_SPCT07', 'ID_IME07', 'ID_SP07', 'ID_MS01', 'ID_KT07', 'ID_CL07', 'ID_TT07', 'ID_KL07', 'SPCT7', 100, 0, 600, 2000, N'No Status', N'No Mô Tả'),
-		('ID_SPCT08', 'ID_IME08', 'ID_SP08', 'ID_MS02', 'ID_KT08', 'ID_CL08', 'ID_TT08', 'ID_KL08', 'SPCT8', 80, 0, 1000, 1500, N'No Status', N'No Mô Tả'),
-		('ID_SPCT09', 'ID_IME09', 'ID_SP09', 'ID_MS04', 'ID_KT09', 'ID_CL09', 'ID_TT09', 'ID_KL09', 'SPCT9', 70, 1, 900, 1000, N'No Status', N'No Mô Tả'),
-		('ID_SPCT10', 'ID_IME10', 'ID_SP10', 'ID_MS04', 'ID_KT10', 'ID_CL10', 'ID_TT10', 'ID_KL10', 'SPCT10', 1000, 0, 1000, 1400, N'No Status', N'No Mô Tả')
+VALUES  ('ID_SPCT01', 'ID_IME01', 'ID_SP01', 'ID_MS04', 'ID_KT01', 'ID_CL01', 'ID_TT01', 'ID_KL01', 'SPCT1',N'Sản phẩm chi tiết 1', 100, 0, 2000, 3000, N'No Status', N'No Mô Tả'),
+		('ID_SPCT02', 'ID_IME02', 'ID_SP02', 'ID_MS02', 'ID_KT02', 'ID_CL02', 'ID_TT02', 'ID_KL02', 'SPCT2',N'Sản phẩm chi tiết 2', 1000, 0, 2500, 4000, N'No Status', N'No Mô Tả'),
+		('ID_SPCT03', 'ID_IME03', 'ID_SP03', 'ID_MS04', 'ID_KT03', 'ID_CL03', 'ID_TT03', 'ID_KL03', 'SPCT3',N'Sản phẩm chi tiết 3', 50, 1, 3400, 4000, N'No Status', N'No Mô Tả'),
+		('ID_SPCT04', 'ID_IME04', 'ID_SP04', 'ID_MS01', 'ID_KT04', 'ID_CL04', 'ID_TT04', 'ID_KL04', 'SPCT4',N'Sản phẩm chi tiết 4', 90, 0, 2000, 3500, N'No Status', N'No Mô Tả'),
+		('ID_SPCT05', 'ID_IME05', 'ID_SP05', 'ID_MS02', 'ID_KT05', 'ID_CL05', 'ID_TT05', 'ID_KL05', 'SPCT5',N'Sản phẩm chi tiết 5', 120, 0, 2200, 3000, N'No Status', N'No Mô Tả'),
+		('ID_SPCT06', 'ID_IME06', 'ID_SP06', 'ID_MS01', 'ID_KT06', 'ID_CL06', 'ID_TT06', 'ID_KL06', 'SPCT6',N'Sản phẩm chi tiết 6', 90, 1, 1500, 2000, N'No Status', N'No Mô Tả'),
+		('ID_SPCT07', 'ID_IME07', 'ID_SP07', 'ID_MS01', 'ID_KT07', 'ID_CL07', 'ID_TT07', 'ID_KL07', 'SPCT7',N'Sản phẩm chi tiết 7', 100, 0, 600, 2000, N'No Status', N'No Mô Tả'),
+		('ID_SPCT08', 'ID_IME08', 'ID_SP08', 'ID_MS02', 'ID_KT08', 'ID_CL08', 'ID_TT08', 'ID_KL08', 'SPCT8',N'Sản phẩm chi tiết 8', 80, 0, 1000, 1500, N'No Status', N'No Mô Tả'),
+		('ID_SPCT09', 'ID_IME09', 'ID_SP09', 'ID_MS04', 'ID_KT09', 'ID_CL09', 'ID_TT09', 'ID_KL09', 'SPCT9',N'Sản phẩm chi tiết 9', 70, 1, 900, 1000, N'No Status', N'No Mô Tả'),
+		('ID_SPCT10', 'ID_IME10', 'ID_SP10', 'ID_MS04', 'ID_KT10', 'ID_CL10', 'ID_TT10', 'ID_KL10', 'SPCT10',N'Sản phẩm chi tiết 10', 1000, 0, 1000, 1400, N'No Status', N'No Mô Tả')
 
 INSERT INTO HOADONCHITIET
 VALUES  ('ID_HDCT01','ID_SPCT01', 'ID_HD01', 'HDCT1', 90, 3000),
