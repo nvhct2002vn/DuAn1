@@ -4,6 +4,7 @@ GO
 USE QLBHDIENMAY_DO
 GO
 select * from nhomhang
+select * from danhmuc
 
 CREATE TABLE NHOMHANG
 (
