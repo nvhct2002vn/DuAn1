@@ -163,7 +163,7 @@ public class BanHangJfame extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setText("Tìm kiếm theo tên sản phẩm:");
+        jLabel10.setText("Tìm kiếm sản phẩm:");
 
         jButton4.setBackground(new java.awt.Color(51, 51, 51));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
