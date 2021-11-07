@@ -5,6 +5,8 @@
  */
 package com.dienmaydo.utils;
 
+import com.dienmaydo.entity.TaiKhoan;
+
 /**
  *
  * @author MSI
@@ -18,6 +20,6 @@ public class Auth {
         return Auth.user != null;
     }
     public static boolean isManager() {
-        return Auth.isLogin() && user.isVaiTro();
+        return Auth.isLogin() && user.isTrangThai();
     }
 }
