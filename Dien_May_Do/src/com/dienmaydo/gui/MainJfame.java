@@ -40,7 +40,6 @@ public class MainJfame extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -110,11 +109,6 @@ public class MainJfame extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenu3.setMargin(new java.awt.Insets(2, 10, 2, 10));
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Khách hàng");
-        jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenu4.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Tài khoản");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -188,7 +182,6 @@ public class MainJfame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
