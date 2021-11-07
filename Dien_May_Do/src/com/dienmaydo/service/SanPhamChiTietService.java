@@ -13,7 +13,13 @@ import java.util.List;
  *
  * @author Nguyễn Viết Hiên
  */
-public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, String>{
+public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, String> {
+
+    String insert_SQL = "INSERT INTO dbo.ChuyenDe(MaCD,TenCD,HocPhi,ThoiLuong,Hinh,MoTa)VALUES(?,?,?,?,?,?)";
+    String update_SQL = "UPDATE dbo.ChuyenDe SET TenCD = ?, HocPhi = ?, ThoiLuong = ?, Hinh = ?, MoTa = ? WHERE MaCD =?";
+    String delete_SQL = "DELETE FROM dbo.ChuyenDe WHERE MaCD = ?";
+    String selectALL_SQL = "SELECT * FROM dbo.ChuyenDe";
+    String selectByID_SQL = "SELECT * FROM dbo.ChuyenDe WHERE MaCD = ?";
 
     @Override
     public void insertData(SanPhamChiTiet entity) {
@@ -44,5 +50,5 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
     public List<SanPhamChiTiet> selectBySQL(String sql, Object... args) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
