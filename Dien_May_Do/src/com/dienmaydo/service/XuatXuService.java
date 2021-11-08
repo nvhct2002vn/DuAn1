@@ -5,8 +5,8 @@
  */
 package com.dienmaydo.service;
 
-import com.dienmaydo.entity.SanPham;
-import com.dienmaydo.iservice.ISanPhamService;
+import com.dienmaydo.entity.XuatXu;
+import com.dienmaydo.iservice.IXuatXuService;
 import com.dienmaydo.utils.JdbcHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,27 +16,27 @@ import java.util.List;
  *
  * @author Nguyễn Viết Hiên
  */
-public class SanPhamService implements ISanPhamService<SanPham, String> {
+public class XuatXuService implements IXuatXuService<XuatXu, String> {
 
-    String insert_SQL = "INSERT INTO dbo.SANPHAM(MASP,MADANHMUC,MAXX,TENSP)VALUES(?,?,?,?)";
-    String update_SQL = "UPDATE dbo.SANPHAM SET MADANHMUC = ? , TENSP = ? WHERE MASP = ?";
+    String insert_SQL = "INSERT INTO dbo.XUATXU(NHASX,NUOCSX)VALUES(?,?)";
+    String update_SQL = "UPDATE dbo.XUATXU SET NHASX = ? , NUOCSX = ? WHERE MAXX = ?";
     String delete_SQL = "DELETE FROM dbo.SANPHAM WHERE MASP = ?";
-    String selectALL_SQL = "SELECT * FROM dbo.SANPHAM";
-    String selectByID_SQL = "SELECT * FROM dbo.SANPHAM WHERE MASP = ?";
+    String selectALL_SQL = "SELECT * FROM dbo.XUATXU";
+    String selectByID_SQL = "SELECT * FROM dbo.XUATXU WHERE MAXX = ?";
 
     @Override
-    public void insertData(SanPham entity) {
+    public void insertData(XuatXu entity) {
         try {
-            JdbcHelper.excuteUpdate(insert_SQL, entity.getMaSp(), entity.getMaDanhMuc(), entity.getMaXX(), entity.getTenSp());
+            JdbcHelper.excuteUpdate(insert_SQL, entity.getNhaSX(), entity.getNuocSX());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void updateData(SanPham entity) {
+    public void updateData(XuatXu entity) {
         try {
-            JdbcHelper.excuteUpdate(update_SQL, entity.getMaDanhMuc(), entity.getTenSp(), entity.getMaSp());
+            JdbcHelper.excuteUpdate(update_SQL, entity.getNhaSX(), entity.getNuocSX(), entity.getMaXX());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,13 +52,13 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     }
 
     @Override
-    public List<SanPham> selectAll() {
+    public List<XuatXu> selectAll() {
         return this.selectBySQL(selectALL_SQL);
     }
 
     @Override
-    public SanPham selectByID(String key) {
-        List<SanPham> list = this.selectBySQL(selectByID_SQL, key);
+    public XuatXu selectByID(String key) {
+        List<XuatXu> list = this.selectBySQL(selectByID_SQL, key);
         if (list.isEmpty()) {
             return null;
         }
@@ -66,16 +66,15 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     }
 
     @Override
-    public List<SanPham> selectBySQL(String sql, Object... args) {
-        List<SanPham> list = new ArrayList<>();
+    public List<XuatXu> selectBySQL(String sql, Object... args) {
+        List<XuatXu> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
             while (rs.next()) {
-                SanPham entity = new SanPham();
-                entity.setMaSp(rs.getString("MASP"));
-                entity.setMaDanhMuc(rs.getString("MADANHMUC"));
-                entity.setMaXX(rs.getInt("MAXX"));
-                entity.setTenSp(rs.getString("TENSP"));
+                XuatXu entity = new XuatXu();
+                entity.setMaXX(rs.getString("MAXX"));
+                entity.setNhaSX(rs.getString("NHASX"));
+                entity.setNuocSX(rs.getString("NUOCSX"));
                 list.add(entity);
             }
             return list;
@@ -84,5 +83,4 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
             throw new RuntimeException(e);
         }
     }
-
 }
