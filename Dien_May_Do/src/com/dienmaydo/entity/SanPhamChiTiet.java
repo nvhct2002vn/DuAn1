@@ -27,6 +27,7 @@ public class SanPhamChiTiet {
     private String MaKL;
     private Float KhoiLuong;
     private String TenSPCT;
+    private String TenSP;
     private int SoLuong;
     private boolean NhomPhoBien;
     private Float GiaNhap;
@@ -216,6 +217,14 @@ public class SanPhamChiTiet {
 
     public void setTenImage(String TenImage) {
         this.TenImage = TenImage;
+    }
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
     }
 
 }

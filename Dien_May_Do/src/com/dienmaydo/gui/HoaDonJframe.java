@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class HoaDonJframe extends javax.swing.JFrame {
 
     HoaDonService hdService = new HoaDonService();
-    int row = 0;
+    int row = -1;
 
     /**
      * Creates new form HoaDonJframe

@@ -1,11 +1,12 @@
 package com.dienmaydo.iservice;
 
-import com.dienmaydo.entity.HoaDon;
 import java.util.List;
 
 public interface IHoaDonService<E, K> {
-
-    void update(HoaDon entity);
+    
+    void insert(E entity);
+    
+    void update(E entity);
 
     void delete(K key);
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HoaDonService implements IHoaDonService<HoaDon, String> {
-    
+    String INSERT_SQL = "INSERT INTO HOADON(MAHD,MANV,TRANGTHAI_TT,HINHTHUC_TT,TONGTIEN,GHICHU) VALUES(?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE HOADON SET TRANGTHAI_TT = ? WHERE MAHD = ?";
     String DELETE_SQL = "BEGIN TRY\n"
             + "	BEGIN TRAN\n"
@@ -21,6 +21,12 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
             + "END CATCH";
     String SELECT_ALL_SQL = "SELECT * FROM HOADON";
     String SELECT_BY_ID_SQL = "SELECT * FROM HOADON WHERE MAHD LIKE ?";
+    
+    @Override
+    public void insert(HoaDon entity) {
+        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaHD(),entity.getMaNV(),entity.getTrangThai_TT(),entity.getHinhThuc_TT(),
+                entity.getTongTien(),entity.getGhiChu());
+    }
     
     @Override
     public void update(HoaDon entity) {
