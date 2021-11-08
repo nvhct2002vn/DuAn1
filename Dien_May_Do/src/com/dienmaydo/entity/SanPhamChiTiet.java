@@ -9,19 +9,28 @@ package com.dienmaydo.entity;
  * @author letha
  */
 public class SanPhamChiTiet {
+
     private String MaSPCT;
     private String MaImage;
+    private String TenImage;
     private String MaSp;
     private String MaMauSac;
+    private String TenMauSac;
     private String MaKichThuoc;
-    private String MaChatLuong;
+    private Float ChieuDai;
+    private Float ChieuRong;
+    private Float ChieuCao;
+    private String MaChatLieu;
+    private String TenChatLieu;
     private String MaTheTich;
+    private Float TheTich;
     private String MaKL;
+    private Float KhoiLuong;
     private String TenSPCT;
     private int SoLuong;
     private boolean NhomPhoBien;
-    private int GiaNhap;
-    private int GiaBan;
+    private Float GiaNhap;
+    private Float GiaBan;
     private String TrangThai;
     private String MoTa;
 
@@ -57,6 +66,14 @@ public class SanPhamChiTiet {
         this.MaMauSac = MaMauSac;
     }
 
+    public String getTenMauSac() {
+        return TenMauSac;
+    }
+
+    public void setTenMauSac(String TenMauSac) {
+        this.TenMauSac = TenMauSac;
+    }
+
     public String getMaKichThuoc() {
         return MaKichThuoc;
     }
@@ -65,12 +82,44 @@ public class SanPhamChiTiet {
         this.MaKichThuoc = MaKichThuoc;
     }
 
-    public String getMaChatLuong() {
-        return MaChatLuong;
+    public Float getChieuDai() {
+        return ChieuDai;
     }
 
-    public void setMaChatLuong(String MaChatLuong) {
-        this.MaChatLuong = MaChatLuong;
+    public void setChieuDai(Float ChieuDai) {
+        this.ChieuDai = ChieuDai;
+    }
+
+    public Float getChieuRong() {
+        return ChieuRong;
+    }
+
+    public void setChieuRong(Float ChieuRong) {
+        this.ChieuRong = ChieuRong;
+    }
+
+    public Float getChieuCao() {
+        return ChieuCao;
+    }
+
+    public void setChieuCao(Float ChieuCao) {
+        this.ChieuCao = ChieuCao;
+    }
+
+    public String getMaChatLieu() {
+        return MaChatLieu;
+    }
+
+    public void setMaChatLieu(String MaChatLieu) {
+        this.MaChatLieu = MaChatLieu;
+    }
+
+    public String getTenChatLieu() {
+        return TenChatLieu;
+    }
+
+    public void setTenChatLieu(String TenChatLieu) {
+        this.TenChatLieu = TenChatLieu;
     }
 
     public String getMaTheTich() {
@@ -81,12 +130,28 @@ public class SanPhamChiTiet {
         this.MaTheTich = MaTheTich;
     }
 
+    public Float getTheTich() {
+        return TheTich;
+    }
+
+    public void setTheTich(Float TheTich) {
+        this.TheTich = TheTich;
+    }
+
     public String getMaKL() {
         return MaKL;
     }
 
     public void setMaKL(String MaKL) {
         this.MaKL = MaKL;
+    }
+
+    public Float getKhoiLuong() {
+        return KhoiLuong;
+    }
+
+    public void setKhoiLuong(Float KhoiLuong) {
+        this.KhoiLuong = KhoiLuong;
     }
 
     public String getTenSPCT() {
@@ -113,19 +178,19 @@ public class SanPhamChiTiet {
         this.NhomPhoBien = NhomPhoBien;
     }
 
-    public int getGiaNhap() {
+    public Float getGiaNhap() {
         return GiaNhap;
     }
 
-    public void setGiaNhap(int GiaNhap) {
+    public void setGiaNhap(Float GiaNhap) {
         this.GiaNhap = GiaNhap;
     }
 
-    public int getGiaBan() {
+    public Float getGiaBan() {
         return GiaBan;
     }
 
-    public void setGiaBan(int GiaBan) {
+    public void setGiaBan(Float GiaBan) {
         this.GiaBan = GiaBan;
     }
 
@@ -144,6 +209,13 @@ public class SanPhamChiTiet {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
-    
-    
+
+    public String getTenImage() {
+        return TenImage;
+    }
+
+    public void setTenImage(String TenImage) {
+        this.TenImage = TenImage;
+    }
+
 }

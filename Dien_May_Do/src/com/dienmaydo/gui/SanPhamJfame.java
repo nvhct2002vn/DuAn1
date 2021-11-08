@@ -29,8 +29,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
     XuatXuService daoXX = new XuatXuService();
     DanhMucService daoDM = new DanhMucService();
     List<SanPham> listSP = daoSP.selectAll();
-    List<XuatXu> listXX = daoXX.selectAll();
-    List<DanhMuc> listDM = daoDM.selectAll();
     DefaultTableModel model;
     int viTri = 0;
 
@@ -38,9 +36,9 @@ public class SanPhamJfame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-//        for (int i = 0; i < listSP.size(); i++) {
-//            cbbMaDanhMuc.addItem(listSP.get(i).getMaDanhMuc());
-//        }
+        for (int i = 0; i < listSP.size(); i++) {
+            cbbMaDanhMuc.addItem(listSP.get(i).getMaDanhMuc());
+        }
         fillTableData();
 //        clickTable();
 
@@ -86,7 +84,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -349,11 +346,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Làm mới");
 
-        jButton10.setBackground(new java.awt.Color(51, 51, 51));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Load Table");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Mã sản phẩm chi tiết:");
 
@@ -433,7 +425,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel14)
@@ -455,6 +447,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(pnSPCTLayout.createSequentialGroup()
+                                .addGap(108, 108, 108)
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(57, 57, 57)
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,13 +455,11 @@ public class SanPhamJfame extends javax.swing.JFrame {
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(75, 75, 75)
                                 .addComponent(jButton9)
-                                .addGap(70, 70, 70)
-                                .addComponent(jButton10)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(44, 44, 44))
         );
 
-        pnSPCTLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton10, jButton6, jButton7, jButton8, jButton9});
+        pnSPCTLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton6, jButton7, jButton8, jButton9});
 
         pnSPCTLayout.setVerticalGroup(
             pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,8 +514,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                     .addComponent(jButton6)
                     .addComponent(jButton7)
                     .addComponent(jButton8)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
+                    .addComponent(jButton9))
                 .addGap(18, 18, 18)
                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -533,7 +523,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pnSPCTLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton10, jButton6, jButton7, jButton8, jButton9});
+        pnSPCTLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton6, jButton7, jButton8, jButton9});
 
         pnSPCTLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField7, jTextField8, jTextField9});
 
@@ -652,7 +642,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbbMaDanhMuc;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -720,7 +709,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
 //            }
             for (SanPham x : listSP) {
                 model.addRow(new Object[]{
-                    x.getMaSp(), x.getTenSp(), x.getMaDanhMuc()
+                    x.getMaSp(), x.getTenSp(), x.getMaDanhMuc(), x.getTenDanhMuc(), x.getNhaSX(), x.getNuocSX()
                 });
             }
         } catch (Exception e) {
