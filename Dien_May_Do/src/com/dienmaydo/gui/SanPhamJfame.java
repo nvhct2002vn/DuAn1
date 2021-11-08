@@ -38,11 +38,11 @@ public class SanPhamJfame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        for (int i = 0; i < listSP.size(); i++) {
-            cbbMaDanhMuc.addItem(listSP.get(i).getMaDanhMuc());
-        }
+//        for (int i = 0; i < listSP.size(); i++) {
+//            cbbMaDanhMuc.addItem(listSP.get(i).getMaDanhMuc());
+//        }
         fillTableData();
-        clickTable();
+//        clickTable();
 
     }
 
@@ -706,16 +706,21 @@ public class SanPhamJfame extends javax.swing.JFrame {
         model = (DefaultTableModel) tblThongTin.getModel();
         model.setRowCount(0);
         try {
-            for (int i = 0; i < listSP.size(); i++) {
-                XuatXu xx = listXX.get(i);
-                SanPham sp = listSP.get(i);
-                DanhMuc dm = listDM.get(i);
-                String nhaSX = daoXX.selectByID(xx.getMaXX()).getNhaSX();
-                String nuocSX = daoXX.selectByID(xx.getMaXX()).getNuocSX();
-//                String maDM = daoSP.selectByID(sp.getMaSp()).getMaDanhMuc();
-                String tenDanhMuc = daoDM.selectByID(dm.getMaDanhMuc()).getTenDanhMuc();
+//            for (int i = 0; i < listSP.size(); i++) {
+//                XuatXu xx = listXX.get(i);
+//                SanPham sp = listSP.get(i);
+//                DanhMuc dm = listDM.get(i);
+//                String nhaSX = daoXX.selectByID(xx.getMaXX()).getNhaSX();
+//                String nuocSX = daoXX.selectByID(xx.getMaXX()).getNuocSX();
+////               String maDM = daoSP.selectByID(sp.getMaSp()).getMaDanhMuc();
+//                String tenDanhMuc = daoDM.selectByID(dm.getMaDanhMuc()).getTenDanhMuc();
+//                model.addRow(new Object[]{
+//                    sp.getMaSp(), sp.getTenSp(), sp.getMaDanhMuc(), tenDanhMuc, nhaSX, nuocSX
+//                });
+//            }
+            for (SanPham x : listSP) {
                 model.addRow(new Object[]{
-                    sp.getMaSp(), sp.getTenSp(), sp.getMaDanhMuc(), tenDanhMuc, nhaSX, nuocSX
+                    x.getMaSp(), x.getTenSp(), x.getMaDanhMuc()
                 });
             }
         } catch (Exception e) {

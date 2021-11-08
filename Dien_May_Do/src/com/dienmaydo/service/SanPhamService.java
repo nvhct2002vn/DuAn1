@@ -21,8 +21,10 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     String insert_SQL = "INSERT INTO dbo.SANPHAM(MASP,MADANHMUC,MAXX,TENSP)VALUES(?,?,?,?)";
     String update_SQL = "UPDATE dbo.SANPHAM SET MADANHMUC = ? , TENSP = ? WHERE MASP = ?";
     String delete_SQL = "DELETE FROM dbo.SANPHAM WHERE MASP = ?";
-    String selectALL_SQL = "SELECT * FROM dbo.SANPHAM";
-    String selectByID_SQL = "SELECT * FROM dbo.SANPHAM WHERE MASP = ?";
+    String selectALL_SQL = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
+            + "ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX";
+    String selectByID_SQL = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
+            + "ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX WHERE MASP = ?";
 
     @Override
     public void insertData(SanPham entity) {
@@ -76,6 +78,9 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
                 entity.setMaDanhMuc(rs.getString("MADANHMUC"));
                 entity.setMaXX(rs.getInt("MAXX"));
                 entity.setTenSp(rs.getString("TENSP"));
+                entity.setTenDanhMuc(rs.getString("TENDM"));
+                entity.setNhaSX(rs.getString("NHASX"));
+                entity.setNuocSX(rs.getString("NUOCSX"));
                 list.add(entity);
             }
             return list;
