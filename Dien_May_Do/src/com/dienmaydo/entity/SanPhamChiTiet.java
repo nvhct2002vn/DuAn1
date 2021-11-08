@@ -34,6 +34,7 @@ public class SanPhamChiTiet {
     private Float GiaBan;
     private String TrangThai;
     private String MoTa;
+    private String TenDVTinh;
 
     public String getMaSPCT() {
         return MaSPCT;
@@ -230,6 +231,14 @@ public class SanPhamChiTiet {
 
     public void setTenSP(String TenSP) {
         this.TenSP = TenSP;
+    }
+
+    public String getTenDVTinh() {
+        return TenDVTinh;
+    }
+
+    public void setTenDVTinh(String TenDVTinh) {
+        this.TenDVTinh = TenDVTinh;
     }
 
 }
