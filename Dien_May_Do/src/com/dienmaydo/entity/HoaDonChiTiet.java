@@ -10,18 +10,18 @@ package com.dienmaydo.entity;
  */
 public class HoaDonChiTiet {
 
-    private String MaHDCT;
+    private int MaHDCT;
     private String MaSPCT;
     private String MaHD;
     private String TenSPCT;
     private int SoLuong;
     private float DonGia;
 
-    public String getMaHDCT() {
+    public int getMaHDCT() {
         return MaHDCT;
     }
 
-    public void setMaHDCT(String MaHDCT) {
+    public void setMaHDCT(int MaHDCT) {
         this.MaHDCT = MaHDCT;
     }
 
