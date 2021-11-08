@@ -4,14 +4,16 @@
  */
 package com.dienmaydo.entity;
 
-
 public class SanPham {
+
     private String MaSp;
     private String TenSp;
     private String MaDanhMuc;
+    private String TenDanhMuc;
+    private String NhaSX;
+    private String NuocSX;
     private int MaXX;
 
-    
     public String getMaSp() {
         return MaSp;
     }
@@ -36,6 +38,30 @@ public class SanPham {
         this.MaDanhMuc = MaDanhMuc;
     }
 
+    public String getTenDanhMuc() {
+        return TenDanhMuc;
+    }
+
+    public void setTenDanhMuc(String TenDanhMuc) {
+        this.TenDanhMuc = TenDanhMuc;
+    }
+
+    public String getNhaSX() {
+        return NhaSX;
+    }
+
+    public void setNhaSX(String NhaSX) {
+        this.NhaSX = NhaSX;
+    }
+
+    public String getNuocSX() {
+        return NuocSX;
+    }
+
+    public void setNuocSX(String NuocSX) {
+        this.NuocSX = NuocSX;
+    }
+
     public int getMaXX() {
         return MaXX;
     }
@@ -44,6 +70,4 @@ public class SanPham {
         this.MaXX = MaXX;
     }
 
-    
-    
 }
