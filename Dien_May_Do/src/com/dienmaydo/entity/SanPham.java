@@ -14,6 +14,11 @@ public class SanPham {
     private String NuocSX;
     private int MaXX;
 
+    @Override
+    public String toString() {
+        return MaSp + " - " + TenSp;
+    }
+
     public String getMaSp() {
         return MaSp;
     }

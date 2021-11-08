@@ -218,4 +218,9 @@ public class SanPhamChiTiet {
         this.TenImage = TenImage;
     }
 
+    public String getKichCo() {
+        String kichCoDRC = String.valueOf(ChieuDai) + " - " + String.valueOf(ChieuRong) + " - " + String.valueOf(ChieuCao);
+        return kichCoDRC;
+    }
+
 }

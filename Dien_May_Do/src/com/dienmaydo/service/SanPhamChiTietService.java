@@ -43,7 +43,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
             + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
-            + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE MASPCT = ?";
+            + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE SANPHAM.MASP = ?";
 
     @Override
     public void insertData(SanPhamChiTiet entity) {
@@ -74,6 +74,20 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
         return list.get(0);
     }
 
+    public List<SanPhamChiTiet> selectBySPCT(String masp) {
+        String sql = "SELECT MASPCT,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
+                + "FROM dbo.SANPHAMCHITIET\n"
+                + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+                + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
+                + "JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n"
+                + "JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n"
+                + "JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
+                + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
+                + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
+                + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE SANPHAM.MASP = ?";
+        return selectBySQL(sql, masp);
+    }
+
     @Override
     public List<SanPhamChiTiet> selectBySQL(String sql, Object... args) {
         List<SanPhamChiTiet> list = new ArrayList<>();
@@ -82,6 +96,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             while (rs.next()) {
                 SanPhamChiTiet entity = new SanPhamChiTiet();
                 entity.setMaSPCT(rs.getString("MASPCT"));
+//                entity.setMaSp(rs.getString("MASP"));
                 entity.setTenSPCT(rs.getString("TENSPCT"));
                 entity.setSoLuong(rs.getInt("SOLUONG"));
                 entity.setGiaBan(rs.getFloat("GIABAN"));
