@@ -19,7 +19,7 @@ import java.util.List;
 public class SanPhamService implements ISanPhamService<SanPham, String> {
 
     String insert_SQL = "INSERT INTO dbo.SANPHAM(MASP,MADANHMUC,MAXX,TENSP)VALUES(?,?,?,?)";
-    String update_SQL = "UPDATE dbo.SANPHAM SET MADANHMUC = ? , TENSP = ? WHERE MASP = ?";
+    String update_SQL = "UPDATE dbo.SANPHAM SET MAXX = ? , MADANHMUC = ? , TENSP = ? WHERE MASP = ?";
     String delete_SQL = "DELETE FROM dbo.SANPHAM WHERE MASP = ?";
     String selectALL_SQL = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX,SANPHAM.MAXX  FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
             + "ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX";
@@ -38,7 +38,7 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     @Override
     public void updateData(SanPham entity) {
         try {
-            JdbcHelper.excuteUpdate(update_SQL, entity.getMaDanhMuc(), entity.getTenSp(), entity.getMaSp());
+            JdbcHelper.excuteUpdate(update_SQL, entity.getMaXX(), entity.getMaDanhMuc(), entity.getTenSp(), entity.getMaSp());
         } catch (Exception e) {
             e.printStackTrace();
         }

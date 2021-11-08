@@ -44,6 +44,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE MASPCT = ?";
+
     String selectTimKiem = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
             + "FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
@@ -85,6 +86,20 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
         return list.get(0);
     }
 
+    public List<SanPhamChiTiet> selectBySPCT(String masp) {
+        String sql = "SELECT MASPCT,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
+                + "FROM dbo.SANPHAMCHITIET\n"
+                + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+                + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
+                + "JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n"
+                + "JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n"
+                + "JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
+                + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
+                + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
+                + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE SANPHAM.MASP = ?";
+        return selectBySQL(sql, masp);
+    }
+
     @Override
     public List<SanPhamChiTiet> selectBySQL(String sql, Object... args) {
         List<SanPhamChiTiet> list = new ArrayList<>();
@@ -114,13 +129,12 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
         }
     }
 
-    @Override
     public List<SanPhamChiTiet> selectByTimKiem(String key) {
         return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%", "%" + key + "%");
     }
-    
-    public void updateBanHang(SanPhamChiTiet entity){
+
+    public void updateBanHang(SanPhamChiTiet entity) {
         String sql = "UPDATE SANPHAMCHITIET SET SOLUONG = ? WHERE MASPCT = ?";
-        JdbcHelper.excuteUpdate(sql, entity.getSoLuong(),entity.getMaSPCT());
+        JdbcHelper.excuteUpdate(sql, entity.getSoLuong(), entity.getMaSPCT());
     }
 }
