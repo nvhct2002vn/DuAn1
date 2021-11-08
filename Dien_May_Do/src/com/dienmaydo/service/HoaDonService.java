@@ -3,10 +3,12 @@ package com.dienmaydo.service;
 import com.dienmaydo.entity.HoaDon;
 import com.dienmaydo.iservice.IHoaDonService;
 import com.dienmaydo.utils.JdbcHelper;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HoaDonService implements IHoaDonService<HoaDon, String> {
-
+    
     String UPDATE_SQL = "UPDATE HOADON SET TRANGTHAI_TT = ? WHERE MAHD = ?";
     String DELETE_SQL = "BEGIN TRY\n"
             + "	BEGIN TRAN\n"
@@ -18,31 +20,51 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
             + "	ROLLBACK TRAN\n"
             + "END CATCH";
     String SELECT_ALL_SQL = "SELECT * FROM HOADON";
-    String SELECT_BY_ID_SQL = "SELECT * FROM HOADONCHITIET WHERE MAHD = ?";
-
+    String SELECT_BY_ID_SQL = "SELECT * FROM HOADON WHERE MAHD LIKE ?";
+    
     @Override
     public void update(HoaDon entity) {
-        JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getHinhThuc_TT(),entity.getMaHD());
+        JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getTrangThai_TT(), entity.getMaHD());
     }
-
+    
     @Override
     public void delete(String key) {
-        JdbcHelper.excuteUpdate(key, args);
+        JdbcHelper.excuteUpdate(DELETE_SQL, key, key);
     }
-
+    
     @Override
-    public void selectBySQL(String sqlString, Object... args) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<HoaDon> selectBySQL(String sqlString, Object... args) {
+        List<HoaDon> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sqlString, args);
+            while (rs.next()) {
+                HoaDon hd = new HoaDon();
+                hd.setMaHD(rs.getString("MAHD"));
+                hd.setMaNV(rs.getString("MANV"));
+                hd.setNgayLap(rs.getDate("NGAYLAP"));
+                hd.setTrangThai_TT(rs.getString("TRANGTHAI_TT"));
+                hd.setHinhThuc_TT(rs.getString("HINHTHUC_TT"));
+                hd.setTongTien(rs.getFloat("TONGTIEN"));
+                hd.setGhiChu(rs.getString("GHICHU"));
+                list.add(hd);
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
-
+    
     @Override
     public List<HoaDon> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return selectBySQL(SELECT_ALL_SQL);
     }
-
+    
     @Override
-    public HoaDon selectById(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<HoaDon> selectById(String key) {
+        List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL,"%"+key+"%");
+        return list;
     }
-
+    
 }
