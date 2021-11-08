@@ -83,11 +83,17 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
                 entity.setNuocSX(rs.getString("NUOCSX"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<SanPham> selectByTimKiem(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

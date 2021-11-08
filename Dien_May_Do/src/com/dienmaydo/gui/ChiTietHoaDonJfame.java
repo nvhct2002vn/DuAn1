@@ -5,17 +5,29 @@
  */
 package com.dienmaydo.gui;
 
+import com.dienmaydo.entity.HoaDonChiTiet;
+import com.dienmaydo.service.HoaDonChiTietService;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Nguyễn Viết Hiên
  */
 public class ChiTietHoaDonJfame extends javax.swing.JFrame {
 
+    HoaDonChiTietService hdctService = new HoaDonChiTietService();
+
     /**
      * Creates new form ChiTietHoaDonJfame
      */
-    public ChiTietHoaDonJfame() {
+    public ChiTietHoaDonJfame(String maHD,float tongTien) {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
+        fillTable(maHD);
+        lblTongTien.setText(tongTien+ " VNĐ");
     }
 
     /**
@@ -29,14 +41,16 @@ public class ChiTietHoaDonJfame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblChiTietHoaDoon = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblTongTien = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblChiTietHoaDoon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -52,12 +66,18 @@ public class ChiTietHoaDonJfame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblChiTietHoaDoon);
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Xuất hóa đơn");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("Tổng tiền:");
+
+        lblTongTien.setText("1,000,000 VNĐ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,7 +87,11 @@ public class ChiTietHoaDonJfame extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(421, 421, 421)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(236, 236, 236)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -76,7 +100,10 @@ public class ChiTietHoaDonJfame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1)
+                    .addComponent(lblTongTien))
                 .addGap(0, 21, Short.MAX_VALUE))
         );
 
@@ -101,42 +128,24 @@ public class ChiTietHoaDonJfame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChiTietHoaDonJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChiTietHoaDonJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChiTietHoaDonJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChiTietHoaDonJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ChiTietHoaDonJfame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblTongTien;
+    private javax.swing.JTable tblChiTietHoaDoon;
     // End of variables declaration//GEN-END:variables
+
+    public void fillTable(String MaHD){
+        DefaultTableModel model = (DefaultTableModel) tblChiTietHoaDoon.getModel();
+        model.setRowCount(0);
+        List<HoaDonChiTiet> list = hdctService.selectById(MaHD);
+        for (HoaDonChiTiet x : list) {
+            model.addRow(new Object[]{
+                x.getMaHD(),x.getMaSPCT(),x.getTenSPCT(),x.getSoLuong(),x.getDonGia(),x.getDonGia()*x.getSoLuong()
+            });
+        }
+    }
 }

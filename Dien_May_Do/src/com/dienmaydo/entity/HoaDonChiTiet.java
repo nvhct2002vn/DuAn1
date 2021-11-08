@@ -9,9 +9,11 @@ package com.dienmaydo.entity;
  * @author letha
  */
 public class HoaDonChiTiet {
+
     private String MaHDCT;
     private String MaSPCT;
     private String MaHD;
+    private String TenSPCT;
     private int SoLuong;
     private float DonGia;
 
@@ -55,6 +57,12 @@ public class HoaDonChiTiet {
         this.DonGia = DonGia;
     }
 
-  
-    
+    public String getTenSPCT() {
+        return TenSPCT;
+    }
+
+    public void setTenSPCT(String TenSPCT) {
+        this.TenSPCT = TenSPCT;
+    }
+
 }

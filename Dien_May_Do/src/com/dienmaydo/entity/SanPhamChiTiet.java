@@ -27,6 +27,7 @@ public class SanPhamChiTiet {
     private String MaKL;
     private Float KhoiLuong;
     private String TenSPCT;
+    private String TenSP;
     private int SoLuong;
     private boolean NhomPhoBien;
     private Float GiaNhap;
@@ -221,6 +222,14 @@ public class SanPhamChiTiet {
     public String getKichCo() {
         String kichCoDRC = String.valueOf(ChieuDai) + " - " + String.valueOf(ChieuRong) + " - " + String.valueOf(ChieuCao);
         return kichCoDRC;
+    }
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
     }
 
 }

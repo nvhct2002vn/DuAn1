@@ -11,15 +11,6 @@ public class HoaDon {
     private String HinhThuc_TT;
     private float TongTien;
     private String GhiChu;
-    private String TrangThai;
-
-    public String getTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(String TrangThai) {
-        this.TrangThai = TrangThai;
-    }
 
     public String getMaHD() {
         return MaHD;
@@ -76,4 +67,10 @@ public class HoaDon {
     public void setGhiChu(String GhiChu) {
         this.GhiChu = GhiChu;
     }
+
+    @Override
+    public String toString() {
+        return TrangThai_TT;
+    }
+    
 }
