@@ -972,7 +972,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
         try {
             daoSP.insertData(sp);
             fillTableData();
-            FillCbbMaSP();
             Msgbox.alert(this, "Thêm thành công!");
             refeshTextFiled();
         } catch (Exception e) {
