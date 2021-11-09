@@ -22,9 +22,8 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
     String insert_SQL = "INSERT INTO dbo.SANPHAMCHITIET\n"
             + "(MASPCT,MAIMAGE,MASP,MAMAUSAC,MAKICHTHUOC,MACHATLIEU,MATHETICH,MAKL,TENSPCT,SOLUONG, NHOMPHOBIEN,GIANHAP,GIABAN,MOTA)\n"
             + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    String update_SQL = "UPDATE dbo.SANPHAMCHITIET SET TENSPCT = ?, SOLUONG = ? , GIABAN = ? , MOTA = ?,\n"
-            + "MAMAUSAC = ?,MACHATLIEU = ?, MAKICHTHUOC = ?,MATHETICH = ?, MAKL = ? WHERE MASPCT = ?";
-    String delete_SQL = "";
+    String update_SQL = "UPDATE dbo.SANPHAMCHITIET SET TENSPCT = ?, SOLUONG = ? , GIABAN = ?,GIANHAP = ? , NHOMPHOBIEN = ? , MOTA = ?,\n"
+            + "MAMAUSAC = ?,MACHATLIEU = ?, MAKICHTHUOC = ?,MATHETICH = ?, MAKL = ? , MAIMAGE = ? WHERE MASPCT = ?";
     String selectALL_SQL = "SELECT * FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
@@ -34,12 +33,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE";
-<<<<<<< HEAD
-
-    String selectByID_SQL_SPCT = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
-=======
-    String selectByID_SQL = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
->>>>>>> 1a203df7c04566fab2ef0f2da4d3a5a1a1210c8b
+    String selectByID_SQL = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
             + "FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
@@ -48,16 +42,10 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
             + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
-<<<<<<< HEAD
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
             + "WHERE MASPCT = ?";
 
-    String selectTimKiem = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
-=======
-            + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE MASPCT = ?";
-
-    String selectTimKiem = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
->>>>>>> 1a203df7c04566fab2ef0f2da4d3a5a1a1210c8b
+    String selectTimKiem = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
             + "FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
@@ -71,17 +59,17 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
 
     @Override
     public void insertData(SanPhamChiTiet entity) {
-        JdbcHelper.excuteUpdate(update_SQL, entity.getTenSPCT(), entity.getSoLuong(), entity.getGiaBan(), entity.getMoTa(),
-                    entity.getMaMauSac(), entity.getMaChatLieu(), entity.getMaKichThuoc(), entity.getMaTheTich(), entity.getMaKL(),
-                    entity.getMaSPCT());
+        JdbcHelper.excuteUpdate(insert_SQL, entity.getMaSPCT(), entity.getMaImage(), entity.getMaSp(), entity.getMaMauSac(), entity.getMaKichThuoc(),
+                entity.getMaChatLieu(), entity.getMaTheTich(), entity.getMaKL(), entity.getTenSPCT(), entity.getSoLuong(), entity.isNhomPhoBien(),
+                entity.getGiaNhap(), entity.getGiaBan(), entity.getMoTa());
     }
 
     @Override
     public void updateData(SanPhamChiTiet entity) {
         try {
-            JdbcHelper.excuteUpdate(update_SQL, entity.getTenSPCT(), entity.getSoLuong(), entity.getGiaBan(), entity.getMoTa(),
-                    entity.getMaMauSac(), entity.getMaChatLieu(), entity.getMaKichThuoc(), entity.getMaTheTich(), entity.getMaKL(),
-                    entity.getMaSPCT());
+            JdbcHelper.excuteUpdate(update_SQL, entity.getTenSPCT(), entity.getSoLuong(), entity.getGiaBan(), entity.getGiaNhap(),
+                    entity.isNhomPhoBien(), entity.getMoTa(), entity.getMaMauSac(), entity.getMaChatLieu(), entity.getMaKichThuoc(),
+                    entity.getMaTheTich(), entity.getMaKL(), entity.getMaImage(), entity.getMaSPCT());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,7 +87,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
 
     @Override
     public SanPhamChiTiet selectByID(String key) {
-        List<SanPhamChiTiet> list = this.selectBySQL(selectByID_SQL_SPCT, key);
+        List<SanPhamChiTiet> list = this.selectBySQL(selectByID_SQL, key);
         if (list.isEmpty()) {
             return null;
         }
@@ -107,7 +95,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
     }
 
     public List<SanPhamChiTiet> selectBySPCT(String masp) {
-        String sql = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
+        String sql = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
                 + "FROM dbo.SANPHAMCHITIET\n"
                 + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
                 + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
@@ -132,6 +120,8 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
                 entity.setTenSPCT(rs.getString("TENSPCT"));
                 entity.setSoLuong(rs.getInt("SOLUONG"));
                 entity.setGiaBan(rs.getFloat("GIABAN"));
+                entity.setGiaNhap(rs.getFloat("GIANHAP"));
+                entity.setNhomPhoBien(rs.getBoolean("NHOMPHOBIEN"));
                 entity.setTenMauSac(rs.getString("TENMAUSAC"));
                 entity.setTheTich(rs.getFloat("THETICH"));
                 entity.setChieuDai(rs.getFloat("CHIEUDAI"));
