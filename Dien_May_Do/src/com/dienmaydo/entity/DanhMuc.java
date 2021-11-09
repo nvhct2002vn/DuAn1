@@ -17,7 +17,7 @@ public class DanhMuc {
 
     @Override
     public String toString() {
-        return MaDanhMuc + " - " + TenDanhMuc;
+        return TenDanhMuc;
     }
 
     public String getMaDanhMuc() {

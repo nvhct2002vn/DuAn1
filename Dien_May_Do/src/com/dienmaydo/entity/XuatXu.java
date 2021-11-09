@@ -10,20 +10,20 @@ package com.dienmaydo.entity;
  */
 public class XuatXu {
 
-    private String MaXX;
+    private int MaXX;
     private String NhaSX;
     private String NuocSX;
 
     @Override
     public String toString() {
-        return MaXX + " - " + NuocSX;
+        return NuocSX + " - " + NhaSX;
     }
 
-    public String getMaXX() {
+    public int getMaXX() {
         return MaXX;
     }
 
-    public void setMaXX(String MaXX) {
+    public void setMaXX(int MaXX) {
         this.MaXX = MaXX;
     }
 

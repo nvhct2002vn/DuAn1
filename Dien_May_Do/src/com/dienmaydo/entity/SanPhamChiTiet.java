@@ -35,6 +35,7 @@ public class SanPhamChiTiet {
     private String TrangThai;
     private String MoTa;
     private String TenDVTinh;
+    private String MaDVT;
 
     public String getMaSPCT() {
         return MaSPCT;
@@ -240,5 +241,14 @@ public class SanPhamChiTiet {
     public void setTenDVTinh(String TenDVTinh) {
         this.TenDVTinh = TenDVTinh;
     }
+
+    public String getMaDVT() {
+        return MaDVT;
+    }
+
+    public void setMaDVT(String MaDVT) {
+        this.MaDVT = MaDVT;
+    }
+    
 
 }
