@@ -94,6 +94,16 @@ VALUES  ('MS001', N'Trắng đen'),
 		('MS003', N'Xám'),
 		('MS004', N'Trắng'),
 		('MS005', N'Xanh')
+-- BỔ SUNG DỮ LIỆU MÀU SẮC
+INSERT INTO MAUSAC
+VALUES  ('MS006', N'Vàng'),
+		('MS007', N'Đỏ'),
+		('MS008', N'Cam'),
+		('MS009', N'Nâu'),
+		('MS0010', N'Nâu bi'),
+		('MS0011', N'Xanh thẫm'),
+		('MS0012', N'Đỏ thẫm')
+
 
 INSERT INTO DONVITINH
 VALUES  ('KG', N'Kilogam'),
