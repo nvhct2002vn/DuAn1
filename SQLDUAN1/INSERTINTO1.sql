@@ -156,6 +156,12 @@ VALUES  ('CL001', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
 		('CL007', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
 		('CL008', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện, Kính'),
 		('CL009', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện')
+--BỔ SUNG DỮ LIỆU CHO CHẤT LIỆU
+INSERT INTO CHATLIEU
+VALUES  ('CL0010', N'Nhựa dẻo'),
+		('CL0011', N'Kim loại phủ sơn tĩnh điện'),
+		('CL0012', N'Kính cường lực'),
+		('CL0013', N'Sắt không gỉ')
 
 
 INSERT INTO _IMAGE
