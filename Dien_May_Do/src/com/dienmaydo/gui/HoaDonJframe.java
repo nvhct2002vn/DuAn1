@@ -6,13 +6,10 @@
 package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.HoaDon;
-import com.dienmaydo.service.HoaDonChiTietService;
 import com.dienmaydo.service.HoaDonService;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -201,13 +198,13 @@ public class HoaDonJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-         // TODO add your handling code here:
-         timKiem();
+        // TODO add your handling code here:
+        timKiem();
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
     private void btnXemChiTietHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietHoaDonActionPerformed
-         // TODO add your handling code here:
-         fillChiTietHoaDon();
+        // TODO add your handling code here:
+        fillChiTietHoaDon();
     }//GEN-LAST:event_btnXemChiTietHoaDonActionPerformed
 
     /**
@@ -258,7 +255,7 @@ public class HoaDonJframe extends javax.swing.JFrame {
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
-    public void timKiem(){
+    public void timKiem() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
         String key = txtTimKiem.getText();
@@ -269,7 +266,7 @@ public class HoaDonJframe extends javax.swing.JFrame {
             });
         }
     }
-    
+
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
@@ -289,38 +286,47 @@ public class HoaDonJframe extends javax.swing.JFrame {
     public void delete() {
         row = tblHoaDon.getSelectedRow();
         String maHD = (String) tblHoaDon.getValueAt(row, 0);
-        if (Msgbox.confirm(this, "Bạn chắc chắn muốn xóa hóa đơn này?")) {
-            try {
-                hdService.delete(maHD);
-                fillTable();
-                Msgbox.alert(this, "Xóa hóa đơn thành công");
-            } catch (Exception e) {
-                e.printStackTrace();
-                Msgbox.alert(this, "Xóa hóa đơn thất bại");
+        if (row < 0) {
+            Msgbox.alert(this, "Vui lòng chọn hóa đơn!");
+            return;
+        } else {
+            if (Msgbox.confirm(this, "Bạn chắc chắn muốn xóa hóa đơn này?")) {
+                try {
+                    hdService.delete(maHD);
+                    fillTable();
+                    Msgbox.alert(this, "Xóa hóa đơn thành công");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Msgbox.alert(this, "Xóa hóa đơn thất bại");
+                }
             }
         }
     }
 
     public void update() {
-        HoaDon hd = new HoaDon();
-        hd.setMaHD(tblHoaDon.getValueAt(row, 0)+"");
-        hd.setTrangThai_TT((String) cboTrangThai.getSelectedItem());
-        try {
-            hdService.update(hd);
-            fillTable();
-            Msgbox.alert(this, "Cập nhật hóa đơn thành công");
-        } catch (Exception e) {
-            e.printStackTrace();
-            Msgbox.alert(this, "Cập nhật hóa đơn thất bại");
+        if (row < 0) {
+            Msgbox.alert(this, "Vui lòng chọn hóa đơn!");
+            return;
+        } else {
+            HoaDon hd = new HoaDon();
+            hd.setMaHD(tblHoaDon.getValueAt(row, 0) + "");
+            hd.setTrangThai_TT((String) cboTrangThai.getSelectedItem());
+            try {
+                hdService.update(hd);
+                fillTable();
+                Msgbox.alert(this, "Cập nhật hóa đơn thành công");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Msgbox.alert(this, "Cập nhật hóa đơn thất bại");
+            }
         }
     }
-    
-    public void fillChiTietHoaDon(){
-        String maHD = tblHoaDon.getValueAt(row, 0)+"";
+
+    public void fillChiTietHoaDon() {
+        String maHD = tblHoaDon.getValueAt(row, 0) + "";
         String tongTien = tblHoaDon.getValueAt(row, 1).toString();
-        tongTien = tongTien.substring(0, tongTien.length()-3);
-   
+        tongTien = tongTien.substring(0, tongTien.length() - 3);
+
         new ChiTietHoaDonJfame(maHD, Float.parseFloat(tongTien)).setVisible(true);
     }
 }
-
