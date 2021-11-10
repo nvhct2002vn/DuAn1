@@ -710,7 +710,13 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }//GEN-LAST:event_tblThongTinMouseClicked
 
     private void btnThemSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPCTActionPerformed
-        insertDataSPCT();
+        if (isValidateSPCT()) {
+            return;
+        } else if (isCheckTrungSPCT()) {
+            return;
+        } else {
+            insertDataSPCT();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemSPCTActionPerformed
 
@@ -760,11 +766,16 @@ public class SanPhamJfame extends javax.swing.JFrame {
 
     private void btnLamMoiSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiSPCTActionPerformed
         fillTableSPCT_MaSP_Combobox();
+        fillTableSPCT();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLamMoiSPCTActionPerformed
 
     private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
-        updatetDataSPCT();
+        if (isValidateSPCT()) { 
+            return;
+        } else {
+            updatetDataSPCT();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaSPCTActionPerformed
 
@@ -904,6 +915,9 @@ public class SanPhamJfame extends javax.swing.JFrame {
             } else if (txtTenSP.getText().trim().equals("")) {
                 Msgbox.alert(this, "Tên sản phẩm không được để trống");
                 return true;
+            } else if (txtMaSP.getText().length() > 10) {
+                Msgbox.alert(this, "Mã sản phẩm tối đa 10 kí tự");
+                return true;
             } else {
                 return false;
             }
@@ -930,8 +944,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
         model.removeAllElements();
         List<XuatXu> list = daoXX.selectAll();
-        for (XuatXu cd : list) {
-            model.addElement(cd);
+        for (XuatXu xx : list) {
+            model.addElement(xx);
         }
     }
 
@@ -939,8 +953,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbDanhMuc.getModel();
         model.removeAllElements();
         List<DanhMuc> list = daoDM.selectAll();
-        for (DanhMuc cd : list) {
-            model.addElement(cd);
+        for (DanhMuc dm : list) {
+            model.addElement(dm);
         }
     }
 
@@ -1026,15 +1040,15 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }
 
     SanPham getFromSP() {
-        XuatXu cd = (XuatXu) cbbXuatXu.getSelectedItem();
-        System.out.println(cd.getMaXX());
+        XuatXu xx = (XuatXu) cbbXuatXu.getSelectedItem();
+        System.out.println(xx.getMaXX());
         DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
         System.out.println(dm.getMaDanhMuc());
         SanPham sp = new SanPham();
         sp.setMaSp(txtMaSP.getText());
         sp.setMaDanhMuc(dm.getMaDanhMuc());
         sp.setTenSp(txtTenSP.getText());
-        sp.setMaXX(cd.getMaXX());
+        sp.setMaXX(xx.getMaXX());
         return sp;
     }
 
@@ -1059,14 +1073,41 @@ public class SanPhamJfame extends javax.swing.JFrame {
     boolean isValidateSPCT() {
         try {
             if (txtMaSPCT.getText().trim().equals("")) {
-                Msgbox.alert(this, "Mã sản phẩm không được để trống");
+                Msgbox.alert(this, "Mã sản phẩm chi tiết không được để trống");
                 return true;
             } else if (txtTenSPCT.getText().trim().equals("")) {
-                Msgbox.alert(this, "Tên sản phẩm không được để trống");
+                Msgbox.alert(this, "Tên sản phẩm chi tiết không được để trống");
+                return true;
+            } else if (txtSoLuong.getText().trim().equals("")) {
+                Msgbox.alert(this, "Số lượng không được để trống");
+                return true;
+            } else if (txtGiaNhap.getText().trim().equals("")) {
+                Msgbox.alert(this, "Giá nhập không được để trống");
+                return true;
+            } else if (txtGiaBan.getText().trim().equals("")) {
+                Msgbox.alert(this, "Giá bán không được để trống");
+                return true;
+            } else if (txtMaSPCT.getText().length() > 10) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết tối đa 10 kí tự");
+                return true;
+            } else if (Integer.parseInt(txtSoLuong.getText()) < 0) {
+                Msgbox.alert(this, "Số lượng sản phẩm phải lớn hơn 0");
+                return true;
+            } else if (Double.parseDouble(txtGiaNhap.getText()) < 0) {
+                Msgbox.alert(this, "Giá nhập không được bé hơn 0");
+                return true;
+            } else if (Double.parseDouble(txtGiaBan.getText()) < 0) {
+                Msgbox.alert(this, "Giá bán không được bé hơn 0");
+                return true;
+            } else if (AreaMoTa.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mô tả không được để trống");
                 return true;
             } else {
                 return false;
             }
+        } catch (NumberFormatException e) {
+            Msgbox.alert(this, "Số lượng và giá tiền phải là số");
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return true;
@@ -1090,8 +1131,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
         model.removeAllElements();
         List<TheTich> list = daoTT.selectAll();
-        for (TheTich cd : list) {
-            model.addElement(cd);
+        for (TheTich tt : list) {
+            model.addElement(tt);
         }
     }
 
@@ -1139,8 +1180,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMaSP.getModel();
         model.removeAllElements();
         List<SanPham> list = daoSP.selectAll();
-        for (SanPham cd : list) {
-            model.addElement(cd);
+        for (SanPham sp : list) {
+            model.addElement(sp);
         }
     }
 
@@ -1290,8 +1331,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKhoiLuong.getModel();
         model.removeAllElements();
         List<KhoiLuong> list = daoKL.selectAll();
-        for (KhoiLuong cd : list) {
-            model.addElement(cd);
+        for (KhoiLuong kl : list) {
+            model.addElement(kl);
         }
     }
 
@@ -1299,8 +1340,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKichThuoc.getModel();
         model.removeAllElements();
         List<KichThuoc> list = daoKT.selectAll();
-        for (KichThuoc cd : list) {
-            model.addElement(cd);
+        for (KichThuoc kt : list) {
+            model.addElement(kt);
         }
     }
 
@@ -1308,8 +1349,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbChatLieu.getModel();
         model.removeAllElements();
         List<ChatLieu> list = daoCL.selectAll();
-        for (ChatLieu cd : list) {
-            model.addElement(cd);
+        for (ChatLieu cl : list) {
+            model.addElement(cl);
         }
     }
 
@@ -1317,8 +1358,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMauSac.getModel();
         model.removeAllElements();
         List<MauSac> list = daoMS.selectAll();
-        for (MauSac cd : list) {
-            model.addElement(cd);
+        for (MauSac ms : list) {
+            model.addElement(ms);
         }
     }
 
@@ -1326,8 +1367,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbIMG.getModel();
         model.removeAllElements();
         List<Image> list = daoIMG.selectAll();
-        for (Image cd : list) {
-            model.addElement(cd);
+        for (Image img : list) {
+            model.addElement(img);
         }
     }
 }
