@@ -630,7 +630,13 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }//GEN-LAST:event_tblThongTinMouseClicked
 
     private void btnThemSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPCTActionPerformed
-        insertDataSPCT();
+        if (isValidateSPCT()) {
+            return;
+        } else if (isCheckTrungSPCT()) {
+            return;
+        } else {
+            insertDataSPCT();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemSPCTActionPerformed
 
@@ -670,12 +676,20 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbMaSPActionPerformed
 
     private void btnLamMoiSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiSPCTActionPerformed
+<<<<<<< HEAD
+        fillTableSPCT_MaSP_Combobox();
+=======
+>>>>>>> fd93873457ff9523387884f0529139781367300c
         fillTableSPCT();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLamMoiSPCTActionPerformed
 
     private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
-        updatetDataSPCT();
+        if (isValidateSPCT()) { 
+            return;
+        } else {
+            updatetDataSPCT();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaSPCTActionPerformed
 
@@ -780,6 +794,70 @@ public class SanPhamJfame extends javax.swing.JFrame {
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< HEAD
+    boolean isValidate() {
+        try {
+            if (txtMaSP.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã sản phẩm không được để trống");
+                return true;
+            } else if (txtTenSP.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên sản phẩm không được để trống");
+                return true;
+            } else if (txtMaSP.getText().length() > 10) {
+                Msgbox.alert(this, "Mã sản phẩm tối đa 10 kí tự");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    boolean isCheckTrung() {
+        boolean check = false;
+        List<SanPham> list = daoSP.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaSp().equalsIgnoreCase(txtMaSP.getText())) {
+                Msgbox.alert(this, "Mã sản phẩm đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
+    void addDataCbbXX() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
+        model.removeAllElements();
+        List<XuatXu> list = daoXX.selectAll();
+        for (XuatXu xx : list) {
+            model.addElement(xx);
+        }
+    }
+
+    void addDataCbbDM() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbDanhMuc.getModel();
+        model.removeAllElements();
+        List<DanhMuc> list = daoDM.selectAll();
+        for (DanhMuc dm : list) {
+            model.addElement(dm);
+        }
+    }
+
+    //-------------------------- Test ---------------------------------------------------
+//    void fillcbbDanhMuc() {
+//        DanhMuc dm = daoDM.selectByID(cbbMaDanhMuc.getSelectedItem().toString());
+//        lblTenDanhMuc.setText(dm.getTenDanhMuc());
+//    }
+//
+//    void fillcbbMaXuatXu() {
+//        XuatXu xx = daoXX.selectByID(cbbMaXuatXu.getSelectedItem().toString());
+//        lblNhaSX.setText(xx.getNhaSX() + " - " + xx.getNuocSX());
+//    }
+=======
+>>>>>>> fd93873457ff9523387884f0529139781367300c
     void fillTableData() {
         model1 = (DefaultTableModel) tblThongTin.getModel();
         model1.setRowCount(0);
@@ -859,11 +937,22 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }
 
     SanPham getFromSP() {
+<<<<<<< HEAD
+        XuatXu xx = (XuatXu) cbbXuatXu.getSelectedItem();
+        System.out.println(xx.getMaXX());
+        DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
+        System.out.println(dm.getMaDanhMuc());
+=======
+>>>>>>> fd93873457ff9523387884f0529139781367300c
         SanPham sp = new SanPham();
         sp.setMaSp(txtMaSP.getText());
         sp.setMaDanhMuc(cbbMaDanhMuc.getSelectedItem().toString());
         sp.setTenSp(txtTenSP.getText());
+<<<<<<< HEAD
+        sp.setMaXX(xx.getMaXX());
+=======
         sp.setMaXX(Integer.parseInt(cbbMaXuatXu.getSelectedItem().toString()));
+>>>>>>> fd93873457ff9523387884f0529139781367300c
         return sp;
     }
 
@@ -876,6 +965,75 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }
 
     // ------------------------------- SPCT ---------------------------------------
+<<<<<<< HEAD
+    boolean isValidateSPCT() {
+        try {
+            if (txtMaSPCT.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết không được để trống");
+                return true;
+            } else if (txtTenSPCT.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên sản phẩm chi tiết không được để trống");
+                return true;
+            } else if (txtSoLuong.getText().trim().equals("")) {
+                Msgbox.alert(this, "Số lượng không được để trống");
+                return true;
+            } else if (txtGiaNhap.getText().trim().equals("")) {
+                Msgbox.alert(this, "Giá nhập không được để trống");
+                return true;
+            } else if (txtGiaBan.getText().trim().equals("")) {
+                Msgbox.alert(this, "Giá bán không được để trống");
+                return true;
+            } else if (txtMaSPCT.getText().length() > 10) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết tối đa 10 kí tự");
+                return true;
+            } else if (Integer.parseInt(txtSoLuong.getText()) < 0) {
+                Msgbox.alert(this, "Số lượng sản phẩm phải lớn hơn 0");
+                return true;
+            } else if (Double.parseDouble(txtGiaNhap.getText()) < 0) {
+                Msgbox.alert(this, "Giá nhập không được bé hơn 0");
+                return true;
+            } else if (Double.parseDouble(txtGiaBan.getText()) < 0) {
+                Msgbox.alert(this, "Giá bán không được bé hơn 0");
+                return true;
+            } else if (AreaMoTa.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mô tả không được để trống");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            Msgbox.alert(this, "Số lượng và giá tiền phải là số");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    boolean isCheckTrungSPCT() {
+        boolean check = false;
+        List<SanPhamChiTiet> list = daoSPCT.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaSPCT().equalsIgnoreCase(txtMaSPCT.getText())) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
+    void addDataCbbTT() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
+        model.removeAllElements();
+        List<TheTich> list = daoTT.selectAll();
+        for (TheTich tt : list) {
+            model.addElement(tt);
+        }
+    }
+
+=======
+>>>>>>> fd93873457ff9523387884f0529139781367300c
     void insertDataSPCT() {
         SanPhamChiTiet sp = getFromSPSPCT();
         try {
@@ -937,8 +1095,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMaSP.getModel();
         model.removeAllElements();
         List<SanPham> list = daoSP.selectAll();
-        for (SanPham cd : list) {
-            model.addElement(cd);
+        for (SanPham sp : list) {
+            model.addElement(sp);
         }
     }
 
@@ -1000,6 +1158,53 @@ public class SanPhamJfame extends javax.swing.JFrame {
 
     void setFrom(SanPhamChiTiet spct) {
 
+<<<<<<< HEAD
+    private void addDataCbbKL() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKhoiLuong.getModel();
+        model.removeAllElements();
+        List<KhoiLuong> list = daoKL.selectAll();
+        for (KhoiLuong kl : list) {
+            model.addElement(kl);
+        }
     }
 
+    private void addDataCbbKT() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKichThuoc.getModel();
+        model.removeAllElements();
+        List<KichThuoc> list = daoKT.selectAll();
+        for (KichThuoc kt : list) {
+            model.addElement(kt);
+        }
+    }
+
+    private void addDataCbbCL() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbChatLieu.getModel();
+        model.removeAllElements();
+        List<ChatLieu> list = daoCL.selectAll();
+        for (ChatLieu cl : list) {
+            model.addElement(cl);
+        }
+    }
+
+    private void addDataCbbMS() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMauSac.getModel();
+        model.removeAllElements();
+        List<MauSac> list = daoMS.selectAll();
+        for (MauSac ms : list) {
+            model.addElement(ms);
+        }
+    }
+
+    private void addDataCbbIMG() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbIMG.getModel();
+        model.removeAllElements();
+        List<Image> list = daoIMG.selectAll();
+        for (Image img : list) {
+            model.addElement(img);
+        }
+    }
+=======
+    }
+
+>>>>>>> fd93873457ff9523387884f0529139781367300c
 }

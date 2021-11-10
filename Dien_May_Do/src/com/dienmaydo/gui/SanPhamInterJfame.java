@@ -715,12 +715,30 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnChiTietSPActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+<<<<<<< HEAD
         insertData();
+=======
+        if (isValidate()) {
+            return;
+        } else if (isCheckTrung()) {
+            return;
+        } else {
+            insertData();
+        }
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+<<<<<<< HEAD
         updatetData();
+=======
+        if (isValidate()) {
+            return;
+        } else {
+            updatetData();
+        }
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -741,12 +759,30 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTimKiemSPCTKeyReleased
 
     private void btnThemSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPCTActionPerformed
+<<<<<<< HEAD
         insertDataSPCT();
+=======
+        if (isValidateSPCT()) {
+            return;
+        } else if (isCheckTrungSPCT()) {
+            return;
+        } else {
+            insertDataSPCT();
+        }
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemSPCTActionPerformed
 
     private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
+<<<<<<< HEAD
         updatetDataSPCT();
+=======
+        if (isValidateSPCT()) {
+            return;
+        } else {
+            updatetDataSPCT();
+        }
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaSPCTActionPerformed
 
@@ -838,8 +874,31 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTimKiemSPCT;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< HEAD
     
     
+=======
+    boolean isValidate() {
+        try {
+            if (txtMaSP.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã sản phẩm không được để trống");
+                return true;
+            } else if (txtTenSP.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên sản phẩm không được để trống");
+                return true;
+            } else if (txtMaSP.getText().length() > 10) {
+                Msgbox.alert(this, "Mã sản phẩm tối đa 10 kí tự");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
     boolean isCheckTrung() {
         boolean check = false;
         List<SanPham> list = daoSP.selectAll();
@@ -953,15 +1012,24 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }
 
     SanPham getFromSP() {
+<<<<<<< HEAD
         XuatXu cd = (XuatXu) cbbXuatXu.getSelectedItem();
         System.out.println(cd.getMaXX());
+=======
+        XuatXu xx = (XuatXu) cbbXuatXu.getSelectedItem();
+        System.out.println(xx.getMaXX());
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
         System.out.println(dm.getMaDanhMuc());
         SanPham sp = new SanPham();
         sp.setMaSp(txtMaSP.getText());
         sp.setMaDanhMuc(dm.getMaDanhMuc());
         sp.setTenSp(txtTenSP.getText());
+<<<<<<< HEAD
         sp.setMaXX(cd.getMaXX());
+=======
+        sp.setMaXX(xx.getMaXX());
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         return sp;
     }
 
@@ -983,6 +1051,66 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }
 
     // ------------------------------- SPCT ---------------------------------------
+<<<<<<< HEAD
+=======
+    boolean isValidateSPCT() {
+        try {
+            if (txtMaSPCT.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết không được để trống");
+                return true;
+            } else if (txtTenSPCT.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên sản phẩm chi tiết không được để trống");
+                return true;
+            } else if (txtSoLuong.getText().trim().equals("")) {
+                Msgbox.alert(this, "Số lượng không được để trống");
+                return true;
+            } else if (txtGiaNhap.getText().trim().equals("")) {
+                Msgbox.alert(this, "Giá nhập không được để trống");
+                return true;
+            } else if (txtGiaBan.getText().trim().equals("")) {
+                Msgbox.alert(this, "Giá bán không được để trống");
+                return true;
+            } else if (txtMaSPCT.getText().length() > 10) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết tối đa 10 kí tự");
+                return true;
+            } else if (Integer.parseInt(txtSoLuong.getText()) < 0) {
+                Msgbox.alert(this, "Số lượng sản phẩm phải lớn hơn 0");
+                return true;
+            } else if (Double.parseDouble(txtGiaNhap.getText()) < 0) {
+                Msgbox.alert(this, "Giá nhập không được bé hơn 0");
+                return true;
+            } else if (Double.parseDouble(txtGiaBan.getText()) < 0) {
+                Msgbox.alert(this, "Giá bán không được bé hơn 0");
+                return true;
+            } else if (AreaMoTa.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mô tả không được để trống");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            Msgbox.alert(this, "Số lượng và giá tiền phải là số");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    boolean isCheckTrungSPCT() {
+        boolean check = false;
+        List<SanPhamChiTiet> list = daoSPCT.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaSPCT().equalsIgnoreCase(txtMaSPCT.getText())) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
+>>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
     void addDataCbbTT() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
         model.removeAllElements();
