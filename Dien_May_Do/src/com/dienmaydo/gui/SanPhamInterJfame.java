@@ -35,6 +35,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -85,6 +86,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     public SanPhamInterJfame() {
         initComponents();
         setResizable(false);
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
 //        for (int i = 0; i < listDM.size(); i++) {
 //            cbbMaDanhMuc.addItem(listDM.get(i).getMaDanhMuc());
 //        }
@@ -352,7 +356,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtNuocSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
@@ -657,7 +661,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                         .addComponent(jLabel10))
                     .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
         );
 
         pnTongQuat.addTab("Sản phẩm chi tiết", pnSPCT);
@@ -666,7 +670,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnTongQuat, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
+            .addComponent(pnTongQuat)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,9 +685,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -835,6 +837,21 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTimKiemSPCT;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    boolean isCheckTrung() {
+        boolean check = false;
+        List<SanPham> list = daoSP.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaSp().equalsIgnoreCase(txtMaSP.getText())) {
+                Msgbox.alert(this, "Mã sản phẩm đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
 
     void addDataCbbXX() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();

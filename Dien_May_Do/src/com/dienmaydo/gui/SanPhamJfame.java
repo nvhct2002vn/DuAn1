@@ -727,12 +727,22 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietSPActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        insertData();
+        if (isValidate()) {
+            return;
+        } else if (isCheckTrung()) {
+            return;
+        } else {
+            insertData();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        updatetData();
+        if (isValidate()) {
+            return;
+        } else {
+            updatetData();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -886,6 +896,36 @@ public class SanPhamJfame extends javax.swing.JFrame {
     private javax.swing.JTextField txtTimKiemSPCT;
     // End of variables declaration//GEN-END:variables
 
+    boolean isValidate() {
+        try {
+            if (txtMaSP.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã sản phẩm không được để trống");
+                return true;
+            } else if (txtTenSP.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên sản phẩm không được để trống");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    boolean isCheckTrung() {
+        boolean check = false;
+        List<SanPham> list = daoSP.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaSp().equalsIgnoreCase(txtMaSP.getText())) {
+                Msgbox.alert(this, "Mã sản phẩm đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
     void addDataCbbXX() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
         model.removeAllElements();
@@ -1016,6 +1056,36 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }
 
     // ------------------------------- SPCT ---------------------------------------
+    boolean isValidateSPCT() {
+        try {
+            if (txtMaSPCT.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã sản phẩm không được để trống");
+                return true;
+            } else if (txtTenSPCT.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên sản phẩm không được để trống");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    boolean isCheckTrungSPCT() {
+        boolean check = false;
+        List<SanPhamChiTiet> list = daoSPCT.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaSPCT().equalsIgnoreCase(txtMaSPCT.getText())) {
+                Msgbox.alert(this, "Mã sản phẩm chi tiết đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
     void addDataCbbTT() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
         model.removeAllElements();
