@@ -9,15 +9,21 @@ package com.dienmaydo.entity;
  * @author letha
  */
 public class XuatXu {
-    private String MaXX;
+
+    private int MaXX;
     private String NhaSX;
     private String NuocSX;
 
-    public String getMaXX() {
+    @Override
+    public String toString() {
+        return NuocSX;
+    }
+
+    public int getMaXX() {
         return MaXX;
     }
 
-    public void setMaXX(String MaXX) {
+    public void setMaXX(int MaXX) {
         this.MaXX = MaXX;
     }
 
@@ -36,5 +42,5 @@ public class XuatXu {
     public void setNuocSX(String NuocSX) {
         this.NuocSX = NuocSX;
     }
-    
+
 }

@@ -255,7 +255,7 @@ public class HoaDonJframe extends javax.swing.JFrame {
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
-    public void timKiem() {    
+    public void timKiem() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
         String key = txtTimKiem.getText();

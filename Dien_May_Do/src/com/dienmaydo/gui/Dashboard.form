@@ -95,9 +95,6 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\category.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Danh m&#x1ee5;c"/>
                   </Properties>
                   <Events>
@@ -140,9 +137,6 @@
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\account.png"/>
-                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
@@ -194,7 +188,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\home-page.png"/>
+                      <Image iconType="2" name="C:\Users\nguyen viet hien\OneDrive\M&#xe1;y t&#xed;nh\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\home-page.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Trang ch&#x1ee7;"/>
                   </Properties>
@@ -238,9 +232,6 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\product.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1ea3;n ph&#x1ea9;m"/>
                   </Properties>
                   <Events>
@@ -284,9 +275,6 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\sell.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="B&#xe1;n H&#xe0;ng"/>
                   </Properties>
                   <Events>
@@ -330,9 +318,6 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\receipt.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="H&#xf3;a &#x111;&#x1a1;n"/>
                   </Properties>
                   <Events>
@@ -375,9 +360,6 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\promotion.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Khuy&#x1ebf;n m&#x1ea1;i"/>
                   </Properties>
                   <Events>
@@ -420,9 +402,6 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\statistical.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
                   </Properties>
                   <Events>
@@ -465,9 +444,6 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\exit.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
                   </Properties>
                   <Events>

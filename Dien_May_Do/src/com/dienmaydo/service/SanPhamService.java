@@ -26,6 +26,10 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     String selectByID_SQL = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX,SANPHAM.MAXX FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
             + "ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX WHERE MASP = ?";
 
+    String selectTimKiem = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX,SANPHAM.MAXX FROM dbo.SANPHAM JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX\n"
+            + "JOIN dbo.DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
+            + "WHERE MASP LIKE ? OR TENSP LIKE ? OR NUOCSX LIKE ?";
+
     @Override
     public void insertData(SanPham entity) {
         try {
@@ -93,7 +97,7 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
 
     @Override
     public List<SanPham> selectByTimKiem(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%", "%" + key + "%");
     }
 
 }

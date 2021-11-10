@@ -16,7 +16,7 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return MaSp + " - " + TenSp;
+        return TenSp;
     }
 
     public String getMaSp() {

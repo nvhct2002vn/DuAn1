@@ -47,7 +47,6 @@ public class ChiTietHoaDonJfame extends javax.swing.JFrame {
         lblTongTien = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("HÓA ĐƠN CHI TIẾT");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
