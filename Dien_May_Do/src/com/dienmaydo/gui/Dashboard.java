@@ -164,6 +164,9 @@ public class Dashboard extends javax.swing.JFrame {
         lblSanPham.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\product.png")); // NOI18N
         lblSanPham.setText("Sản phẩm");
         lblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSanPhamMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblSanPhamMousePressed(evt);
             }
@@ -458,6 +461,10 @@ public class Dashboard extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_lblThoatMouseClicked
+
+    private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblSanPhamMouseClicked
 
     /**
      * @param args the command line arguments
