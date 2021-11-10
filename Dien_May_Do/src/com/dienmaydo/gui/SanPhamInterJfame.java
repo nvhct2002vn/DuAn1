@@ -41,7 +41,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Nguyễn Viết Hiên
  */
-public class SanPhamJfame extends javax.swing.JFrame {
+public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form HangHoaJfame
@@ -79,9 +79,11 @@ public class SanPhamJfame extends javax.swing.JFrame {
     int viTri = 0;
     int row = -1;
 
-    public SanPhamJfame() {
+    /**
+     * Creates new form SanPhamInterJfame
+     */
+    public SanPhamInterJfame() {
         initComponents();
-        setLocationRelativeTo(null);
         setResizable(false);
 //        for (int i = 0; i < listDM.size(); i++) {
 //            cbbMaDanhMuc.addItem(listDM.get(i).getMaDanhMuc());
@@ -106,7 +108,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
         FillCbbMaSP();
         row = 0;
         edit();
-
     }
 
     /**
@@ -118,7 +119,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         pnTongQuat = new javax.swing.JTabbedPane();
         pnSanPham = new javax.swing.JPanel();
@@ -180,8 +180,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -325,13 +323,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
                         .addComponent(btnLamMoi)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
-
-        pnSanPhamLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLamMoi, btnSua, btnThem});
-
-        pnSanPhamLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtMaSP, txtNhaSX, txtNuocSX, txtTenSP});
-
         pnSanPhamLayout.setVerticalGroup(
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSanPhamLayout.createSequentialGroup()
@@ -372,8 +365,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        pnSanPhamLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLamMoi, btnSua, btnThem});
 
         pnTongQuat.addTab("Sản phẩm", pnSanPham);
 
@@ -486,13 +477,11 @@ public class SanPhamJfame extends javax.swing.JFrame {
         jLabel21.setText("Nhóm phổ biến:");
 
         rdoPhoBien.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdoPhoBien);
         rdoPhoBien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rdoPhoBien.setSelected(true);
         rdoPhoBien.setText("Phổ biến");
 
         rdoKhongPhoBien.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdoKhongPhoBien);
         rdoKhongPhoBien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rdoKhongPhoBien.setText("Không phổ biến");
 
@@ -595,7 +584,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                         .addComponent(btnSuaSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)
                         .addComponent(btnLamMoiSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         pnSPCTLayout.setVerticalGroup(
             pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -660,15 +649,12 @@ public class SanPhamJfame extends javax.swing.JFrame {
                     .addComponent(btnLamMoiSPCT))
                 .addGap(46, 46, 46)
                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20))
                     .addGroup(pnSPCTLayout.createSequentialGroup()
-                        .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel20))
-                            .addGroup(pnSPCTLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel10)))
-                        .addGap(1, 1, 1))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel10))
                     .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
@@ -680,7 +666,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnTongQuat)
+            .addComponent(pnTongQuat, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -709,10 +695,10 @@ public class SanPhamJfame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblThongTinMouseClicked
 
-    private void btnThemSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPCTActionPerformed
-        insertDataSPCT();
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        timKiemSP();
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemSPCTActionPerformed
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
     private void btnChiTietSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietSPActionPerformed
         int index = tblThongTin.getSelectedRow();
@@ -741,6 +727,37 @@ public class SanPhamJfame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
+    private void tblSanPhamChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamChiTietMouseClicked
+        row = tblSanPhamChiTiet.getSelectedRow();
+        edit();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
+
+    private void txtTimKiemSPCTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemSPCTKeyReleased
+        timKiemSPCT();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemSPCTKeyReleased
+
+    private void btnThemSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPCTActionPerformed
+        insertDataSPCT();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemSPCTActionPerformed
+
+    private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
+        updatetDataSPCT();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSuaSPCTActionPerformed
+
+    private void btnLamMoiSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiSPCTActionPerformed
+        fillTableSPCT_MaSP_Combobox();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLamMoiSPCTActionPerformed
+
+    private void lblHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhAnhMouseClicked
+        chonAnh();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblHinhAnhMouseClicked
+
     private void cbbMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbMaSPActionPerformed
         fillTableSPCT_MaSP_Combobox();
         row = 0;
@@ -748,78 +765,12 @@ public class SanPhamJfame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbMaSPActionPerformed
 
-    private void btnLamMoiSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiSPCTActionPerformed
-        fillTableSPCT_MaSP_Combobox();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLamMoiSPCTActionPerformed
-
-    private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
-        updatetDataSPCT();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSuaSPCTActionPerformed
-
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-        timKiemSP();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemKeyReleased
-
-    private void txtTimKiemSPCTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemSPCTKeyReleased
-        timKiemSPCT();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemSPCTKeyReleased
-
-    private void tblSanPhamChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamChiTietMouseClicked
-        row = tblSanPhamChiTiet.getSelectedRow();
-        edit();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
-
-    private void lblHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhAnhMouseClicked
-        chonAnh();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblHinhAnhMouseClicked
-
     private void cbbIMGItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbIMGItemStateChanged
         Image img = (Image) cbbIMG.getSelectedItem();
         lblHinhAnh.setIcon(XImage.read(img.getTenHinh()));
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbIMGItemStateChanged
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SanPhamJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SanPhamJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SanPhamJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SanPhamJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SanPhamJfame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaMoTa;
@@ -830,7 +781,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
     private javax.swing.JButton btnSuaSPCT;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemSPCT;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbbChatLieu;
     private javax.swing.JComboBox<String> cbbDanhMuc;
     private javax.swing.JComboBox<String> cbbIMG;
@@ -1260,4 +1210,5 @@ public class SanPhamJfame extends javax.swing.JFrame {
             model.addElement(cd);
         }
     }
+
 }
