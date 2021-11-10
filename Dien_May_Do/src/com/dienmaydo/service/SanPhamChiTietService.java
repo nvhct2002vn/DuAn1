@@ -24,7 +24,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     String update_SQL = "";
     String delete_SQL = "";
-    String selectALL_SQL = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
+    String selectALL_SQL = "SELECT *\n"
             + "FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
