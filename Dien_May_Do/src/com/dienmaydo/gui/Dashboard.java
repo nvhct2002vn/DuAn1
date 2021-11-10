@@ -78,6 +78,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\category.png")); // NOI18N
         jLabel2.setText("Danh mục");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,10 +91,7 @@ public class Dashboard extends javax.swing.JFrame {
         danhMuc.setLayout(danhMucLayout);
         danhMucLayout.setHorizontalGroup(
             danhMucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(danhMucLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         danhMucLayout.setVerticalGroup(
             danhMucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,6 +134,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         lblTrangChu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTrangChu.setForeground(new java.awt.Color(51, 51, 51));
+        lblTrangChu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTrangChu.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\home-page.png")); // NOI18N
         lblTrangChu.setText("Trang chủ");
         lblTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,10 +147,7 @@ public class Dashboard extends javax.swing.JFrame {
         trangChu.setLayout(trangChuLayout);
         trangChuLayout.setHorizontalGroup(
             trangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(trangChuLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(lblTrangChu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         trangChuLayout.setVerticalGroup(
             trangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,6 +160,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         lblSanPham.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSanPham.setForeground(new java.awt.Color(51, 51, 51));
+        lblSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSanPham.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\product.png")); // NOI18N
         lblSanPham.setText("Sản phẩm");
         lblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,10 +173,7 @@ public class Dashboard extends javax.swing.JFrame {
         sanPham.setLayout(sanPhamLayout);
         sanPhamLayout.setHorizontalGroup(
             sanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sanPhamLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(lblSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         sanPhamLayout.setVerticalGroup(
             sanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +186,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         lblBanHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblBanHang.setForeground(new java.awt.Color(51, 51, 51));
+        lblBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBanHang.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\sell.png")); // NOI18N
         lblBanHang.setText("Bán Hàng");
         lblBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -207,10 +202,7 @@ public class Dashboard extends javax.swing.JFrame {
         banHang.setLayout(banHangLayout);
         banHangLayout.setHorizontalGroup(
             banHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(banHangLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(lblBanHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         banHangLayout.setVerticalGroup(
             banHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,6 +215,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         lblHoaDon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblHoaDon.setForeground(new java.awt.Color(51, 51, 51));
+        lblHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHoaDon.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\receipt.png")); // NOI18N
         lblHoaDon.setText("Hóa đơn");
         lblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,10 +228,7 @@ public class Dashboard extends javax.swing.JFrame {
         hoaDon.setLayout(hoaDonLayout);
         hoaDonLayout.setHorizontalGroup(
             hoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(hoaDonLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(lblHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         hoaDonLayout.setVerticalGroup(
             hoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,6 +241,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         lblKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblKhuyenMai.setForeground(new java.awt.Color(51, 51, 51));
+        lblKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKhuyenMai.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\promotion.png")); // NOI18N
         lblKhuyenMai.setText("Khuyến mại");
         lblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -263,10 +254,7 @@ public class Dashboard extends javax.swing.JFrame {
         khuyenMai.setLayout(khuyenMaiLayout);
         khuyenMaiLayout.setHorizontalGroup(
             khuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(khuyenMaiLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+            .addComponent(lblKhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         khuyenMaiLayout.setVerticalGroup(
             khuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,6 +267,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(51, 51, 51));
+        lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNhanVien.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\Staff.png")); // NOI18N
         lblNhanVien.setText("Nhân Viên");
         lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -291,10 +280,7 @@ public class Dashboard extends javax.swing.JFrame {
         nhaVien.setLayout(nhaVienLayout);
         nhaVienLayout.setHorizontalGroup(
             nhaVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nhaVienLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(lblNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         nhaVienLayout.setVerticalGroup(
             nhaVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,6 +293,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         lblThoat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblThoat.setForeground(new java.awt.Color(51, 51, 51));
+        lblThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThoat.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\exit.png")); // NOI18N
         lblThoat.setText("Thoát");
         lblThoat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -322,10 +309,7 @@ public class Dashboard extends javax.swing.JFrame {
         thoat.setLayout(thoatLayout);
         thoatLayout.setHorizontalGroup(
             thoatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(thoatLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(lblThoat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         thoatLayout.setVerticalGroup(
             thoatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,9 +447,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseClicked
         // TODO add your handling code here:
-        nhap111111111 n = new nhap111111111();
+        F_BanHang b = new F_BanHang();
         jDesktopPane1.removeAll();
-        jDesktopPane1.add(n).setVisible(true);
+        jDesktopPane1.add(b).setVisible(true);
     }//GEN-LAST:event_lblBanHangMouseClicked
 
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
