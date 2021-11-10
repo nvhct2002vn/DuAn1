@@ -60,7 +60,7 @@ public class Dashboard extends javax.swing.JFrame {
         khuyenMai = new javax.swing.JPanel();
         lblKhuyenMai = new javax.swing.JLabel();
         nhaVien = new javax.swing.JPanel();
-        lblNhanVien = new javax.swing.JLabel();
+        lblThongKe = new javax.swing.JLabel();
         thoat = new javax.swing.JPanel();
         lblThoat = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -102,22 +102,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 204, 0));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\account.png")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("DO TAT HOA");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addGap(0, 54, Short.MAX_VALUE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,14 +266,14 @@ public class Dashboard extends javax.swing.JFrame {
 
         nhaVien.setBackground(new java.awt.Color(255, 204, 0));
 
-        lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblNhanVien.setForeground(new java.awt.Color(51, 51, 51));
-        lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNhanVien.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\Staff.png")); // NOI18N
-        lblNhanVien.setText("Nhân Viên");
-        lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblThongKe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblThongKe.setForeground(new java.awt.Color(51, 51, 51));
+        lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThongKe.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\statistical.png")); // NOI18N
+        lblThongKe.setText("Thống kê");
+        lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblNhanVienMousePressed(evt);
+                lblThongKeMousePressed(evt);
             }
         });
 
@@ -283,11 +281,11 @@ public class Dashboard extends javax.swing.JFrame {
         nhaVien.setLayout(nhaVienLayout);
         nhaVienLayout.setHorizontalGroup(
             nhaVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+            .addComponent(lblThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         nhaVienLayout.setVerticalGroup(
             nhaVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(lblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         jPanel2.add(nhaVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 220, 60));
@@ -424,7 +422,7 @@ public class Dashboard extends javax.swing.JFrame {
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_lblKhuyenMaiMousePressed
 
-    private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
+    private void lblThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMousePressed
         // TODO add your handling code here:
         trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
@@ -434,7 +432,7 @@ public class Dashboard extends javax.swing.JFrame {
         khuyenMai.setBackground(defaultColor);
         nhaVien.setBackground(clickColor);
         thoat.setBackground(defaultColor);
-    }//GEN-LAST:event_lblNhanVienMousePressed
+    }//GEN-LAST:event_lblThongKeMousePressed
 
     private void lblThoatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMousePressed
         // TODO add your handling code here:
@@ -516,9 +514,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblBanHang;
     private javax.swing.JLabel lblHoaDon;
     private javax.swing.JLabel lblKhuyenMai;
-    private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblSanPham;
     private javax.swing.JLabel lblThoat;
+    private javax.swing.JLabel lblThongKe;
     private javax.swing.JLabel lblTrangChu;
     private javax.swing.JPanel nhaVien;
     private javax.swing.JPanel sanPham;
