@@ -14,13 +14,14 @@ import com.dienmaydo.service.SanPhamChiTietService;
 import com.dienmaydo.utils.Msgbox;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Nguyễn Viết Hiên
+ * @author DO TAT HOA
  */
-public class BanHangJfame extends javax.swing.JFrame {
+public class F_BanHang extends javax.swing.JInternalFrame {
 
     DefaultTableModel model1;
     DefaultTableModel model2;
@@ -30,11 +31,13 @@ public class BanHangJfame extends javax.swing.JFrame {
     int row = -1;
 
     /**
-     * Creates new form BanHangJfame
+     * Creates new form F_BanHang
      */
-    public BanHangJfame() {
+    public F_BanHang() {
         initComponents();
-        setLocationRelativeTo(null);
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
         setResizable(false);
 
         model1 = (DefaultTableModel) tblChonSanPham.getModel();
@@ -80,9 +83,6 @@ public class BanHangJfame extends javax.swing.JFrame {
         lblKhacCanTra = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtMaHoaDon = new javax.swing.JTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("QUẢN LÝ BÁN HÀNG");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -139,9 +139,6 @@ public class BanHangJfame extends javax.swing.JFrame {
                 .addComponent(btnXoaTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnXoaSP, btnXoaTatCa});
-
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -152,8 +149,6 @@ public class BanHangJfame extends javax.swing.JFrame {
                     .addComponent(btnXoaTatCa))
                 .addContainerGap())
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnXoaSP, btnXoaTatCa});
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -387,16 +382,6 @@ public class BanHangJfame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-        // TODO add your handling code here:
-        timKiem();
-    }//GEN-LAST:event_txtTimKiemKeyReleased
-
-    private void btnThemSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSanPhamActionPerformed
-        // TODO add your handling code here:
-        themSanPham();
-    }//GEN-LAST:event_btnThemSanPhamActionPerformed
-
     private void btnXoaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSPActionPerformed
         // TODO add your handling code here:
         xoaSanPham();
@@ -407,49 +392,25 @@ public class BanHangJfame extends javax.swing.JFrame {
         xoaTatCa();
     }//GEN-LAST:event_btnXoaTatCaActionPerformed
 
-    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
-        thanhToan();
-    }//GEN-LAST:event_btnThanhToanActionPerformed
+        timKiem();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void btnThemSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSanPhamActionPerformed
+        // TODO add your handling code here:
+        themSanPham();
+    }//GEN-LAST:event_btnThemSanPhamActionPerformed
 
     private void cboTrangThaiTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTrangThaiTTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboTrangThaiTTActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BanHangJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BanHangJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BanHangJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BanHangJfame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        // TODO add your handling code here:
+        thanhToan();
+    }//GEN-LAST:event_btnThanhToanActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BanHangJfame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThanhToan;
@@ -502,10 +463,10 @@ public class BanHangJfame extends javax.swing.JFrame {
             if (Integer.parseInt(soluong) > Integer.parseInt(tblChonSanPham.getValueAt(row, 2) + "")) {
                 Msgbox.alert(this, "Số lượng sản phẩm bạn vừa nhập vượt quá số lượng trong kho!");
                 return;
-            }else if (Integer.parseInt(soluong) < 0) {
+            } else if (Integer.parseInt(soluong) < 0) {
                 Msgbox.alert(this, "Số lượng sản phẩm không được nhỏ hơn 0!");
                 return;
-            }  else {
+            } else {
                 Vector v = new Vector();
                 v.add(tblChonSanPham.getValueAt(row, 0));
                 v.add(tblChonSanPham.getValueAt(row, 1));
@@ -585,18 +546,18 @@ public class BanHangJfame extends javax.swing.JFrame {
                 for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
                     //Tạo đối tượng hóa đơn chi tiết và add vào đối tượng để thêm vào vào hóa đơn chi tiết
                     HoaDonChiTiet hdct = new HoaDonChiTiet();
-                    hdct.setMaSPCT(tblSanPhamChon.getValueAt(i, 0)+"");
+                    hdct.setMaSPCT(tblSanPhamChon.getValueAt(i, 0) + "");
                     hdct.setMaHD(txtMaHoaDon.getText());
-                    hdct.setSoLuong(Integer.parseInt(tblSanPhamChon.getValueAt(i, 3)+""));
-                    hdct.setDonGia(Float.parseFloat(tblSanPhamChon.getValueAt(i, 2)+""));
+                    hdct.setSoLuong(Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + ""));
+                    hdct.setDonGia(Float.parseFloat(tblSanPhamChon.getValueAt(i, 2) + ""));
                     //Thêm từng hóa đơn chi tiết theo điều kiện i
                     hdctService.insert(hdct);
-                    
+
                     //Tạo đối tượng sản phẩm chi tết để lấy ra số lượng tồn dựa vào sanphamchitietService
                     SanPhamChiTiet s = spService.selectByID(tblChonSanPham.getValueAt(i, 0) + "");
                     //Tạo biến int lưu lại số lượng còn lại trong kho khi đã bán ra 
                     int soLuongMoi = (s.getSoLuong() - Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + ""));
-                    
+
                     //Thực hiện update số lượng trong bảng sản phẩm
                     SanPhamChiTiet sp = new SanPhamChiTiet();
                     sp.setSoLuong(soLuongMoi);

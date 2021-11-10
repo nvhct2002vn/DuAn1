@@ -12,13 +12,6 @@ public class DonViTinh {
     private String MaDV;
     private String TenDV;
 
-    @Override
-    public String toString() {
-        return TenDV;
-    }
-
-    
-    
     public String getMaDV() {
         return MaDV;
     }

@@ -12,13 +12,6 @@ public class ChatLieu {
     private String MaChatLieu;
     private String ChatLieu;
 
-    @Override
-    public String toString() {
-        return ChatLieu;
-    }
-
-    
-    
     public String getMaChatLieu() {
         return MaChatLieu;
     }

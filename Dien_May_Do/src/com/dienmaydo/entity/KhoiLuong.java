@@ -9,15 +9,9 @@ package com.dienmaydo.entity;
  * @author letha
  */
 public class KhoiLuong {
-
     private String MaKL;
     private float KhoiLuong;
     private String MaDV;
-
-    @Override
-    public String toString() {
-        return KhoiLuong + " - " + MaDV;
-    }
 
     public String getMaKL() {
         return MaKL;
@@ -42,5 +36,5 @@ public class KhoiLuong {
     public void setMaDV(String MaDV) {
         this.MaDV = MaDV;
     }
-
+    
 }
