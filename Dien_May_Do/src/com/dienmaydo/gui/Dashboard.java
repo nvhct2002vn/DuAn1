@@ -5,8 +5,11 @@
  */
 package com.dienmaydo.gui;
 
+import com.dienmaydo.entity.HoaDon;
+import com.dienmaydo.entity.HoaDonChiTiet;
 import com.dienmaydo.utils.Msgbox;
 import java.awt.Color;
+import java.util.List;
 
 /**
  *
@@ -15,14 +18,15 @@ import java.awt.Color;
 public class Dashboard extends javax.swing.JFrame {
 
     Color defaultColor, clickColor;
+
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
-        defaultColor = new Color(255,204,0);
-        clickColor = new Color(153,153,153);
-        
+        defaultColor = new Color(255, 204, 0);
+        clickColor = new Color(153, 153, 153);
+
         trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
@@ -223,6 +227,9 @@ public class Dashboard extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHoaDonMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblHoaDonMousePressed(evt);
+            }
         });
 
         javax.swing.GroupLayout hoaDonLayout = new javax.swing.GroupLayout(hoaDon);
@@ -327,20 +334,20 @@ public class Dashboard extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1310, Short.MAX_VALUE)
+            .addGap(0, 1146, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 768, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, -2, 1310, 768));
+        jPanel3.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, -2, 1146, 768));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,14 +407,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseClicked
         // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
-        danhMuc.setBackground(defaultColor);
-        sanPham.setBackground(defaultColor);
-        banHang.setBackground(defaultColor);
-        hoaDon.setBackground(clickColor);
-        khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
-        thoat.setBackground(defaultColor);
+        F_HoaDon hd = new F_HoaDon();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(hd).setVisible(true);
     }//GEN-LAST:event_lblHoaDonMouseClicked
 
     private void lblKhuyenMaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMousePressed
@@ -463,6 +465,18 @@ public class Dashboard extends javax.swing.JFrame {
     private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblSanPhamMouseClicked
+
+    private void lblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMousePressed
+        // TODO add your handling code here:
+        trangChu.setBackground(defaultColor);
+        danhMuc.setBackground(defaultColor);
+        sanPham.setBackground(defaultColor);
+        banHang.setBackground(defaultColor);
+        hoaDon.setBackground(clickColor);
+        khuyenMai.setBackground(defaultColor);
+        nhaVien.setBackground(defaultColor);
+        thoat.setBackground(defaultColor);
+    }//GEN-LAST:event_lblHoaDonMousePressed
 
     /**
      * @param args the command line arguments
@@ -523,4 +537,12 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel thoat;
     private javax.swing.JPanel trangChu;
     // End of variables declaration//GEN-END:variables
+
+    public void goiChucNangBanHang(HoaDon hd, List<HoaDonChiTiet> list){
+        System.out.println("ok");
+        F_BanHang b = new F_BanHang();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(b).setVisible(true);
+        b.setForm(hd, list);
+    }
 }

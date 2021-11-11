@@ -9,12 +9,13 @@ import java.util.List;
 
 public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet, String> {
 
-    String SELECT_BY_ID_SQL = "SELECT MAHDCT,SANPHAMCHITIET.MASPCT,MAHD,TENSPCT,HOADONCHITIET.SOLUONG,DONGIA \n"
+    String SELECT_BY_ID_SQL = "SELECT MAHDCT,SANPHAMCHITIET.MASPCT,MAHD,TENSP,TENSPCT,HOADONCHITIET.SOLUONG,DONGIA\n"
             + "FROM HOADONCHITIET JOIN SANPHAMCHITIET ON HOADONCHITIET.MASPCT = SANPHAMCHITIET.MASPCT\n"
+            + "					JOIN SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "WHERE MAHD = ?";
-    
+
     String INSERT_SQL = "INSERT INTO HOADONCHITIET VALUES(?,?,?,?)";
-    
+
     @Override
     public List<HoaDonChiTiet> selectBySQL(String sqlString, Object... args) {
         List<HoaDonChiTiet> list = new ArrayList<>();
@@ -24,6 +25,7 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
                 HoaDonChiTiet hd = new HoaDonChiTiet();
                 hd.setMaHDCT(rs.getInt("MAHDCT"));
                 hd.setMaSPCT(rs.getString("MASPCT"));
+                hd.setTenSP(rs.getString("TENSP"));
                 hd.setTenSPCT(rs.getString("TENSPCT"));
                 hd.setMaHD(rs.getString("MAHD"));
                 hd.setSoLuong(rs.getInt("SOLUONG"));
@@ -45,7 +47,7 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
 
     @Override
     public void insert(HoaDonChiTiet entity) {
-        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaSPCT(),entity.getMaHD(),entity.getSoLuong(),entity.getDonGia());
+        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaSPCT(), entity.getMaHD(), entity.getSoLuong(), entity.getDonGia());
     }
 
 }

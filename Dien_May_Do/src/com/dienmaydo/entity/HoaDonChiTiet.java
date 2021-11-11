@@ -13,9 +13,18 @@ public class HoaDonChiTiet {
     private int MaHDCT;
     private String MaSPCT;
     private String MaHD;
+    private String TenSP;
     private String TenSPCT;
     private int SoLuong;
     private float DonGia;
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
 
     public int getMaHDCT() {
         return MaHDCT;

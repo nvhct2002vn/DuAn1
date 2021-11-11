@@ -57,6 +57,19 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
             + "WHERE MASPCT LIKE ? OR TENSP LIKE ? OR TENSPCT LIKE ?";
 
+    String selectBySPInDM = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n" +
+"            FROM dbo.SANPHAMCHITIET\n" +
+"            JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n" +
+"            JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n" +
+"            JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n" +
+"            JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n" +
+"            JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n" +
+"            JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n" +
+"            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n" +
+"            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n" +
+"			JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n" +
+"            WHERE TENDM LIKE ?";
+
     @Override
     public void insertData(SanPhamChiTiet entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -122,6 +135,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
                 entity.setTenImage(rs.getString("TENHINH"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,5 +150,9 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
     public void updateBanHang(SanPhamChiTiet entity) {
         String sql = "UPDATE SANPHAMCHITIET SET SOLUONG = ? WHERE MASPCT = ?";
         JdbcHelper.excuteUpdate(sql, entity.getSoLuong(), entity.getMaSPCT());
+    }
+
+    public List<SanPhamChiTiet> selectByDM(String key) {
+        return selectBySQL(selectBySPInDM, key);
     }
 }

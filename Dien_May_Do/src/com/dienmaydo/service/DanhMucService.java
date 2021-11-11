@@ -22,6 +22,7 @@ public class DanhMucService implements IDanhMucService<DanhMuc, String> {
     String selectByID_SQL = "SELECT * FROM dbo.DANHMUC WHERE MADANHMUC = ?";
 
     @Override
+
     public void insertData(DanhMuc entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
