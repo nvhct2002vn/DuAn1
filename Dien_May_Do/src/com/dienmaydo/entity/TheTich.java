@@ -9,8 +9,14 @@ package com.dienmaydo.entity;
  * @author letha
  */
 public class TheTich {
+
     private String MaTheTich;
     private Float TheTich;
+
+    @Override
+    public String toString() {
+        return TheTich + " Lít";
+    }
 
     public String getMaTheTich() {
         return MaTheTich;
@@ -27,5 +33,5 @@ public class TheTich {
     public void setTheTich(Float TheTich) {
         this.TheTich = TheTich;
     }
-    
+
 }

@@ -9,10 +9,16 @@ package com.dienmaydo.entity;
  * @author letha
  */
 public class DanhMuc {
+
     private String MaDanhMuc;
     private String MaNH;
     private String TenDanhMuc;
     private String GhiChu;
+
+    @Override
+    public String toString() {
+        return TenDanhMuc;
+    }
 
     public String getMaDanhMuc() {
         return MaDanhMuc;
@@ -45,7 +51,11 @@ public class DanhMuc {
     public void setGhiChu(String GhiChu) {
         this.GhiChu = GhiChu;
     }
+<<<<<<< HEAD
     
     
     
+=======
+
+>>>>>>> 47ad82d40cb2c3ce269ab50c090b6e017ae4dfd9
 }

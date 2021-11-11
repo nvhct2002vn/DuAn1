@@ -9,8 +9,14 @@ package com.dienmaydo.entity;
  * @author letha
  */
 public class Image {
+
     private String MaImage;
     private String TenHinh;
+
+    @Override
+    public String toString() {
+        return TenHinh;
+    }
 
     public String getMaImage() {
         return MaImage;
@@ -27,5 +33,5 @@ public class Image {
     public void setTenHinh(String TenHinh) {
         this.TenHinh = TenHinh;
     }
-    
+
 }

@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -51,7 +52,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     XuatXuService daoXX = new XuatXuService();
     DanhMucService daoDM = new DanhMucService();
     SanPhamChiTietService daoSPCT = new SanPhamChiTietService();
-//    List<SanPhamChiTiet> ListSPCT = daoSPCT.selectAll();
     List<DanhMuc> listDM = daoDM.selectAll();
     List<XuatXu> listXX = daoXX.selectAll();
 
@@ -78,7 +78,8 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     DefaultTableModel model1, modelSPCT;
     int viTri = 0;
-    int row = -1;
+    int row = 0;
+    int vitriSPCT;
 
     /**
      * Creates new form SanPhamInterJfame
@@ -86,18 +87,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     public SanPhamInterJfame() {
         initComponents();
         setResizable(false);
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
-        ui.setNorthPane(null);
-//        for (int i = 0; i < listDM.size(); i++) {
-//            cbbMaDanhMuc.addItem(listDM.get(i).getMaDanhMuc());
-//        }
-//        for (int i = 0; i < listXX.size(); i++) {
-//            cbbMaXuatXu.addItem(String.valueOf(listXX.get(i).getMaXX()));
-//        }
-//        for (int i = 0; i < listXX.size(); i++) {
-//            jComboBox1.addItem(listXX.get(i).getNuocSX());
-//        }
         addDataCbbXX();
         addDataCbbDM();
         addDataCbbTT();
@@ -108,10 +97,8 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         addDataCbbIMG();
         fillTableData();
         clickTable();
-//        fillTableSPCT();
+        fillTableSPCT();
         FillCbbMaSP();
-        row = 0;
-        edit();
     }
 
     /**
@@ -298,9 +285,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
                                 .addGap(31, 31, 31)
-                                .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNhaSX)
-                                    .addComponent(txtNuocSX, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNuocSX, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                                    .addComponent(txtNhaSX)))
                             .addGroup(pnSanPhamLayout.createSequentialGroup()
                                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -356,7 +343,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtNuocSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
@@ -383,7 +370,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -465,9 +452,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         jLabel20.setText("Sản phẩm:");
 
         cbbMaSP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cbbMaSP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbMaSPActionPerformed(evt);
+        cbbMaSP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbMaSPItemStateChanged(evt);
             }
         });
 
@@ -707,17 +694,14 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         if (index < 0) {
             Msgbox.alert(this, "Vui lòng chọn sản phẩm");
         } else {
+            FillCbbMaSP();
+            setSelectedComboboxTenSP(tblThongTin.getValueAt(viTri, 1).toString(), cbbMaSP);
             clickOpenSPCT();
-            row = 0;
-            edit();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnChiTietSPActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-<<<<<<< HEAD
-        insertData();
-=======
         if (isValidate()) {
             return;
         } else if (isCheckTrung()) {
@@ -725,20 +709,15 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         } else {
             insertData();
         }
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-<<<<<<< HEAD
-        updatetData();
-=======
         if (isValidate()) {
             return;
         } else {
             updatetData();
         }
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -748,8 +727,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblSanPhamChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamChiTietMouseClicked
-        row = tblSanPhamChiTiet.getSelectedRow();
-        edit();
+        clickTabelSPCT();
         // TODO add your handling code here:
     }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
 
@@ -759,9 +737,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTimKiemSPCTKeyReleased
 
     private void btnThemSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPCTActionPerformed
-<<<<<<< HEAD
-        insertDataSPCT();
-=======
         if (isValidateSPCT()) {
             return;
         } else if (isCheckTrungSPCT()) {
@@ -769,25 +744,22 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         } else {
             insertDataSPCT();
         }
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemSPCTActionPerformed
 
     private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
-<<<<<<< HEAD
-        updatetDataSPCT();
-=======
         if (isValidateSPCT()) {
             return;
         } else {
             updatetDataSPCT();
         }
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaSPCTActionPerformed
 
     private void btnLamMoiSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiSPCTActionPerformed
-        fillTableSPCT_MaSP_Combobox();
+        fillTableSPCT();
+        FillCbbMaSP();
+        clearFromSPCT();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLamMoiSPCTActionPerformed
 
@@ -796,18 +768,16 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblHinhAnhMouseClicked
 
-    private void cbbMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbMaSPActionPerformed
-        fillTableSPCT_MaSP_Combobox();
-        row = 0;
-        edit();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbbMaSPActionPerformed
-
     private void cbbIMGItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbIMGItemStateChanged
         Image img = (Image) cbbIMG.getSelectedItem();
         lblHinhAnh.setIcon(XImage.read(img.getTenHinh()));
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbIMGItemStateChanged
+
+    private void cbbMaSPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbMaSPItemStateChanged
+        fillTableSPCT_MaSP_Combobox();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbMaSPItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -874,10 +844,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTimKiemSPCT;
     // End of variables declaration//GEN-END:variables
 
-<<<<<<< HEAD
-    
-    
-=======
     boolean isValidate() {
         try {
             if (txtMaSP.getText().trim().equals("")) {
@@ -898,7 +864,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         }
     }
 
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
     boolean isCheckTrung() {
         boolean check = false;
         List<SanPham> list = daoSP.selectAll();
@@ -931,15 +896,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }
 
     //-------------------------- Test ---------------------------------------------------
-//    void fillcbbDanhMuc() {
-//        DanhMuc dm = daoDM.selectByID(cbbMaDanhMuc.getSelectedItem().toString());
-//        lblTenDanhMuc.setText(dm.getTenDanhMuc());
-//    }
-//
-//    void fillcbbMaXuatXu() {
-//        XuatXu xx = daoXX.selectByID(cbbMaXuatXu.getSelectedItem().toString());
-//        lblNhaSX.setText(xx.getNhaSX() + " - " + xx.getNuocSX());
-//    }
     void fillTableData() {
         model1 = (DefaultTableModel) tblThongTin.getModel();
         model1.setRowCount(0);
@@ -955,21 +911,47 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         }
     }
 
+    public void setSelectedComboboxTenSP(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            SanPham m = (SanPham) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getTenSp())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
+    public void setSelectedComboboxDM(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            DanhMuc m = (DanhMuc) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getTenDanhMuc())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
+    public void setSelectedComboboxXX(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            XuatXu m = (XuatXu) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getNuocSX())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
     void clickTable() {
         txtMaSP.setText(model1.getValueAt(viTri, 0).toString());
         txtTenSP.setText(model1.getValueAt(viTri, 1).toString());
-//        cbbMaDanhMuc.setSelectedItem(model1.getValueAt(viTri, 2));
         txtNhaSX.setText(model1.getValueAt(viTri, 3).toString());
         txtNuocSX.setText(model1.getValueAt(viTri, 4).toString());
-        SanPham sp = daoSP.selectByID(txtMaSP.getText());
-        int maxxsp = sp.getMaXX();
-//        cbbMaXuatXu.setSelectedItem(String.valueOf(maxxsp));
-
-//        for (int i = 0; i < listXX.size(); i++) {
-//            if (listXX.get(i).getNhaSX() == model1.getValueAt(viTri, 4).toString()) {
-//                jComboBox1.setSelectedItem(listXX.get(i).getNhaSX());
-//            }
-//        }
+        setSelectedComboboxXX(tblThongTin.getValueAt(viTri, 4).toString(), cbbXuatXu);
+        setSelectedComboboxDM(tblThongTin.getValueAt(viTri, 2).toString(), cbbDanhMuc);
+        setSelectedComboboxTenSP(tblThongTin.getValueAt(viTri, 1).toString(), cbbMaSP);
     }
 
     void insertData() {
@@ -1002,44 +984,20 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         txtTenSP.setText("");
         txtNhaSX.setText("");
         txtNuocSX.setText("");
-//        cbbMaDanhMuc.setSelectedIndex(0);
         fillTableData();
     }
 
-    void setFrom(SanPham sp) {
-        txtMaSP.setText(sp.getMaSp());
-        txtTenSP.setText(sp.getTenSp());
-    }
-
     SanPham getFromSP() {
-<<<<<<< HEAD
         XuatXu cd = (XuatXu) cbbXuatXu.getSelectedItem();
-        System.out.println(cd.getMaXX());
-=======
-        XuatXu xx = (XuatXu) cbbXuatXu.getSelectedItem();
-        System.out.println(xx.getMaXX());
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
-        System.out.println(dm.getMaDanhMuc());
         SanPham sp = new SanPham();
         sp.setMaSp(txtMaSP.getText());
         sp.setMaDanhMuc(dm.getMaDanhMuc());
         sp.setTenSp(txtTenSP.getText());
-<<<<<<< HEAD
         sp.setMaXX(cd.getMaXX());
-=======
-        sp.setMaXX(xx.getMaXX());
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
         return sp;
     }
 
-//    XuatXu getFromXX() {
-//        XuatXu xx = new XuatXu();
-////        xx.setMaXX((int) cbbMaXuatXu.getSelectedItem());
-//        xx.setNhaSX(txtNhaSX.getText());
-//        xx.setNuocSX(txtNuocSX.getText());
-//        return xx;
-//    }
     public void timKiemSP() {
         model1.setRowCount(0);
         List<SanPham> list = daoSP.selectByTimKiem(txtTimKiem.getText());
@@ -1051,8 +1009,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }
 
     // ------------------------------- SPCT ---------------------------------------
-<<<<<<< HEAD
-=======
     boolean isValidateSPCT() {
         try {
             if (txtMaSPCT.getText().trim().equals("")) {
@@ -1110,7 +1066,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         return check;
     }
 
->>>>>>> 07fef66ba4e054731f05beff7b83dd76fb7d4d2b
     void addDataCbbTT() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
         model.removeAllElements();
@@ -1206,81 +1161,65 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     void clickOpenSPCT() {
         if (viTri >= 0) {
             pnTongQuat.setSelectedIndex(1);
+            fillTableSPCT();
             fillTableSPCT_MaSP();
         } else {
             Msgbox.alert(this, "Vui lòng chọn sản phẩm!");
         }
     }
 
-//    void getMaTest() {
-//        TheTich tt = (TheTich) cbbTheTich.getSelectedItem();
-//        System.out.println(tt.getMaTheTich());
-//        KichThuoc kt = (KichThuoc) cbbKichThuoc.getSelectedItem();
-//        System.out.println(kt.getMaKichThuoc());
-//        KhoiLuong kl = (KhoiLuong) cbbKhoiLuong.getSelectedItem();
-//        System.out.println(kl.getMaKL());
-//        ChatLieu cl = (ChatLieu) cbbChatLieu.getSelectedItem();
-//        System.out.println(cl.getMaChatLieu());
-//        MauSac ms = (MauSac) cbbMauSac.getSelectedItem();
-//        System.out.println(ms.getMaMauSac());
-//        Image img = (Image) cbbIMG.getSelectedItem();
-//        System.out.println(img.getMaImage());
-//    }
     SanPhamChiTiet getFromSPSPCT() {
         TheTich tt = (TheTich) cbbTheTich.getSelectedItem();
-        System.out.println(tt.getMaTheTich());
         KichThuoc kt = (KichThuoc) cbbKichThuoc.getSelectedItem();
-        System.out.println(kt.getMaKichThuoc());
         KhoiLuong kl = (KhoiLuong) cbbKhoiLuong.getSelectedItem();
-        System.out.println(kl.getMaKL());
         ChatLieu cl = (ChatLieu) cbbChatLieu.getSelectedItem();
-        System.out.println(cl.getMaChatLieu());
         MauSac ms = (MauSac) cbbMauSac.getSelectedItem();
-        System.out.println(ms.getMaMauSac());
         Image img = (Image) cbbIMG.getSelectedItem();
-        System.out.println(img.getMaImage());
 
         // ----------------------------------------------------------------------
         SanPhamChiTiet spct = new SanPhamChiTiet();
         SanPham sp = (SanPham) cbbMaSP.getSelectedItem();
-        spct.setMaSp(sp.getMaSp()); //
-        spct.setMaSPCT(txtMaSPCT.getText()); //
-        spct.setTenSPCT(txtTenSPCT.getText()); //
-        spct.setSoLuong(Integer.parseInt(txtSoLuong.getText())); // 
-        spct.setGiaNhap(Float.parseFloat(txtGiaNhap.getText())); //
-        spct.setGiaBan(Float.parseFloat(txtGiaBan.getText())); //
-        if (rdoPhoBien.isSelected()) { //
+        spct.setMaSp(sp.getMaSp());
+        spct.setMaSPCT(txtMaSPCT.getText());
+        spct.setTenSPCT(txtTenSPCT.getText());
+        spct.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
+        spct.setGiaNhap(Float.parseFloat(txtGiaNhap.getText()));
+        spct.setGiaBan(Float.parseFloat(txtGiaBan.getText()));
+        if (rdoPhoBien.isSelected()) {
             spct.setNhomPhoBien(true);
         } else {
             spct.setNhomPhoBien(false);
         }
-        spct.setMaMauSac(ms.getMaMauSac()); //
-        spct.setMaTheTich(tt.getMaTheTich()); //
-        spct.setMaKL(kl.getMaKL()); //
-        spct.setMaKichThuoc(kt.getMaKichThuoc()); //
-        spct.setMaChatLieu(cl.getMaChatLieu()); //
-        spct.setMaImage(img.getMaImage()); //
-        spct.setMoTa(AreaMoTa.getText()); //
+        spct.setMaMauSac(ms.getMaMauSac());
+        spct.setMaTheTich(tt.getMaTheTich());
+        spct.setMaKL(kl.getMaKL());
+        spct.setMaKichThuoc(kt.getMaKichThuoc());
+        spct.setMaChatLieu(cl.getMaChatLieu());
+        spct.setMaImage(img.getMaImage());
+        spct.setMoTa(AreaMoTa.getText());
         return spct;
     }
 
-    void setFrom(SanPhamChiTiet spct) {
-        txtMaSPCT.setText(spct.getMaSPCT());
-        txtTenSPCT.setText(spct.getTenSPCT());
-        txtSoLuong.setText(String.valueOf(spct.getSoLuong()));
-        txtGiaNhap.setText(String.valueOf(spct.getGiaNhap()));
-        txtGiaBan.setText(String.valueOf(spct.getGiaBan()));
-        if (spct.getTenImage() != null) {
-            lblHinhAnh.setToolTipText(spct.getTenImage());
-            lblHinhAnh.setIcon(XImage.read(spct.getTenImage()));
-        }
-        if (spct.isNhomPhoBien() == true) {
+    void clickTabelSPCT() {
+        vitriSPCT = tblSanPhamChiTiet.getSelectedRow();
+        txtMaSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 0).toString());
+        txtTenSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 1).toString());
+        txtSoLuong.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 2).toString());
+        txtGiaNhap.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString());
+        txtGiaBan.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 4).toString());
+        String npb = tblSanPhamChiTiet.getValueAt(vitriSPCT, 5).toString();
+        if (npb.equals("Phổ biến")) {
             rdoPhoBien.setSelected(true);
         } else {
             rdoKhongPhoBien.setSelected(true);
         }
-        AreaMoTa.setText(spct.getMoTa());
-        cbbIMG.setSelectedItem(spct.getTenImage());
+        AreaMoTa.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 12).toString());
+        setSelectedComboboxTT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 7).toString() + " Lít", cbbTheTich);
+        setSelectedComboboxKT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 8).toString() + " - " + "CM", cbbKichThuoc);
+        setSelectedComboboxKL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 9).toString() + " - " + "KG", cbbKhoiLuong);
+        setSelectedComboboxCL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 10).toString(), cbbChatLieu);
+        setSelectedComboboxMS(tblSanPhamChiTiet.getValueAt(vitriSPCT, 6).toString(), cbbMauSac);
+        setSelectedComboboxIMG(tblSanPhamChiTiet.getValueAt(vitriSPCT, 11).toString(), cbbIMG);
     }
 
     private void timKiemSPCT() {
@@ -1292,12 +1231,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                 x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
             });
         }
-    }
-
-    private void edit() {
-        String maSPCT = (String) tblSanPhamChiTiet.getValueAt(row, 0);
-        SanPhamChiTiet spct = daoSPCT.selectByID(maSPCT);
-        setFrom(spct);
     }
 
     void chonAnh() {
@@ -1353,6 +1286,89 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         List<Image> list = daoIMG.selectAll();
         for (Image cd : list) {
             model.addElement(cd);
+        }
+    }
+
+    void clearFromSPCT() {
+        cbbTheTich.setSelectedIndex(0);
+        cbbKhoiLuong.setSelectedIndex(0);
+        cbbChatLieu.setSelectedIndex(0);
+        cbbMauSac.setSelectedIndex(0);
+        cbbKichThuoc.setSelectedIndex(0);
+        cbbIMG.setSelectedIndex(0);
+        txtMaSPCT.setText("");
+        txtTenSPCT.setText("");
+        txtSoLuong.setText("");
+        txtGiaNhap.setText("");
+        txtGiaBan.setText("");
+        AreaMoTa.setText("");
+        rdoPhoBien.setSelected(true);
+    }
+
+    public void setSelectedComboboxTT(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            TheTich m = (TheTich) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getTheTich() + " Lít")) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
+    public void setSelectedComboboxKT(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            KichThuoc m = (KichThuoc) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getChieuDai() + " - " + m.getChieuRong()
+                        + " - " + m.getChieuCao() + " - " + m.getMaDV())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
+    public void setSelectedComboboxKL(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            KhoiLuong m = (KhoiLuong) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getKhoiLuong() + " - " + m.getMaDV())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
+    public void setSelectedComboboxCL(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            ChatLieu m = (ChatLieu) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getChatLieu())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
+    public void setSelectedComboboxMS(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            MauSac m = (MauSac) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getTenMauSac())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
+        }
+    }
+
+    public void setSelectedComboboxIMG(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            Image m = (Image) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getTenHinh())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
         }
     }
 

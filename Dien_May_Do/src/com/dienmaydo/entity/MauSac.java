@@ -12,6 +12,13 @@ public class MauSac {
     private String MaMauSac;
     private String TenMauSac;
 
+    @Override
+    public String toString() {
+        return TenMauSac;
+    }
+
+    
+    
     public String getMaMauSac() {
         return MaMauSac;
     }

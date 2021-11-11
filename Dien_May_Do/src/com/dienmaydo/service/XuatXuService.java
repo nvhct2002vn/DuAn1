@@ -65,6 +65,11 @@ public class XuatXuService implements IXuatXuService<XuatXu, String> {
         return list.get(0);
     }
 
+    public List<XuatXu> selectByMaXX(String NuocXX) {
+        String sql = "SELECT * FROM dbo.XUATXU WHERE NUOCSX = ?";
+        return selectBySQL(sql, NuocXX);
+    }
+
     @Override
     public List<XuatXu> selectBySQL(String sql, Object... args) {
         List<XuatXu> list = new ArrayList<>();
@@ -72,7 +77,7 @@ public class XuatXuService implements IXuatXuService<XuatXu, String> {
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
             while (rs.next()) {
                 XuatXu entity = new XuatXu();
-                entity.setMaXX(rs.getString("MAXX"));
+                entity.setMaXX(rs.getInt("MAXX"));
                 entity.setNhaSX(rs.getString("NHASX"));
                 entity.setNuocSX(rs.getString("NUOCSX"));
                 list.add(entity);
