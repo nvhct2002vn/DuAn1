@@ -57,18 +57,18 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
             + "WHERE MASPCT LIKE ? OR CHATLIEU LIKE ? OR TENSPCT LIKE ?";
 
-    String selectBySPInDM = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n" +
-"            FROM dbo.SANPHAMCHITIET\n" +
-"            JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n" +
-"            JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n" +
-"            JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n" +
-"            JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n" +
-"            JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n" +
-"            JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n" +
-"            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n" +
-"            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n" +
-"			JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n" +
-"            WHERE TENDM LIKE ?";
+    String selectBySPInDM = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,GIANHAP,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
+            + "            FROM dbo.SANPHAMCHITIET\n"
+            + "            JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+            + "            JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
+            + "            JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n"
+            + "            JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n"
+            + "            JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
+            + "            JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
+            + "            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
+            + "            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
+            + "			JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
+            + "            WHERE TENDM LIKE ?";
 
     @Override
     public void insertData(SanPhamChiTiet entity) {
@@ -147,6 +147,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
+            System.out.println(list.get(0).getGiaNhap());
             return list;
         } catch (Exception e) {
             e.printStackTrace();
