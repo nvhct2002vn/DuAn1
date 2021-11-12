@@ -1,4 +1,5 @@
 ﻿USE QLBH_DIENMAYDO1
+go
 
 INSERT INTO NHOMHANG
 VALUES  ('NH001', N'Tivi, Âm thanh, Máy chiếu', N'...'),
@@ -76,15 +77,15 @@ VALUES  ('NV001', 'VT01', '123', N'Còn sử dụng'),
 
 
 INSERT INTO HOADON
-VALUES  ('HD001','NV001','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',3000,N'NOT'),
-		('HD002','NV002','2021-02-02',N'Đã thanh toán', N'Thẻ',5000,N'NOT'),
-		('HD003','NV003','2021-03-03',N'Đã thanh toán', N'Tiền mặt',6700,N'NOT'),
-		('HD004','NV004','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',3500,N'NOT'),
-		('HD005','NV005','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',4000,N'NOT'),
-		('HD006','NV006','2021-06-06',N'Chưa thanh toán', N'Thẻ',2000,N'NOT'),
-		('HD007','NV007','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',1000,N'NOT'),
-		('HD008','NV008','2021-08-08',N'Đã thanh toán', N'Thẻ',8000,N'NOT'),
-		('HD009','NV009','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',7000,N'NOT')
+VALUES  ('HD001','NV001','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',1000,3000,N'NOT'),
+		('HD002','NV002','2021-02-02',N'Đã thanh toán', N'Thẻ',1000,5000,N'NOT'),
+		('HD003','NV003','2021-03-03',N'Đã thanh toán', N'Tiền mặt',1000,6700,N'NOT'),
+		('HD004','NV004','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',1000,3500,N'NOT'),
+		('HD005','NV005','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',1000,4000,N'NOT'),
+		('HD006','NV006','2021-06-06',N'Chưa thanh toán', N'Thẻ',1000,2000,N'NOT'),
+		('HD007','NV007','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',500,1000,N'NOT'),
+		('HD008','NV008','2021-08-08',N'Đã thanh toán', N'Thẻ',1000,8000,N'NOT'),
+		('HD009','NV009','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',1000,7000,N'NOT')
 
 
 

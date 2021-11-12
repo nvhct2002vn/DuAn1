@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class JdbcHelper {
 
-    private static String url = "jdbc:sqlserver://localhost;database = QLBH_DIENMAYDO1";
+    private static String url = "jdbc:sqlserver://localhost;database = QLBH_DIENMAYDO1;";
     private static String usename = "sa";
     private static String password = "123";
 
