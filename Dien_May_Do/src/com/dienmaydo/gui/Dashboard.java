@@ -22,9 +22,9 @@ public class Dashboard extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
+    public Dashboard() {// output của bạn đâu
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);// run đi bạn
         defaultColor = new Color(255, 204, 0);
         clickColor = new Color(153, 153, 153);
 

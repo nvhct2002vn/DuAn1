@@ -57,7 +57,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
             + "WHERE MASPCT LIKE ? OR CHATLIEU LIKE ? OR TENSPCT LIKE ?";
 
-    String selectBySPInDM = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,GIANHAP,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH\n"
+    String selectBySPInDM = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,GIANHAP,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
             + "            FROM dbo.SANPHAMCHITIET\n"
             + "            JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "            JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
@@ -145,9 +145,9 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
                 entity.setTenImage(rs.getString("TENHINH"));
                 entity.setMoTa(rs.getString("MOTA"));
                 list.add(entity);
+                System.out.println(list.get(0));;
             }
             rs.getStatement().getConnection().close();
-            System.out.println(list.get(0).getGiaNhap());
             return list;
         } catch (Exception e) {
             e.printStackTrace();
@@ -168,4 +168,5 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
     public List<SanPhamChiTiet> selectByDM(String key) {
         return selectBySQL(selectBySPInDM, key);
     }
+    
 }
