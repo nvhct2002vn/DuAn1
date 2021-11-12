@@ -60,5 +60,4 @@ public class KichThuoc {
     public void setChieuCao(float ChieuCao) {
         this.ChieuCao = ChieuCao;
     }
-
 }
