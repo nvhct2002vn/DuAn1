@@ -16,7 +16,7 @@ public class XuatXu {
 
     @Override
     public String toString() {
-        return NuocSX;
+        return NhaSX + " - " + NuocSX;
     }
 
     public int getMaXX() {
