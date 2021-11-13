@@ -29,6 +29,7 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     String selectTimKiem = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX,SANPHAM.MAXX FROM dbo.SANPHAM JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX\n"
             + "JOIN dbo.DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
             + "WHERE MASP LIKE ? OR TENSP LIKE ? OR NUOCSX LIKE ?";
+    String selectByDanhMuc = "SELECT * FROM dbo.SANPHAM JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX WHERE TENDM = ?";
 
     @Override
     public void insertData(SanPham entity) {
@@ -98,6 +99,10 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     @Override
     public List<SanPham> selectByTimKiem(String key) {
         return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%", "%" + key + "%");
+    }
+
+    public List<SanPham> selectByDM(String key) {
+        return selectBySQL(selectByDanhMuc, key);
     }
 
 }

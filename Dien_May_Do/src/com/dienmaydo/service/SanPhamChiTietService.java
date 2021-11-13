@@ -145,7 +145,6 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
                 entity.setTenImage(rs.getString("TENHINH"));
                 entity.setMoTa(rs.getString("MOTA"));
                 list.add(entity);
-                System.out.println(list.get(0));;
             }
             rs.getStatement().getConnection().close();
             return list;
