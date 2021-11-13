@@ -9,6 +9,7 @@ public class HoaDon {
     private Date NgayLap;
     private String TrangThai_TT;
     private String HinhThuc_TT;
+    private Float TienThuaTraKhach;
     private float TongTien;
     private String GhiChu;
 
@@ -71,6 +72,14 @@ public class HoaDon {
     @Override
     public String toString() {
         return TrangThai_TT;
+    }
+
+    public Float getTienThuaTraKhach() {
+        return TienThuaTraKhach;
+    }
+
+    public void setTienThuaTraKhach(Float TienThuaTraKhach) {
+        this.TienThuaTraKhach = TienThuaTraKhach;
     }
     
 }

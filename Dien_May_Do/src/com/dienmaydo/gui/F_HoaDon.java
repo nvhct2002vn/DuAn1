@@ -158,7 +158,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
                     .addComponent(txtTimKiem3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(12, 12, 12)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -186,7 +186,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(517, 517, 517)
-                        .addComponent(btnXuatHoaDon)))
+                        .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -196,8 +196,8 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -266,25 +266,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         }
     }
 
-    public void delete() {
-        row = tblHoaDon3.getSelectedRow();
-        String maHD = (String) tblHoaDon3.getValueAt(row, 0);
-        if (row < 0) {
-            Msgbox.alert(this, "Vui lòng chọn hóa đơn!");
-            return;
-        } else {
-            if (Msgbox.confirm(this, "Bạn chắc chắn muốn xóa hóa đơn này?")) {
-                try {
-                    hdService.delete(maHD);
-                    fillTable();
-                    Msgbox.alert(this, "Xóa hóa đơn thành công");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Msgbox.alert(this, "Xóa hóa đơn thất bại");
-                }
-            }
-        }
-    }
+    
 
     public void clickHoaDon() {
         row = tblHoaDon3.getSelectedRow();
@@ -299,31 +281,4 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         }
     }
 
-    public void update() {
-        if (row < 0) {
-            Msgbox.alert(this, "Vui lòng chọn hóa đơn!");
-            return;
-        } else {
-            HoaDon hd = new HoaDon();
-            hd.setMaHD(tblHoaDon3.getValueAt(row, 0) + "");
-            hd.setTongTien(Float.parseFloat(tblHoaDon3.getValueAt(row, 1) + ""));
-            hd.setHinhThuc_TT(tblHoaDon3.getValueAt(row, 2) + "");
-            hd.setTrangThai_TT(tblHoaDon3.getValueAt(row, 4) + "");
-            hd.setGhiChu(tblHoaDon3.getValueAt(row, 5)+"");
-
-            List<HoaDonChiTiet> list = new ArrayList<>();
-            for (int i = 0; i < tblChiTietHoaDoon.getRowCount(); i++) {
-                HoaDonChiTiet hdct = new HoaDonChiTiet();
-                hdct.setMaHDCT(Integer.parseInt(tblChiTietHoaDoon.getValueAt(i, 0) + ""));
-                hdct.setMaSPCT(tblChiTietHoaDoon.getValueAt(i, 1) + "");
-                hdct.setTenSPCT(tblChiTietHoaDoon.getValueAt(i, 2) + "");
-                hdct.setSoLuong(Integer.parseInt(tblChiTietHoaDoon.getValueAt(i, 3) + ""));
-                hdct.setDonGia(Float.parseFloat(tblChiTietHoaDoon.getValueAt(i, 4) + ""));
-
-                list.add(hdct);
-            }
-            Dashboard d = new Dashboard();
-            d.goiChucNangBanHang(hd, list);
-        }
-    }
 }
