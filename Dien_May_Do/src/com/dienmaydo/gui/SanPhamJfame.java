@@ -36,8 +36,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
-import javax.swing.border.Border;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -191,6 +189,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
         pnTongQuat.setPreferredSize(new java.awt.Dimension(1146, 768));
 
         pnSanPham.setBackground(new java.awt.Color(255, 204, 0));
+        pnSanPham.setPreferredSize(new java.awt.Dimension(1146, 768));
 
         tblThongTin.setBackground(new java.awt.Color(255, 204, 0));
         tblThongTin.setModel(new javax.swing.table.DefaultTableModel(
@@ -283,35 +282,36 @@ public class SanPhamJfame extends javax.swing.JFrame {
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(pnSanPhamLayout.createSequentialGroup()
+                .addGap(388, 388, 388)
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnSanPhamLayout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnSanPhamLayout.createSequentialGroup()
-                        .addGap(454, 454, 454)
-                        .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel19))
-                        .addGap(31, 31, 31)
-                        .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMaSP)
-                            .addComponent(txtTenSP)
-                            .addComponent(cbbXuatXu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbbDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnSanPhamLayout.createSequentialGroup()
-                        .addGap(358, 358, 358)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19))
+                .addGap(31, 31, 31)
+                .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMaSP)
+                    .addComponent(txtTenSP)
+                    .addComponent(cbbXuatXu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbbDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSanPhamLayout.createSequentialGroup()
+                .addContainerGap(259, Short.MAX_VALUE)
+                .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSanPhamLayout.createSequentialGroup()
                         .addComponent(btnChiTietSP)
                         .addGap(70, 70, 70)
                         .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
+                        .addGap(70, 70, 70)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(btnLamMoi)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                        .addGap(70, 70, 70)
+                        .addComponent(btnLamMoi)
+                        .addGap(271, 271, 271))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSanPhamLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(241, 241, 241))))
         );
 
         pnSanPhamLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLamMoi, btnSua, btnThem});
@@ -321,7 +321,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
         pnSanPhamLayout.setVerticalGroup(
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSanPhamLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(44, 44, 44)
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,18 +337,18 @@ public class SanPhamJfame extends javax.swing.JFrame {
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(cbbXuatXu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
                     .addComponent(btnChiTietSP)
                     .addComponent(btnLamMoi))
-                .addGap(56, 56, 56)
+                .addGap(44, 44, 44)
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
         );
 
         pnSanPhamLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLamMoi, btnSua, btnThem});
@@ -358,6 +358,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
         pnTongQuat.addTab("Sản phẩm", pnSanPham);
 
         pnSPCT.setBackground(new java.awt.Color(255, 204, 0));
+        pnSPCT.setPreferredSize(new java.awt.Dimension(1146, 768));
 
         tblSanPhamChiTiet.setBackground(new java.awt.Color(255, 204, 0));
         tblSanPhamChiTiet.setModel(new javax.swing.table.DefaultTableModel(
@@ -507,18 +508,17 @@ public class SanPhamJfame extends javax.swing.JFrame {
             pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2)
             .addGroup(pnSPCTLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnSPCTLayout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel20)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20))
+                        .addGap(29, 29, 29)
+                        .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbbMaSP, 0, 160, Short.MAX_VALUE)
+                            .addComponent(txtTimKiemSPCT)))
                     .addGroup(pnSPCTLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
                         .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnSPCTLayout.createSequentialGroup()
                                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,7 +537,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                             .addComponent(txtTenSPCT, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtMaSPCT, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtGiaBan, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56)
+                        .addGap(10, 10, 10)
                         .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnSPCTLayout.createSequentialGroup()
                                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,7 +548,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                                         .addComponent(rdoPhoBien, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(72, 72, 72)
                                         .addComponent(rdoKhongPhoBien)))
-                                .addGap(56, 56, 56)
+                                .addGap(10, 10, 10)
                                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel13)
@@ -562,7 +562,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
                                     .addComponent(cbbKichThuoc, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbbTheTich, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbbMauSac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(38, 38, 38)
+                                .addGap(10, 10, 10)
                                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbbIMG, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -572,12 +572,15 @@ public class SanPhamJfame extends javax.swing.JFrame {
                                 .addComponent(btnSuaSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(67, 67, 67)
                                 .addComponent(btnLamMoiSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
+
+        pnSPCTLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbbChatLieu, cbbKhoiLuong, cbbKichThuoc, cbbMaSP, cbbMauSac, cbbTheTich, txtGiaBan, txtGiaNhap, txtMaSPCT, txtSoLuong, txtTenSPCT, txtTimKiemSPCT});
+
         pnSPCTLayout.setVerticalGroup(
             pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSPCTLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnSPCTLayout.createSequentialGroup()
                         .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -630,23 +633,26 @@ public class SanPhamJfame extends javax.swing.JFrame {
                         .addComponent(cbbIMG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43)
+                .addGap(20, 20, 20)
                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnThemSPCT)
                     .addComponent(btnSuaSPCT)
                     .addComponent(btnLamMoiSPCT))
-                .addGap(48, 48, 48)
+                .addGap(20, 20, 20)
+                .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel20))
                     .addGroup(pnSPCTLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel10))
                     .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
         );
+
+        pnSPCTLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbbChatLieu, cbbKhoiLuong, cbbKichThuoc, cbbMaSP, cbbMauSac, cbbTheTich, txtGiaBan, txtGiaNhap, txtMaSPCT, txtSoLuong, txtTenSPCT, txtTimKiemSPCT});
 
         pnTongQuat.addTab("Sản phẩm chi tiết", pnSPCT);
 
@@ -665,7 +671,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1363, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -682,6 +688,11 @@ public class SanPhamJfame extends javax.swing.JFrame {
         lblHinhAnh.setIcon(XImage.read(img.getTenHinh()));
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbIMGItemStateChanged
+
+    private void cbbMaSPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbMaSPItemStateChanged
+        fillTableSPCT_MaSP_Combobox();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbMaSPItemStateChanged
 
     private void lblHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhAnhMouseClicked
         chonAnh();
@@ -721,8 +732,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTimKiemSPCTKeyReleased
 
     private void tblSanPhamChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamChiTietMouseClicked
-//        row = tblSanPhamChiTiet.getSelectedRow();
-//        edit();
+        //        row = tblSanPhamChiTiet.getSelectedRow();
+        //        edit();
         clickTabelSPCT();
         // TODO add your handling code here:
     }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
@@ -761,8 +772,8 @@ public class SanPhamJfame extends javax.swing.JFrame {
             FillCbbMaSP();
             setSelectedComboboxTenSP(tblThongTin.getValueAt(viTri, 0).toString() + " - " + tblThongTin.getValueAt(viTri, 1).toString(), cbbMaSP);
             clickOpenSPCT();
-//            row = 0;
-//            edit();
+            //            row = 0;
+            //            edit();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnChiTietSPActionPerformed
@@ -777,11 +788,6 @@ public class SanPhamJfame extends javax.swing.JFrame {
         clickTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_tblThongTinMouseClicked
-
-    private void cbbMaSPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbMaSPItemStateChanged
-        fillTableSPCT_MaSP_Combobox();
-// TODO add your handling code here:
-    }//GEN-LAST:event_cbbMaSPItemStateChanged
 
     /**
      * @param args the command line arguments
