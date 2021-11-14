@@ -1262,6 +1262,23 @@ public class SanPhamJfame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    void fillTableSPCT_NhomS() {
+        modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelSPCT.setRowCount(0);
+        try {
+            SanPham sp = (SanPham) cbbMaSP.getSelectedItem();
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectBySPCT(sp.getMaSp());
+            for (SanPhamChiTiet x : listSPCT) {
+                modelSPCT.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     void clickOpenSPCT() {
         if (viTri >= 0) {
