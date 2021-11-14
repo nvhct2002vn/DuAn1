@@ -247,7 +247,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon3.getModel();
         model.setRowCount(0);
         String key = txtTimKiem3.getText();
-        List<HoaDon> list = hdService.selectById(key);
+        List<HoaDon> list = hdService.selectByTimKiem(key);
         for (HoaDon x : list) {
             model.addRow(new Object[]{
                 x.getMaHD(), x.getTongTien() + " VNĐ", x.getHinhThuc_TT(), XDate.toString(x.getNgayLap()), x.getTrangThai_TT()
@@ -261,7 +261,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         List<HoaDon> list = hdService.selectAll();
         for (HoaDon x : list) {
             model.addRow(new Object[]{
-                x.getMaHD(), x.getTongTien(), x.getHinhThuc_TT(), XDate.toString(x.getNgayLap()), x.getTrangThai_TT(),x.getGhiChu()
+                x.getMaHD(), x.getTongTien() + " VNĐ", x.getHinhThuc_TT(), XDate.toString(x.getNgayLap()), x.getTrangThai_TT(),x.getGhiChu()
             });
         }
     }
@@ -276,7 +276,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         List<HoaDonChiTiet> list = hdctService.selectById(maHD);
         for (HoaDonChiTiet x : list) {
             model.addRow(new Object[]{
-                x.getMaHDCT(), x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getDonGia(), x.getDonGia() * x.getSoLuong()
+                x.getMaHDCT(), x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getDonGia() + " VNĐ", x.getDonGia() * x.getSoLuong()
             });
         }
     }

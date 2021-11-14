@@ -541,10 +541,4 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel trangChu;
     // End of variables declaration//GEN-END:variables
 
-    public void goiChucNangBanHang(HoaDon hd, List<HoaDonChiTiet> list){
-        F_BanHang b = new F_BanHang();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(b).setVisible(true);
-        b.setForm(hd, list);
-    }
 }

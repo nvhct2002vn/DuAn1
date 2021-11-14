@@ -6,9 +6,11 @@ public class HoaDon {
 
     private String MaHD;
     private String MaNV;
+    private String MaKH;
     private Date NgayLap;
     private String TrangThai_TT;
     private String HinhThuc_TT;
+    private String HinhThucGiaoHang;
     private Float TienThuaTraKhach;
     private float TongTien;
     private String GhiChu;
@@ -69,6 +71,14 @@ public class HoaDon {
         this.GhiChu = GhiChu;
     }
 
+    public String getMaKH() {
+        return MaKH;
+    }
+
+    public void setMaKH(String MaKH) {
+        this.MaKH = MaKH;
+    }
+
     @Override
     public String toString() {
         return TrangThai_TT;
@@ -80,6 +90,14 @@ public class HoaDon {
 
     public void setTienThuaTraKhach(Float TienThuaTraKhach) {
         this.TienThuaTraKhach = TienThuaTraKhach;
+    }
+
+    public String getHinhThucGiaoHang() {
+        return HinhThucGiaoHang;
+    }
+
+    public void setHinhThucGiaoHang(String HinhThucGiaoHang) {
+        this.HinhThucGiaoHang = HinhThucGiaoHang;
     }
     
 }

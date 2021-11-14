@@ -9,16 +9,16 @@ import java.util.List;
 
 public class HoaDonService implements IHoaDonService<HoaDon, String> {
 
-    String INSERT_SQL = "INSERT INTO HOADON(MAHD,MANV,TRANGTHAI_TT,HINHTHUC_TT,TIENTHUATRAKHACH,TONGTIEN,GHICHU) VALUES(?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE HOADON SET MANV = ? ,NGAYLAP = ?, TRANGTHAI_TT = ?, HINHTHUC_TT = ?,TIENTHUATRAKHACH = ?,TONGTIEN = ?, GHICHU = ? WHERE MAHD = ?";
+    String INSERT_SQL = "INSERT INTO HOADON(MAHD,MANV,MAKH,TRANGTHAI_TT,HINHTHUC_TT,HINHTHUCGIAOHANG,TIENTHUATRAKHACH,TONGTIEN,GHICHU) VALUES(?,?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE HOADON SET HINHTHUC_TT = ?, HINHTHUCGIAOHANG = ?, TRANGTHAI_TT = ?, TIENTHUATRAKHACH = ?, TONGTIEN = ?, GHICHU = ? WHERE MAHD = ?";
     String SELECT_ALL_SQL = "SELECT * FROM HOADON";
     String SELECT_BY_ID_SQL = "SELECT * FROM HOADON WHERE MAHD LIKE ?";
     String SELECT_BY_CHOTT = "SELECT * FROM HOADON WHERE TRANGTHAI_TT LIKE N'CHỜ THANH TOÁN'";
 
     @Override
     public void insert(HoaDon entity) {
-        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaHD(), entity.getMaNV(), entity.getTrangThai_TT(), entity.getHinhThuc_TT(),entity.getTienThuaTraKhach(),
-                entity.getTongTien(), entity.getGhiChu());
+        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaHD(), entity.getMaNV(),entity.getMaKH(), entity.getTrangThai_TT(), entity.getHinhThuc_TT(),entity.getHinhThucGiaoHang()
+                ,entity.getTienThuaTraKhach(),entity.getTongTien(), entity.getGhiChu());
     }
 
     @Override
@@ -30,9 +30,11 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString("MAHD"));
                 hd.setMaNV(rs.getString("MANV"));
+                hd.setMaKH(rs.getString("MAKH"));
                 hd.setNgayLap(rs.getDate("NGAYLAP"));
                 hd.setTrangThai_TT(rs.getString("TRANGTHAI_TT"));
                 hd.setHinhThuc_TT(rs.getString("HINHTHUC_TT"));
+                hd.setHinhThucGiaoHang(rs.getString("HINHTHUCGIAOHANG"));
                 hd.setTienThuaTraKhach(rs.getFloat("TIENTHUATRAKHACH"));
                 hd.setTongTien(rs.getFloat("TONGTIEN"));
                 hd.setGhiChu(rs.getString("GHICHU"));
@@ -52,14 +54,29 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
     }
 
     @Override
-    public List<HoaDon> selectById(String key) {
+    public HoaDon selectById(String key) {
         List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL, "%" + key + "%");
-        return list;
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 
     @Override
     public List<HoaDon> selectByHDChoThanhToan() {
         return selectBySQL(SELECT_BY_CHOTT);
+    }
+
+    @Override
+    public List<HoaDon> selectByTimKiem(String key) {
+        List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL, "%" + key + "%");
+        return list;
+    }
+
+    @Override
+    public void update(HoaDon entity) {
+        JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getHinhThuc_TT(),entity.getTrangThai_TT(), entity.getHinhThucGiaoHang(),entity.getTienThuaTraKhach(),entity.getTongTien(),
+                entity.getGhiChu(),entity.getMaHD());
     }
 
 }

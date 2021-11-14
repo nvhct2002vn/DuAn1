@@ -1,4 +1,4 @@
-﻿USE DIENMAYDO1
+﻿USE QLBH_DIENMAYDO1
 GO
 
 INSERT INTO NHOMHANG
@@ -87,15 +87,15 @@ VALUES	('KH01',N'Võ Thị Sáu',1,'0389456758','sdhsa@gmail.com',N'Thanh Hóa',
 		('KH09',N'Đường Huyền Trang',1,'0365494758','trang145@gmail.com',N'Bắc Ninh',N'NO STATUS')
 
 INSERT INTO HOADON
-VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',3000,N'NOT'),
-		('HD002','NV002','KH02','2021-02-02',N'Đã thanh toán', N'Thẻ',5000,N'NOT'),
-		('HD003','NV003','KH03','2021-03-03',N'Đã thanh toán', N'Tiền mặt',6700,N'NOT'),
-		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',3500,N'NOT'),
-		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',4000,N'NOT'),
-		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',2000,N'NOT'),
-		('HD007','NV007','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',1000,N'NOT'),
-		('HD008','NV008','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',8000,N'NOT'),
-		('HD009','NV009','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',7000,N'NOT')
+VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,3000,N'NOT'),
+		('HD002','NV002','KH02','2021-02-02',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,5000,N'NOT'),
+		('HD003','NV003','KH03','2021-03-03',N'Đã thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,6700,N'NOT'),
+		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,3500,N'NOT'),
+		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,4000,N'NOT'),
+		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,2000,N'NOT'),
+		('HD007','NV007','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,1000,N'NOT'),
+		('HD008','NV008','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,8000,N'NOT'),
+		('HD009','NV009','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,7000,N'NOT')
 
 
 

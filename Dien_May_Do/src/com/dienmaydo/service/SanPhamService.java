@@ -99,5 +99,4 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     public List<SanPham> selectByTimKiem(String key) {
         return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%", "%" + key + "%");
     }
-
 }

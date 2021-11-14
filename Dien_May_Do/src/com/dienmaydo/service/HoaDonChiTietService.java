@@ -15,6 +15,7 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
             + "WHERE MAHD = ?";
 
     String INSERT_SQL = "INSERT INTO HOADONCHITIET VALUES(?,?,?,?)";
+    String DELETE_SQL = "DELETE FROM HOADONCHITIET WHERE MAHD = ?";
 
     @Override
     public List<HoaDonChiTiet> selectBySQL(String sqlString, Object... args) {
@@ -48,6 +49,16 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
     @Override
     public void insert(HoaDonChiTiet entity) {
         JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaSPCT(), entity.getMaHD(), entity.getSoLuong(), entity.getDonGia());
+    }
+
+    @Override
+    public void delete(String key) {
+        JdbcHelper.excuteUpdate(DELETE_SQL, key);
+    }
+
+    @Override
+    public void update(HoaDonChiTiet entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

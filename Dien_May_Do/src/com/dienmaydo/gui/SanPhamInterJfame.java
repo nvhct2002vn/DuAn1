@@ -178,7 +178,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
         pnTongQuat.setPreferredSize(new java.awt.Dimension(1146, 768));
 
-        pnSanPham.setBackground(new java.awt.Color(255, 204, 0));
+        pnSanPham.setBackground(new java.awt.Color(255, 255, 255));
         pnSanPham.setPreferredSize(new java.awt.Dimension(1146, 768));
 
         tblThongTin.setBackground(new java.awt.Color(255, 204, 0));
@@ -338,7 +338,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
         pnTongQuat.addTab("Sản phẩm", pnSanPham);
 
-        pnSPCT.setBackground(new java.awt.Color(255, 204, 0));
+        pnSPCT.setBackground(new java.awt.Color(255, 255, 255));
         pnSPCT.setPreferredSize(new java.awt.Dimension(1146, 768));
 
         tblSanPhamChiTiet.setBackground(new java.awt.Color(255, 204, 0));
