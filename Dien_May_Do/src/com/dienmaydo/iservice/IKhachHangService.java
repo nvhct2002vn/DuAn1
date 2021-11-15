@@ -5,10 +5,22 @@
  */
 package com.dienmaydo.iservice;
 
+import java.util.List;
+
 /**
  *
  * @author DO TAT HOA
  */
-public interface IKhachHangService {
-    
+public interface IKhachHangService<E, K> {
+    void insertData(E entity);
+
+    void updateData(E entity);
+
+    void deleteData(K key);
+
+    List<E> selectAll();
+
+    E selectByID(K key);
+
+    List<E> selectBySQL(String sql, Object... args);
 }

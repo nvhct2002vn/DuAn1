@@ -417,11 +417,11 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtGiaNhap" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtSoLuong" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtTenSPCT" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtMaSPCT" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtGiaBan" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <Component id="txtGiaNhap" linkSize="7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtSoLuong" linkSize="7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtTenSPCT" linkSize="7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtMaSPCT" linkSize="7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtGiaBan" linkSize="7" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -542,7 +542,7 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtMaSPCT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtMaSPCT" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -550,13 +550,13 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="rdoPhoBien" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rdoKhongPhoBien" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTenSPCT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTenSPCT" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtSoLuong" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtSoLuong" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -564,12 +564,12 @@
                                       <Component id="jScrollPane3" alignment="1" pref="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtGiaNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtGiaNhap" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtGiaBan" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtGiaBan" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -596,7 +596,6 @@
                                       <Component id="jRadioButton1" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rdoSxKhongPhoBien" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
@@ -610,7 +609,7 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane2" pref="383" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="392" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jRadioButton4" linkSize="6" min="-2" max="-2" attributes="0"/>

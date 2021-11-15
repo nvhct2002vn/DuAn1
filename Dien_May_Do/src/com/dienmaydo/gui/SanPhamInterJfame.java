@@ -663,6 +663,8 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
         pnSPCTLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jRadioButton3, jRadioButton4});
 
+        pnSPCTLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtGiaBan, txtGiaNhap, txtMaSPCT, txtSoLuong, txtTenSPCT});
+
         pnSPCTLayout.setVerticalGroup(
             pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSPCTLayout.createSequentialGroup()
@@ -732,7 +734,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                             .addComponent(jLabel20)
                             .addComponent(jRadioButton1)
                             .addComponent(rdoSxKhongPhoBien))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnSPCTLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
@@ -743,7 +744,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                                 .addComponent(jRadioButton3)
                                 .addComponent(rdoSxPhoBien)))
                         .addGap(22, 22, 22)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))
                     .addGroup(pnSPCTLayout.createSequentialGroup()
                         .addComponent(jRadioButton4)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -754,6 +755,8 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         pnSPCTLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jRadioButton1, jRadioButton2});
 
         pnSPCTLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jRadioButton3, jRadioButton4});
+
+        pnSPCTLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtGiaBan, txtGiaNhap, txtMaSPCT, txtSoLuong, txtTenSPCT});
 
         pnTongQuat.addTab("Sản phẩm chi tiết", pnSPCT);
 
