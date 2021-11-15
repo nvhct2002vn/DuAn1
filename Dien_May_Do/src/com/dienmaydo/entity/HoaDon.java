@@ -6,7 +6,11 @@ public class HoaDon {
 
     private String MaHD;
     private String MaNV;
+    private String TenNV;
     private String MaKH;
+    private String tenKH;
+    private String diaChi;
+    private String sdt;
     private Date NgayLap;
     private String TrangThai_TT;
     private String HinhThuc_TT;
@@ -99,5 +103,38 @@ public class HoaDon {
     public void setHinhThucGiaoHang(String HinhThucGiaoHang) {
         this.HinhThucGiaoHang = HinhThucGiaoHang;
     }
+
+    public String getTenKH() {
+        return tenKH;
+    }
+
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getTenNV() {
+        return TenNV;
+    }
+
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+    
     
 }

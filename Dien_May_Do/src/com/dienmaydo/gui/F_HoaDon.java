@@ -11,6 +11,18 @@ import com.dienmaydo.service.HoaDonChiTietService;
 import com.dienmaydo.service.HoaDonService;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.CMYKColor;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -108,11 +120,11 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã hóa đơn", "Tổng tiền", "Hình thức thanh toán", "Ngày lập hóa đơn", "Trạng thái thanh toán", "Ghi chú"
+                "Mã hóa đơn", "Tổng tiền", "Tiền thừa trả khách", "Hình thức thanh toán", "Hình thức giao hàng", "Ngày lập hóa đơn", "Trạng thái thanh toán", "Mã NV", "Mã KH", "Ghi chú"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -217,6 +229,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
 
     private void btnXuatHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatHoaDonActionPerformed
         // TODO add your handling code here:
+        xuatHoaDon();
     }//GEN-LAST:event_btnXuatHoaDonActionPerformed
 
     private void tblHoaDon3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDon3MouseClicked
@@ -250,7 +263,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         List<HoaDon> list = hdService.selectByTimKiem(key);
         for (HoaDon x : list) {
             model.addRow(new Object[]{
-                x.getMaHD(), x.getTongTien() + " VNĐ", x.getHinhThuc_TT(), XDate.toString(x.getNgayLap()), x.getTrangThai_TT()
+                x.getMaHD(), x.getTongTien() + " VND", x.getHinhThuc_TT(), XDate.toString(x.getNgayLap()), x.getTrangThai_TT()
             });
         }
     }
@@ -261,12 +274,11 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         List<HoaDon> list = hdService.selectAll();
         for (HoaDon x : list) {
             model.addRow(new Object[]{
-                x.getMaHD(), x.getTongTien() + " VNĐ", x.getHinhThuc_TT(), XDate.toString(x.getNgayLap()), x.getTrangThai_TT(),x.getGhiChu()
+                x.getMaHD(), x.getTongTien() + " VND", x.getTienThuaTraKhach() + " VND", x.getHinhThuc_TT(), x.getHinhThucGiaoHang(),
+                XDate.toString(x.getNgayLap()), x.getTrangThai_TT(), x.getMaNV(), x.getMaKH(), x.getGhiChu()
             });
         }
     }
-
-    
 
     public void clickHoaDon() {
         row = tblHoaDon3.getSelectedRow();
@@ -276,8 +288,152 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         List<HoaDonChiTiet> list = hdctService.selectById(maHD);
         for (HoaDonChiTiet x : list) {
             model.addRow(new Object[]{
-                x.getMaHDCT(), x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getDonGia() + " VNĐ", x.getDonGia() * x.getSoLuong()
+                x.getMaHDCT(), x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getDonGia() + " VND", x.getDonGia() * x.getSoLuong() + " VND"
             });
+        }
+    }
+
+    public void xuatHoaDon() {
+        if (row < 0) {
+            Msgbox.alert(this, "Vui lòng chọn hóa đơn để xuất");
+        } else {
+            if (Msgbox.confirm(this, "Bạn muốn xuất hóa đơn này?")) {
+                HoaDon hd = hdService.selectById(tblHoaDon3.getValueAt(row, 0) + "");
+                Document document = new Document();
+                try {
+                    PdfWriter.getInstance(document, new FileOutputStream(new File("./src/com/dienmaydo/pdf/"+tblHoaDon3.getValueAt(row, 0)+".pdf")));
+
+                    document.open();
+
+                    Paragraph maHD2 = new Paragraph(tblHoaDon3.getValueAt(row, 0) + "");
+                    Paragraph tenKH2 = new Paragraph(hd.getTenKH());
+                    Paragraph diaChi2 = new Paragraph(hd.getDiaChi());
+                    Paragraph soDienThoai2 = new Paragraph(hd.getSdt());
+
+                    Paragraph tieuDe = new Paragraph("HOA DON THANH TOAN", FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLDITALIC));
+                    Paragraph ngayThang = new Paragraph("Thoi gian: " + XDate.toString(hd.getNgayLap()), FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.BOLDITALIC));
+                    Paragraph maHD1 = new Paragraph("Ma hoa don: " + maHD2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
+                    Paragraph tenKH1 = new Paragraph("Khach hang: " + tenKH2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
+                    Paragraph diaChi1 = new Paragraph("Dia chi: " + diaChi2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
+                    Paragraph soDienThoai1 = new Paragraph("SDT: " + soDienThoai2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
+
+                    tieuDe.setAlignment(Element.ALIGN_CENTER);
+                    ngayThang.setAlignment(Element.ALIGN_CENTER);
+                    ngayThang.setSpacingAfter(15);
+                    maHD1.setAlignment(Element.ALIGN_RIGHT);
+                    tenKH1.setSpacingBefore(15);
+                    tenKH1.setAlignment(Element.ALIGN_LEFT);
+                    diaChi1.setAlignment(Element.ALIGN_LEFT);
+                    soDienThoai1.setAlignment(Element.ALIGN_LEFT);
+                    soDienThoai1.setSpacingAfter(15);
+
+                    PdfPTable table = new PdfPTable(5);
+                    float[] withsKM = {10f, 20f, 10f, 5f, 15f};
+                    table.setWidthPercentage(100);
+                    table.setWidths(withsKM);
+                    table.setSpacingAfter(25);
+                    PdfPCell tenCot1 = new PdfPCell(new Paragraph("Ma san pham", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+                    PdfPCell tenCot2 = new PdfPCell(new Paragraph("Ten san pham", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+                    PdfPCell tenCot3 = new PdfPCell(new Paragraph("Don Gia", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+                    PdfPCell tenCot4 = new PdfPCell(new Paragraph("So luong", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+                    PdfPCell tenCot5 = new PdfPCell(new Paragraph("Thanh Tien", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+
+                    tenCot1.setPadding(5);
+                    tenCot2.setPadding(5);
+                    tenCot3.setPadding(5);
+                    tenCot4.setPadding(5);
+                    tenCot5.setPadding(5);
+
+                    tenCot1.setBackgroundColor(BaseColor.DARK_GRAY);
+                    tenCot2.setBackgroundColor(BaseColor.DARK_GRAY);
+                    tenCot3.setBackgroundColor(BaseColor.DARK_GRAY);
+                    tenCot4.setBackgroundColor(BaseColor.DARK_GRAY);
+                    tenCot5.setBackgroundColor(BaseColor.DARK_GRAY);
+
+                    tenCot1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    tenCot2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    tenCot3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    tenCot4.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    tenCot5.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    table.addCell(tenCot1);
+                    table.addCell(tenCot2);
+                    table.addCell(tenCot3);
+                    table.addCell(tenCot4);
+                    table.addCell(tenCot5);
+
+                    for (int i = 0; i < tblChiTietHoaDoon.getRowCount(); i++) {
+                        PdfPCell data1 = new PdfPCell(new Paragraph(tblChiTietHoaDoon.getValueAt(i, 1) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                        PdfPCell data2 = new PdfPCell(new Paragraph(tblChiTietHoaDoon.getValueAt(i, 2) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                        PdfPCell data3 = new PdfPCell(new Paragraph(tblChiTietHoaDoon.getValueAt(i, 4) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                        PdfPCell data4 = new PdfPCell(new Paragraph(tblChiTietHoaDoon.getValueAt(i, 3) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                        PdfPCell data5 = new PdfPCell(new Paragraph(tblChiTietHoaDoon.getValueAt(i, 5) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+
+                        data1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        data2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        data3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        data4.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        data5.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                        table.addCell(data1);
+                        table.addCell(data2);
+                        table.addCell(data3);
+                        table.addCell(data4);
+                        table.addCell(data5);
+                    }
+
+                    int tongSL = 0;
+                    for (int i = 0; i < tblChiTietHoaDoon.getRowCount(); i++) {
+                        tongSL += Integer.parseInt(tblChiTietHoaDoon.getValueAt(i, 3)+"");
+                    }
+                    
+                    PdfPCell data1 = new PdfPCell(new Paragraph("Tong:", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                    PdfPCell data2 = new PdfPCell(new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                    PdfPCell data3 = new PdfPCell(new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                    PdfPCell data4 = new PdfPCell(new Paragraph(tongSL+"", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                    PdfPCell data5 = new PdfPCell(new Paragraph(tblHoaDon3.getValueAt(row, 1) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+
+                    data1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    data2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    data3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    data4.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    data5.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    data1.setPadding(5);
+                    data2.setPadding(5);
+                    data3.setPadding(5);
+                    data4.setPadding(5);
+                    data5.setPadding(5);
+
+                    table.addCell(data1);
+                    table.addCell(data2);
+                    table.addCell(data3);
+                    table.addCell(data4);
+                    table.addCell(data5);
+
+                    Paragraph footer = new Paragraph("NGUOI LAP HOA DON", FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.BOLDITALIC));
+                    Paragraph nguoiLap = new Paragraph(hd.getTenNV(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 14));
+                    footer.setAlignment(Element.ALIGN_RIGHT);
+                    nguoiLap.setAlignment(Element.ALIGN_RIGHT);
+                    nguoiLap.setIndentationRight(20);
+
+                    document.add(tieuDe);
+                    document.add(ngayThang);
+                    document.add(maHD1);
+                    document.add(tenKH1);
+                    document.add(diaChi1);
+                    document.add(soDienThoai1);
+                    document.add(table);
+                    document.add(footer);
+                    document.add(nguoiLap);
+
+                    document.close();
+                    Msgbox.alert(this, "Xuất hóa đơn thành công");
+                } catch (Exception e) {
+                    Msgbox.alert(this, "Xuất hóa đơn thất bại");
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
