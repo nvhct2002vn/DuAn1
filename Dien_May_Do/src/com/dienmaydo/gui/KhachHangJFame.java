@@ -12,18 +12,18 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author DO TAT HOA
+ * @author lethu
  */
-public class F_KhachHang extends javax.swing.JDialog {
+public class KhachHangJFame extends javax.swing.JFrame {
 
     KhachHangService KHService = new KhachHangService();
 
     /**
-     * Creates new form F_KhachHang
+     * Creates new form KhachHangJFame
      */
-    public F_KhachHang(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public KhachHangJFame() {
         initComponents();
+        setLocationRelativeTo(null);
         setResizable(false);
         FillTable();
     }
@@ -37,8 +37,6 @@ public class F_KhachHang extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuanLyKhacHang = new javax.swing.JTable();
@@ -62,9 +60,7 @@ public class F_KhachHang extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        jTextField1.setText("jTextField1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -110,10 +106,8 @@ public class F_KhachHang extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Trạng thái:");
 
-        buttonGroup1.add(rdoNam);
         rdoNam.setText("Nam");
 
-        buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
 
         txtDiaChi.setColumns(20);
@@ -122,6 +116,11 @@ public class F_KhachHang extends javax.swing.JDialog {
 
         jButton1.setBackground(new java.awt.Color(255, 204, 0));
         jButton1.setText("Thêm mới");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 204, 0));
         jButton2.setText("Chọn");
@@ -226,6 +225,11 @@ public class F_KhachHang extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        insertData();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,33 +247,25 @@ public class F_KhachHang extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(F_KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KhachHangJFame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(F_KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KhachHangJFame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(F_KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KhachHangJFame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(F_KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KhachHangJFame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                F_KhachHang dialog = new F_KhachHang(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new KhachHangJFame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -283,7 +279,6 @@ public class F_KhachHang extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTable tblQuanLyKhacHang;
@@ -301,9 +296,35 @@ public class F_KhachHang extends javax.swing.JDialog {
         List<KhachHang> listKH = KHService.selectAll();
         for (KhachHang x : listKH) {
             model.addRow(new Object[]{
-                x.getMaKH(),x.getTenKh(),x.isGioiTinh()?"Nam":"Nữ",x.getSDT(),x.getEmail(),x.getDiaChi(),x.getTrangthai()
+                x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.getTrangthai()
             });
         }
     }
 
+    void insertData() {
+        try {
+            KhachHang kh = getFrom();
+            KHService.insertData(kh);
+            FillTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    KhachHang getFrom() {
+        KhachHang kh = new KhachHang();
+        kh.setMaKH(txtMaKH.getText());
+        kh.setTenKh(txtTenKH.getText());
+        if (rdoNam.isSelected()) {
+            kh.setGioiTinh(true);
+        } else {
+            kh.setGioiTinh(false);
+        }
+        kh.setSDT(txtDienThoai.getText());
+        kh.setEmail(txtEmail.getText());
+        kh.setDiaChi(txtDiaChi.getText());
+        kh.setTrangthai(txtTrangThai.getText());
+        return kh;
+    }
 }
