@@ -32,15 +32,12 @@ VALUES  ('VT01', N'Quản Lý'),
 
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','VT01', N'Thiều Quang Vinh', N'Thanh Hóa', '09867655439', 0, '2002-08-19'),
-		('NV002','VT02', N'Đỗ Tất Hòa', N'Thanh Hóa', '04573927342', 0, '2002-09-21'),
-		('NV003','VT01', N'Nguyễn Viết Hiên', N'Bắc Ninh', '08756475834', 0, '2002-01-01'),
-		('NV004','VT02', N'Lê Thị Ngọc Thúy', N'Hà Nội', '07645362734', 1, '1997-02-02'),
-		('NV005','VT01', N'Lê Thành Vinh', N'Hà Nội', '01234567898', 0, '1997-03-03'),
-		('NV006','VT02', N'Nguyễn Hồng Sơn', N'Hải Dương', '06743478596', 0, '2002-04-04'),
-		('NV007','VT01', N'Lê Thị Thanh Hà', N'Thanh Hóa', '03245768794', 1, '2002-07-12'),
-		('NV008','VT02', N'Trần Văn Quang', N'Thanh Hóa', '05748576934', 0, '2002-05-23'),
-		('NV009','VT01', N'Trương Thị Tú', N'Thanh Hóa', '07845678765', 1, '2002-12-23')
+VALUES  ('NV001','VT01', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 0, '2002-08-19'),
+		('NV002','VT02', N'Đo Tat Hoa', N'Thanh Hoa', '04573927342', 0, '2002-09-21'),
+		('NV003','VT01', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 0, '2002-01-01'),
+		('NV004','VT02', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 1, '1998-02-02'),
+		('NV005','VT01', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 0, '1998-03-03'),
+		('NV006','VT02', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 0, '2002-04-04')
 
 
 INSERT INTO XUATXU
@@ -70,32 +67,29 @@ VALUES  ('NV001', 'VT01', '123', N'Còn sử dụng'),
 		('NV003', 'VT01', '456', N'Còn sử dụng'),
 		('NV004', 'VT02', '567', N'Còn sử dụng'),
 		('NV005', 'VT01', '678', N'Còn sử dụng'),
-		('NV006', 'VT02', '789', N'Còn sử dụng'),
-		('NV007', 'VT01', '890', N'Còn sử dụng'),
-		('NV008', 'VT02', '111', N'Còn sử dụng'),
-		('NV009', 'VT01', '222', N'Không còn sử dụng')
+		('NV006', 'VT02', '789', N'Còn sử dụng')
 
 INSERT INTO KHACHHANG
-VALUES	('KH01',N'Võ Thị Sáu',1,'0389456758','sdhsa@gmail.com',N'Thanh Hóa',N'NO STATUS'),
-		('KH02',N'Trịnh Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hóa',N'NO STATUS'),
-		('KH03',N'Hoàng Hoa Thám',0,'056858758','tham234@gmail.com',N'Thanh Hóa',N'NO STATUS'),
-		('KH04',N'Nguyễn THị Hoa',1,'035685675','hoanguyen@gmail.com',N'Đà Nẵng',N'NO STATUS'),
-		('KH05',N'Trần Văn Bình',0,'0385896758','binhgold123@gmail.com',N'Thái Nguyên',N'NO STATUS'),
-		('KH06',N'Đỗ Thị Chanh',1,'0658456758','chanh987gmail.com',N'Hà Nội',N'NO STATUS'),
-		('KH07',N'Nguyễn Văn Quân',0,'0956856758','quan235@gmail.com',N'Bắc Cạn',N'NO STATUS'),
-		('KH08',N'Đỗ Hải Anh',0,'0658946758','haianh365@gmail.com',N'Thái Bình',N'NO STATUS'),
-		('KH09',N'Đường Huyền Trang',1,'0365494758','trang145@gmail.com',N'Bắc Ninh',N'NO STATUS')
+VALUES	('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',N'NO STATUS'),
+		('KH02',N'Trinh Thi Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hoa',N'NO STATUS'),
+		('KH03',N'Hoang Hoa Tham',0,'056858758','tham234@gmail.com',N'Thanh Hoa',N'NO STATUS'),
+		('KH04',N'Nguyen Thi Hoa',1,'035685675','hoanguyen@gmail.com',N'Đa Nang',N'NO STATUS'),
+		('KH05',N'Tran Van Binh',0,'0385896758','binhgold123@gmail.com',N'Thai Nguyen',N'NO STATUS'),
+		('KH06',N'Đo Thi Chanh',1,'0658456758','chanh987gmail.com',N'Ha Noi',N'NO STATUS'),
+		('KH07',N'Nguyen Van Quan',0,'0956856758','quan235@gmail.com',N'Bac Can',N'NO STATUS'),
+		('KH08',N'Đo Hai Anh',0,'0658946758','haianh365@gmail.com',N'Thai Binh',N'NO STATUS'),
+		('KH09',N'Đuong Huyen Trang',1,'0365494758','trang145@gmail.com',N'Bac Ninh',N'NO STATUS')
 
 INSERT INTO HOADON
-VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,3000,N'NOT'),
-		('HD002','NV002','KH02','2021-02-02',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,5000,N'NOT'),
-		('HD003','NV003','KH03','2021-03-03',N'Đã thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,6700,N'NOT'),
-		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,3500,N'NOT'),
-		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,4000,N'NOT'),
-		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,2000,N'NOT'),
-		('HD007','NV007','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,1000,N'NOT'),
-		('HD008','NV008','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,8000,N'NOT'),
-		('HD009','NV009','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,7000,N'NOT')
+VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,270000,N'NOT'),
+		('HD002','NV002','KH02','2021-02-02',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,3600000,N'NOT'),
+		('HD003','NV003','KH03','2021-03-03',N'Đã thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,160000,N'NOT'),
+		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,280000,N'NOT'),
+		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,300000,N'NOT'),
+		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
+		('HD007','NV007','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
+		('HD008','NV008','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,105000,N'NOT'),
+		('HD009','NV009','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,50000,N'NOT')
 
 
 
@@ -158,17 +152,11 @@ VALUES  ('TT001', 20),
 INSERT INTO CHATLIEU
 VALUES  ('CL001', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
 		('CL002', N'Thép không gỉ'),
-		('CL003', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
-		('CL004', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
-		('CL005', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện, Kính'),
-		('CL006', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
-		('CL007', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
-		('CL008', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện, Kính'),
-		('CL009', N'Thép không gỉ, Kim loại phủ sơn tĩnh điện'),
-        ('CL0010', N'Nhựa dẻo'),
-		('CL0011', N'Kim loại phủ sơn tĩnh điện'),
-		('CL0012', N'Kính cường lực'),
-		('CL0013', N'Sắt không gỉ')
+		('CL003', N'Kính nhựa'),
+        ('CL004', N'Nhựa dẻo'),
+		('CL005', N'Kim loại phủ sơn tĩnh điện'),
+		('CL006', N'Kính cường lực'),
+		('CL007', N'Sắt không gỉ')
 
 
 INSERT INTO _IMAGE
@@ -189,22 +177,22 @@ VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001
 		('SPCT03', 'IME003', 'SP003', 'MS004', 'KT003', 'CL003', 'TT003', 'KL003',N'KG50F62', 50, 1, 3400, 4000, N'No Mô Tả'),
 		('SPCT04', 'IME004' , 'SP004', 'MS001', 'KT004', 'CL004', 'TT004', 'KL004',N'FV1409S4W', 90, 0, 2000, 3500, N'No Mô Tả'),
 		('SPCT05', 'IME005', 'SP005', 'MS002', 'KT005', 'CL005', 'TT005', 'KL005',N'KD-43X75', 120, 0, 2200, 3000, N'No Mô Tả'),
-		('SPCT06', 'IME006', 'SP006', 'MS001', 'KT006', 'CL006', 'TT006', 'KL006',N'Inverter 322 lít NR-BC360QKVN', 90, 1, 1500, 2000, N'No Mô Tả'),
+		('SPCT06', 'IME006', 'SP006', 'MS001', 'KT006', 'CL006', 'TT006', 'KL006',N'Inverter NR-BC360QKVN', 90, 1, 1500, 2000, N'No Mô Tả'),
 		('SPCT07', 'IME007', 'SP007', 'MS001', 'KT007', 'CL007', 'TT007', 'KL007',N'MC-CL575KN49 2000W', 100, 0, 600, 2000, N'No Mô Tả'),
-		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL008', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 80, 0, 1000, 1500, N'No Mô Tả'),
-		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL009', 'TT009', 'KL009',N'EWE451LB-DPX2', 70, 1, 900, 1000, N'No Mô Tả')
+		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL001', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 80, 0, 1000, 1500, N'No Mô Tả'),
+		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 70, 1, 900, 1000, N'No Mô Tả')
 		
 
 INSERT INTO HOADONCHITIET
 VALUES  ('SPCT01', 'HD001', 90, 3000),
-		('SPCT02', 'HD002', 900, 3000),
-		('SPCT03', 'HD003', 40, 2500),
-		('SPCT04', 'HD004', 80, 2500),
-		('SPCT05', 'HD005', 100, 2500),
-		('SPCT06', 'HD006', 90, 3000),
+		('SPCT02', 'HD002', 900, 4000),
+		('SPCT03', 'HD003', 40, 4000),
+		('SPCT04', 'HD004', 80, 3500),
+		('SPCT05', 'HD005', 100, 3000),
+		('SPCT06', 'HD006', 90, 2000),
 		('SPCT07', 'HD007', 90, 2000),
-		('SPCT08', 'HD008', 70, 3000),
-		('SPCT09', 'HD009', 50, 2500)
+		('SPCT08', 'HD008', 70, 1500),
+		('SPCT09', 'HD009', 50, 1000)
 
 
 INSERT INTO KHUYENMAI
