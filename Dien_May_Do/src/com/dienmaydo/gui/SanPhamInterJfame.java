@@ -100,6 +100,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         addDataCbbCL();
         addDataCbbMS();
         addDataCbbIMG();
+        addDataCbbDVT();
         fillTableData();
         clickTable();
         fillTableSPCT();
@@ -214,7 +215,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         pnSanPham.setBackground(new java.awt.Color(255, 255, 255));
         pnSanPham.setPreferredSize(new java.awt.Dimension(1146, 768));
 
-        tblThongTin.setBackground(new java.awt.Color(255, 204, 0));
         tblThongTin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -576,7 +576,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        tblSanPhamChiTiet.setBackground(new java.awt.Color(255, 204, 0));
         tblSanPhamChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -849,6 +848,11 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         lblTTHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTTHinhAnh.setText("Hình ảnh");
         lblTTHinhAnh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblTTHinhAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTTHinhAnhMouseClicked(evt);
+            }
+        });
 
         btnTTThem.setText("Thêm");
 
@@ -1133,6 +1137,11 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         chonAnh();
         // TODO add your handling code here:
     }//GEN-LAST:event_lblHinhAnhMouseClicked
+
+    private void lblTTHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTTHinhAnhMouseClicked
+        chonAnh();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblTTHinhAnhMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1751,6 +1760,15 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         model.removeAllElements();
         List<Image> list = daoIMG.selectAll();
         for (Image cd : list) {
+            model.addElement(cd);
+        }
+    }
+
+    private void addDataCbbDVT() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTTDonViTinh.getModel();
+        model.removeAllElements();
+        List<DonViTinh> list = daoDVT.selectAll();
+        for (DonViTinh cd : list) {
             model.addElement(cd);
         }
     }

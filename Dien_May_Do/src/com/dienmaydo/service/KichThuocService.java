@@ -19,32 +19,26 @@ import java.util.List;
  */
 public class KichThuocService implements IKichThuocService<KichThuoc, String> {
 
+    String insert_SQL = "INSERT INTO dbo.KICHTHUOC(MAKICHTHUOC,MADV,CHIEUDAI,CHIEURONG,CHIEUCAO)VALUES(?,?,?,?,?)";
+    String update_SQL = "UPDATE dbo.KICHTHUOC SET MADV = ? , CHIEUDAI = ? , CHIEURONG = ? , CHIEUCAO = ? WHERE MAKICHTHUOC = ?";
     String selectALL_SQL = "SELECT * FROM dbo.KICHTHUOC";
     String selectByID_SQL = "SELECT * FROM dbo.KICHTHUOC WHERE MAKICHTHUOC = ?";
 
     @Override
     public void insertData(KichThuoc entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(insert_SQL, entity.getMaKichThuoc(), entity.getMaDV(),
+                entity.getChieuDai(), entity.getChieuRong(), entity.getChieuCao());
     }
 
     @Override
     public void updateData(KichThuoc entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteData(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(update_SQL, entity.getMaDV(), entity.getChieuDai(),
+                entity.getChieuRong(), entity.getChieuCao(), entity.getMaKichThuoc());
     }
 
     @Override
     public List<KichThuoc> selectAll() {
         return this.selectBySQL(selectALL_SQL);
-    }
-
-    @Override
-    public KichThuoc selectByID(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

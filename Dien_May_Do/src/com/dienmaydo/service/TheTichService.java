@@ -19,32 +19,24 @@ import java.util.List;
  */
 public class TheTichService implements ITheTichService<TheTich, String> {
 
+    String insert_SQL = "INSERT INTO dbo.THETICH(MATHETICH,THETICH)VALUES(?,?)";
+    String update_SQL = "UPDATE dbo.THETICH SET THETICH = ? WHERE MATHETICH = ?";
     String selectALL_SQL = "SELECT * FROM dbo.THETICH";
     String selectByID_SQL = "SELECT * FROM dbo.THETICH WHERE MATHETICH = ?";
 
     @Override
     public void insertData(TheTich entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(insert_SQL, entity.getMaTheTich(), entity.getTheTich());
     }
 
     @Override
     public void updateData(TheTich entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteData(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(update_SQL, entity.getTheTich(), entity.getMaTheTich());
     }
 
     @Override
     public List<TheTich> selectAll() {
         return this.selectBySQL(selectALL_SQL);
-    }
-
-    @Override
-    public TheTich selectByID(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
