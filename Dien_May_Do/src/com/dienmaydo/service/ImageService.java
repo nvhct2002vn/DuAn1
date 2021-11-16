@@ -19,22 +19,19 @@ import java.util.List;
  */
 public class ImageService implements IImageService<Image, String> {
 
+    String insert_SQL = "INSERT INTO dbo._IMAGE(MAIMAGE,TENHINH)VALUES(?,?)";
+    String update_SQL = "UPDATE dbo._IMAGE SET TENHINH = ? WHERE MAIMAGE = ?";
     String selectALL_SQL = "SELECT * FROM dbo._IMAGE";
     String selectByID_SQL = "SELECT * FROM dbo._IMAGE WHERE MAIMAGE = ?";
 
     @Override
     public void insertData(Image entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(insert_SQL, entity.getMaImage(), entity.getTenHinh());
     }
 
     @Override
     public void updateData(Image entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteData(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(update_SQL, entity.getTenHinh(), entity.getMaImage());
     }
 
     @Override
