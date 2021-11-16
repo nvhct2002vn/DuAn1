@@ -18,6 +18,21 @@ public class KhachHang {
     private String DiaChi;
     private String Trangthai;
 
+    public KhachHang() {
+    }
+
+    public KhachHang(String MaKH, String TenKh, boolean GioiTinh, String SDT, String Email, String DiaChi, String Trangthai) {
+        this.MaKH = MaKH;
+        this.TenKh = TenKh;
+        this.GioiTinh = GioiTinh;
+        this.SDT = SDT;
+        this.Email = Email;
+        this.DiaChi = DiaChi;
+        this.Trangthai = Trangthai;
+    }
+    
+    
+    
     public String getMaKH() {
         return MaKH;
     }

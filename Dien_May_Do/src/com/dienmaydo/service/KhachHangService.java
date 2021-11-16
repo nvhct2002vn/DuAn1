@@ -21,6 +21,8 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
 
     String insertSQL = "INSERT INTO dbo.KHACHHANG(MAKH,TENKH,GIOITINH,DIENTHOAI,EMAIL,DIACHI,TRANGTHAI)VALUES(?,?,?,?,?,?,?)";
     String selectALL_SQL = "SELECT * FROM dbo.KHACHHANG";
+    String selectByTimKiem = "SELECT * FROM dbo.KHACHHANG WHERE MAKH LIKE ? OR TENKH LIKE ?";
+    String UPDATE_SQL = "UPDATE KHACHHANG SET TENKH = ?, GIOITINH = ?, DIENTHOAI = ?,EMAIL = ?,DIACHI = ?,TRANGTHAI = ? WHERE MAKH = ?";
 
     @Override
     public void insertData(KhachHang entity) {
@@ -30,12 +32,13 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
 
     @Override
     public void updateData(KhachHang entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getTenKh(), entity.isGioiTinh(), entity.getSDT(),
+                entity.getEmail(), entity.getDiaChi(), entity.getTrangthai(), entity.getMaKH());
     }
 
     @Override
     public void deleteData(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -45,7 +48,8 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
 
     @Override
     public KhachHang selectByID(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        return selectBySQL(selectByTimKiem, "%" + key + "%", "%" + key + "%");
+        return null;
     }
 
     @Override
@@ -64,11 +68,17 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
                 entity.setTrangthai(rs.getString("TRANGTHAI"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<KhachHang> selectByTimKiem(String key) {
+        return selectBySQL(selectByTimKiem, "%" + key + "%", "%" + key + "%");
     }
 
 }

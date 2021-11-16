@@ -7,6 +7,7 @@ package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.HoaDon;
 import com.dienmaydo.entity.HoaDonChiTiet;
+import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import java.awt.Color;
 import java.util.List;
@@ -24,18 +25,23 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {// output của bạn đâu
         initComponents();
-        setLocationRelativeTo(null);// run đi bạn
+        setLocationRelativeTo(null);
+        new F_DangNhap(this, true).setVisible(true);
         defaultColor = new Color(255, 204, 0);
         clickColor = new Color(153, 153, 153);
 
-        trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
         khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
+        
+//        txtTenNhanVien.setText(Auth.user.);
+        
     }
 
     /**
@@ -53,9 +59,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        trangChu = new javax.swing.JPanel();
-        lblTrangChu = new javax.swing.JLabel();
+        txtTenNhanVien = new javax.swing.JLabel();
         sanPham = new javax.swing.JPanel();
         lblSanPham = new javax.swing.JLabel();
         banHang = new javax.swing.JPanel();
@@ -64,10 +68,14 @@ public class Dashboard extends javax.swing.JFrame {
         lblHoaDon = new javax.swing.JLabel();
         khuyenMai = new javax.swing.JPanel();
         lblKhuyenMai = new javax.swing.JLabel();
-        nhaVien = new javax.swing.JPanel();
-        lblThongKe = new javax.swing.JLabel();
         thoat = new javax.swing.JPanel();
         lblThoat = new javax.swing.JLabel();
+        NhanVien = new javax.swing.JPanel();
+        lblNhanVien = new javax.swing.JLabel();
+        KhachHang = new javax.swing.JPanel();
+        lblKhachHang = new javax.swing.JLabel();
+        ThongKE = new javax.swing.JPanel();
+        lblThongKe = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,23 +111,23 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(danhMuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 60));
+        jPanel2.add(danhMuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 220, 60));
 
         jPanel5.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\account.png")); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("DO TAT HOA");
+        txtTenNhanVien.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtTenNhanVien.setForeground(new java.awt.Color(51, 51, 51));
+        txtTenNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtTenNhanVien.setText("DO TAT HOA");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+            .addComponent(txtTenNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
@@ -127,37 +135,11 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(txtTenNhanVien)
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 140));
-
-        trangChu.setBackground(new java.awt.Color(255, 204, 0));
-
-        lblTrangChu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTrangChu.setForeground(new java.awt.Color(51, 51, 51));
-        lblTrangChu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTrangChu.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\home-page.png")); // NOI18N
-        lblTrangChu.setText("Trang chủ");
-        lblTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                lblTrangChuMouseReleased(evt);
-            }
-        });
-
-        javax.swing.GroupLayout trangChuLayout = new javax.swing.GroupLayout(trangChu);
-        trangChu.setLayout(trangChuLayout);
-        trangChuLayout.setHorizontalGroup(
-            trangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTrangChu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-        );
-        trangChuLayout.setVerticalGroup(
-            trangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(trangChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, 60));
 
         sanPham.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -186,7 +168,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(sanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, 60));
+        jPanel2.add(sanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 220, 60));
 
         banHang.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -215,7 +197,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(banHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 220, 60));
+        jPanel2.add(banHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 220, 60));
 
         hoaDon.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -244,7 +226,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(hoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 220, 60));
+        jPanel2.add(hoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 220, 60));
 
         khuyenMai.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -270,33 +252,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblKhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(khuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 220, 60));
-
-        nhaVien.setBackground(new java.awt.Color(255, 204, 0));
-
-        lblThongKe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblThongKe.setForeground(new java.awt.Color(51, 51, 51));
-        lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblThongKe.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\statistical.png")); // NOI18N
-        lblThongKe.setText("Thống kê");
-        lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblThongKeMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout nhaVienLayout = new javax.swing.GroupLayout(nhaVien);
-        nhaVien.setLayout(nhaVienLayout);
-        nhaVienLayout.setHorizontalGroup(
-            nhaVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-        );
-        nhaVienLayout.setVerticalGroup(
-            nhaVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(nhaVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 220, 60));
+        jPanel2.add(khuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 220, 60));
 
         thoat.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -325,7 +281,88 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 220, 60));
+        jPanel2.add(thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 220, 60));
+
+        NhanVien.setBackground(new java.awt.Color(255, 204, 0));
+
+        lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNhanVien.setForeground(new java.awt.Color(51, 51, 51));
+        lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNhanVien.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\Staff.png")); // NOI18N
+        lblNhanVien.setText("Nhân viên");
+        lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblNhanVienMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout NhanVienLayout = new javax.swing.GroupLayout(NhanVien);
+        NhanVien.setLayout(NhanVienLayout);
+        NhanVienLayout.setHorizontalGroup(
+            NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+        );
+        NhanVienLayout.setVerticalGroup(
+            NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 220, 60));
+
+        KhachHang.setBackground(new java.awt.Color(255, 204, 0));
+
+        lblKhachHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblKhachHang.setForeground(new java.awt.Color(51, 51, 51));
+        lblKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblKhachHang.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\search_client_24px.png")); // NOI18N
+        lblKhachHang.setText("Khách hàng");
+        lblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblKhachHangMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblKhachHangMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout KhachHangLayout = new javax.swing.GroupLayout(KhachHang);
+        KhachHang.setLayout(KhachHangLayout);
+        KhachHangLayout.setHorizontalGroup(
+            KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblKhachHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+        );
+        KhachHangLayout.setVerticalGroup(
+            KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(KhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 220, -1));
+
+        ThongKE.setBackground(new java.awt.Color(255, 204, 0));
+
+        lblThongKe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblThongKe.setForeground(new java.awt.Color(51, 51, 51));
+        lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThongKe.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\statistical.png")); // NOI18N
+        lblThongKe.setText("Thống kê");
+        lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblThongKeMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ThongKELayout = new javax.swing.GroupLayout(ThongKE);
+        ThongKE.setLayout(ThongKELayout);
+        ThongKELayout.setHorizontalGroup(
+            ThongKELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+        );
+        ThongKELayout.setVerticalGroup(
+            ThongKELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(ThongKE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 220, 60));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 220, 768));
 
@@ -358,51 +395,42 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblTrangChuMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseReleased
-        // TODO add your handling code here:
-        trangChu.setBackground(clickColor);
-        danhMuc.setBackground(defaultColor);
-        sanPham.setBackground(defaultColor);
-        banHang.setBackground(defaultColor);
-        hoaDon.setBackground(defaultColor);
-        khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
-        thoat.setBackground(defaultColor);
-    }//GEN-LAST:event_lblTrangChuMouseReleased
-
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
         danhMuc.setBackground(clickColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
         khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_jLabel2MouseReleased
 
     private void lblSanPhamMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMousePressed
         // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(clickColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
         khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_lblSanPhamMousePressed
 
     private void lblBanHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMousePressed
-        // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
+        // TODO add your handling code here
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(clickColor);
         hoaDon.setBackground(defaultColor);
         khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_lblBanHangMousePressed
 
@@ -415,37 +443,40 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblKhuyenMaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMousePressed
         // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
         khuyenMai.setBackground(clickColor);
-        nhaVien.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_lblKhuyenMaiMousePressed
 
     private void lblThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMousePressed
         // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
         khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(clickColor);
+        ThongKE.setBackground(clickColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_lblThongKeMousePressed
 
     private void lblThoatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMousePressed
         // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
         khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(clickColor);
     }//GEN-LAST:event_lblThoatMousePressed
 
@@ -459,27 +490,59 @@ public class Dashboard extends javax.swing.JFrame {
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
         if (Msgbox.confirm(this, "Bạn muốn thoát ứng dụng ?")) {
+            Auth.clear();
             System.exit(0);
         }
     }//GEN-LAST:event_lblThoatMouseClicked
 
     private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
-       SanPhamInterJfame b = new SanPhamInterJfame();
+        SanPhamInterJfame b = new SanPhamInterJfame();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(b).setVisible(true);
     }//GEN-LAST:event_lblSanPhamMouseClicked
 
     private void lblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMousePressed
         // TODO add your handling code here:
-        trangChu.setBackground(defaultColor);
         danhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(clickColor);
         khuyenMai.setBackground(defaultColor);
-        nhaVien.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_lblHoaDonMousePressed
+
+    private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
+        // TODO add your handling code here:
+        danhMuc.setBackground(defaultColor);
+        sanPham.setBackground(defaultColor);
+        banHang.setBackground(defaultColor);
+        hoaDon.setBackground(defaultColor);
+        khuyenMai.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(clickColor);
+        KhachHang.setBackground(defaultColor);
+        thoat.setBackground(defaultColor);
+    }//GEN-LAST:event_lblNhanVienMousePressed
+
+    private void lblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblKhachHangMouseClicked
+
+    private void lblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMousePressed
+        // TODO add your handling code here:
+        danhMuc.setBackground(defaultColor);
+        sanPham.setBackground(defaultColor);
+        banHang.setBackground(defaultColor);
+        hoaDon.setBackground(defaultColor);
+        khuyenMai.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(clickColor);
+        thoat.setBackground(defaultColor);
+    }//GEN-LAST:event_lblKhachHangMousePressed
 
     /**
      * @param args the command line arguments
@@ -517,28 +580,30 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel KhachHang;
+    private javax.swing.JPanel NhanVien;
+    private javax.swing.JPanel ThongKE;
     private javax.swing.JPanel banHang;
     private javax.swing.JPanel danhMuc;
     private javax.swing.JPanel hoaDon;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel khuyenMai;
     private javax.swing.JLabel lblBanHang;
     private javax.swing.JLabel lblHoaDon;
+    private javax.swing.JLabel lblKhachHang;
     private javax.swing.JLabel lblKhuyenMai;
+    private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblSanPham;
     private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblThongKe;
-    private javax.swing.JLabel lblTrangChu;
-    private javax.swing.JPanel nhaVien;
     private javax.swing.JPanel sanPham;
     private javax.swing.JPanel thoat;
-    private javax.swing.JPanel trangChu;
+    private javax.swing.JLabel txtTenNhanVien;
     // End of variables declaration//GEN-END:variables
 
 }

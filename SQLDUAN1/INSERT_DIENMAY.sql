@@ -32,12 +32,12 @@ VALUES  ('VT01', N'Quản Lý'),
 
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','VT01', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 0, '2002-08-19'),
-		('NV002','VT02', N'Đo Tat Hoa', N'Thanh Hoa', '04573927342', 0, '2002-09-21'),
-		('NV003','VT01', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 0, '2002-01-01'),
+VALUES  ('NV001','VT01', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19'),
+		('NV002','VT02', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21'),
+		('NV003','VT01', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01'),
 		('NV004','VT02', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 1, '1998-02-02'),
-		('NV005','VT01', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 0, '1998-03-03'),
-		('NV006','VT02', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 0, '2002-04-04')
+		('NV005','VT01', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03'),
+		('NV006','VT02', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04')
 
 
 INSERT INTO XUATXU
@@ -62,12 +62,12 @@ VALUES  ('SP001','DM001', 1, N'Máy lạnh'),
 
 
 INSERT INTO TAIKHOAN
-VALUES  ('NV001', 'VT01', '123', N'Còn sử dụng'),
-		('NV002', 'VT02', '345', N'Còn sử dụng'),
-		('NV003', 'VT01', '456', N'Còn sử dụng'),
-		('NV004', 'VT02', '567', N'Còn sử dụng'),
-		('NV005', 'VT01', '678', N'Còn sử dụng'),
-		('NV006', 'VT02', '789', N'Còn sử dụng')
+VALUES  ('NV001', 'VT01', '123', 1),
+		('NV002', 'VT02', '345', 1),
+		('NV003', 'VT01', '456', 1),
+		('NV004', 'VT02', '567',1),
+		('NV005', 'VT01', '678', 1),
+		('NV006', 'VT02', '789', 1)
 
 INSERT INTO KHACHHANG
 VALUES	('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',N'NO STATUS'),

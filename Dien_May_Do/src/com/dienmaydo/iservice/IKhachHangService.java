@@ -23,4 +23,7 @@ public interface IKhachHangService<E, K> {
     E selectByID(K key);
 
     List<E> selectBySQL(String sql, Object... args);
+   
+    List<E> selectByTimKiem(K key);
+    
 }
