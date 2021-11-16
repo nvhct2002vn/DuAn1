@@ -900,6 +900,11 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
         btnTTSua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnTTSua.setText("Sửa");
+        btnTTSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTTSuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1223,22 +1228,51 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     private void btnTTThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTThemActionPerformed
         if (rdTTChatLieu.isSelected()) {
-
+            InsertChatLieu();
+            addDataCbbCL();
         }
         if (rdTTKhoiLuong.isSelected()) {
-
+            InsertKhoiLuong();
+            addDataCbbKL();
         }
         if (rdTTKichThuoc.isSelected()) {
-
+            InsertKichThuoc();
+            addDataCbbKT();
         }
         if (rdTTMauSac.isSelected()) {
-
+            InsertMauSac();
+            addDataCbbMS();
         }
         if (rdTTTheTich.isSelected()) {
-
+            InsertTheTich();
+            addDataCbbTT();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTTThemActionPerformed
+
+    private void btnTTSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTSuaActionPerformed
+        if (rdTTChatLieu.isSelected()) {
+            UpdateChatLieu();
+            addDataCbbCL();
+        }
+        if (rdTTKhoiLuong.isSelected()) {
+            UpdateKhoiLuong();
+            addDataCbbKL();
+        }
+        if (rdTTKichThuoc.isSelected()) {
+            UpdateKichThuoc();
+            addDataCbbKT();
+        }
+        if (rdTTMauSac.isSelected()) {
+            UpdateMauSac();
+            addDataCbbMS();
+        }
+        if (rdTTTheTich.isSelected()) {
+            UpdateTheTich();
+            addDataCbbTT();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTTSuaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1998,9 +2032,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     void InsertKichThuoc() {
         try {
-            TheTich tt = GetFromTT();
-            daoTT.insertData(tt);
-            fillTableTheTich();
+            KichThuoc kt = GetFromKT();
+            daoKT.insertData(kt);
+            fillTableKichThuoc();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2008,9 +2042,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     void UpdateKichThuoc() {
         try {
-            TheTich tt = GetFromTT();
-            daoTT.updateData(tt);
-            fillTableTheTich();
+            KichThuoc kt = GetFromKT();
+            daoKT.updateData(kt);
+            fillTableKichThuoc();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2027,6 +2061,26 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         }
     }
 
+    void InsertKhoiLuong() {
+        try {
+            KhoiLuong kl = GetFromKL();
+            daoKL.insertData(kl);
+            fillTableKhoiLuong();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void UpdateKhoiLuong() {
+        try {
+            KhoiLuong kl = GetFromKL();
+            daoKL.updateData(kl);
+            fillTableKhoiLuong();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     void fillTableChatlieu() {
         DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
         model.setRowCount(0);
@@ -2035,6 +2089,26 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             model.addRow(new Object[]{
                 x.getMaChatLieu(), x.getChatLieu() + ""
             });
+        }
+    }
+
+    void InsertChatLieu() {
+        try {
+            ChatLieu cl = GetFromCL();
+            daoCL.insertData(cl);
+            fillTableChatlieu();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void UpdateChatLieu() {
+        try {
+            ChatLieu cl = GetFromCL();
+            daoCL.updateData(cl);
+            fillTableChatlieu();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -2049,6 +2123,26 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         }
     }
 
+    void InsertMauSac() {
+        try {
+            MauSac ms = GetFromMS();
+            daoMS.insertData(ms);
+            fillTableMauSac();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void UpdateMauSac() {
+        try {
+            MauSac ms = GetFromMS();
+            daoMS.updateData(ms);
+            fillTableMauSac();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     TheTich GetFromTT() {
         TheTich tt = new TheTich();
         tt.setMaTheTich(txtTTMaThuocTinh.getText());
@@ -2057,11 +2151,35 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }
 
     KichThuoc GetFromKT() {
-        KichThuoc tt = new KichThuoc();
+        KichThuoc kt = new KichThuoc();
         DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
-        tt.setMaKichThuoc(txtTTMaThuocTinh.getText());
-        tt.setMaDV(dvt.getMaDV());
-        return tt;
+        kt.setMaKichThuoc(txtTTMaThuocTinh.getText());
+        kt.setMaDV(dvt.getMaDV());
+//        tt.setChieuDai(TOP_ALIGNMENT);
+        return kt;
+    }
+
+    ChatLieu GetFromCL() {
+        ChatLieu cl = new ChatLieu();
+        cl.setMaChatLieu(txtTTMaThuocTinh.getText());
+        cl.setChatLieu(txtTTTenThuocTinh.getText());
+        return cl;
+    }
+
+    KhoiLuong GetFromKL() {
+        KhoiLuong kl = new KhoiLuong();
+        DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
+        kl.setMaKL(txtTTMaThuocTinh.getText());
+        kl.setMaDV(dvt.getMaDV());
+        kl.setKhoiLuong(Float.valueOf(txtTTTenThuocTinh.getText()));
+        return kl;
+    }
+
+    MauSac GetFromMS() {
+        MauSac ms = new MauSac();
+        ms.setMaMauSac(txtTTMaThuocTinh.getText());
+        ms.setTenMauSac(txtTTTenThuocTinh.getText());
+        return ms;
     }
 
     void clickTbaleThuocTinh() {
