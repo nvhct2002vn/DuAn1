@@ -19,32 +19,24 @@ import java.util.List;
  */
 public class MauSacService implements IMauSacService<MauSac, String> {
 
+    String insert_SQL = "INSERT INTO dbo.MAUSAC(MAMAUSAC,TENMAUSAC)VALUES(?,?)";
+    String update_SQL = "UPDATE dbo.MAUSAC SET TENMAUSAC = ? WHERE MAMAUSAC = ?";
     String selectALL_SQL = "SELECT * FROM dbo.MAUSAC";
     String selectByID_SQL = "SELECT * FROM dbo.MAUSAC WHERE MAMAUSAC = ?";
 
     @Override
     public void insertData(MauSac entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(insert_SQL, entity.getMaMauSac(), entity.getTenMauSac());
     }
 
     @Override
     public void updateData(MauSac entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteData(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(update_SQL, entity.getTenMauSac(), entity.getMaMauSac());
     }
 
     @Override
     public List<MauSac> selectAll() {
         return this.selectBySQL(selectALL_SQL);
-    }
-
-    @Override
-    public MauSac selectByID(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

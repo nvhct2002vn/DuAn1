@@ -19,32 +19,24 @@ import java.util.List;
  */
 public class ChatLieuService implements IChatLieuService<ChatLieu, String> {
 
+    String insert_SQL = "INSERT INTO dbo.CHATLIEU(MACHATLIEU,CHATLIEU)VALUES(?,?)";
+    String update_SQL = "UPDATE dbo.CHATLIEU SET CHATLIEU = ? WHERE MACHATLIEU = ?";
     String selectALL_SQL = "SELECT * FROM dbo.CHATLIEU";
     String selectByID_SQL = "SELECT * FROM dbo.CHATLIEU WHERE MACHATLIEU = ?";
 
     @Override
     public void insertData(ChatLieu entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(insert_SQL, entity.getMaChatLieu(), entity.getChatLieu());
     }
 
     @Override
     public void updateData(ChatLieu entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteData(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(update_SQL, entity.getChatLieu(), entity.getMaChatLieu());
     }
 
     @Override
     public List<ChatLieu> selectAll() {
         return this.selectBySQL(selectALL_SQL);
-    }
-
-    @Override
-    public ChatLieu selectByID(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

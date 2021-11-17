@@ -13,12 +13,13 @@ import java.util.Date;
 public class KhuyenMai {
 
     private String MaKM;
-    private String MaDMKM;
+    private String TenDM;
+    private String HinhThuc;
     private String TenChuongTrinh;
     private Date ThoiGianBatDau;
     private Date ThoiGianKetThuc;
     private float GiamGia;
-    private boolean TrangThai;
+    private String TrangThai;
     private String MoTa;
 
     public String getMaKM() {
@@ -29,12 +30,12 @@ public class KhuyenMai {
         this.MaKM = MaKM;
     }
 
-    public String getMaDMKM() {
-        return MaDMKM;
+    public String getTenDM() {
+        return TenDM;
     }
 
-    public void setMaDMKM(String MaDMKM) {
-        this.MaDMKM = MaDMKM;
+    public void setTenDM(String TenDM) {
+        this.TenDM = TenDM;
     }
 
     public String getTenChuongTrinh() {
@@ -69,11 +70,11 @@ public class KhuyenMai {
         this.GiamGia = GiamGia;
     }
 
-    public boolean isTrangThai() {
+    public String getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(boolean TrangThai) {
+    public void setTrangThai(String TrangThai) {
         this.TrangThai = TrangThai;
     }
 
@@ -85,4 +86,12 @@ public class KhuyenMai {
         this.MoTa = MoTa;
     }
 
+    public String getHinhThuc() {
+        return HinhThuc;
+    }
+
+    public void setHinhThuc(String HinhThuc) {
+        this.HinhThuc = HinhThuc;
+    }
+    
 }

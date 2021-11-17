@@ -66,6 +66,15 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
     }
 
     @Override
+    public HoaDon selectById(String key) {
+        List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL, "%" + key + "%");
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+
+    @Override
     public List<HoaDon> selectByHDChoThanhToan() {
         return selectBySQL(SELECT_BY_CHOTT);
     }

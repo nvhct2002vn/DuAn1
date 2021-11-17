@@ -17,11 +17,7 @@ public interface ITheTichService<E, K> {
 
     void updateData(E entity);
 
-    void deleteData(K key);
-
     List<E> selectAll();
-
-    E selectByID(K key);
 
     List<E> selectBySQL(String sql, Object... args);
 }

@@ -9,15 +9,16 @@ import java.util.List;
 
 /**
  *
- * @author Nguyễn Viết Hiên
+ * @author MSI
  */
-public interface IKhoiLuongService<E, K> {
-
+public interface IKhuyenMaiService<E, K> {
     void insertData(E entity);
-
     void updateData(E entity);
+    void deleteData(K key);
 
     List<E> selectAll();
+
+    E selectByID(K key);
 
     List<E> selectBySQL(String sql, Object... args);
 }
