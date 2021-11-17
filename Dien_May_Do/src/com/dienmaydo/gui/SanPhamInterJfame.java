@@ -33,6 +33,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -206,6 +207,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         lblTTHinhAnh = new javax.swing.JLabel();
         btnTTThem = new javax.swing.JButton();
         btnTTSua = new javax.swing.JButton();
+        rdTTHinhAnh = new javax.swing.JRadioButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblTTThuocTinh = new javax.swing.JTable();
 
@@ -457,11 +459,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         lblHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinhAnh.setText("Chọn ảnh");
         lblHinhAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblHinhAnh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHinhAnhMouseClicked(evt);
-            }
-        });
 
         cbbIMG.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -766,13 +763,13 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                             .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20))
                         .addGap(18, 18, 18)
-                        .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(rdoSxKhongPhoBien)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(rdoSxPhoBien)))
+                        .addComponent(rdoSxPhoBien))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
                         .addGap(18, 18, 18)
@@ -906,69 +903,76 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
+        btnGroupThuocTinhSP.add(rdTTHinhAnh);
+        rdTTHinhAnh.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rdTTHinhAnh.setText("Hình ảnh");
+        rdTTHinhAnh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdTTHinhAnhActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTTMaThuocTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(txtTTTenThuocTinh))
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdTTChatLieu)
-                            .addComponent(cbbTTDonViTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(100, 100, 100))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnTTThem)
-                        .addGap(137, 137, 137)))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTTSua)
-                    .addComponent(rdTTKhoiLuong)
-                    .addComponent(rdTTMauSac))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdTTTheTich, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdTTKichThuoc, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(78, 78, 78)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTTMaThuocTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .addComponent(txtTTTenThuocTinh))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbbTTDonViTinh, 0, 97, Short.MAX_VALUE)
+                    .addComponent(rdTTChatLieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTTThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rdTTKhoiLuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rdTTMauSac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTTSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rdTTTheTich, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rdTTKichThuoc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rdTTHinhAnh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(lblTTHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {rdTTChatLieu, rdTTKhoiLuong, rdTTKichThuoc, rdTTMauSac, rdTTTheTich});
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {rdTTKhoiLuong, rdTTKichThuoc, rdTTMauSac, rdTTTheTich});
 
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtTTMaThuocTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rdTTChatLieu)
-                    .addComponent(rdTTKhoiLuong)
-                    .addComponent(rdTTTheTich))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTTTenThuocTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rdTTMauSac)
-                    .addComponent(cbbTTDonViTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rdTTKichThuoc))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTTThem)
-                    .addComponent(btnTTSua))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTTHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtTTMaThuocTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rdTTChatLieu)
+                            .addComponent(rdTTKhoiLuong)
+                            .addComponent(rdTTTheTich))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtTTTenThuocTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rdTTMauSac)
+                            .addComponent(cbbTTDonViTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rdTTKichThuoc))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnTTThem)
+                            .addComponent(btnTTSua)
+                            .addComponent(rdTTHinhAnh))))
                 .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(lblTTHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
 
         jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {rdTTChatLieu, rdTTKhoiLuong, rdTTKichThuoc, rdTTMauSac, rdTTTheTich});
@@ -1186,11 +1190,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiaNhapActionPerformed
 
-    private void lblHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhAnhMouseClicked
-        chonAnh();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblHinhAnhMouseClicked
-
     private void lblTTHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTTHinhAnhMouseClicked
         chonAnh();
         // TODO add your handling code here:
@@ -1218,61 +1217,120 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     private void rdTTKichThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTKichThuocActionPerformed
         fillTableKichThuoc();
+        addDataCbbKT();
+        chonKichThuoc();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTKichThuocActionPerformed
 
     private void tblTTThuocTinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTTThuocTinhMouseClicked
         clickTbaleThuocTinh();
+        if (rdTTHinhAnh.isSelected()) {
+            int rowTT = tblTTThuocTinh.getSelectedRow();
+            lblHinhAnh.setIcon(XImage.read(tblTTThuocTinh.getValueAt(rowTT, 1)));
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_tblTTThuocTinhMouseClicked
 
     private void btnTTThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTThemActionPerformed
         if (rdTTChatLieu.isSelected()) {
-            InsertChatLieu();
-            addDataCbbCL();
+            if (isValidateThuocTinh()) {
+                return;
+            } else if (isCheckThuocTinhCL()) {
+                return;
+            } else {
+                InsertChatLieu();
+                addDataCbbCL();
+            }
         }
         if (rdTTKhoiLuong.isSelected()) {
-            InsertKhoiLuong();
-            addDataCbbKL();
-        }
-        if (rdTTKichThuoc.isSelected()) {
-            InsertKichThuoc();
-            addDataCbbKT();
+            if (isValidateThuocTinh()) {
+                return;
+            } else if (isCheckThuocTinhKL()) {
+                return;
+            } else {
+                InsertKhoiLuong();
+                addDataCbbKL();
+            }
         }
         if (rdTTMauSac.isSelected()) {
-            InsertMauSac();
-            addDataCbbMS();
+            if (isValidateThuocTinh()) {
+                return;
+            } else if (isCheckThuocTinhMS()) {
+                return;
+            } else {
+                InsertMauSac();
+                addDataCbbMS();
+            }
         }
         if (rdTTTheTich.isSelected()) {
-            InsertTheTich();
-            addDataCbbTT();
+            if (isValidateThuocTinh()) {
+                return;
+            } else if (isCheckThuocTinhTT()) {
+                return;
+            } else {
+                InsertTheTich();
+                addDataCbbTT();
+            }
+        }
+        if (rdTTHinhAnh.isSelected()) {
+            if (isValidateThuocTinh()) {
+                return;
+            } else if (isCheckThuocTinhIMG()) {
+                return;
+            } else {
+                InsertImage();
+            }
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTTThemActionPerformed
 
     private void btnTTSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTSuaActionPerformed
         if (rdTTChatLieu.isSelected()) {
-            UpdateChatLieu();
-            addDataCbbCL();
+            if (isValidateThuocTinh()) {
+                return;
+            } else {
+                UpdateChatLieu();
+                addDataCbbCL();
+            }
         }
         if (rdTTKhoiLuong.isSelected()) {
-            UpdateKhoiLuong();
-            addDataCbbKL();
-        }
-        if (rdTTKichThuoc.isSelected()) {
-            UpdateKichThuoc();
-            addDataCbbKT();
+            if (isValidateThuocTinh()) {
+                return;
+            } else {
+                UpdateKhoiLuong();
+                addDataCbbKL();
+            }
         }
         if (rdTTMauSac.isSelected()) {
-            UpdateMauSac();
-            addDataCbbMS();
+            if (isValidateThuocTinh()) {
+                return;
+            } else {
+                UpdateMauSac();
+                addDataCbbMS();
+            }
         }
         if (rdTTTheTich.isSelected()) {
-            UpdateTheTich();
-            addDataCbbTT();
+            if (isValidateThuocTinh()) {
+                return;
+            } else {
+                UpdateTheTich();
+                addDataCbbTT();
+            }
+        }
+        if (rdTTHinhAnh.isSelected()) {
+            if (isValidateThuocTinh()) {
+                return;
+            } else {
+                UpdateImage();
+            }
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTTSuaActionPerformed
+
+    private void rdTTHinhAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTHinhAnhActionPerformed
+        fillTableImage();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdTTHinhAnhActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1342,6 +1400,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnThuocTinh;
     private javax.swing.JTabbedPane pnTongQuat;
     private javax.swing.JRadioButton rdTTChatLieu;
+    private javax.swing.JRadioButton rdTTHinhAnh;
     private javax.swing.JRadioButton rdTTKhoiLuong;
     private javax.swing.JRadioButton rdTTKichThuoc;
     private javax.swing.JRadioButton rdTTMauSac;
@@ -1845,8 +1904,8 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             File file = fileChooser.getSelectedFile();
             XImage.save(file);
             ImageIcon icon = XImage.read(file.getName());
-            lblHinhAnh.setIcon(icon);
-            lblHinhAnh.setToolTipText(file.getName());
+            lblTTHinhAnh.setIcon(icon);
+            lblTTHinhAnh.setToolTipText(file.getName());
         }
     }
 
@@ -1988,6 +2047,39 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     }
 
     //--------------------Thuộc tính--------------------------------------------
+    boolean isValidateThuocTinh() {
+        try {
+            if (txtTTMaThuocTinh.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã thuộc tính không được để trống");
+                return true;
+            } else if (txtTTTenThuocTinh.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên thuộc tinh không được để trống");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            Msgbox.alert(this, "Thể tích và khối lượng phải là số");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    boolean isCheckThuocTinhTT() {
+        boolean check = false;
+        List<TheTich> list = daoTT.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaTheTich().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+                Msgbox.alert(this, "Mã thể tích đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
     void fillTableTheTich() {
         DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
         model.setRowCount(0);
@@ -2004,6 +2096,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             TheTich tt = GetFromTT();
             daoTT.insertData(tt);
             fillTableTheTich();
+            Msgbox.alert(this, "Thêm thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2014,6 +2107,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             TheTich tt = GetFromTT();
             daoTT.updateData(tt);
             fillTableTheTich();
+            Msgbox.alert(this, "Sửa thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2030,24 +2124,17 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         }
     }
 
-    void InsertKichThuoc() {
-        try {
-            KichThuoc kt = GetFromKT();
-            daoKT.insertData(kt);
-            fillTableKichThuoc();
-        } catch (Exception e) {
-            e.printStackTrace();
+    boolean isCheckThuocTinhKL() {
+        boolean check = false;
+        List<KhoiLuong> list = daoKL.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaKL().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+                Msgbox.alert(this, "Mã khối lượng đã tồn tại");
+                check = true;
+                break;
+            }
         }
-    }
-
-    void UpdateKichThuoc() {
-        try {
-            KichThuoc kt = GetFromKT();
-            daoKT.updateData(kt);
-            fillTableKichThuoc();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return check;
     }
 
     void fillTableKhoiLuong() {
@@ -2066,6 +2153,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             KhoiLuong kl = GetFromKL();
             daoKL.insertData(kl);
             fillTableKhoiLuong();
+            Msgbox.alert(this, "Thêm thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2076,9 +2164,23 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             KhoiLuong kl = GetFromKL();
             daoKL.updateData(kl);
             fillTableKhoiLuong();
+            Msgbox.alert(this, "Sửa thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    boolean isCheckThuocTinhCL() {
+        boolean check = false;
+        List<ChatLieu> list = daoCL.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaChatLieu().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+                Msgbox.alert(this, "Mã chất liệu đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
     }
 
     void fillTableChatlieu() {
@@ -2097,6 +2199,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             ChatLieu cl = GetFromCL();
             daoCL.insertData(cl);
             fillTableChatlieu();
+            Msgbox.alert(this, "Thêm thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2107,9 +2210,23 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             ChatLieu cl = GetFromCL();
             daoCL.updateData(cl);
             fillTableChatlieu();
+            Msgbox.alert(this, "Sửa thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    boolean isCheckThuocTinhMS() {
+        boolean check = false;
+        List<MauSac> list = daoMS.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaMauSac().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+                Msgbox.alert(this, "Mã màu sắc đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
     }
 
     void fillTableMauSac() {
@@ -2128,6 +2245,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             MauSac ms = GetFromMS();
             daoMS.insertData(ms);
             fillTableMauSac();
+            Msgbox.alert(this, "Thêm thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2138,6 +2256,53 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             MauSac ms = GetFromMS();
             daoMS.updateData(ms);
             fillTableMauSac();
+            Msgbox.alert(this, "Sửa thành công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    boolean isCheckThuocTinhIMG() {
+        boolean check = false;
+        List<Image> list = daoIMG.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaImage().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+                Msgbox.alert(this, "Mã image đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
+    void fillTableImage() {
+        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+        model.setRowCount(0);
+        List<Image> list = daoIMG.selectAll();
+        for (Image x : list) {
+            model.addRow(new Object[]{
+                x.getMaImage(), x.getTenHinh() + ""
+            });
+        }
+    }
+
+    void InsertImage() {
+        try {
+            Image img = GetFromIMG();
+            daoIMG.insertData(img);
+            fillTableImage();
+            Msgbox.alert(this, "Thêm thành công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void UpdateImage() {
+        try {
+            Image img = GetFromIMG();
+            daoIMG.updateData(img);
+            fillTableImage();
+            Msgbox.alert(this, "Sửa thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2148,15 +2313,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         tt.setMaTheTich(txtTTMaThuocTinh.getText());
         tt.setTheTich(Float.valueOf(txtTTTenThuocTinh.getText()));
         return tt;
-    }
-
-    KichThuoc GetFromKT() {
-        KichThuoc kt = new KichThuoc();
-        DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
-        kt.setMaKichThuoc(txtTTMaThuocTinh.getText());
-        kt.setMaDV(dvt.getMaDV());
-//        tt.setChieuDai(TOP_ALIGNMENT);
-        return kt;
     }
 
     ChatLieu GetFromCL() {
@@ -2182,10 +2338,22 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         return ms;
     }
 
+    Image GetFromIMG() {
+        Image img = new Image();
+        img.setMaImage(txtTTMaThuocTinh.getText());
+        img.setTenHinh(lblTTHinhAnh.getToolTipText());
+        return img;
+    }
+
     void clickTbaleThuocTinh() {
         int vitriThuocTinh = tblTTThuocTinh.getSelectedRow();
         txtTTMaThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 0));
         txtTTTenThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1));
+    }
+
+    void chonKichThuoc() {
+        KichThuocJframe kt = new KichThuocJframe();
+        kt.setVisible(true);
     }
 
 }

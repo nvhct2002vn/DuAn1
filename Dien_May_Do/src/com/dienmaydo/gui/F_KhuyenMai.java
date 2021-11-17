@@ -412,6 +412,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         } catch (Exception e) {
         }
     }
+
     public void setSelectCBO(String cboselected, JComboBox cbo) {
         for (int i = 0; i < cbo.getItemCount(); i++) {
             DanhMuc dm = (DanhMuc) cbo.getItemAt(i);
@@ -422,6 +423,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             }
         }
     }
+
     void clicktblKhuyenMai() {
         txtMaKM.setText(tblData.getValueAt(row, 0).toString());
         txtTenCT.setText(tblData.getValueAt(row, 1).toString());

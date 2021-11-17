@@ -748,9 +748,6 @@
                           </Border>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblHinhAnhMouseClicked"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbbIMG">
                       <Properties>
@@ -970,15 +967,15 @@
                                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtTimKiemSPCT" linkSize="10" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtTimKiemSPCT" linkSize="10" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="rdoSxKhongPhoBien" linkSize="2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rdoSxPhoBien" linkSize="2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="rdoSxPhoBien" linkSize="2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jRadioButton1" linkSize="4" min="-2" max="-2" attributes="0"/>
@@ -1160,7 +1157,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane4" pref="564" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1185,75 +1182,71 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace pref="40" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtTTMaThuocTinh" pref="189" max="32767" attributes="0"/>
-                                          <Component id="txtTTTenThuocTinh" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="rdTTChatLieu" linkSize="14" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbbTTDonViTinh" min="-2" pref="97" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnTTThem" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnTTSua" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTKhoiLuong" linkSize="14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTMauSac" linkSize="14" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtTTMaThuocTinh" pref="189" max="32767" attributes="0"/>
+                                  <Component id="txtTTTenThuocTinh" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="104" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="rdTTTheTich" linkSize="14" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTKichThuoc" linkSize="14" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="100" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cbbTTDonViTinh" pref="97" max="32767" attributes="0"/>
+                                  <Component id="rdTTChatLieu" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnTTThem" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace pref="100" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="rdTTKhoiLuong" linkSize="14" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="rdTTMauSac" linkSize="14" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnTTSua" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="110" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="rdTTTheTich" linkSize="14" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="rdTTKichThuoc" linkSize="14" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="rdTTHinhAnh" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="72" max="32767" attributes="0"/>
                               <Component id="lblTTHinhAnh" min="-2" pref="108" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace pref="40" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTTMaThuocTinh" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTChatLieu" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTKhoiLuong" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTTheTich" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTTTenThuocTinh" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTMauSac" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbbTTDonViTinh" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdTTKichThuoc" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnTTThem" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnTTSua" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblTTHinhAnh" alignment="1" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTTMaThuocTinh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdTTChatLieu" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdTTKhoiLuong" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdTTTheTich" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTTTenThuocTinh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdTTMauSac" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbbTTDonViTinh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdTTKichThuoc" linkSize="15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="btnTTThem" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnTTSua" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdTTHinhAnh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace pref="18" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblTTHinhAnh" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1402,6 +1395,20 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTTSuaActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="rdTTHinhAnh">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGroupThuocTinhSP"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="H&#xec;nh &#x1ea3;nh"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdTTHinhAnhActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
