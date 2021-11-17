@@ -14,14 +14,19 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
     String SELECT_ALL_SQL = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH";
-    String SELECT_BY_ID_SQL = "SELECT *\n"
+    String SELECT_BY_TIM_KIEM = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
             + "WHERE MAHD LIKE ? OR KHACHHANG.MAKH LIKE ? OR NHANVIEN.MANV LIKE ? OR TENKH LIKE ? OR TENNV LIKE ?";
+    String SELECT_BY_ID_SQL = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE MAHD LIKE ?";
     String SELECT_BY_CHOTT = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH "
             + "WHERE TRANGTHAI_TT LIKE N'%CHỜ THANH TOÁN%'";
+    String SELCT_BY_CBO = "";
 
     @Override
     public void insert(HoaDon entity) {
@@ -81,7 +86,7 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
 
     @Override
     public List<HoaDon> selectByTimKiem(String key) {
-        List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL, "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%");
+        List<HoaDon> list = selectBySQL(SELECT_BY_TIM_KIEM, "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%");
         return list;
     }
 
