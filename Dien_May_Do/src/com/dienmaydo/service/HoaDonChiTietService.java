@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet, String> {
-
-    String SELECT_BY_ID_SQL = "SELECT MAHDCT,SANPHAMCHITIET.MASPCT,MAHD,TENSP,TENSPCT,HOADONCHITIET.SOLUONG,DONGIA\n"
+    
+    String SELECT_ALL = "SELECT *\n"
+            + "FROM HOADONCHITIET JOIN SANPHAMCHITIET ON HOADONCHITIET.MASPCT = SANPHAMCHITIET.MASPCT\n"
+            + "					JOIN SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n";
+    String SELECT_BY_ID_SQL = "SELECT MAHDCT,SANPHAMCHITIET.MASPCT,MAHD,MASERI,TENSP,TENSPCT,HOADONCHITIET.SOLUONG,DONGIA\n"
             + "FROM HOADONCHITIET JOIN SANPHAMCHITIET ON HOADONCHITIET.MASPCT = SANPHAMCHITIET.MASPCT\n"
             + "					JOIN SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "WHERE MAHD = ?";
 
-    String INSERT_SQL = "INSERT INTO HOADONCHITIET VALUES(?,?,?,?)";
+    String INSERT_SQL = "INSERT INTO HOADONCHITIET VALUES(?,?,?,?,?)";
     String DELETE_SQL = "DELETE FROM HOADONCHITIET WHERE MAHD = ?";
 
     @Override
@@ -26,6 +29,7 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
                 HoaDonChiTiet hd = new HoaDonChiTiet();
                 hd.setMaHDCT(rs.getInt("MAHDCT"));
                 hd.setMaSPCT(rs.getString("MASPCT"));
+                hd.setMSeri(rs.getString("MASERI"));
                 hd.setTenSP(rs.getString("TENSP"));
                 hd.setTenSPCT(rs.getString("TENSPCT"));
                 hd.setMaHD(rs.getString("MAHD"));
@@ -48,7 +52,7 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
 
     @Override
     public void insert(HoaDonChiTiet entity) {
-        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaSPCT(), entity.getMaHD(), entity.getSoLuong(), entity.getDonGia());
+        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaSPCT(), entity.getMaHD(),entity.getMSeri(), entity.getSoLuong(), entity.getDonGia());
     }
 
     @Override
@@ -59,6 +63,11 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
     @Override
     public void update(HoaDonChiTiet entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<HoaDonChiTiet> selectAll() {
+        return selectBySQL(SELECT_ALL);
     }
 
 }

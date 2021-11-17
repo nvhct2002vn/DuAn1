@@ -14,10 +14,10 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
     String SELECT_ALL_SQL = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH";
-    String SELECT_BY_ID_SQL = "SELECT MAHD,NHANVIEN.MANV,KHACHHANG.DIACHI,TENNV,KHACHHANG.MAKH,TENKH,KHACHHANG.DIENTHOAI,NGAYLAP,TRANGTHAI_TT,HINHTHUC_TT,HINHTHUCGIAOHANG,TIENTHUATRAKHACH,TONGTIEN,GHICHU\n"
+    String SELECT_BY_ID_SQL = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
-            + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
-            + "WHERE MAHD LIKE ?";
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE MAHD LIKE ? OR KHACHHANG.MAKH LIKE ? OR NHANVIEN.MANV LIKE ? OR TENKH LIKE ? OR TENNV LIKE ?";
     String SELECT_BY_CHOTT = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH "
@@ -66,22 +66,13 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
     }
 
     @Override
-    public HoaDon selectById(String key) {
-        List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL, "%" + key + "%");
-        if (list.isEmpty()) {
-            return null;
-        }
-        return list.get(0);
-    }
-
-    @Override
     public List<HoaDon> selectByHDChoThanhToan() {
         return selectBySQL(SELECT_BY_CHOTT);
     }
 
     @Override
     public List<HoaDon> selectByTimKiem(String key) {
-        List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL, "%" + key + "%");
+        List<HoaDon> list = selectBySQL(SELECT_BY_ID_SQL, "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%");
         return list;
     }
 

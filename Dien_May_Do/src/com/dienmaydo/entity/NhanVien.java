@@ -12,11 +12,13 @@ import java.util.Date;
 public class NhanVien {
     private String MaNV;
     private String MaVT;
+    private String MatKhau;
     private String TenNV;
     private String DiaChi;
     private String DienThoai;
     private boolean GioiTinh;
     private Date NgaySinh;
+    private String TrangThai;
 
     public String getMaNV() {
         return MaNV;
@@ -32,6 +34,14 @@ public class NhanVien {
 
     public void setMaVT(String MaVT) {
         this.MaVT = MaVT;
+    }
+
+    public String getMatKhau() {
+        return MatKhau;
+    }
+
+    public void setMatKhau(String MatKhau) {
+        this.MatKhau = MatKhau;
     }
 
     public String getTenNV() {
@@ -72,6 +82,14 @@ public class NhanVien {
 
     public void setNgaySinh(Date NgaySinh) {
         this.NgaySinh = NgaySinh;
+    }
+
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
     }
     
 }

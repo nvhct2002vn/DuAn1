@@ -5,8 +5,8 @@
  */
 package com.dienmaydo.gui;
 
-import com.dienmaydo.entity.TaiKhoan;
-import com.dienmaydo.service.TaiKhoanService;
+import com.dienmaydo.entity.NhanVien;
+import com.dienmaydo.service.NhanVienService;
 import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 
@@ -16,7 +16,7 @@ import com.dienmaydo.utils.Msgbox;
  */
 public class F_DangNhap extends javax.swing.JDialog {
 
-    TaiKhoanService tkService = new TaiKhoanService();
+    NhanVienService nvService = new NhanVienService();
 
     /**
      * Creates new form F_DangNhap
@@ -27,7 +27,7 @@ public class F_DangNhap extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         
         txtUserName.setText("NV002");
-        txtPasss.setText("345");
+        txtPasss.setText("123");
     }
 
     /**
@@ -239,18 +239,18 @@ public class F_DangNhap extends javax.swing.JDialog {
         try {
             String username = txtUserName.getText();
             String pass = new String(txtPasss.getPassword());
-            TaiKhoan tk = tkService.selectByID(username);
+            NhanVien nv = nvService.selectByID(username);
             if (username.trim().equals("")) {
                 Msgbox.alert(this, "Username không được bỏ trống");
             } else if (pass.trim().equals("")) {
                 Msgbox.alert(this, "Password không được bỏ trống");
-            } else if (tk == null) {
+            } else if (nv == null) {
                 Msgbox.alert(this, "Sai Username");
-            } else if (!pass.equals(tk.getMatKhau())) {
+            } else if (!pass.equals(nv.getMatKhau())) {
                 Msgbox.alert(this, "Sai mật khẩu!");
             } else {
                 Msgbox.alert(this, "Đăng nhập thành công!");
-                Auth.user = tk;
+                Auth.user = nv;
                 this.dispose();
             }
         } catch (Exception e) {

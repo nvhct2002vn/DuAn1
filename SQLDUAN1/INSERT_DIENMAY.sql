@@ -32,12 +32,12 @@ VALUES  ('VT01', N'Quản Lý'),
 
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','VT01', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19'),
-		('NV002','VT02', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21'),
-		('NV003','VT01', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01'),
-		('NV004','VT02', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 1, '1998-02-02'),
-		('NV005','VT01', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03'),
-		('NV006','VT02', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04')
+VALUES  ('NV001','VT01','123', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19',N'Đang làm việc'),
+		('NV002','VT02','123', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21',N'Đang làm việc'),
+		('NV003','VT01','123', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01',N'Đang làm việc'),
+		('NV004','VT02','123', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 1, '1998-02-02',N'Đang làm việc'),
+		('NV005','VT01','123', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03',N'Đang làm việc'),
+		('NV006','VT02','123', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04',N'Đang làm việc')
 
 
 INSERT INTO XUATXU
@@ -60,15 +60,6 @@ VALUES  ('SP001','DM001', 1, N'Máy lạnh'),
 		('SP009','DM009',2, N'Bình nóng lạnh')
 
 
-
-INSERT INTO TAIKHOAN
-VALUES  ('NV001', 'VT01', '123', 1),
-		('NV002', 'VT02', '345', 1),
-		('NV003', 'VT01', '456', 1),
-		('NV004', 'VT02', '567',1),
-		('NV005', 'VT01', '678', 1),
-		('NV006', 'VT02', '789', 1)
-
 INSERT INTO KHACHHANG
 VALUES	('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',N'NO STATUS'),
 		('KH02',N'Trinh Thi Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hoa',N'NO STATUS'),
@@ -87,9 +78,9 @@ VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặ
 		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,280000,N'NOT'),
 		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,300000,N'NOT'),
 		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
-		('HD007','NV007','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
-		('HD008','NV008','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,105000,N'NOT'),
-		('HD009','NV009','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,50000,N'NOT')
+		('HD007','NV001','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
+		('HD008','NV002','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,105000,N'NOT'),
+		('HD009','NV003','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,50000,N'NOT')
 
 
 
@@ -181,18 +172,17 @@ VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001
 		('SPCT07', 'IME007', 'SP007', 'MS001', 'KT007', 'CL007', 'TT007', 'KL007',N'MC-CL575KN49 2000W', 100, 0, 600, 2000, N'No Mô Tả'),
 		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL001', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 80, 0, 1000, 1500, N'No Mô Tả'),
 		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 70, 1, 900, 1000, N'No Mô Tả')
-		
 
 INSERT INTO HOADONCHITIET
-VALUES  ('SPCT01', 'HD001', 90, 3000),
-		('SPCT02', 'HD002', 900, 4000),
-		('SPCT03', 'HD003', 40, 4000),
-		('SPCT04', 'HD004', 80, 3500),
-		('SPCT05', 'HD005', 100, 3000),
-		('SPCT06', 'HD006', 90, 2000),
-		('SPCT07', 'HD007', 90, 2000),
-		('SPCT08', 'HD008', 70, 1500),
-		('SPCT09', 'HD009', 50, 1000)
+VALUES  ('SPCT01', 'HD001','4073081263154183022', 90, 3000),
+		('SPCT02', 'HD002','139114013456553883', 900, 4000),
+		('SPCT03', 'HD003','5383890589784753724', 40, 4000),
+		('SPCT04', 'HD004','6689788920981285071', 80, 3500),
+		('SPCT05', 'HD005','8980075502108027800', 100, 3000),
+		('SPCT06', 'HD006','621304206849278037' ,90, 2000),
+		('SPCT07', 'HD007','6947129418687290771', 90, 2000),
+		('SPCT08', 'HD008','7793090500907240648',70, 1500),
+		('SPCT09', 'HD009','8363816272817477448',50, 1000)
 
 
 INSERT INTO KHUYENMAI

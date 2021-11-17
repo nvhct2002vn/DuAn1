@@ -18,7 +18,9 @@ public class KhachHangJframe extends javax.swing.JFrame {
 
     KhachHangService KHService = new KhachHangService();
     int row = -1;
+
     public static String maKH = null;
+    public static String tenKH = null;
 
     /**
      * Creates new form KhachHangJframe
@@ -423,8 +425,8 @@ void FillTable() {
 
     void chonKhachHang() {
         row = tblQuanLyKhacHang.getSelectedRow();
-        String maKH = tblQuanLyKhacHang.getValueAt(row, 0).toString().trim();
+        maKH = tblQuanLyKhacHang.getValueAt(row, 0).toString();
+        tenKH = tblQuanLyKhacHang.getValueAt(row, 1).toString();
         dispose();
     }
-
 }

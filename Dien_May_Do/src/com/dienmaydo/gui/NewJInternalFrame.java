@@ -10,7 +10,6 @@ package com.dienmaydo.gui;
  * @author DO TAT HOA
  */
 public class NewJInternalFrame extends javax.swing.JInternalFrame {
-
     /**
      * Creates new form NewJInternalFrame
      */
@@ -35,7 +34,7 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
 
         pack();

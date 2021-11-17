@@ -11,8 +11,6 @@ public interface IHoaDonService<E, K> {
     List<E> selectBySQL(String sqlString, Object... args);
 
     List<E> selectAll();
-
-    E selectById(K key);
     
     List<E> selectByTimKiem(K key);
     

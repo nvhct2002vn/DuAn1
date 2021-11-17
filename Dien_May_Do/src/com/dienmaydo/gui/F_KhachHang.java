@@ -18,7 +18,6 @@ public class F_KhachHang extends javax.swing.JDialog {
 
     KhachHangService KHService = new KhachHangService();
     int row = -1;
-    String maKH;
 
     /**
      * Creates new form F_KhachHang
@@ -340,7 +339,6 @@ public class F_KhachHang extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        chonKhachHang();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -439,11 +437,6 @@ public class F_KhachHang extends javax.swing.JDialog {
                 x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.getTrangthai()
             });
         }
-    }
-
-    void chonKhachHang() {
-        row = tblQuanLyKhacHang.getSelectedRow();
-        maKH = tblQuanLyKhacHang.getValueAt(row, 0) + "";
     }
 
     //getForm

@@ -13,6 +13,7 @@ public class HoaDonChiTiet {
     private int MaHDCT;
     private String MaSPCT;
     private String MaHD;
+    private String MSeri;
     private String TenSP;
     private String TenSPCT;
     private int SoLuong;
@@ -73,5 +74,15 @@ public class HoaDonChiTiet {
     public void setTenSPCT(String TenSPCT) {
         this.TenSPCT = TenSPCT;
     }
+
+    public String getMSeri() {
+        return MSeri;
+    }
+
+    public void setMSeri(String MSeri) {
+        this.MSeri = MSeri;
+    }
+    
+    
 
 }

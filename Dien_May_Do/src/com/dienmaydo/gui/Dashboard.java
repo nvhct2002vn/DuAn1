@@ -40,8 +40,6 @@ public class Dashboard extends javax.swing.JFrame {
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
         
-//        txtTenNhanVien.setText(Auth.user.);
-        
     }
 
     /**

@@ -5,8 +5,7 @@
  */
 package com.dienmaydo.utils;
 
-import com.dienmaydo.entity.KhachHang;
-import com.dienmaydo.entity.TaiKhoan;
+import com.dienmaydo.entity.NhanVien;
 
 /**
  *
@@ -14,7 +13,7 @@ import com.dienmaydo.entity.TaiKhoan;
  */
 public class Auth {
 
-    public static TaiKhoan user = null;
+    public static NhanVien user = null;
     
     public static void clear() {
         Auth.user = null;

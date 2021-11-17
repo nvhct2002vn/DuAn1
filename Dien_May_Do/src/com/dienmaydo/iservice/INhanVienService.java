@@ -2,7 +2,7 @@ package com.dienmaydo.iservice;
 
 import java.util.List;
 
-public interface ITaiKhoanService<E, K> {
+public interface INhanVienService<E, K> {
 
     E selectByID(K key);
 
