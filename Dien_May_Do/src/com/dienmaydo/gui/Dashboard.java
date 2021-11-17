@@ -284,6 +284,9 @@ public class Dashboard extends javax.swing.JFrame {
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNhanVien.setText("Nhân viên");
         lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNhanVienMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblNhanVienMousePressed(evt);
             }
@@ -337,6 +340,9 @@ public class Dashboard extends javax.swing.JFrame {
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThongKe.setText("Thống kê");
         lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThongKeMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblThongKeMousePressed(evt);
             }
@@ -520,6 +526,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseClicked
         // TODO add your handling code here:
+        F_QuanLyKhachHang kh = new F_QuanLyKhachHang();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(kh).setVisible(true);
     }//GEN-LAST:event_lblKhachHangMouseClicked
 
     private void lblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMousePressed
@@ -540,6 +549,19 @@ public class Dashboard extends javax.swing.JFrame {
         jDesktopPane1.removeAll();
         jDesktopPane1.add(km).setVisible(true);
     }//GEN-LAST:event_lblKhuyenMaiMouseClicked
+
+    private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
+        F_ThongKe fThongKe = new F_ThongKe();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(fThongKe).setVisible(true);
+    }//GEN-LAST:event_lblThongKeMouseClicked
+
+    private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
+        // TODO add your handling code here:
+        F_NhanVien nv = new F_NhanVien();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(nv).setVisible(true);
+    }//GEN-LAST:event_lblNhanVienMouseClicked
 
     /**
      * @param args the command line arguments
