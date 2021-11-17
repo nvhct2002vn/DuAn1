@@ -1224,10 +1224,6 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     private void tblTTThuocTinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTTThuocTinhMouseClicked
         clickTbaleThuocTinh();
-        if (rdTTHinhAnh.isSelected()) {
-            int rowTT = tblTTThuocTinh.getSelectedRow();
-            lblHinhAnh.setIcon(XImage.read(tblTTThuocTinh.getValueAt(rowTT, 1)));
-        }
         // TODO add your handling code here:
     }//GEN-LAST:event_tblTTThuocTinhMouseClicked
 
