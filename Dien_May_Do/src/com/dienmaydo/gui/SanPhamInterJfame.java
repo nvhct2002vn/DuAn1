@@ -82,6 +82,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     int vitriSPCT;
     int dieuKien;
     boolean nhomPhoBien;
+    boolean trangThaiThuocTinh = false;
 
     /**
      * Creates new form SanPhamInterJfame
@@ -106,6 +107,8 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         fillTableSPCT();
         FillCbbMaSP();
         addDataFillCbbDM();
+        //Thuộc tính
+        fillTableChatlieu();
     }
 
     /**
@@ -823,28 +826,61 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thuộc tính", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Mã thuộc tính:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Tên thuộc tính:");
 
         btnGroupThuocTinhSP.add(rdTTChatLieu);
+        rdTTChatLieu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rdTTChatLieu.setSelected(true);
         rdTTChatLieu.setText("Chất liệu");
+        rdTTChatLieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdTTChatLieuActionPerformed(evt);
+            }
+        });
 
         btnGroupThuocTinhSP.add(rdTTKichThuoc);
+        rdTTKichThuoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rdTTKichThuoc.setText("Kích thước");
+        rdTTKichThuoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdTTKichThuocActionPerformed(evt);
+            }
+        });
 
         btnGroupThuocTinhSP.add(rdTTKhoiLuong);
+        rdTTKhoiLuong.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rdTTKhoiLuong.setText("Khối lượng");
+        rdTTKhoiLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdTTKhoiLuongActionPerformed(evt);
+            }
+        });
 
         btnGroupThuocTinhSP.add(rdTTMauSac);
+        rdTTMauSac.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rdTTMauSac.setText("Màu sắc");
+        rdTTMauSac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdTTMauSacActionPerformed(evt);
+            }
+        });
 
         btnGroupThuocTinhSP.add(rdTTTheTich);
+        rdTTTheTich.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rdTTTheTich.setText("Thể tích");
+        rdTTTheTich.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdTTTheTichActionPerformed(evt);
+            }
+        });
 
         cbbTTDonViTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        lblTTHinhAnh.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblTTHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTTHinhAnh.setText("Hình ảnh");
         lblTTHinhAnh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -854,8 +890,15 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
+        btnTTThem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnTTThem.setText("Thêm");
+        btnTTThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTTThemActionPerformed(evt);
+            }
+        });
 
+        btnTTSua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnTTSua.setText("Sửa");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -885,7 +928,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                     .addComponent(btnTTSua)
                     .addComponent(rdTTKhoiLuong)
                     .addComponent(rdTTMauSac))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rdTTTheTich, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(rdTTKichThuoc, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -941,6 +984,11 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblTTThuocTinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTTThuocTinhMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tblTTThuocTinh);
 
         javax.swing.GroupLayout pnThuocTinhLayout = new javax.swing.GroupLayout(pnThuocTinh);
@@ -955,7 +1003,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             .addGroup(pnThuocTinhLayout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
         );
 
         pnTongQuat.addTab("Thuộc tính sản phẩm", pnThuocTinh);
@@ -1142,6 +1190,55 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         chonAnh();
         // TODO add your handling code here:
     }//GEN-LAST:event_lblTTHinhAnhMouseClicked
+
+    private void rdTTChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTChatLieuActionPerformed
+        fillTableChatlieu();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdTTChatLieuActionPerformed
+
+    private void rdTTTheTichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTTheTichActionPerformed
+        fillTableTheTich();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdTTTheTichActionPerformed
+
+    private void rdTTKhoiLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTKhoiLuongActionPerformed
+        fillTableKhoiLuong();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdTTKhoiLuongActionPerformed
+
+    private void rdTTMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTMauSacActionPerformed
+        fillTableMauSac();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdTTMauSacActionPerformed
+
+    private void rdTTKichThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTKichThuocActionPerformed
+        fillTableKichThuoc();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdTTKichThuocActionPerformed
+
+    private void tblTTThuocTinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTTThuocTinhMouseClicked
+        clickTbaleThuocTinh();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblTTThuocTinhMouseClicked
+
+    private void btnTTThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTThemActionPerformed
+        if (rdTTChatLieu.isSelected()) {
+
+        }
+        if (rdTTKhoiLuong.isSelected()) {
+
+        }
+        if (rdTTKichThuoc.isSelected()) {
+
+        }
+        if (rdTTMauSac.isSelected()) {
+
+        }
+        if (rdTTTheTich.isSelected()) {
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTTThemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1854,6 +1951,123 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                 }
             }
         }
+    }
+
+    //--------------------Thuộc tính--------------------------------------------
+    void fillTableTheTich() {
+        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+        model.setRowCount(0);
+        List<TheTich> list = daoTT.selectAll();
+        for (TheTich x : list) {
+            model.addRow(new Object[]{
+                x.getMaTheTich(), x.getTheTich() + ""
+            });
+        }
+    }
+
+    void InsertTheTich() {
+        try {
+            TheTich tt = GetFromTT();
+            daoTT.insertData(tt);
+            fillTableTheTich();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void UpdateTheTich() {
+        try {
+            TheTich tt = GetFromTT();
+            daoTT.updateData(tt);
+            fillTableTheTich();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void fillTableKichThuoc() {
+        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+        model.setRowCount(0);
+        List<KichThuoc> list = daoKT.selectAll();
+        for (KichThuoc x : list) {
+            model.addRow(new Object[]{
+                x.getMaKichThuoc(), x.getChieuDai() + " - " + x.getChieuRong() + " - " + x.getChieuCao()
+            });
+        }
+    }
+
+    void InsertKichThuoc() {
+        try {
+            TheTich tt = GetFromTT();
+            daoTT.insertData(tt);
+            fillTableTheTich();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void UpdateKichThuoc() {
+        try {
+            TheTich tt = GetFromTT();
+            daoTT.updateData(tt);
+            fillTableTheTich();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void fillTableKhoiLuong() {
+        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+        model.setRowCount(0);
+        List<KhoiLuong> list = daoKL.selectAll();
+        for (KhoiLuong x : list) {
+            model.addRow(new Object[]{
+                x.getMaKL(), x.getKhoiLuong() + ""
+            });
+        }
+    }
+
+    void fillTableChatlieu() {
+        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+        model.setRowCount(0);
+        List<ChatLieu> list = daoCL.selectAll();
+        for (ChatLieu x : list) {
+            model.addRow(new Object[]{
+                x.getMaChatLieu(), x.getChatLieu() + ""
+            });
+        }
+    }
+
+    void fillTableMauSac() {
+        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+        model.setRowCount(0);
+        List<MauSac> list = daoMS.selectAll();
+        for (MauSac x : list) {
+            model.addRow(new Object[]{
+                x.getMaMauSac(), x.getTenMauSac() + ""
+            });
+        }
+    }
+
+    TheTich GetFromTT() {
+        TheTich tt = new TheTich();
+        tt.setMaTheTich(txtTTMaThuocTinh.getText());
+        tt.setTheTich(Float.valueOf(txtTTTenThuocTinh.getText()));
+        return tt;
+    }
+
+    KichThuoc GetFromKT() {
+        KichThuoc tt = new KichThuoc();
+        DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
+        tt.setMaKichThuoc(txtTTMaThuocTinh.getText());
+        tt.setMaDV(dvt.getMaDV());
+        return tt;
+    }
+
+    void clickTbaleThuocTinh() {
+        int vitriThuocTinh = tblTTThuocTinh.getSelectedRow();
+        txtTTMaThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 0));
+        txtTTTenThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1));
     }
 
 }
