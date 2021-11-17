@@ -337,6 +337,9 @@ public class Dashboard extends javax.swing.JFrame {
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThongKe.setText("Thống kê");
         lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThongKeMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblThongKeMousePressed(evt);
             }
@@ -540,6 +543,12 @@ public class Dashboard extends javax.swing.JFrame {
         jDesktopPane1.removeAll();
         jDesktopPane1.add(km).setVisible(true);
     }//GEN-LAST:event_lblKhuyenMaiMouseClicked
+
+    private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
+        F_ThongKe fThongKe = new F_ThongKe();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(fThongKe).setVisible(true);
+    }//GEN-LAST:event_lblThongKeMouseClicked
 
     /**
      * @param args the command line arguments
