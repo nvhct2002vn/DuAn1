@@ -190,11 +190,11 @@ VALUES  ('SPCT01', 'HD001','4073081263154183022', 90, 3000),
 
 
 INSERT INTO KHUYENMAI
-VALUES  ('KM001' ,N'Sale 1-1','ONLINE','2021-01-01','2021-01-02',50,'No Mô Tả', N'CÒN ÁP DỤNG'),
-		('KM002' ,N'Sale 2-2','ONLINE','2021-02-02','2021-02-03',50,'No Mô Tả',N'CÒN ÁP DỤNG'),
-		('KM003' ,N'Sale 3-3','ONLINE','2021-03-03','2021-03-04',50,'No Mô Tả',N'CÒN ÁP DỤNG'),
-		('KM004' ,N'Sale 4-4','ONLINE','2021-04-04','2021-04-05',50,'No Mô Tả',N'CÒN ÁP DỤNG'),
-		('KM005' ,N'Sale 5-5','ONLINE','2021-05-05','2021-05-06',50,'No Mô Tả',N'CÒN ÁP DỤNG')
+VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo %','2021-11-11','2021-11-12',50,N'No Mô Tả', N'CÒN ÁP DỤNG'),
+		('KM002' ,N'Ngày 12-12',N'Giảm theo tiền','2021-12-12','2021-12-13',500000,N'No Mô Tả',N'CÒN ÁP DỤNG'),
+		('KM003' ,N'Ngày 01-01',N'Giảm theo tiền','2021-01-01','2021-01-02',100000,N'No Mô Tả',N'CÒN ÁP DỤNG'),
+		('KM004' ,N'Ngày 02-02',N'Giảm theo %','2021-02-02','2021-02-03',50,N'No Mô Tả',N'CÒN ÁP DỤNG'),
+		('KM005' ,N'Ngày 03-03',N'Giảm theo tiền','2021-03-03','2021-03-04',200000,N'No Mô Tả',N'CÒN ÁP DỤNG')
 
 
 
