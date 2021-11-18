@@ -243,9 +243,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblThongTin);
 
-        btnChiTietSP.setBackground(new java.awt.Color(0, 0, 0));
+        btnChiTietSP.setBackground(new java.awt.Color(255, 204, 0));
         btnChiTietSP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnChiTietSP.setForeground(new java.awt.Color(255, 255, 255));
+        btnChiTietSP.setForeground(new java.awt.Color(51, 51, 51));
         btnChiTietSP.setText("Chi tiết sản phẩm");
         btnChiTietSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,9 +253,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnThem.setBackground(new java.awt.Color(0, 0, 0));
+        btnThem.setBackground(new java.awt.Color(255, 204, 0));
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnThem.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem.setForeground(new java.awt.Color(51, 51, 51));
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,9 +263,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSua.setBackground(new java.awt.Color(0, 0, 0));
+        btnSua.setBackground(new java.awt.Color(255, 204, 0));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSua.setForeground(new java.awt.Color(255, 255, 255));
+        btnSua.setForeground(new java.awt.Color(51, 51, 51));
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,9 +273,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnLamMoi.setBackground(new java.awt.Color(0, 0, 0));
+        btnLamMoi.setBackground(new java.awt.Color(255, 204, 0));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
+        btnLamMoi.setForeground(new java.awt.Color(51, 51, 51));
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -599,9 +599,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblSanPhamChiTiet);
 
-        btnThemSPCT.setBackground(new java.awt.Color(0, 0, 0));
+        btnThemSPCT.setBackground(new java.awt.Color(255, 204, 0));
         btnThemSPCT.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnThemSPCT.setForeground(new java.awt.Color(255, 255, 255));
+        btnThemSPCT.setForeground(new java.awt.Color(51, 51, 51));
         btnThemSPCT.setText("Thêm");
         btnThemSPCT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -609,9 +609,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSuaSPCT.setBackground(new java.awt.Color(0, 0, 0));
+        btnSuaSPCT.setBackground(new java.awt.Color(255, 204, 0));
         btnSuaSPCT.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSuaSPCT.setForeground(new java.awt.Color(255, 255, 255));
+        btnSuaSPCT.setForeground(new java.awt.Color(51, 51, 51));
         btnSuaSPCT.setText("Sửa");
         btnSuaSPCT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -619,9 +619,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnLamMoiSPCT.setBackground(new java.awt.Color(0, 0, 0));
+        btnLamMoiSPCT.setBackground(new java.awt.Color(255, 204, 0));
         btnLamMoiSPCT.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnLamMoiSPCT.setForeground(new java.awt.Color(255, 255, 255));
+        btnLamMoiSPCT.setForeground(new java.awt.Color(51, 51, 51));
         btnLamMoiSPCT.setText("Làm mới");
         btnLamMoiSPCT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -887,7 +887,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
+        btnTTThem.setBackground(new java.awt.Color(255, 204, 0));
         btnTTThem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTTThem.setForeground(new java.awt.Color(51, 51, 51));
         btnTTThem.setText("Thêm");
         btnTTThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -895,7 +897,9 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
+        btnTTSua.setBackground(new java.awt.Color(255, 204, 0));
         btnTTSua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTTSua.setForeground(new java.awt.Color(51, 51, 51));
         btnTTSua.setText("Sửa");
         btnTTSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

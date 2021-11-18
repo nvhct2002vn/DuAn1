@@ -90,6 +90,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\category.png")); // NOI18N
         jLabel2.setText("Danh mục");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -113,6 +114,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\account.png")); // NOI18N
 
         txtTenNhanVien.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtTenNhanVien.setForeground(new java.awt.Color(51, 51, 51));
@@ -142,6 +144,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblSanPham.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSanPham.setForeground(new java.awt.Color(51, 51, 51));
         lblSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSanPham.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\product.png")); // NOI18N
         lblSanPham.setText("Sản phẩm");
         lblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,6 +173,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblBanHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblBanHang.setForeground(new java.awt.Color(51, 51, 51));
         lblBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBanHang.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\sell.png")); // NOI18N
         lblBanHang.setText("Bán Hàng");
         lblBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -198,6 +202,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblHoaDon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblHoaDon.setForeground(new java.awt.Color(51, 51, 51));
         lblHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHoaDon.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\receipt.png")); // NOI18N
         lblHoaDon.setText("Hóa đơn");
         lblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -226,6 +231,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblKhuyenMai.setForeground(new java.awt.Color(51, 51, 51));
         lblKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblKhuyenMai.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\promotion.png")); // NOI18N
         lblKhuyenMai.setText("Khuyến mại");
         lblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,6 +260,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblThoat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblThoat.setForeground(new java.awt.Color(51, 51, 51));
         lblThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThoat.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\exit.png")); // NOI18N
         lblThoat.setText("Thoát");
         lblThoat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -282,6 +289,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(51, 51, 51));
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNhanVien.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\Staff.png")); // NOI18N
         lblNhanVien.setText("Nhân viên");
         lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -310,6 +318,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblKhachHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblKhachHang.setForeground(new java.awt.Color(51, 51, 51));
         lblKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblKhachHang.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\search_client_24px.png")); // NOI18N
         lblKhachHang.setText("Khách hàng");
         lblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -338,6 +347,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblThongKe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblThongKe.setForeground(new java.awt.Color(51, 51, 51));
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThongKe.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\statistical.png")); // NOI18N
         lblThongKe.setText("Thống kê");
         lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

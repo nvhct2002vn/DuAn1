@@ -440,9 +440,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTenKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(lblMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnShow)
@@ -802,8 +800,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
         row3 = tblHoaDonCho.getSelectedRow();
         if (row3 < 0) {
             Msgbox.alert(this, "Vui lòng chọn hóa đơn chờ\nNếu chưa có vui lòng tạo!");
-        }
-        else if (row1 < 0) {
+        } else if (row1 < 0) {
             Msgbox.alert(this, "Vui lòng chọn sản phẩm trên table!");
         } else {
             String soluong = Msgbox.prompt(this, "Mời bạn nhập số lượng sản phẩm:");
@@ -1003,7 +1000,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
 
     public void luuHoaDon() {
         try {
-            if (txtMaHoaDon.getText().trim().trim().equals("")) {
+            if (txtMaHoaDon.getText().trim().equals("")) {
                 Msgbox.alert(this, "Vui lòng nhập mã hóa đơn trước khi lưu");
                 return;
             } else if (lblMaKH.getText().trim().equals("")) {
@@ -1189,7 +1186,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
                 PdfPCell data3 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 2) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
                 PdfPCell data4 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 3) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
                 PdfPCell data5 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 4) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-                PdfPCell data6 = new PdfPCell(new Paragraph(Float.parseFloat(tblSanPhamChon.getValueAt(i, 3)+"") * Integer.parseInt(tblSanPhamChon.getValueAt(i, 4) + "") + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                PdfPCell data6 = new PdfPCell(new Paragraph(Float.parseFloat(tblSanPhamChon.getValueAt(i, 3) + "") * Integer.parseInt(tblSanPhamChon.getValueAt(i, 4) + "") + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
 
                 data1.setHorizontalAlignment(Element.ALIGN_CENTER);
                 data2.setHorizontalAlignment(Element.ALIGN_CENTER);
