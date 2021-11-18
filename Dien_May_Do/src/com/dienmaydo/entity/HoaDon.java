@@ -83,11 +83,6 @@ public class HoaDon {
         this.MaKH = MaKH;
     }
 
-    @Override
-    public String toString() {
-        return TrangThai_TT;
-    }
-
     public Float getTienThuaTraKhach() {
         return TienThuaTraKhach;
     }
