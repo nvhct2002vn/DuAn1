@@ -674,7 +674,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         btnGroupSLHangTon.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton2.setText("Dưới định mức tồn");
+        jRadioButton2.setText("Dưới định mức");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -684,7 +684,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         btnGroupSLHangTon.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton1.setText("Vượt định mức tồn");
+        jRadioButton1.setText("Vượt định mức");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);

@@ -93,6 +93,9 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\category.png")); // NOI18N
         jLabel2.setText("Danh mục");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jLabel2MouseReleased(evt);
             }
@@ -572,6 +575,13 @@ public class Dashboard extends javax.swing.JFrame {
         jDesktopPane1.removeAll();
         jDesktopPane1.add(nv).setVisible(true);
     }//GEN-LAST:event_lblNhanVienMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        F_DanhMuc1 dm = new F_DanhMuc1();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(dm).setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments

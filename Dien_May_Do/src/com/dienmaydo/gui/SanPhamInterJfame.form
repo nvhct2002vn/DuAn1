@@ -1071,7 +1071,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="11" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="D&#x1b0;&#x1edb;i &#x111;&#x1ecb;nh m&#x1ee9;c t&#x1ed3;n"/>
+                        <Property name="text" type="java.lang.String" value="D&#x1b0;&#x1edb;i &#x111;&#x1ecb;nh m&#x1ee9;c"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
@@ -1088,7 +1088,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="11" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="V&#x1b0;&#x1ee3;t &#x111;&#x1ecb;nh m&#x1ee9;c t&#x1ed3;n"/>
+                        <Property name="text" type="java.lang.String" value="V&#x1b0;&#x1ee3;t &#x111;&#x1ecb;nh m&#x1ee9;c"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>

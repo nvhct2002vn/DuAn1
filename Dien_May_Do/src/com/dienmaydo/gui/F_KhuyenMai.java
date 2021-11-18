@@ -111,7 +111,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(153, 153, 153)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                        .addComponent(txtGiamGia))
                     .addComponent(cboTenDanhMuc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +217,9 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        btnLuu.setBackground(new java.awt.Color(255, 204, 0));
         btnLuu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnLuu.setForeground(new java.awt.Color(51, 51, 51));
         btnLuu.setText("Lưu ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
