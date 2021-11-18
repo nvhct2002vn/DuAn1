@@ -139,11 +139,11 @@ public class F_BanHang extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã sản phẩm", "Mã seri", "Tên sản phẩm", "Đơn giá", "Số lượng"
+                "Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Số lượng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -337,7 +337,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Hình thức thanh toán:");
 
-        cboHinhThucTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TIỀN MẶT", "CHUYỂN KHOẢN", "THẺ" }));
+        cboHinhThucTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản", "Thẻ" }));
 
         txtMaHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,7 +392,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Khách cần trả:");
 
-        cboTrangThaiGiaoHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BÁN TRỰC TIẾP", "KHÁC" }));
+        cboTrangThaiGiaoHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bán trực tiếp", "Khác" }));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Trạng thái giao hàng:");
@@ -502,18 +502,21 @@ public class F_BanHang extends javax.swing.JInternalFrame {
                             .addComponent(lblKhacCanTra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblGiamGia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTongTien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboHinhThucTT, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboTrangThaiGiaoHang, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(15, 15, 15)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cboTrangThaiGiaoHang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboHinhThucTT, 0, 185, Short.MAX_VALUE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -798,39 +801,34 @@ public class F_BanHang extends javax.swing.JInternalFrame {
     public void themSanPham() {
         row1 = tblChonSanPham.getSelectedRow();
         row3 = tblHoaDonCho.getSelectedRow();
-        if (row3 < 0) {
-            Msgbox.alert(this, "Vui lòng chọn hóa đơn chờ\nNếu chưa có vui lòng tạo!");
-        } else if (row1 < 0) {
-            Msgbox.alert(this, "Vui lòng chọn sản phẩm trên table!");
-        } else {
-            String soluong = Msgbox.prompt(this, "Mời bạn nhập số lượng sản phẩm:");
-            if (Integer.parseInt(soluong) > Integer.parseInt(tblChonSanPham.getValueAt(row1, 7) + "")) {
-                Msgbox.alert(this, "Số lượng sản phẩm bạn vừa nhập vượt quá số lượng trong kho!");
-                return;
-            } else if (Integer.parseInt(soluong) < 0) {
-                Msgbox.alert(this, "Số lượng sản phẩm không được nhỏ hơn 0!");
-                return;
+        try {
+            if (row3 < 0) {
+                Msgbox.alert(this, "Vui lòng chọn hóa đơn chờ\nNếu chưa có vui lòng tạo!");
+            } else if (row1 < 0) {
+                Msgbox.alert(this, "Vui lòng chọn sản phẩm trên table!");
             } else {
-                Random random = new Random();
-                while (true) {
-                    long so = random.nextLong();
-                    if (so < 0) {
-                        continue;
-                    } else if (checkTrungSeri(so)) {
-                        continue;
-                    } else {
-                        Vector v = new Vector();
-                        v.add(tblChonSanPham.getValueAt(row1, 0));
-                        v.add(so);
-                        v.add(tblChonSanPham.getValueAt(row1, 1));
-                        v.add(tblChonSanPham.getValueAt(row1, 2));
-                        v.add(soluong);
-                        model2.addRow(v);
-                        donHang();
-                        break;
-                    }
+                String soluong = Msgbox.prompt(this, "Mời bạn nhập số lượng sản phẩm:");
+                if (Integer.parseInt(soluong) > Integer.parseInt(tblChonSanPham.getValueAt(row1, 7) + "")) {
+                    Msgbox.alert(this, "Số lượng sản phẩm bạn vừa nhập vượt quá số lượng trong kho!");
+                    return;
+                } else if (Integer.parseInt(soluong) < 0) {
+                    Msgbox.alert(this, "Số lượng sản phẩm không được nhỏ hơn 0!");
+                    return;
+                } else {
+
+                    Vector v = new Vector();
+                    v.add(tblChonSanPham.getValueAt(row1, 0));
+                    v.add(tblChonSanPham.getValueAt(row1, 1));
+                    v.add(tblChonSanPham.getValueAt(row1, 2));
+                    v.add(soluong);
+                    model2.addRow(v);
+                    donHang();
                 }
             }
+        }catch(NumberFormatException e){
+            Msgbox.alert(this, "Số lượng sản phẩm phải là số nguyên");
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -887,8 +885,8 @@ public class F_BanHang extends javax.swing.JInternalFrame {
             txtTienTraKhach.setText("0");
         } else {
             for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
-                float donGia = Float.parseFloat(tblSanPhamChon.getValueAt(i, 3) + "");
-                int soLuong = Integer.parseInt(tblSanPhamChon.getValueAt(i, 4) + "");
+                float donGia = Float.parseFloat(tblSanPhamChon.getValueAt(i, 2) + "");
+                int soLuong = Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "");
                 tongTien += (float) (soLuong * donGia);
 
                 lblTongTien.setText(tongTien + "");
@@ -929,7 +927,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
                     //Tạo đối tượng sản phẩm chi tết để lấy ra số lượng tồn dựa vào sanphamchitietService
                     SanPhamChiTiet s = spService.selectByID(tblSanPhamChon.getValueAt(i, 0) + "");
                     //Tạo biến int lưu lại số lượng còn lại trong kho khi đã bán ra 
-                    int soLuongMoi = (s.getSoLuong() - Integer.parseInt(tblSanPhamChon.getValueAt(i, 4) + ""));
+                    int soLuongMoi = (s.getSoLuong() - Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + ""));
 
                     //Thực hiện update số lượng trong bảng sản phẩm
                     SanPhamChiTiet sp = new SanPhamChiTiet();
@@ -956,7 +954,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
         hd.setMaNV(Auth.user.getMaNV());
         hd.setMaKH(lblMaKH.getText());
         hd.setHinhThuc_TT(cboHinhThucTT.getSelectedItem() + "");
-        hd.setTrangThai_TT("CHỜ THANH TOÁN");
+        hd.setTrangThai_TT("Chờ thanh toán");
         hd.setHinhThucGiaoHang(cboTrangThaiGiaoHang.getSelectedItem() + "");
         hd.setTienThuaTraKhach(Float.parseFloat(txtTienTraKhach.getText()));
         hd.setTongTien(Float.parseFloat(lblTongTien.getText()));
@@ -1041,9 +1039,8 @@ public class F_BanHang extends javax.swing.JInternalFrame {
             HoaDonChiTiet hdct = new HoaDonChiTiet();
             hdct.setMaSPCT(tblSanPhamChon.getValueAt(i, 0) + "");
             hdct.setMaHD(txtMaHoaDon.getText());
-            hdct.setMSeri(tblSanPhamChon.getValueAt(i, 1) + "");
-            hdct.setSoLuong(Integer.parseInt(tblSanPhamChon.getValueAt(i, 4) + ""));
-            hdct.setDonGia(Float.parseFloat(tblSanPhamChon.getValueAt(i, 3) + ""));
+            hdct.setSoLuong(Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + ""));
+            hdct.setDonGia(Float.parseFloat(tblSanPhamChon.getValueAt(i, 2) + ""));
             //Thêm từng hóa đơn chi tiết theo điều kiện i
             hdctService.insert(hdct);
         }
@@ -1056,6 +1053,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
         try {
             HoaDon hd = hdService.selectById(txtMaHoaDon.getText());
             lblMaKH.setText(hd.getMaKH());
+            lblTenKH.setText(hd.getTenKH());
             lblTongTien.setText(hd.getTongTien() + "");
             lblKhacCanTra.setText(hd.getTongTien() + "");
             txtTienTraKhach.setText(hd.getTienThuaTraKhach() + "");
@@ -1066,7 +1064,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
             List<HoaDonChiTiet> list = hdctService.selectById(txtMaHoaDon.getText());
             for (HoaDonChiTiet x : list) {
                 model2.addRow(new Object[]{
-                    x.getMaSPCT(), x.getMSeri(), x.getTenSP() + " " + x.getTenSPCT(), x.getDonGia(), x.getSoLuong()
+                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getDonGia(), x.getSoLuong()
                 });
             }
             txtMaHoaDon.setEditable(false);
@@ -1084,18 +1082,6 @@ public class F_BanHang extends javax.swing.JInternalFrame {
             KhachHangJframe.maKH = null;
             KhachHangJframe.tenKH = null;
         }
-    }
-
-    public boolean checkTrungSeri(long x) {
-        boolean check = false;
-        List<HoaDonChiTiet> list = hdctService.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMSeri().equals(x)) {
-                check = true;
-                break;
-            }
-        }
-        return check;
     }
 
     public boolean checkTrungMaHD(String x) {
@@ -1140,101 +1126,89 @@ public class F_BanHang extends javax.swing.JInternalFrame {
             soDienThoai1.setAlignment(Element.ALIGN_LEFT);
             soDienThoai1.setSpacingAfter(15);
 
-            PdfPTable table = new PdfPTable(6);
-            float[] withsKM = {10f, 20f, 20f, 10f, 10f, 12f};
+            PdfPTable table = new PdfPTable(5);
+            float[] withsKM = {10f, 20f, 10f, 5f, 15f};
             table.setWidthPercentage(100);
             table.setWidths(withsKM);
             table.setSpacingAfter(25);
             PdfPCell tenCot1 = new PdfPCell(new Paragraph("Ma san pham", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot2 = new PdfPCell(new Paragraph("Ma seri", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot3 = new PdfPCell(new Paragraph("Ten san pham", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot4 = new PdfPCell(new Paragraph("Don Gia", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot5 = new PdfPCell(new Paragraph("So luong", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot6 = new PdfPCell(new Paragraph("Thanh Tien", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+            PdfPCell tenCot2 = new PdfPCell(new Paragraph("Ten san pham", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+            PdfPCell tenCot3 = new PdfPCell(new Paragraph("Don Gia", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+            PdfPCell tenCot4 = new PdfPCell(new Paragraph("So luong", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+            PdfPCell tenCot5 = new PdfPCell(new Paragraph("Thanh Tien", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
 
             tenCot1.setPadding(5);
             tenCot2.setPadding(5);
             tenCot3.setPadding(5);
             tenCot4.setPadding(5);
             tenCot5.setPadding(5);
-            tenCot6.setPadding(5);
 
             tenCot1.setBackgroundColor(BaseColor.DARK_GRAY);
             tenCot2.setBackgroundColor(BaseColor.DARK_GRAY);
             tenCot3.setBackgroundColor(BaseColor.DARK_GRAY);
             tenCot4.setBackgroundColor(BaseColor.DARK_GRAY);
             tenCot5.setBackgroundColor(BaseColor.DARK_GRAY);
-            tenCot6.setBackgroundColor(BaseColor.DARK_GRAY);
 
             tenCot1.setHorizontalAlignment(Element.ALIGN_CENTER);
             tenCot2.setHorizontalAlignment(Element.ALIGN_CENTER);
             tenCot3.setHorizontalAlignment(Element.ALIGN_CENTER);
             tenCot4.setHorizontalAlignment(Element.ALIGN_CENTER);
             tenCot5.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tenCot6.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             table.addCell(tenCot1);
             table.addCell(tenCot2);
             table.addCell(tenCot3);
             table.addCell(tenCot4);
             table.addCell(tenCot5);
-            table.addCell(tenCot6);
 
             for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
                 PdfPCell data1 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 0) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
                 PdfPCell data2 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 1) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
                 PdfPCell data3 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 2) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
                 PdfPCell data4 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 3) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-                PdfPCell data5 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 4) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-                PdfPCell data6 = new PdfPCell(new Paragraph(Float.parseFloat(tblSanPhamChon.getValueAt(i, 3) + "") * Integer.parseInt(tblSanPhamChon.getValueAt(i, 4) + "") + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+                PdfPCell data5 = new PdfPCell(new Paragraph(Float.parseFloat(tblSanPhamChon.getValueAt(i, 2) + "") * Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "") + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
 
                 data1.setHorizontalAlignment(Element.ALIGN_CENTER);
                 data2.setHorizontalAlignment(Element.ALIGN_CENTER);
                 data3.setHorizontalAlignment(Element.ALIGN_CENTER);
                 data4.setHorizontalAlignment(Element.ALIGN_CENTER);
                 data5.setHorizontalAlignment(Element.ALIGN_CENTER);
-                data6.setHorizontalAlignment(Element.ALIGN_CENTER);
 
                 table.addCell(data1);
                 table.addCell(data2);
                 table.addCell(data3);
                 table.addCell(data4);
                 table.addCell(data5);
-                table.addCell(data6);
             }
 
             int tongSL = 0;
             for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
-                tongSL += Integer.parseInt(tblSanPhamChon.getValueAt(i, 4) + "");
+                tongSL += Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "");
             }
 
             PdfPCell data1 = new PdfPCell(new Paragraph("TONG:", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
             PdfPCell data2 = new PdfPCell(new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
             PdfPCell data3 = new PdfPCell(new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-            PdfPCell data4 = new PdfPCell(new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-            PdfPCell data5 = new PdfPCell(new Paragraph(tongSL + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-            PdfPCell data6 = new PdfPCell(new Paragraph(lblTongTien.getText(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+            PdfPCell data4 = new PdfPCell(new Paragraph(tongSL + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+            PdfPCell data5 = new PdfPCell(new Paragraph(lblTongTien.getText(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
 
             data1.setHorizontalAlignment(Element.ALIGN_CENTER);
             data2.setHorizontalAlignment(Element.ALIGN_CENTER);
             data3.setHorizontalAlignment(Element.ALIGN_CENTER);
             data4.setHorizontalAlignment(Element.ALIGN_CENTER);
             data5.setHorizontalAlignment(Element.ALIGN_CENTER);
-            data6.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             data1.setPadding(5);
             data2.setPadding(5);
             data3.setPadding(5);
             data4.setPadding(5);
             data5.setPadding(5);
-            data6.setPadding(5);
 
             table.addCell(data1);
             table.addCell(data2);
             table.addCell(data3);
             table.addCell(data4);
             table.addCell(data5);
-            table.addCell(data6);
 
             Paragraph footer = new Paragraph("NGUOI LAP HOA DON", FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.BOLDITALIC));
             Paragraph nguoiLap = new Paragraph(hd.getTenNV(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 14));

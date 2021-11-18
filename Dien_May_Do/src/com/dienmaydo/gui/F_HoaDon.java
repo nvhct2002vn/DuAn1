@@ -93,11 +93,11 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã hóa đơn chi tiết", "Mã sản phẩm", "Mã seri", "Tên sản phẩm chi tiết", "Số lượng", "Đơn giá", "Thành tiền"
+                "Mã hóa đơn chi tiết", "Mã sản phẩm", "Tên sản phẩm chi tiết", "Số lượng", "Đơn giá", "Thành tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -369,7 +369,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         List<HoaDonChiTiet> list = hdctService.selectById(maHD);
         for (HoaDonChiTiet x : list) {
             model.addRow(new Object[]{
-                x.getMaHDCT(), x.getMaSPCT(), x.getMSeri(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getDonGia() + " VND", x.getDonGia() * x.getSoLuong() + " VND"
+                x.getMaHDCT(), x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getDonGia() + " VND", x.getDonGia() * x.getSoLuong() + " VND"
             });
         }
     }
