@@ -22,8 +22,8 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
     String UPDATE_SQL = "UPDATE dbo.KHUYENMAI SET TENCT = ? , HINHTHUC = ? , BATDAU = ? , KETTHUC = ? , GIAMGIA = ? , TRANGTHAI = ? , MOTA = ? WHERE MAKM = ?";
     String DELETE_SQL = "BEGIN TRY\n"
             + "	BEGIN TRAN\n"
-            + "		DELETE FROM dbo.KHUYENMAI WHERE MAKM = ?\n"
             + "		DELETE FROM dbo.DANHMUC_KHUYENMAI WHERE MAKM = ?\n"
+            + "		DELETE FROM dbo.KHUYENMAI WHERE MAKM = ?\n"
             + "	COMMIT TRAN\n"
             + "END TRY\n"
             + "BEGIN CATCH\n"
