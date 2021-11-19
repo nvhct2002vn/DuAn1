@@ -33,6 +33,7 @@ import java.awt.CardLayout;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -196,6 +197,10 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
+        cbbDieuKienTimKiem = new javax.swing.JComboBox<>();
+        txtTimKiemGiaBan = new javax.swing.JTextField();
+        cbbLoaiGia = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
         pnThuocTinh = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         pnCardGoc = new javax.swing.JPanel();
@@ -726,30 +731,64 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
             }
         });
 
+        cbbDieuKienTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<", ">", ">=", "<=", "=" }));
+        cbbDieuKienTimKiem.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbDieuKienTimKiemItemStateChanged(evt);
+            }
+        });
+
+        txtTimKiemGiaBan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemGiaBanKeyReleased(evt);
+            }
+        });
+
+        cbbLoaiGia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbbLoaiGia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giá nhập", "Giá bán" }));
+        cbbLoaiGia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbLoaiGiaItemStateChanged(evt);
+            }
+        });
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel27.setText("Điều kiện giá:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(84, 84, 84)
-                        .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
                         .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbbLoaiGia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTimKiemGiaBan)
+                    .addComponent(cbbDieuKienTimKiem, 0, 136, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rdoSxKhongPhoBien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rdoSxPhoBien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(140, 140, 140)
+                .addGap(100, 100, 100)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
-                .addGap(136, 136, 136)
+                .addGap(100, 100, 100)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton4)
                     .addComponent(jRadioButton3))
@@ -762,33 +801,33 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jRadioButton3, jRadioButton4});
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbbMaSP, txtTimKiemSPCT});
-
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jRadioButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(rdoSxKhongPhoBien)
-                        .addGap(18, 18, 18)
-                        .addComponent(rdoSxPhoBien))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20)
+                        .addComponent(cbbDieuKienTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel27))
+                    .addComponent(jRadioButton4)
+                    .addComponent(rdoSxKhongPhoBien)
+                    .addComponent(jRadioButton1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rdoSxPhoBien)
+                        .addComponent(txtTimKiemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)
+                        .addComponent(txtTimKiemGiaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRadioButton2)
+                        .addComponent(jRadioButton3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(cbbLoaiGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1461,6 +1500,126 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTHinhAnhActionPerformed
 
+    private void txtTimKiemGiaBanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemGiaBanKeyReleased
+        String dieuKienTimKiem = (String) cbbDieuKienTimKiem.getSelectedItem();
+        String loaiGia = (String) cbbLoaiGia.getSelectedItem();
+        if (loaiGia.equals("Giá bán")) {
+            if (dieuKienTimKiem.equals(">")) {
+                timKiemTheoGiaBanLonHon();
+            }
+            if (dieuKienTimKiem.equals("<")) {
+                timKiemTheoGiaBanNhoHon();
+            }
+            if (dieuKienTimKiem.equals(">=")) {
+                timKiemTheoGiaBanLonHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("<=")) {
+                timKiemTheoGiaBanNhoHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("=")) {
+                timKiemTheoGiaBanBang();
+            }
+        }
+        if (loaiGia.equals("Giá nhập")) {
+            if (dieuKienTimKiem.equals(">")) {
+                timKiemTheoGiaNhapLonHon();
+            }
+            if (dieuKienTimKiem.equals("<")) {
+                timKiemTheoGiaNhapNhoHon();
+            }
+            if (dieuKienTimKiem.equals(">=")) {
+                timKiemTheoGiaNhapLonHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("<=")) {
+                timKiemTheoGiaNhapNhoHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("=")) {
+                timKiemTheoGiaNhapBang();
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemGiaBanKeyReleased
+
+    private void cbbDieuKienTimKiemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbDieuKienTimKiemItemStateChanged
+        String dieuKienTimKiem = (String) cbbDieuKienTimKiem.getSelectedItem();
+        String loaiGia = (String) cbbLoaiGia.getSelectedItem();
+        if (loaiGia.equals("Giá bán")) {
+            if (dieuKienTimKiem.equals(">")) {
+                timKiemTheoGiaBanLonHon();
+            }
+            if (dieuKienTimKiem.equals("<")) {
+                timKiemTheoGiaBanNhoHon();
+            }
+            if (dieuKienTimKiem.equals(">=")) {
+                timKiemTheoGiaBanLonHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("<=")) {
+                timKiemTheoGiaBanNhoHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("=")) {
+                timKiemTheoGiaBanBang();
+            }
+        }
+        if (loaiGia.equals("Giá nhập")) {
+            if (dieuKienTimKiem.equals(">")) {
+                timKiemTheoGiaNhapLonHon();
+            }
+            if (dieuKienTimKiem.equals("<")) {
+                timKiemTheoGiaNhapNhoHon();
+            }
+            if (dieuKienTimKiem.equals(">=")) {
+                timKiemTheoGiaNhapLonHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("<=")) {
+                timKiemTheoGiaNhapNhoHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("=")) {
+                timKiemTheoGiaNhapBang();
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbDieuKienTimKiemItemStateChanged
+
+    private void cbbLoaiGiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiGiaItemStateChanged
+        String dieuKienTimKiem = (String) cbbDieuKienTimKiem.getSelectedItem();
+        String loaiGia = (String) cbbLoaiGia.getSelectedItem();
+        if (loaiGia.equals("Giá bán")) {
+            if (dieuKienTimKiem.equals(">")) {
+                timKiemTheoGiaBanLonHon();
+            }
+            if (dieuKienTimKiem.equals("<")) {
+                timKiemTheoGiaBanNhoHon();
+            }
+            if (dieuKienTimKiem.equals(">=")) {
+                timKiemTheoGiaBanLonHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("<=")) {
+                timKiemTheoGiaBanNhoHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("=")) {
+                timKiemTheoGiaBanBang();
+            }
+        }
+        if (loaiGia.equals("Giá nhập")) {
+            if (dieuKienTimKiem.equals(">")) {
+                timKiemTheoGiaNhapLonHon();
+            }
+            if (dieuKienTimKiem.equals("<")) {
+                timKiemTheoGiaNhapNhoHon();
+            }
+            if (dieuKienTimKiem.equals(">=")) {
+                timKiemTheoGiaNhapLonHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("<=")) {
+                timKiemTheoGiaNhapNhoHonHoacBang();
+            }
+            if (dieuKienTimKiem.equals("=")) {
+                timKiemTheoGiaNhapBang();
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbLoaiGiaItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaMoTa;
@@ -1479,10 +1638,12 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnThemSPCT;
     private javax.swing.JComboBox<String> cbbChatLieu;
     private javax.swing.JComboBox<String> cbbDanhMuc;
+    private javax.swing.JComboBox<String> cbbDieuKienTimKiem;
     private javax.swing.JComboBox<String> cbbFillDanhMuc;
     private javax.swing.JComboBox<String> cbbIMG;
     private javax.swing.JComboBox<String> cbbKhoiLuong;
     private javax.swing.JComboBox<String> cbbKichThuoc;
+    private javax.swing.JComboBox<String> cbbLoaiGia;
     private javax.swing.JComboBox<String> cbbMaSP;
     private javax.swing.JComboBox<String> cbbMauSac;
     private javax.swing.JComboBox<String> cbbTTDonViTinh;
@@ -1507,6 +1668,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1562,6 +1724,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTenSP;
     private javax.swing.JTextField txtTenSPCT;
     private javax.swing.JTextField txtTimKiem;
+    private javax.swing.JTextField txtTimKiemGiaBan;
     private javax.swing.JTextField txtTimKiemSPCT;
     // End of variables declaration//GEN-END:variables
 
@@ -2028,7 +2191,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
 
     private void timKiemSPCT() {
         modelSPCT.setRowCount(0);
-        List<SanPhamChiTiet> list = daoSPCT.selectByTimKiem(txtTimKiemSPCT.getText());
+        List<SanPhamChiTiet> list = daoSPCT.selectByTimKiemSPCT(txtTimKiemSPCT.getText());
         for (SanPhamChiTiet x : list) {
             modelSPCT.addRow(new Object[]{
                 x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
@@ -2561,6 +2724,167 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
         int vitriThuocTinh = tblTTThuocTinh.getSelectedRow();
         txtTTMaThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 0));
         txtTTTenThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1));
+    }
+
+    private void timKiemTheoGiaBanLonHon() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaBan.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaBan() > giaBan) {
+                modelTimKiemGiaBan.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaBanLonHonHoacBang() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaBan.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaBan() >= giaBan) {
+                modelTimKiemGiaBan.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaBanNhoHon() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaBan.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaBan() < giaBan) {
+                modelTimKiemGiaBan.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaBanNhoHonHoacBang() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaBan.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaBan() <= giaBan) {
+                modelTimKiemGiaBan.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaBanBang() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaBan.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (Objects.equals(x.getGiaBan(), giaBan)) {
+                modelTimKiemGiaBan.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+// ---------------------------- tìm kiếm theo giá nhập ----------------------------------------------
+
+    private void timKiemTheoGiaNhapLonHon() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaNhap.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaNhap() > giaBan) {
+                modelTimKiemGiaNhap.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaNhapLonHonHoacBang() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaNhap.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaNhap() >= giaBan) {
+                modelTimKiemGiaNhap.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaNhapNhoHon() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaNhap.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaNhap() < giaBan) {
+                modelTimKiemGiaNhap.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaNhapNhoHonHoacBang() {
+        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaNhap.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (x.getGiaNhap() <= giaBan) {
+                modelTimKiemGiaNhap.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
+    }
+
+    private void timKiemTheoGiaNhapBang() {
+        Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
+        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        modelTimKiemGiaNhap.setRowCount(0);
+        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+        for (SanPhamChiTiet x : listSPCT) {
+            if (Objects.equals(x.getGiaNhap(), giaNhap)) {
+                modelTimKiemGiaNhap.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                });
+            }
+        }
     }
 
 }
