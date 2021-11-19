@@ -17,4 +17,11 @@ public interface IHoaDonService<E, K> {
     List<E> selectByTimKiem(K key);
     
     List<E> selectByHDChoThanhToan();
+    
+    List<E> selectByTrangThai(K key);
+    
+    List<E> selectByHinhThuc(K key);
+    
+    List<E> selectByHinhThucGiao(K key);
+    
 }

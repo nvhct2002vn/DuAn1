@@ -5,6 +5,7 @@ import com.dienmaydo.iservice.IHoaDonService;
 import com.dienmaydo.utils.JdbcHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HoaDonService implements IHoaDonService<HoaDon, String> {
@@ -26,7 +27,38 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH "
             + "WHERE TRANGTHAI_TT LIKE N'%CHỜ THANH TOÁN%'";
-    String SELCT_BY_CBO = "";
+    String SELCT_BY_HINHTHUC = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE HINHTHUC_TT LIKE ?";
+    String SELCT_BY_TRANGTHAI = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE TRANGTHAI_TT LIKE ? ";
+    String SELCT_BY_HINHTHUCGIAO = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE HINHTHUCGIAOHANG LIKE ?";
+    String SELCT_BY_TONGTIEN = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE TONGTIEN BETWEEN ? AND ?";
+    String SELECT_BY_THANG = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE MONTH(NGAYLAP) = ?";
+    String SELECT_BY_NAM = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE YEAR(NGAYLAP) = ?";
+    String SELECT_BY_NAM_AND_THANG = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE MONTH(NGAYLAP) = ? AND YEAR(NGAYLAP) = ?";
+    String SELECT_BY_TONGTIEN_MAX = "SELECT *\n"
+            + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "WHERE TONGTIEN >= ?";
 
     @Override
     public void insert(HoaDon entity) {
@@ -96,4 +128,38 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
                 entity.getGhiChu(), entity.getMaHD());
     }
 
+    @Override
+    public List<HoaDon> selectByTrangThai(String key) {
+        return selectBySQL(SELCT_BY_TRANGTHAI, "%" + key + "%");
+    }
+
+    @Override
+    public List<HoaDon> selectByHinhThuc(String key) {
+        return selectBySQL(SELCT_BY_HINHTHUC, "%" + key + "%");
+    }
+
+    @Override
+    public List<HoaDon> selectByHinhThucGiao(String key) {
+        return selectBySQL(SELCT_BY_HINHTHUCGIAO, "%" + key + "%");
+    }
+
+    public List<HoaDon> selectByTongTien(float key1, float key2) {
+        return selectBySQL(SELCT_BY_TONGTIEN, key1, key2);
+    }
+
+    public List<HoaDon> selctByThangNam(String key1, String key2) {
+        return selectBySQL(SELECT_BY_NAM_AND_THANG, key1, key2);
+    }
+
+    public List<HoaDon> selctByThang(String key) {
+        return selectBySQL(SELECT_BY_THANG, key);
+    }
+
+    public List<HoaDon> selctByNam(String key) {
+        return selectBySQL(SELECT_BY_NAM, key);
+    }
+
+    public List<HoaDon> selctByTongTienMax(float key) {
+        return selectBySQL(SELECT_BY_TONGTIEN_MAX, key);
+    }
 }

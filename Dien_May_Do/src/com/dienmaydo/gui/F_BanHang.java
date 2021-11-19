@@ -825,9 +825,9 @@ public class F_BanHang extends javax.swing.JInternalFrame {
                     donHang();
                 }
             }
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             Msgbox.alert(this, "Số lượng sản phẩm phải là số nguyên");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -866,13 +866,14 @@ public class F_BanHang extends javax.swing.JInternalFrame {
 
     public void timKiem() {
         model1.setRowCount(0);
-        List<SanPhamChiTiet> list = spService.selectByTimKiem(txtTimKiem.getText());
+        List<SanPhamChiTiet> list = spService.selectByTimKiem(txtTimKiem.getText().trim());
         for (SanPhamChiTiet x : list) {
             model1.addRow(new Object[]{
                 x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
                 x.getTheTich(), x.getSoLuong()
             });
         }
+        cboDanhMuc.setSelectedIndex(0);
     }
 
     public void donHang() {
@@ -979,6 +980,7 @@ public class F_BanHang extends javax.swing.JInternalFrame {
     }
 
     public void fillCboDanhMuc() {
+        cboDanhMuc.addItem("   ");
         List<DanhMuc> list = dmService.selectAll();
         for (int i = 0; i < list.size(); i++) {
             cboDanhMuc.addItem(list.get(i).getTenDanhMuc());
@@ -986,14 +988,20 @@ public class F_BanHang extends javax.swing.JInternalFrame {
     }
 
     public void showProductsDM() {
-        model1.setRowCount(0);
-        List<SanPhamChiTiet> list = spService.selectByDM(cboDanhMuc.getSelectedItem() + "");
-        for (SanPhamChiTiet x : list) {
-            model1.addRow(new Object[]{
-                x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
-                x.getTheTich(), x.getSoLuong()
-            });
+        if (cboDanhMuc.getSelectedIndex() == 0) {
+            fillTable();
         }
+        if (cboDanhMuc.getSelectedIndex() > 0) {
+            model1.setRowCount(0);
+            List<SanPhamChiTiet> list = spService.selectByDM(cboDanhMuc.getSelectedItem() + "");
+            for (SanPhamChiTiet x : list) {
+                model1.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
+                    x.getTheTich(), x.getSoLuong()
+                });
+            }
+        }
+        txtTimKiem.setText("");
     }
 
     public void luuHoaDon() {
@@ -1026,6 +1034,17 @@ public class F_BanHang extends javax.swing.JInternalFrame {
         for (HoaDon x : list) {
             model3.addRow(new Object[]{
                 x.getMaHD(), XDate.toString(x.getNgayLap()), x.getMaNV()
+            });
+        }
+    }
+
+    public void fillTable() {
+        model1.setRowCount(0);
+        List<SanPhamChiTiet> list = spService.selectAll();
+        for (SanPhamChiTiet x : list) {
+            model1.addRow(new Object[]{
+                x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
+                x.getTheTich(), x.getSoLuong()
             });
         }
     }

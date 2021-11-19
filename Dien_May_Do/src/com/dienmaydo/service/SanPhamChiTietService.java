@@ -45,17 +45,17 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
             + "WHERE MASPCT = ?";
 
-    String selectTimKiem = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n" +
-"            FROM dbo.SANPHAMCHITIET\n" +
-"            JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n" +
-"            JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n" +
-"            JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n" +
-"            JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n" +
-"            JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n" +
-"            JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n" +
-"            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n" +
-"            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n" +
-"            WHERE MASPCT LIKE ? OR TENSP LIKE ? OR TENMAUSAC LIKE ? OR CHATLIEU LIKE ? OR GIABAN = ? ";
+    String selectTimKiem = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
+            + "            FROM dbo.SANPHAMCHITIET\n"
+            + "            JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+            + "            JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
+            + "            JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n"
+            + "            JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n"
+            + "            JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
+            + "            JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
+            + "            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
+            + "            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
+            + "            WHERE MASPCT LIKE ? OR TENSP +' '+ TENSPCT LIKE ?";
 
     String selectBySPInDM = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIABAN,GIANHAP,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
             + "            FROM dbo.SANPHAMCHITIET\n"
@@ -156,7 +156,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
 
     @Override
     public List<SanPhamChiTiet> selectByTimKiem(String key) {
-        return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%", key);
+        return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%");
     }
 
     public void updateBanHang(SanPhamChiTiet entity) {
