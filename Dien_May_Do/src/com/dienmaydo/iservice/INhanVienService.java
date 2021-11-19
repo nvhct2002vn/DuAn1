@@ -9,5 +9,14 @@ public interface INhanVienService<E, K> {
     List<E> selectBySql(String sqlString, Object... args);
 
     List<E> selectAll();
+    
+    void insertData(E entity);
 
+    void updateData(E entity);
+
+    void deleteData(K key);
+
+    List<E> selectByTimKiem(K key);
+
+    
 }

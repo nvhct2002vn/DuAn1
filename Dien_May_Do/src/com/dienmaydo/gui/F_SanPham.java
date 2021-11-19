@@ -46,7 +46,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Nguyễn Viết Hiên
  */
-public class SanPhamInterJfame extends javax.swing.JInternalFrame {
+public class F_SanPham extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form HangHoaJfame
@@ -91,7 +91,7 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
     /**
      * Creates new form SanPhamInterJfame
      */
-    public SanPhamInterJfame() {
+    public F_SanPham() {
         initComponents();
         setResizable(false);
         card = (CardLayout) pnCardGoc.getLayout(); // gét panel gốc
@@ -1023,12 +1023,11 @@ public class SanPhamInterJfame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel28)
                     .addComponent(jLabel30))
                 .addGap(18, 18, 18)
-                .addGroup(pnCard3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTTMaXuatXu, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                    .addGroup(pnCard3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtTTNhaSanXuat)
-                        .addComponent(txtTTNuocSanXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGroup(pnCard3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTTNhaSanXuat)
+                    .addComponent(txtTTNuocSanXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .addComponent(txtTTMaXuatXu))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         pnCard3Layout.setVerticalGroup(
             pnCard3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

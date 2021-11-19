@@ -1604,14 +1604,12 @@
                                           <Component id="jLabel30" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtTTMaXuatXu" pref="191" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtTTNhaSanXuat" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtTTNuocSanXuat" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtTTNhaSanXuat" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtTTNuocSanXuat" alignment="0" pref="189" max="32767" attributes="0"/>
+                                          <Component id="txtTTMaXuatXu" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="12" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>

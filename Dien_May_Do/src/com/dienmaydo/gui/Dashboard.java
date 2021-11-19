@@ -39,7 +39,7 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
-        
+
     }
 
     /**
@@ -496,7 +496,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblThoatMouseClicked
 
     private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
-        SanPhamInterJfame b = new SanPhamInterJfame();
+        F_SanPham b = new F_SanPham();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(b).setVisible(true);
     }//GEN-LAST:event_lblSanPhamMouseClicked

@@ -11,7 +11,7 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
 
     String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN";
     String SELECT_BY_ID = "SELECT * FROM NHANVIEN WHERE MANV LIKE ?";
- 
+
     @Override
     public List<NhanVien> selectAll() {
         return selectBySql(SELECT_ALL_SQL);
@@ -27,7 +27,6 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
                 nv.setMaNV(rs.getString("MANV"));
                 nv.setMaVT(rs.getString("MAVT"));
                 nv.setMatKhau(rs.getString("MATKHAU"));
-                nv.setMaVT(rs.getString("MAVT"));
                 nv.setTenNV(rs.getString("TENNV"));
                 nv.setDiaChi(rs.getString("DIACHI"));
                 nv.setDienThoai(rs.getString("DIENTHOAI"));
@@ -51,5 +50,25 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
             return null;
         }
         return list.get(0);
+    }
+
+    @Override
+    public void insertData(NhanVien entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updateData(NhanVien entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteData(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<NhanVien> selectByTimKiem(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
