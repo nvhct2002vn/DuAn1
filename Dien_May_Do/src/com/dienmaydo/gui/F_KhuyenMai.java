@@ -294,9 +294,11 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        btnSua.setBackground(new java.awt.Color(255, 204, 0));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnSua.setText("Sửa khuyến mại");
 
+        btnXoa.setBackground(new java.awt.Color(255, 204, 0));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnXoa.setText("Xóa khuyến mại");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -356,7 +358,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        // deleteKM();
+        deleteKM();
     }//GEN-LAST:event_btnXoaActionPerformed
 
 
@@ -429,11 +431,33 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
     void clicktblKhuyenMai() {
         txtMaKM.setText(tblData.getValueAt(row, 0).toString());
         txtTenCT.setText(tblData.getValueAt(row, 1).toString());
-        cboTenDanhMuc.setSelectedItem(tblData.getValueAt(row, 2));
+        if (tblData.getValueAt(row, 2).toString().equalsIgnoreCase("Giảm theo %")) {
+            cboHinhThuc.setSelectedIndex(0);
+        }else{
+            cboHinhThuc.setSelectedIndex(1);
+        }
         txtGiamGia.setText(tblData.getValueAt(row, 3).toString());
         txtMoTa.setText(tblData.getValueAt(row, 8).toString());
         setSelectCBO(tblData.getValueAt(row, 4).toString(), cboTenDanhMuc);
         dcBatDau.setDate(XDate.toDate(tblData.getValueAt(row, 5).toString()));
         dcKetThuc.setDate(XDate.toDate(tblData.getValueAt(row, 6).toString()));
+    }
+
+    private void deleteKM() {
+        row = tblData.getSelectedRow();
+        String maKM = (String) tblData.getValueAt(row, 0);
+        if (row < 0 ) {
+            Msgbox.alert(this, "Vui lòng chọn khuyến mại bạn muốn xóa!!");
+            return;
+        }else if (Msgbox.confirm(this, "Bạn có chắc muốn xóa khuyến mại này?")) {
+            try {
+                kmSV.deleteData(maKM);
+                fillToTable();
+                Msgbox.alert(this, "Xóa thành công!!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Msgbox.alert(this, "Xóa thất bại!");
+            }
+        }
     }
 }

@@ -9,7 +9,9 @@ package com.dienmaydo.entity;
  * @author letha
  */
 import java.util.Date;
+
 public class NhanVien {
+
     private String MaNV;
     private String MaVT;
     private String MatKhau;
@@ -91,5 +93,5 @@ public class NhanVien {
     public void setTrangThai(String TrangThai) {
         this.TrangThai = TrangThai;
     }
-    
+
 }
