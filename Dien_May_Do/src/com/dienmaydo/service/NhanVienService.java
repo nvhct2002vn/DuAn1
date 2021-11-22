@@ -9,8 +9,8 @@ import com.dienmaydo.iservice.INhanVienService;
 
 public class NhanVienService implements INhanVienService<NhanVien, String> {
 
-    String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN";
-    String SELECT_BY_ID = "SELECT * FROM NHANVIEN WHERE MANV LIKE ?";
+    String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT";
+    String SELECT_BY_ID = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT WHERE MANV LIKE ?";
 
     @Override
     public List<NhanVien> selectAll() {
@@ -28,6 +28,7 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
                 nv.setMaVT(rs.getString("MAVT"));
                 nv.setMatKhau(rs.getString("MATKHAU"));
                 nv.setTenNV(rs.getString("TENNV"));
+                nv.setTenVT(rs.getString("TENVT"));
                 nv.setDiaChi(rs.getString("DIACHI"));
                 nv.setDienThoai(rs.getString("DIENTHOAI"));
                 nv.setGioiTinh(rs.getBoolean("GIOITINH"));

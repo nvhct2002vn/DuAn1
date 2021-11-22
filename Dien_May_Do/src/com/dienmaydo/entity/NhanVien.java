@@ -16,6 +16,7 @@ public class NhanVien {
     private String MaVT;
     private String MatKhau;
     private String TenNV;
+    private String TenVT;
     private String DiaChi;
     private String DienThoai;
     private boolean GioiTinh;
@@ -92,6 +93,14 @@ public class NhanVien {
 
     public void setTrangThai(String TrangThai) {
         this.TrangThai = TrangThai;
+    }
+
+    public String getTenVT() {
+        return TenVT;
+    }
+
+    public void setTenVT(String TenVT) {
+        this.TenVT = TenVT;
     }
 
 }
