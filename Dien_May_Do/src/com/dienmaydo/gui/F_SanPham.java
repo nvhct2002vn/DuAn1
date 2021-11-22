@@ -31,6 +31,7 @@ import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XImage;
 import java.awt.CardLayout;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -41,6 +42,11 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -199,6 +205,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         cbbLoaiGia = new javax.swing.JComboBox<>();
         jLabel27 = new javax.swing.JLabel();
         cbbLocChiTietSanPham = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         pnThuocTinh = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         pnCardGoc = new javax.swing.JPanel();
@@ -765,6 +772,16 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbbLoaiGia, jLabel27});
 
+        jButton1.setBackground(new java.awt.Color(255, 204, 0));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setText("Xuất File");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnSPCTLayout = new javax.swing.GroupLayout(pnSPCT);
         pnSPCT.setLayout(pnSPCTLayout);
         pnSPCTLayout.setHorizontalGroup(
@@ -779,6 +796,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 .addComponent(btnSuaSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(btnLamMoiSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnSPCTLayout.setVerticalGroup(
@@ -789,7 +808,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnThemSPCT)
                     .addComponent(btnSuaSPCT)
-                    .addComponent(btnLamMoiSPCT))
+                    .addGroup(pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLamMoiSPCT)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1705,7 +1726,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     private void cbbLocChiTietSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbLocChiTietSanPhamActionPerformed
         String locSP = (String) cbbLocChiTietSanPham.getSelectedItem();
         if (locSP.equals(" ")) {
-           fillTableSPCT_MaSP_Combobox();
+            fillTableSPCT_MaSP_Combobox();
         }
         if (locSP.equals("Không phổ biến")) {
             nhomPhoBien = false;
@@ -1734,6 +1755,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbLocChiTietSanPhamActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        XuatFileExcel();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaMoTa;
@@ -1750,6 +1776,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnTTThem;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemSPCT;
+    private javax.swing.JButton btnXuatFileExcel;
     private javax.swing.JComboBox<String> cbbChatLieu;
     private javax.swing.JComboBox<String> cbbDanhMuc;
     private javax.swing.JComboBox<String> cbbDieuKienTimKiem;
@@ -1764,6 +1791,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbbTTDonViTinh;
     private javax.swing.JComboBox<String> cbbTheTich;
     private javax.swing.JComboBox<String> cbbXuatXu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3123,6 +3151,79 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
                 });
             }
+        }
+    }
+
+    public void XuatFileExcel() {
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet spreadsheet = workbook.createSheet("SPCT");
+
+            XSSFRow row = null;
+            Cell cell = null;
+
+            row = spreadsheet.createRow((short) 2);
+            row.setHeight((short) 500);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("DANH SÁCH SẢN PHẨM CHI TIẾT");
+
+            row = spreadsheet.createRow((short) 3);
+            row.setHeight((short) 500);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("STT");
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Mã SPCT");
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Tên SPCT");
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Số Lượng");
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Giá Nhập");
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Giá Bán");
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("Nhóm Hàng");
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("Màu Sắc");
+            cell = row.createCell(8, CellType.STRING);
+            cell.setCellValue("Thể Tích");
+            cell = row.createCell(9, CellType.STRING);
+            cell.setCellValue("Kích Thước");
+            cell = row.createCell(10, CellType.STRING);
+            cell.setCellValue("Chất Liệu");
+            cell = row.createCell(11, CellType.STRING);
+            cell.setCellValue("Hình Ảnh");
+            cell = row.createCell(12, CellType.STRING);
+            cell.setCellValue("Mô Tả");
+
+            // tạo list để lấy ra tất cả dữ liệu
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            // tạo vòng for để set giữ liệu cho từng hàng
+            for (int i = 0; i < listSPCT.size(); i++) {
+                SanPhamChiTiet SPCT = listSPCT.get(i);
+                row = spreadsheet.createRow((short) 4 + i);
+                row.setHeight((short) 400);
+                row.createCell(0).setCellValue(i + 1);
+                row.createCell(1).setCellValue(SPCT.getMaSPCT());
+                row.createCell(2).setCellValue(SPCT.getTenSPCT());
+                row.createCell(3).setCellValue(SPCT.getSoLuong());
+                row.createCell(4).setCellValue(SPCT.getGiaNhap());
+                row.createCell(5).setCellValue(SPCT.getGiaBan());
+                row.createCell(6).setCellValue(SPCT.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến");
+                row.createCell(7).setCellValue(SPCT.getTenMauSac());
+                row.createCell(8).setCellValue(SPCT.getTheTich());
+                row.createCell(9).setCellValue(SPCT.getKichCo());
+                row.createCell(10).setCellValue(SPCT.getTenChatLieu());
+                row.createCell(11).setCellValue(SPCT.getTenImage());
+                row.createCell(12).setCellValue(SPCT.getMoTa());
+            }
+
+            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\nguyen viet hien\\OneDrive\\Máy tính\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\excel\\SPCT.xlsx"));
+            workbook.write(out);
+            out.close();
+            Msgbox.alert(this, "Xuất thành công!");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

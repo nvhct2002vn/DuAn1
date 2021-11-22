@@ -30,6 +30,7 @@ import com.dienmaydo.service.XuatXuService;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -37,6 +38,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JFileChooser;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -1262,6 +1271,7 @@ public class SanPhamJfame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
     void fillTableSPCT_NhomS() {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
@@ -1534,6 +1544,78 @@ public class SanPhamJfame extends javax.swing.JFrame {
                     cbb.setSelectedItem(m);
                 }
             }
+        }
+    }
+
+    public void XuatFileExcel() {
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet spreadsheet = workbook.createSheet("SPCT");
+
+            XSSFRow row = null;
+            Cell cell = null;
+
+            row = spreadsheet.createRow((short) 2);
+            row.setHeight((short) 500);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("DANH SÁCH SẢN PHẨM CHI TIẾT");
+
+            row = spreadsheet.createRow((short) 3);
+            row.setHeight((short) 500);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("STT");
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Mã SPCT");
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Tên SPCT");
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Số Lượng");
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Giá Nhập");
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Giá Bán");
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("Nhóm Hàng");
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("Màu Sắc");
+            cell = row.createCell(8, CellType.STRING);
+            cell.setCellValue("Thể Tích");
+            cell = row.createCell(9, CellType.STRING);
+            cell.setCellValue("Kích Thước");
+            cell = row.createCell(10, CellType.STRING);
+            cell.setCellValue("Chất Liệu");
+            cell = row.createCell(11, CellType.STRING);
+            cell.setCellValue("Hình Ảnh");
+            cell = row.createCell(12, CellType.STRING);
+            cell.setCellValue("Mô Tả");
+
+            // tạo list để lấy ra tất cả dữ liệu
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            // tạo vòng for để set giữ liệu cho từng hàng
+            for (int i = 0; i < listSPCT.size(); i++) {
+                SanPhamChiTiet SPCT = listSPCT.get(i);
+                row = spreadsheet.createRow((short) 4 + i);
+                row.setHeight((short) 400);
+                row.createCell(0).setCellValue(i + 1);
+                row.createCell(1).setCellValue(SPCT.getMaSPCT());
+                row.createCell(2).setCellValue(SPCT.getTenSPCT());
+                row.createCell(3).setCellValue(SPCT.getSoLuong());
+                row.createCell(4).setCellValue(SPCT.getGiaNhap());
+                row.createCell(5).setCellValue(SPCT.getGiaBan());
+                row.createCell(6).setCellValue(SPCT.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến");
+                row.createCell(7).setCellValue(SPCT.getTenMauSac());
+                row.createCell(8).setCellValue(SPCT.getTheTich());
+                row.createCell(9).setCellValue(SPCT.getKichCo());
+                row.createCell(10).setCellValue(SPCT.getTenChatLieu());
+                row.createCell(11).setCellValue(SPCT.getTenImage());
+                row.createCell(12).setCellValue(SPCT.getMoTa());
+            }
+
+            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\nguyen viet hien\\OneDrive\\Máy tính\\backupCode\\Dien_May_Do\\src\\ExcelExport\\SPCT.xlsx"));
+            workbook.write(out);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
