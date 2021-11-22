@@ -81,6 +81,16 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
             + "			JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
             + "            WHERE TENDM LIKE ?";
+    String SELECT_BY_WEBCAM ="SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,MOTA\n"
+                + "FROM dbo.SANPHAMCHITIET\n"
+                + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+                + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
+                + "JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n"
+                + "JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n"
+                + "JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
+                + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
+                + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
+                + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE MASPCT = ?";
 
     @Override
     public void insertData(SanPhamChiTiet entity) {
@@ -184,4 +194,11 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
         return selectBySQL(selectBySPInDM, key);
     }
 
+    public SanPhamChiTiet selectWebcam(String key){
+        List<SanPhamChiTiet> list = selectBySQL(SELECT_BY_WEBCAM, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
 }

@@ -249,6 +249,12 @@ public class SanPhamChiTiet {
     public void setMaDVT(String MaDVT) {
         this.MaDVT = MaDVT;
     }
+
+    @Override
+    public String toString() {
+        return "SanPhamChiTiet{" + "MaSPCT=" + MaSPCT + ", MaImage=" + MaImage + ", TenImage=" + TenImage + ", MaSp=" + MaSp + ", MaMauSac=" + MaMauSac + ", TenMauSac=" + TenMauSac + ", MaKichThuoc=" + MaKichThuoc + ", ChieuDai=" + ChieuDai + ", ChieuRong=" + ChieuRong + ", ChieuCao=" + ChieuCao + ", MaChatLieu=" + MaChatLieu + ", TenChatLieu=" + TenChatLieu + ", MaTheTich=" + MaTheTich + ", TheTich=" + TheTich + ", MaKL=" + MaKL + ", KhoiLuong=" + KhoiLuong + ", TenSPCT=" + TenSPCT + ", TenSP=" + TenSP + ", SoLuong=" + SoLuong + ", NhomPhoBien=" + NhomPhoBien + ", GiaNhap=" + GiaNhap + ", GiaBan=" + GiaBan + ", TrangThai=" + TrangThai + ", MoTa=" + MoTa + ", TenDVTinh=" + TenDVTinh + ", MaDVT=" + MaDVT + '}';
+    }
+    
     
 
 }
