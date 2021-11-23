@@ -3159,6 +3159,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet spreadsheet = workbook.createSheet("SPCT");
 
+            // cell là 1 ô - row là 1 hàng - sheet là 1 trang tính - column là cột
             XSSFRow row = null;
             Cell cell = null;
 
@@ -3221,7 +3222,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             FileOutputStream out = new FileOutputStream(new File("C:\\Users\\nguyen viet hien\\OneDrive\\Máy tính\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\excel\\SPCT.xlsx"));
             workbook.write(out);
             out.close();
-            Msgbox.alert(this, "Xuất thành công!");
+            Msgbox.alert(this, "Xuất file thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
