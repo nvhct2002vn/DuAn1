@@ -26,7 +26,7 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {// output của bạn đâu
         initComponents();
         setLocationRelativeTo(null);
-        new F_DangNhap(this, true).setVisible(true);
+        //new F_DangNhap(this, true).setVisible(true);
         defaultColor = new Color(255, 204, 0);
         clickColor = new Color(153, 153, 153);
 
@@ -72,8 +72,11 @@ public class Dashboard extends javax.swing.JFrame {
         ThongKE = new javax.swing.JPanel();
         lblThongKe = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -341,7 +344,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel2.add(ThongKE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 60));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 220, 768));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 810));
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -356,7 +359,32 @@ public class Dashboard extends javax.swing.JFrame {
             .addGap(0, 768, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, -2, 1146, 768));
+        jPanel3.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 1146, 768));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(1146, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("PHẦN MỀM QUẢN LÝ BÁN HÀNG");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jLabel2)
+                .addContainerGap(477, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap())
+        );
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 1146, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -459,7 +487,7 @@ public class Dashboard extends javax.swing.JFrame {
         F_SanPham b = new F_SanPham();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(b).setVisible(true);
-               F_BanHang.webcam.close();
+        F_BanHang.webcam.close();
     }//GEN-LAST:event_lblSanPhamMouseClicked
 
     private void lblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMousePressed
@@ -571,6 +599,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel hoaDon;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
