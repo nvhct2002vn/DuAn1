@@ -23,6 +23,7 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
     String selectALL_SQL = "SELECT * FROM dbo.KHACHHANG";
     String selectByTimKiem = "SELECT * FROM dbo.KHACHHANG WHERE MAKH LIKE ? OR TENKH LIKE ?";
     String UPDATE_SQL = "UPDATE KHACHHANG SET TENKH = ?, GIOITINH = ?, DIENTHOAI = ?,EMAIL = ?,DIACHI = ?,TRANGTHAI = ? WHERE MAKH = ?";
+    String selectByID = "SELECT * FROM dbo.KHACHHANG where MAKH = ?";
 
     @Override
     public void insertData(KhachHang entity) {
@@ -48,8 +49,11 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
 
     @Override
     public KhachHang selectByID(String key) {
-//        return selectBySQL(selectByTimKiem, "%" + key + "%", "%" + key + "%");
-        return null;
+        List<KhachHang> list = selectBySQL(selectByID, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 
     @Override

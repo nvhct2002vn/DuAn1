@@ -7,6 +7,7 @@ package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.KhachHang;
 import com.dienmaydo.service.KhachHangService;
+import com.dienmaydo.utils.Msgbox;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +31,7 @@ public class KhachHangJframe extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         FillTable();
+        rdoNam.setSelected(true);
     }
 
     /**
@@ -41,9 +43,10 @@ public class KhachHangJframe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        Tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuanLyKhacHang = new javax.swing.JTable();
@@ -79,7 +82,7 @@ public class KhachHangJframe extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 204, 0));
+        Tabs.setBackground(new java.awt.Color(255, 204, 0));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -97,6 +100,11 @@ public class KhachHangJframe extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblQuanLyKhacHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblQuanLyKhacHangMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblQuanLyKhacHang);
@@ -151,7 +159,7 @@ public class KhachHangJframe extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Danh sách khách hàng", jPanel4);
+        Tabs.addTab("Danh sách khách hàng", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -164,8 +172,10 @@ public class KhachHangJframe extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Giới tính:");
 
+        buttonGroup1.add(rdoNam);
         rdoNam.setText("Nam");
 
+        buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -187,14 +197,29 @@ public class KhachHangJframe extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 204, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 204, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setText("Sửa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 204, 0));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setText("Làm mới");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -275,7 +300,7 @@ public class KhachHangJframe extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cập nhật khách hàng", jPanel5);
+        Tabs.addTab("Cập nhật khách hàng", jPanel5);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -283,14 +308,14 @@ public class KhachHangJframe extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(Tabs)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(Tabs)
                 .addContainerGap())
         );
 
@@ -335,6 +360,31 @@ public class KhachHangJframe extends javax.swing.JFrame {
         timKiem();
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        lamMoi();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void tblQuanLyKhacHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyKhacHangMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            row = tblQuanLyKhacHang.getSelectedRow();
+            setForm();
+            Tabs.setSelectedIndex(1);
+            txtMaKH.setEditable(false);
+        }
+    }//GEN-LAST:event_tblQuanLyKhacHangMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -371,6 +421,8 @@ public class KhachHangJframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane Tabs;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -389,7 +441,6 @@ public class KhachHangJframe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTable tblQuanLyKhacHang;
@@ -409,7 +460,7 @@ void FillTable() {
             model.addRow(new Object[]{
                 x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.getTrangthai()
             });
-        }//tiếp đo a nghe khoai a nam nam đợi e t
+        }
     }
 
     void timKiem() {
@@ -428,5 +479,139 @@ void FillTable() {
         maKH = tblQuanLyKhacHang.getValueAt(row, 0).toString();
         tenKH = tblQuanLyKhacHang.getValueAt(row, 1).toString();
         dispose();
+    }
+
+    void insert() {
+        KhachHang kh = getForm();
+        try {
+            String dinhDangEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+            String dinhDangSDT = "0\\d{9}";
+            if (txtMaKH.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô mã khách hàng");
+                return;
+            } else if (txtTenKH.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô tên khách hàng");
+                return;
+            } else if (txtDienThoai.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô điện thoại khách hàng");
+                return;
+            } else if (txtEmail.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô email khách hàng");
+                return;
+            } else if (txtTrangThai.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô trạng thái khách hàng");
+                return;
+            } else if (txtDiaChi.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô địa chỉ khách hàng");
+                return;
+            } else if (!txtDienThoai.getText().matches(dinhDangSDT)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng số điện thoại");
+                return;
+            } else if (!txtEmail.getText().matches(dinhDangEmail)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng Email");
+                return;
+            }else if (checkTrung()) {
+                Msgbox.alert(this, "Mã khách hàng đã tồn tại");
+                return;
+            }  else {
+                KHService.insertData(kh);
+                FillTable();
+                lamMoi();
+                Msgbox.alert(this, "Thêm khách hàng thành công");
+            }
+        } catch (Exception e) {
+            Msgbox.alert(this, "Thêm khách hàng thất bại!");
+            e.printStackTrace();
+        }
+    }
+
+    void update() {
+        KhachHang kh = getForm();
+        try {
+            String dinhDangEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+            String dinhDangSDT = "0\\d{9}";
+            if (txtMaKH.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô mã khách hàng");
+                return;
+            } else if (txtTenKH.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô tên khách hàng");
+                return;
+            } else if (txtDienThoai.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô điện thoại khách hàng");
+                return;
+            } else if (txtEmail.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô email khách hàng");
+                return;
+            } else if (txtTrangThai.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô trạng thái khách hàng");
+                return;
+            } else if (txtDiaChi.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng không bỏ trông ô địa chỉ khách hàng");
+                return;
+            } else if (!txtDienThoai.getText().matches(dinhDangSDT)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng số điện thoại");
+                return;
+            } else if (!txtEmail.getText().matches(dinhDangEmail)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng Email");
+                return;
+            } else {
+                KHService.updateData(kh);
+                FillTable();
+                Msgbox.alert(this, "Sửa khách hàng thành công");
+            }
+        } catch (Exception e) {
+            Msgbox.alert(this, "Sửa khách hàng thất bại!");
+            e.printStackTrace();
+        }
+    }
+
+    KhachHang getForm() {
+        KhachHang kh = new KhachHang();
+        kh.setMaKH(txtMaKH.getText());
+        kh.setTenKh(txtTenKH.getText());
+        kh.setSDT(txtDienThoai.getText());
+        kh.setEmail(txtEmail.getText());
+        kh.setTrangthai(txtTrangThai.getText());
+        kh.setDiaChi(txtDiaChi.getText());
+        kh.setGioiTinh(rdoNam.isSelected() ? true : false);
+        return kh;
+    }
+
+    void setForm() {
+        txtMaKH.setText(tblQuanLyKhacHang.getValueAt(row, 0) + "");
+        txtTenKH.setText(tblQuanLyKhacHang.getValueAt(row, 1) + "");
+        if (tblQuanLyKhacHang.getValueAt(row, 2).toString().equals("Nam")) {
+            rdoNam.setSelected(true);
+        } else {
+            rdoNu.setSelected(true);
+        }
+        txtDienThoai.setText(tblQuanLyKhacHang.getValueAt(row, 3) + "");
+        txtEmail.setText(tblQuanLyKhacHang.getValueAt(row, 4) + "");
+        txtDiaChi.setText(tblQuanLyKhacHang.getValueAt(row, 5) + "");
+        txtTrangThai.setText(tblQuanLyKhacHang.getValueAt(row, 6) + "");
+    }
+
+    boolean checkTrung(){
+        boolean check = false;
+        List<KhachHang> list = KHService.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaKH().equalsIgnoreCase(txtMaKH.getText())) {
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+    
+    void lamMoi() {
+        txtMaKH.setText("");
+        txtTenKH.setText("");
+        txtDienThoai.setText("");
+        txtEmail.setText("");
+        txtTrangThai.setText("");
+        txtDiaChi.setText("");
+        rdoNam.setSelected(true);
+        row = -1;
+        txtMaKH.setEditable(true);
     }
 }
