@@ -32,7 +32,7 @@ public class SanPhamChiTiet {
     private boolean NhomPhoBien;
     private Float GiaNhap;
     private Float GiaBan;
-    private String TrangThai;
+    private boolean TrangThai;
     private String MoTa;
     private String TenDVTinh;
     private String MaDVT;
@@ -51,6 +51,14 @@ public class SanPhamChiTiet {
 
     public void setMaImage(String MaImage) {
         this.MaImage = MaImage;
+    }
+
+    public String getTenImage() {
+        return TenImage;
+    }
+
+    public void setTenImage(String TenImage) {
+        this.TenImage = TenImage;
     }
 
     public String getMaSp() {
@@ -165,6 +173,14 @@ public class SanPhamChiTiet {
         this.TenSPCT = TenSPCT;
     }
 
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
+
     public int getSoLuong() {
         return SoLuong;
     }
@@ -197,11 +213,11 @@ public class SanPhamChiTiet {
         this.GiaBan = GiaBan;
     }
 
-    public String getTrangThai() {
+    public boolean isTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(String TrangThai) {
+    public void setTrangThai(boolean TrangThai) {
         this.TrangThai = TrangThai;
     }
 
@@ -211,27 +227,6 @@ public class SanPhamChiTiet {
 
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
-    }
-
-    public String getTenImage() {
-        return TenImage;
-    }
-
-    public void setTenImage(String TenImage) {
-        this.TenImage = TenImage;
-    }
-
-    public String getKichCo() {
-        String kichCoDRC = String.valueOf(ChieuDai) + " - " + String.valueOf(ChieuRong) + " - " + String.valueOf(ChieuCao);
-        return kichCoDRC;
-    }
-
-    public String getTenSP() {
-        return TenSP;
-    }
-
-    public void setTenSP(String TenSP) {
-        this.TenSP = TenSP;
     }
 
     public String getTenDVTinh() {
@@ -250,11 +245,15 @@ public class SanPhamChiTiet {
         this.MaDVT = MaDVT;
     }
 
+
+    public String getKichCo() {
+        String kichCoDRC = String.valueOf(ChieuDai) + " - " + String.valueOf(ChieuRong) + " - " + String.valueOf(ChieuCao);
+        return kichCoDRC;
+    }
+    
     @Override
     public String toString() {
         return "SanPhamChiTiet{" + "MaSPCT=" + MaSPCT + ", MaImage=" + MaImage + ", TenImage=" + TenImage + ", MaSp=" + MaSp + ", MaMauSac=" + MaMauSac + ", TenMauSac=" + TenMauSac + ", MaKichThuoc=" + MaKichThuoc + ", ChieuDai=" + ChieuDai + ", ChieuRong=" + ChieuRong + ", ChieuCao=" + ChieuCao + ", MaChatLieu=" + MaChatLieu + ", TenChatLieu=" + TenChatLieu + ", MaTheTich=" + MaTheTich + ", TheTich=" + TheTich + ", MaKL=" + MaKL + ", KhoiLuong=" + KhoiLuong + ", TenSPCT=" + TenSPCT + ", TenSP=" + TenSP + ", SoLuong=" + SoLuong + ", NhomPhoBien=" + NhomPhoBien + ", GiaNhap=" + GiaNhap + ", GiaBan=" + GiaBan + ", TrangThai=" + TrangThai + ", MoTa=" + MoTa + ", TenDVTinh=" + TenDVTinh + ", MaDVT=" + MaDVT + '}';
     }
-    
-    
 
 }
