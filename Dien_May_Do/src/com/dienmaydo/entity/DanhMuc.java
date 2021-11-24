@@ -4,6 +4,8 @@
  */
 package com.dienmaydo.entity;
 
+import javafx.scene.control.CheckBox;
+
 /**
  *
  * @author letha
@@ -14,7 +16,7 @@ public class DanhMuc {
     private String MaNH;
     private String TenDanhMuc;
     private String GhiChu;
-
+    private CheckBox select;
     @Override
     public String toString() {
         return TenDanhMuc;
@@ -51,4 +53,13 @@ public class DanhMuc {
     public void setGhiChu(String GhiChu) {
         this.GhiChu = GhiChu;
     }
+
+    public CheckBox getSelect() {
+        return select;
+    }
+
+    public void setSelect(CheckBox select) {
+        this.select = select;
+    }
+    
 }

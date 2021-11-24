@@ -4,6 +4,8 @@
  */
 package com.dienmaydo.entity;
 
+import javafx.scene.control.CheckBox;
+
 public class SanPham {
 
     private String MaSp;
@@ -13,7 +15,7 @@ public class SanPham {
     private String NhaSX;
     private String NuocSX;
     private int MaXX;
-
+    private CheckBox select;
     @Override
     public String toString() {
         return MaSp + " - " + TenSp;
@@ -75,4 +77,12 @@ public class SanPham {
         this.MaXX = MaXX;
     }
 
+    public CheckBox getSelect() {
+        return select;
+    }
+
+    public void setSelect(CheckBox select) {
+        this.select = select;
+    }
+    
 }
