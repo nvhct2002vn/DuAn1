@@ -314,14 +314,23 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
         // TODO add your handling code here:
-        Them();
-
+        if (isValidate()) {
+            return;
+        } else if (isCheckTrung()) {
+            return;
+        } else {
+            Them();
+        }
 
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
         // TODO add your handling code here:
-        Sua();
+        if (isValidate()) {
+            return;
+        } else {
+            Sua();
+        }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void tblQuanLyKhacHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyKhacHangMouseClicked
@@ -374,6 +383,51 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                 x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.getTrangthai()
             });
         }
+    }
+
+    boolean isValidate() {
+        try {
+            if (txtMaKH.getText().trim().equals("")) {
+                Msgbox.alert(this, "Mã khách hàng không được để trống");
+                return true;
+            } else if (txtTenKH.getText().trim().equals("")) {
+                Msgbox.alert(this, "Tên khách hàng không được để trống");
+                return true;
+            } else if (txtDiaChi.getText().trim().equals("")) {
+                Msgbox.alert(this, "Địa chỉ khách hàng không được để trống");
+                return true;
+            } else if (txtDienThoai.getText().trim().equals("")) {
+                Msgbox.alert(this, "Số điện thoại khách hàng không được để trống");
+                return true;
+            } else if (txtDienThoai.getText().length() > 15) {
+                Msgbox.alert(this, "Số điện thoại tối đa 15 kí tự");
+                return true;
+            } else if (txtEmail.getText().trim().equals("")) {
+                Msgbox.alert(this, "Email khách hàng không được để trống");
+                return true;
+            } else if (txtTrangThai.getText().trim().equals("")) {
+                Msgbox.alert(this, "Trạng tháo khách hàng không được để trống");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    boolean isCheckTrung() {
+        boolean check = false;
+        List<KhachHang> list = KHSV.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaKH().equalsIgnoreCase(txtMaKH.getText())) {
+                Msgbox.alert(this, "Mã khách hàng đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
     }
 
     KhachHang getform() {
