@@ -72,15 +72,15 @@ VALUES	('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',N'NO 
 		('KH09',N'Duong Huyen Trang',1,'0365494758','trang145@gmail.com',N'Bac Ninh',N'NO STATUS')
 
 INSERT INTO HOADON
-VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,7200000,N'NOT'),
-		('HD002','NV002','KH02','2021-02-02',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,1400000,N'NOT'),
-		('HD003','NV003','KH03','2021-03-03',N'Đã thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,7500000,N'NOT'),
-		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,4750000,N'NOT'),
-		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,8400000,N'NOT'),
-		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,4550000,N'NOT'),
-		('HD007','NV001','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,2520000,N'NOT'),
-		('HD008','NV002','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,2500000,N'NOT'),
-		('HD009','NV003','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,750000,N'NOT')
+VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,270000,N'NOT'),
+		('HD002','NV002','KH02','2021-02-02',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,3600000,N'NOT'),
+		('HD003','NV003','KH03','2021-03-03',N'Đã thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,160000,N'NOT'),
+		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,280000,N'NOT'),
+		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,300000,N'NOT'),
+		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
+		('HD007','NV001','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
+		('HD008','NV002','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,105000,N'NOT'),
+		('HD009','NV003','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,50000,N'NOT')
 
 
 INSERT INTO MAUSAC
@@ -162,34 +162,34 @@ VALUES  ('IME001', 'maylanh.png'),
 
 
 INSERT INTO SANPHAMCHITIET
-VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001',N'AH-X9XEW', 10, 0, 9000000, 12000000, N'No Mô Tả'),
-		('SPCT02', 'IME002', 'SP002', 'MS002', 'KT002', 'CL002', 'TT002', 'KL002',N'BM01', 10, 0, 100000, 200000, N'No Mô Tả'),
-		('SPCT03', 'IME003', 'SP003', 'MS004', 'KT003', 'CL003', 'TT003', 'KL003',N'KG50F62', 10, 1, 9500000, 15000000, N'No Mô Tả'),
-		('SPCT04', 'IME004', 'SP004', 'MS001', 'KT004', 'CL004', 'TT004', 'KL004',N'FV1409S4W', 10, 0, 8000000, 9500000, N'No Mô Tả'),
-		('SPCT05', 'IME005', 'SP005', 'MS002', 'KT005', 'CL005', 'TT005', 'KL005',N'KD-43X75', 10, 0, 17000000, 21000000, N'No Mô Tả'),
-		('SPCT06', 'IME006', 'SP006', 'MS001', 'KT006', 'CL006', 'TT006', 'KL006',N'Inverter NR-BC360QKVN', 10, 1, 4000000, 6500000, N'No Mô Tả'),
-		('SPCT07', 'IME007', 'SP007', 'MS001', 'KT007', 'CL007', 'TT007', 'KL007',N'MC-CL575KN49 2000W', 10, 0, 1000000, 2800000, N'No Mô Tả'),
-		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL001', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 10, 0, 120000, 250000, N'No Mô Tả'),
-		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 10, 1, 900000, 1500000, N'No Mô Tả')
+VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001',N'AH-X9XEW', 100, 0, 2000, 3000,1, N'No Mô Tả'),
+		('SPCT02', 'IME002', 'SP002', 'MS002', 'KT002', 'CL002', 'TT002', 'KL002',N'BM01', 1000, 0, 2500, 4000,1, N'No Mô Tả'),
+		('SPCT03', 'IME003', 'SP003', 'MS004', 'KT003', 'CL003', 'TT003', 'KL003',N'KG50F62', 50, 1, 3400, 4000,0, N'No Mô Tả'),
+		('SPCT04', 'IME004' , 'SP004', 'MS001', 'KT004', 'CL004', 'TT004', 'KL004',N'FV1409S4W', 90, 0, 2000, 3500,0, N'No Mô Tả'),
+		('SPCT05', 'IME005', 'SP005', 'MS002', 'KT005', 'CL005', 'TT005', 'KL005',N'KD-43X75', 120, 0, 2200, 3000,1, N'No Mô Tả'),
+		('SPCT06', 'IME006', 'SP006', 'MS001', 'KT006', 'CL006', 'TT006', 'KL006',N'Inverter NR-BC360QKVN', 90, 1, 1500, 2000,0, N'No Mô Tả'),
+		('SPCT07', 'IME007', 'SP007', 'MS001', 'KT007', 'CL007', 'TT007', 'KL007',N'MC-CL575KN49 2000W', 100, 0, 600, 2000,1, N'No Mô Tả'),
+		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL001', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 80, 0, 1000, 1500,1, N'No Mô Tả'),
+		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 70, 1, 900, 1000,1, N'No Mô Tả')
 
 INSERT INTO HOADONCHITIET
-VALUES  ('SPCT01', 'HD001', 6, 1200000),
-		('SPCT02', 'HD002', 7, 200000),
-		('SPCT03', 'HD003', 5, 1500000),
-		('SPCT04', 'HD004', 5, 950000),
-		('SPCT05', 'HD005', 4, 2100000),
-		('SPCT06', 'HD006', 7, 650000),
-		('SPCT07', 'HD007', 9, 280000),
-		('SPCT08', 'HD008', 10, 250000),
-		('SPCT09', 'HD009', 5, 150000)
+VALUES  ('SPCT01', 'HD001', 90, 3000),
+		('SPCT02', 'HD002', 900, 4000),
+		('SPCT03', 'HD003', 40, 4000),
+		('SPCT04', 'HD004', 80, 3500),
+		('SPCT05', 'HD005', 100, 3000),
+		('SPCT06', 'HD006', 90, 2000),
+		('SPCT07', 'HD007', 90, 2000),
+		('SPCT08', 'HD008', 70, 1500),
+		('SPCT09', 'HD009', 50, 1000)
 
 
 INSERT INTO KHUYENMAI
-VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,N'CÒN ÁP DỤNG',N'No Mô Tả')
+VALUES  ('KM001' ,N'Sale 1-1','ONLINE','2021-01-01','2021-01-02',50,'No Mô Tả', N'CÒN ÁP DỤNG'),
+		('KM002' ,N'Sale 2-2','ONLINE','2021-02-02','2021-02-03',50,'No Mô Tả',N'CÒN ÁP DỤNG'),
+		('KM003' ,N'Sale 3-3','ONLINE','2021-03-03','2021-03-04',50,'No Mô Tả',N'CÒN ÁP DỤNG'),
+		('KM004' ,N'Sale 4-4','ONLINE','2021-04-04','2021-04-05',50,'No Mô Tả',N'CÒN ÁP DỤNG'),
+		('KM005' ,N'Sale 5-5','ONLINE','2021-05-05','2021-05-06',50,'No Mô Tả',N'CÒN ÁP DỤNG')
 
 
 
