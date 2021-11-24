@@ -7,23 +7,22 @@ package com.dienmaydo.service;
 
 import com.dienmaydo.entity.SanPham;
 import com.dienmaydo.entity.SanPhamChiTiet;
-import com.dienmaydo.iservice.ISanPhamService;
 import com.dienmaydo.utils.JdbcHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import com.dienmaydo.iservice.ISanPhamChiTietService;
 
 /**
  *
  * @author Nguyễn Viết Hiên
  */
-public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, String> {
+public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiTiet, String> {
 
-    String insert_SQL = "INSERT INTO dbo.SANPHAMCHITIET\n"
-            + "(MASPCT,MAIMAGE,MASP,MAMAUSAC,MAKICHTHUOC,MACHATLIEU,MATHETICH,MAKL,TENSPCT,SOLUONG, NHOMPHOBIEN,GIANHAP,GIABAN,TRANGTHAI,MOTA)\n"
-            + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    String update_SQL = "UPDATE dbo.SANPHAMCHITIET SET TENSPCT = ?, SOLUONG = ? , GIABAN = ?,GIANHAP = ? , NHOMPHOBIEN = ? , MOTA = ?,\n"
-            + "MAMAUSAC = ?,MACHATLIEU = ?, MAKICHTHUOC = ?,MATHETICH = ?, MAKL = ? ,TRANGTHAI = ?, MAIMAGE = ? WHERE MASPCT = ?";
+    String insert_SQL = "INSERT INTO dbo.SANPHAMCHITIET(MASPCT,MAIMAGE,MASP,MAMAUSAC,MAKICHTHUOC,MACHATLIEU,MATHETICH,MAKL,\n"
+            + "TENSPCT,SOLUONG,NHOMPHOBIEN,GIANHAP,GIABAN,TRANGTHAI,MOTA)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String update_SQL = "UPDATE dbo.SANPHAMCHITIET SET MAIMAGE = ? ,MAMAUSAC = ? ,MAKICHTHUOC = ? ,MACHATLIEU = ? ,MATHETICH = ? ,MAKL = ? ,\n"
+            + "TENSPCT = ? ,SOLUONG = ? ,NHOMPHOBIEN = ? ,GIANHAP = ? ,GIABAN = ? ,TRANGTHAI = ? ,MOTA = ? WHERE MASPCT = ?";
     String selectALL_SQL = "SELECT * FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
@@ -96,15 +95,15 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
     public void insertData(SanPhamChiTiet entity) {
         JdbcHelper.excuteUpdate(insert_SQL, entity.getMaSPCT(), entity.getMaImage(), entity.getMaSp(), entity.getMaMauSac(), entity.getMaKichThuoc(),
                 entity.getMaChatLieu(), entity.getMaTheTich(), entity.getMaKL(), entity.getTenSPCT(), entity.getSoLuong(), entity.isNhomPhoBien(),
-                entity.getGiaNhap(), entity.getGiaBan(), entity.getMoTa());
+                entity.getGiaNhap(), entity.getGiaBan(), entity.isTrangThai(), entity.getMoTa());
     }
 
     @Override
     public void updateData(SanPhamChiTiet entity) {
         try {
-            JdbcHelper.excuteUpdate(update_SQL, entity.getTenSPCT(), entity.getSoLuong(), entity.getGiaBan(), entity.getGiaNhap(),
-                    entity.isNhomPhoBien(), entity.getMoTa(), entity.getMaMauSac(), entity.getMaChatLieu(), entity.getMaKichThuoc(),
-                    entity.getMaTheTich(), entity.getMaKL(), entity.getMaImage(), entity.getMaSPCT());
+            JdbcHelper.excuteUpdate(update_SQL, entity.getMaImage(), entity.getMaMauSac(), entity.getMaKichThuoc(), entity.getMaChatLieu(),
+                    entity.getMaTheTich(), entity.getMaKL(), entity.getTenSPCT(), entity.getSoLuong(), entity.isNhomPhoBien(),
+                    entity.getGiaNhap(), entity.getGiaBan(), entity.isTrangThai(), entity.getMoTa(), entity.getMaSPCT());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,6 +128,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
         return list.get(0);
     }
 
+    @Override
     public List<SanPhamChiTiet> selectBySPCT(String masp) {
         String sql = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TRANGTHAI,TENHINH,MOTA\n"
                 + "FROM dbo.SANPHAMCHITIET\n"
@@ -182,6 +182,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
         return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%");
     }
 
+    @Override
     public List<SanPhamChiTiet> selectByTimKiemSPCT(String key) {
         return selectBySQL(selectTimKiemSPCT, "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%");
     }
