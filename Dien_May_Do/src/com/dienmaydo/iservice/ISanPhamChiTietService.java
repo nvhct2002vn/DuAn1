@@ -11,11 +11,13 @@ import java.util.List;
  *
  * @author Nguyễn Viết Hiên
  */
-public interface ISanPhamService<E, K> {
+public interface ISanPhamChiTietService<E, K> {
 
     void insertData(E entity);
 
     void updateData(E entity);
+
+    void deleteData(K key);
 
     List<E> selectAll();
 
@@ -25,7 +27,8 @@ public interface ISanPhamService<E, K> {
 
     List<E> selectByTimKiem(K key);
 
-    List<E> selectByDM(K key);
+    List<E> selectByTimKiemSPCT(K key);
 
-    List<E> selectByXX(K key);
+    List<E> selectBySPCT(K key);
+
 }

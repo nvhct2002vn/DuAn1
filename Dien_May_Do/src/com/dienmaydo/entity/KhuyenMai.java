@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class KhuyenMai {
 
-    private String MaKM;
+     private String MaKM;
     private String TenDM;
     private String HinhThuc;
     private String TenChuongTrinh;
@@ -21,6 +21,15 @@ public class KhuyenMai {
     private float GiamGia;
     private String TrangThai;
     private String MoTa;
+    private String tenSP;
+
+    public String gettenSp() {
+        return tenSP;
+    }
+
+    public void settenSp(String tenSP) {
+        this.tenSP = tenSP;
+    }
 
     public String getMaKM() {
         return MaKM;
@@ -30,12 +39,12 @@ public class KhuyenMai {
         this.MaKM = MaKM;
     }
 
-    public String getTenDM() {
-        return TenDM;
+    public String getHinhThuc() {
+        return HinhThuc;
     }
 
-    public void setTenDM(String TenDM) {
-        this.TenDM = TenDM;
+    public void setHinhThuc(String HinhThuc) {
+        this.HinhThuc = HinhThuc;
     }
 
     public String getTenChuongTrinh() {
@@ -86,12 +95,12 @@ public class KhuyenMai {
         this.MoTa = MoTa;
     }
 
-    public String getHinhThuc() {
-        return HinhThuc;
+    public String getTenDM() {
+        return TenDM;
     }
 
-    public void setHinhThuc(String HinhThuc) {
-        this.HinhThuc = HinhThuc;
+    public void setTenDM(String TenDM) {
+        this.TenDM = TenDM;
     }
-    
+
 }

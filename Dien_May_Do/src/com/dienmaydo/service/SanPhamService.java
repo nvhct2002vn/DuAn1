@@ -6,11 +6,12 @@
 package com.dienmaydo.service;
 
 import com.dienmaydo.entity.SanPham;
-import com.dienmaydo.iservice.ISanPhamService;
 import com.dienmaydo.utils.JdbcHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import com.dienmaydo.iservice.ISanPhamChiTietService;
+import com.dienmaydo.iservice.ISanPhamService;
 
 /**
  *
@@ -30,6 +31,7 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
             + "JOIN dbo.DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
             + "WHERE MASP LIKE ? OR TENSP LIKE ? OR NUOCSX LIKE ?";
     String selectByDanhMuc = "SELECT * FROM dbo.SANPHAM JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX WHERE TENDM = ?";
+    String selectByXuatXu = "SELECT * FROM dbo.SANPHAM JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX WHERE NHASX = ?";
 
     @Override
     public void insertData(SanPham entity) {
@@ -44,15 +46,6 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     public void updateData(SanPham entity) {
         try {
             JdbcHelper.excuteUpdate(update_SQL, entity.getMaXX(), entity.getMaDanhMuc(), entity.getTenSp(), entity.getMaSp());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void deleteData(String key) {
-        try {
-            JdbcHelper.excuteUpdate(delete_SQL, key);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -101,8 +94,14 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
         return selectBySQL(selectTimKiem, "%" + key + "%", "%" + key + "%", "%" + key + "%");
     }
 
+    @Override
     public List<SanPham> selectByDM(String key) {
         return selectBySQL(selectByDanhMuc, key);
+    }
+
+    @Override
+    public List<SanPham> selectByXX(String key) {
+        return selectBySQL(selectByXuatXu, key);
     }
 
 }

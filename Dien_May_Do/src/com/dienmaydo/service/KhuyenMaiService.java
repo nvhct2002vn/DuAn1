@@ -18,7 +18,8 @@ import java.util.List;
  */
 public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
 
-    String INSERT_SQL = "insert into dbo.KHUYENMAI(MAKM, TENCT,HINHTHUC,BATDAU,KETTHUC,GIAMGIA,TRANGTHAI,MOTA) VALUES(?,?,?,?,?,?,?,?)";
+    String INSERT_SQL = "insert into dbo.KHUYENMAI(MAKM, TENCT,HINHTHUC,BATDAU,KETTHUC,GIAMGIA,TRANGTHAI,MOTA) VALUES(?,?,?,?,?,?,?,?)"
+            + "insert into dbo.DANHMUC_KHUYENMAI values(?,?,?)";
     String UPDATE_SQL = "UPDATE dbo.KHUYENMAI SET TENCT = ? , HINHTHUC = ? , BATDAU = ? , KETTHUC = ? , GIAMGIA = ? , TRANGTHAI = ? , MOTA = ? WHERE MAKM = ?";
     String DELETE_SQL = "BEGIN TRY\n"
             + "	BEGIN TRAN\n"
@@ -29,13 +30,14 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
             + "BEGIN CATCH\n"
             + "	ROLLBACK TRAN\n"
             + "END CATCH";
-    String SELECT_ALL_SQL = "select dbo.KHUYENMAI.MAKM , TENCT,HINHTHUC,GIAMGIA , dbo.DANHMUC.TENDM,BATDAU,KETTHUC,TRANGTHAI,MOTA\n"
-            + "from dbo.KHUYENMAI join dbo.DANHMUC_KHUYENMAI on dbo.KHUYENMAI.MAKM = dbo.DANHMUC_KHUYENMAI.MAKM\n"
-            + "join dbo.DANHMUC on dbo.DANHMUC_KHUYENMAI.MADANHMUC = dbo.DANHMUC.MADANHMUC";
-    String SELECT_BY_ID_SQL = "select dbo.KHUYENMAI.MAKM , TENCT,HINHTHUC,GIAMGIA , dbo.DANHMUC.TENDM,BATDAU,KETTHUC,TRANGTHAI,MOTA\n"
-            + "from dbo.KHUYENMAI join dbo.DANHMUC_KHUYENMAI on dbo.KHUYENMAI.MAKM = dbo.DANHMUC_KHUYENMAI.MAKM\n"
-            + "join dbo.DANHMUC on dbo.DANHMUC_KHUYENMAI.MADANHMUC = dbo.DANHMUC.MADANHMUC\n"
-            + "where dbo.KHUYENMAI.MAKM = ?";
+    String SELECT_ALL_SQL = "select dbo.KHUYENMAI.MAKM , TENCT,HINHTHUC,GIAMGIA ,dbo.DANHMUC.TENDM, dbo.SANPHAM.TENSP,BATDAU,KETTHUC,TRANGTHAI,MOTA\n"
+            + "            from dbo.KHUYENMAI join dbo.DANHMUC_KHUYENMAI on dbo.KHUYENMAI.MAKM = dbo.DANHMUC_KHUYENMAI.MAKM\n"
+            + "								join dbo.DANHMUC on dbo.DANHMUC_KHUYENMAI.MADANHMUC = dbo.DANHMUC.MADANHMUC\n"
+            + "								join dbo.SANPHAM on dbo.DANHMUC.MADANHMUC=dbo.SANPHAM.MADANHMUC";
+    String SELECT_BY_ID_SQL = "select dbo.KHUYENMAI.MAKM , TENCT,HINHTHUC,GIAMGIA ,dbo.DANHMUC.TENDM, dbo.SANPHAM.TENSP,BATDAU,KETTHUC,TRANGTHAI,MOTA\n"
+            + "            from dbo.KHUYENMAI join dbo.DANHMUC_KHUYENMAI on dbo.KHUYENMAI.MAKM = dbo.DANHMUC_KHUYENMAI.MAKM\n"
+            + "								join dbo.DANHMUC on dbo.DANHMUC_KHUYENMAI.MADANHMUC = dbo.DANHMUC.MADANHMUC\n"
+            + "								join dbo.SANPHAM on dbo.DANHMUC.MADANHMUC=dbo.SANPHAM.MADANHMUC";
 
     @Override
     public void insertData(KhuyenMai entity) {
@@ -92,6 +94,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
                 entity.setHinhThuc(rs.getString("HinhThuc"));
                 entity.setGiamGia(rs.getFloat("GiamGia"));
                 entity.setTenDM(rs.getString("TenDM"));
+                entity.settenSp(rs.getString("tensp"));
                 entity.setThoiGianBatDau(rs.getDate("BatDau"));
                 entity.setThoiGianKetThuc(rs.getDate("KetThuc"));
                 entity.setTrangThai(rs.getString("TrangThai"));
