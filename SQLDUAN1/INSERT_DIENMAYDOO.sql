@@ -71,16 +71,30 @@ VALUES	('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',N'NO 
 		('KH08',N'Do Hai Anh',0,'0658946758','haianh365@gmail.com',N'Thai Binh',N'NO STATUS'),
 		('KH09',N'Duong Huyen Trang',1,'0365494758','trang145@gmail.com',N'Bac Ninh',N'NO STATUS')
 
+INSERT INTO TRANGTHAITHANHTOAN	
+VALUES ('TT001',N'Chờ thanh toán'),
+	   ('TT002',N'Đã Thanh toán'),
+	   ('TT003',N'Đã hủy')
+
+INSERT INTO HINHTHUCTHANHTOAN
+VALUES ('HT001',N'Tiền mặt'),
+	   ('HT002',N'Chuyển khoản'),
+	   ('HT003',N'Quẹt thẻ')
+
+INSERT INTO HINHTHUCGIAOHANG
+VALUES ('GH001',N'Bán trực tiếp'),
+	   ('GH002',N'Khác')
+
 INSERT INTO HOADON
-VALUES  ('HD001','NV001','KH01','2021-01-01',N'Chưa thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,270000,N'NOT'),
-		('HD002','NV002','KH02','2021-02-02',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,3600000,N'NOT'),
-		('HD003','NV003','KH03','2021-03-03',N'Đã thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,160000,N'NOT'),
-		('HD004','NV004','KH04','2021-04-04',N'Chờ thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,280000,N'NOT'),
-		('HD005','NV005','KH05','2021-05-05',N'Chờ thanh toán', N'Tiền mặt',N'BÁN  TRỰC TIẾP',100,300000,N'NOT'),
-		('HD006','NV006','KH06','2021-06-06',N'Chưa thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
-		('HD007','NV001','KH07','2021-07-07',N'Đã thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,180000,N'NOT'),
-		('HD008','NV002','KH08','2021-08-08',N'Đã thanh toán', N'Thẻ',N'BÁN  TRỰC TIẾP',100,105000,N'NOT'),
-		('HD009','NV003','KH09','2021-09-09',N'Chưa thanh toán', N'Chuyển khoản',N'BÁN  TRỰC TIẾP',100,50000,N'NOT')
+VALUES  ('HD001','NV001','KH01','TT002','HT001','GH001','2021-01-01',100,270000,N'NOT'),
+		('HD002','NV002','KH02','TT002','HT001','GH001','2021-02-02',100,3600000,N'NOT'),
+		('HD003','NV003','KH03','TT002','HT002','GH001','2021-03-03',100,160000,N'NOT'),
+		('HD004','NV004','KH04','TT002','HT001','GH001','2021-04-04',100,280000,N'NOT'),
+		('HD005','NV005','KH05','TT002','HT001','GH001','2021-05-05',100,300000,N'NOT'),
+		('HD006','NV006','KH06','TT002','HT002','GH001','2021-06-06',100,180000,N'NOT'),
+		('HD007','NV001','KH07','TT002','HT001','GH001','2021-07-07',100,180000,N'NOT'),
+		('HD008','NV002','KH08','TT002','HT003','GH001','2021-08-08',100,105000,N'NOT'),
+		('HD009','NV003','KH09','TT002','HT001','GH001','2021-09-09',100,50000,N'NOT')
 
 
 INSERT INTO MAUSAC

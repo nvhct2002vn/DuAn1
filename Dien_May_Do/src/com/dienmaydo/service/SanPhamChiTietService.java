@@ -33,6 +33,16 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE";
+    String select_All_ONL = "SELECT * FROM dbo.SANPHAMCHITIET\n"
+            + "            JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+            + "             JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
+            + "            JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n"
+            + "            JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n"
+            + "            JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
+            + "            JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
+            + "            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
+            + "            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
+            + "            WHERE SANPHAMCHITIET.TRANGTHAI = 1";
     String selectByID_SQL = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,TRANGTHAI,CHATLIEU,TENHINH,MOTA\n"
             + "FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
@@ -55,7 +65,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "            JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
             + "            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
-            + "            WHERE MASPCT LIKE ? OR TENSP +' '+ TENSPCT LIKE ?";
+            + "            WHERE (MASPCT LIKE ? OR TENSP +' '+ TENSPCT LIKE ?) AND SANPHAMCHITIET.TRANGTHAI = 1";
 
     String selectTimKiemSPCT = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TENHINH,TRANGTHAI,MOTA\n"
             + "            FROM dbo.SANPHAMCHITIET\n"
@@ -80,7 +90,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "            JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
             + "            JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE\n"
             + "			JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
-            + "            WHERE TENDM LIKE ?";
+            + "            WHERE TENDM LIKE ? AND SANPHAMCHITIET.TRANGTHAI = 1";
     String SELECT_BY_WEBCAM = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,TRANGTHAI,CHATLIEU,TENHINH,MOTA\n"
             + "FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
@@ -90,7 +100,7 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             + "JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
             + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
-            + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE MASPCT = ?";
+            + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE MASPCT = ? AND SANPHAMCHITIET.TRANGTHAI = 1";
 
     @Override
     public void insertData(SanPhamChiTiet entity) {
@@ -201,5 +211,9 @@ public class SanPhamChiTietService implements ISanPhamService<SanPhamChiTiet, St
             return null;
         }
         return list.get(0);
+    }
+
+    public List<SanPhamChiTiet> selectAll_BY_ONL() {
+        return this.selectBySQL(select_All_ONL);
     }
 }

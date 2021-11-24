@@ -10,59 +10,95 @@ import java.util.List;
 
 public class HoaDonService implements IHoaDonService<HoaDon, String> {
 
-    String INSERT_SQL = "INSERT INTO HOADON(MAHD,MANV,MAKH,TRANGTHAI_TT,HINHTHUC_TT,HINHTHUCGIAOHANG,TIENTHUATRAKHACH,TONGTIEN,GHICHU) VALUES(?,?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE HOADON SET HINHTHUC_TT = ?, HINHTHUCGIAOHANG = ?, TRANGTHAI_TT = ?, TIENTHUATRAKHACH = ?, TONGTIEN = ?, GHICHU = ? WHERE MAHD = ?";
+    String INSERT_SQL = "INSERT INTO HOADON(MAHD,MANV,MAKH,MATTTT,MAHTTT,MAHTGH,TIENTHUATRAKHACH,TONGTIEN,GHICHU) VALUES(?,?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE HOADON SET MAHTTT = ?, MAHTGH = ?, MATTTT = ?, TIENTHUATRAKHACH = ?, TONGTIEN = ?, GHICHU = ? WHERE MAHD = ?";
     String SELECT_ALL_SQL = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
-            + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH";
+            + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT";
     String SELECT_BY_TIM_KIEM = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
             + "WHERE MAHD LIKE ? OR KHACHHANG.MAKH LIKE ? OR NHANVIEN.MANV LIKE ? OR TENKH LIKE ? OR TENNV LIKE ?";
     String SELECT_BY_ID_SQL = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
             + "WHERE MAHD LIKE ?";
     String SELECT_BY_CHOTT = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "			JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH "
-            + "WHERE TRANGTHAI_TT LIKE N'%CHỜ THANH TOÁN%'";
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
+            + "WHERE TENTTTT LIKE N'%CHỜ THANH TOÁN%'";
     String SELCT_BY_HINHTHUC = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
-            + "WHERE HINHTHUC_TT LIKE ?";
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
+            + "WHERE TENHTTT LIKE ?";
     String SELCT_BY_TRANGTHAI = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
-            + "WHERE TRANGTHAI_TT LIKE ? ";
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
+            + "WHERE TENTTTT LIKE ? ";
     String SELCT_BY_HINHTHUCGIAO = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
-            + "WHERE HINHTHUCGIAOHANG LIKE ?";
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
+            + "WHERE TENHTGH LIKE ?";
     String SELCT_BY_TONGTIEN = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
             + "WHERE TONGTIEN BETWEEN ? AND ?";
     String SELECT_BY_THANG = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
             + "WHERE MONTH(NGAYLAP) = ?";
     String SELECT_BY_NAM = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
             + "WHERE YEAR(NGAYLAP) = ?";
     String SELECT_BY_NAM_AND_THANG = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
             + "WHERE MONTH(NGAYLAP) = ? AND YEAR(NGAYLAP) = ?";
     String SELECT_BY_TONGTIEN_MAX = "SELECT *\n"
             + "FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV\n"
             + "            JOIN KHACHHANG ON KHACHHANG.MAKH = HOADON.MAKH\n"
+            + "			JOIN HINHTHUCGIAOHANG ON HINHTHUCGIAOHANG.MAHTGH = HOADON.MAHTGH\n"
+            + "			JOIN TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
+            + "			JOIN HINHTHUCTHANHTOAN ON HINHTHUCTHANHTOAN.MAHTTT = HOADON.MAHTTT\n"
             + "WHERE TONGTIEN >= ?";
 
     @Override
     public void insert(HoaDon entity) {
-        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaHD(), entity.getMaNV(), entity.getMaKH(), entity.getTrangThai_TT(), entity.getHinhThuc_TT(), entity.getHinhThucGiaoHang(),
+        JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaHD(), entity.getMaNV(), entity.getMaKH(), entity.getMaTTTT(), entity.getMaHTTT(), entity.getMaHTGH(),
                 entity.getTienThuaTraKhach(), entity.getTongTien(), entity.getGhiChu());
     }
 
@@ -81,9 +117,12 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
                 hd.setDiaChi(rs.getString("DIACHI"));
                 hd.setSdt(rs.getString("DIENTHOAI"));
                 hd.setNgayLap(rs.getDate("NGAYLAP"));
-                hd.setTrangThai_TT(rs.getString("TRANGTHAI_TT"));
-                hd.setHinhThuc_TT(rs.getString("HINHTHUC_TT"));
-                hd.setHinhThucGiaoHang(rs.getString("HINHTHUCGIAOHANG"));
+                hd.setMaTTTT(rs.getString("MATTTT"));
+                hd.setMaHTTT(rs.getString("MAHTTT"));
+                hd.setMaHTGH(rs.getString("MAHTGH"));
+                hd.setTenTTTT(rs.getString("TENTTTT"));
+                hd.setTenHTTT(rs.getString("TENHTTT"));
+                hd.setTenHTGH(rs.getString("TENHTGH"));
                 hd.setTienThuaTraKhach(rs.getFloat("TIENTHUATRAKHACH"));
                 hd.setTongTien(rs.getFloat("TONGTIEN"));
                 hd.setGhiChu(rs.getString("GHICHU"));
@@ -124,7 +163,7 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
 
     @Override
     public void update(HoaDon entity) {
-        JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getHinhThuc_TT(), entity.getHinhThucGiaoHang(), entity.getTrangThai_TT(), entity.getTienThuaTraKhach(), entity.getTongTien(),
+        JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getMaHTTT(), entity.getMaHTGH(), entity.getMaTTTT(), entity.getTienThuaTraKhach(), entity.getTongTien(),
                 entity.getGhiChu(), entity.getMaHD());
     }
 

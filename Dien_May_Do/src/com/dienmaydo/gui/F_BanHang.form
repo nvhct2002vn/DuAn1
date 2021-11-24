@@ -181,6 +181,7 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
+                    <Property name="rowHeight" type="int" value="25"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
@@ -383,6 +384,7 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
+                    <Property name="rowHeight" type="int" value="25"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
@@ -506,9 +508,9 @@
                               <Component id="btnThanhToan" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btnCapNhat" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnHuyHoaDon" linkSize="3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnLamMoi" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="btnLamMoi" linkSize="3" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -556,7 +558,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="cboTrangThaiGiaoHang" max="32767" attributes="0"/>
+                                      <Component id="cboHinhThucGiaoHang" max="32767" attributes="0"/>
                                       <Component id="cboHinhThucTT" pref="185" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -603,7 +605,7 @@
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTrangThaiGiaoHang" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboHinhThucGiaoHang" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -612,7 +614,7 @@
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnLamMoi" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnCapNhat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnHuyHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnThanhToan" min="-2" pref="75" max="-2" attributes="0"/>
@@ -694,11 +696,7 @@
                 <Component class="javax.swing.JComboBox" name="cboHinhThucTT">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Ti&#x1ec1;n m&#x1eb7;t"/>
-                        <StringItem index="1" value="Chuy&#x1ec3;n kho&#x1ea3;n"/>
-                        <StringItem index="2" value="Th&#x1ebb;"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -710,7 +708,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaHoaDonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnCapNhat">
+                <Component class="javax.swing.JButton" name="btnHuyHoaDon">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="ff" type="rgb"/>
@@ -721,10 +719,10 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\update_16px.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t h&#xf3;a &#x111;&#x1a1;n"/>
+                    <Property name="text" type="java.lang.String" value="H&#x1ee7;y h&#xf3;a &#x111;&#x1a1;n"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhatActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHuyHoaDonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLamMoi">
@@ -810,13 +808,10 @@
                     <Property name="text" type="java.lang.String" value="Kh&#xe1;ch c&#x1ea7;n tr&#x1ea3;:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cboTrangThaiGiaoHang">
+                <Component class="javax.swing.JComboBox" name="cboHinhThucGiaoHang">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="B&#xe1;n tr&#x1ef1;c ti&#x1ebf;p"/>
-                        <StringItem index="1" value="Kh&#xe1;c"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -828,7 +823,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i giao h&#xe0;ng:"/>
+                    <Property name="text" type="java.lang.String" value="H&#xec;nh th&#x1ee9;c giao h&#xe0;ng:"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel7">
@@ -978,8 +973,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane4" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" pref="131" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1020,6 +1015,7 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
+                    <Property name="rowHeight" type="int" value="25"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>

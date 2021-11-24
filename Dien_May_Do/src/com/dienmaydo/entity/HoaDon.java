@@ -9,12 +9,15 @@ public class HoaDon {
     private String TenNV;
     private String MaKH;
     private String tenKH;
+    private String MaTTTT;
+    private String MaHTTT;
+    private String MaHTGH;
+    private String TenTTTT;
+    private String TenHTTT;
+    private String TenHTGH;
     private String diaChi;
     private String sdt;
     private Date NgayLap;
-    private String TrangThai_TT;
-    private String HinhThuc_TT;
-    private String HinhThucGiaoHang;
     private Float TienThuaTraKhach;
     private float TongTien;
     private String GhiChu;
@@ -41,22 +44,6 @@ public class HoaDon {
 
     public void setNgayLap(Date NgayLap) {
         this.NgayLap = NgayLap;
-    }
-
-    public String getTrangThai_TT() {
-        return TrangThai_TT;
-    }
-
-    public void setTrangThai_TT(String TrangThai_TT) {
-        this.TrangThai_TT = TrangThai_TT;
-    }
-
-    public String getHinhThuc_TT() {
-        return HinhThuc_TT;
-    }
-
-    public void setHinhThuc_TT(String HinhThuc_TT) {
-        this.HinhThuc_TT = HinhThuc_TT;
     }
 
     public float getTongTien() {
@@ -89,14 +76,6 @@ public class HoaDon {
 
     public void setTienThuaTraKhach(Float TienThuaTraKhach) {
         this.TienThuaTraKhach = TienThuaTraKhach;
-    }
-
-    public String getHinhThucGiaoHang() {
-        return HinhThucGiaoHang;
-    }
-
-    public void setHinhThucGiaoHang(String HinhThucGiaoHang) {
-        this.HinhThucGiaoHang = HinhThucGiaoHang;
     }
 
     public String getTenKH() {
@@ -135,5 +114,55 @@ public class HoaDon {
     public String toString() {
         return "HoaDon{" + "MaHD=" + MaHD + ", NgayLap=" + NgayLap + "";
     }
+
+    public String getMaTTTT() {
+        return MaTTTT;
+    }
+
+    public void setMaTTTT(String MaTTTT) {
+        this.MaTTTT = MaTTTT;
+    }
+
+    public String getMaHTTT() {
+        return MaHTTT;
+    }
+
+    public void setMaHTTT(String MaHTTT) {
+        this.MaHTTT = MaHTTT;
+    }
+
+    public String getMaHTGH() {
+        return MaHTGH;
+    }
+
+    public void setMaHTGH(String MaHTGH) {
+        this.MaHTGH = MaHTGH;
+    }
+
+    public String getTenTTTT() {
+        return TenTTTT;
+    }
+
+    public void setTenTTTT(String TenTTTT) {
+        this.TenTTTT = TenTTTT;
+    }
+
+    public String getTenHTTT() {
+        return TenHTTT;
+    }
+
+    public void setTenHTTT(String TenHTTT) {
+        this.TenHTTT = TenHTTT;
+    }
+
+    public String getTenHTGH() {
+        return TenHTGH;
+    }
+
+    public void setTenHTGH(String TenHTGH) {
+        this.TenHTGH = TenHTGH;
+    }
+    
+    
     
 }
