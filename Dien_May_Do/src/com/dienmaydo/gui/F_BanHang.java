@@ -657,7 +657,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         );
 
         webCamPanel.setBackground(new java.awt.Color(255, 255, 255));
-        webCamPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Barcode", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        webCamPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quét mã sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         webCamPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
@@ -1434,6 +1434,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                     x.getTheTich(), x.getSoLuong()
                 });
                 cboDanhMuc.setSelectedIndex(0);
+
             }
         } while (true);
     }

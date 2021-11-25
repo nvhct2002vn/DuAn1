@@ -61,6 +61,7 @@ public class DanhMucService implements IDanhMucService<DanhMuc, String> {
                 entity.setMaDanhMuc(rs.getString("MADANHMUC"));
                 entity.setMaNH(rs.getString("MANH"));
                 entity.setTenDanhMuc(rs.getString("TENDM"));
+                entity.setTrangThai(rs.getBoolean("TRANGTHAI"));
                 entity.setGhiChu(rs.getString("GHICHU"));
                 list.add(entity);
             }

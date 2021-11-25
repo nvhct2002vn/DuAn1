@@ -16,6 +16,7 @@ public class DanhMuc {
     private String MaDanhMuc;
     private String MaNH;
     private String TenDanhMuc;
+    private boolean TrangThai;
     private String GhiChu;
     private Checkbox select;
     @Override
@@ -62,5 +63,14 @@ public class DanhMuc {
     public void setSelect(Checkbox select) {
         this.select = select;
     }
+
+    public boolean isTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(boolean TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+    
     
 }

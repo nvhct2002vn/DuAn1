@@ -402,8 +402,9 @@ public class Dashboard extends javax.swing.JFrame {
         F_HoaDon hd = new F_HoaDon();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(hd).setVisible(true);
-        F_BanHang.webcam.close();
-        
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
     }//GEN-LAST:event_lblHoaDonMouseClicked
 
     private void lblKhuyenMaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMousePressed
@@ -452,6 +453,9 @@ public class Dashboard extends javax.swing.JFrame {
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
         if (Msgbox.confirm(this, "Bạn muốn thoát ứng dụng ?")) {
+            if (F_BanHang.webcam != null) {
+                F_BanHang.webcam.close();
+            }
             Auth.clear();
             System.exit(0);
         }
@@ -461,7 +465,9 @@ public class Dashboard extends javax.swing.JFrame {
         F_SanPham b = new F_SanPham();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(b).setVisible(true);
-        F_BanHang.webcam.close();
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
     }//GEN-LAST:event_lblSanPhamMouseClicked
 
     private void lblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMousePressed
@@ -493,7 +499,9 @@ public class Dashboard extends javax.swing.JFrame {
         F_QuanLyKhachHang kh = new F_QuanLyKhachHang();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(kh).setVisible(true);
-        F_BanHang.webcam.close();
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
     }//GEN-LAST:event_lblKhachHangMouseClicked
 
     private void lblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMousePressed
@@ -512,14 +520,18 @@ public class Dashboard extends javax.swing.JFrame {
         F_KhuyenMai km = new F_KhuyenMai();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(km).setVisible(true);
-        F_BanHang.webcam.close();
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
     }//GEN-LAST:event_lblKhuyenMaiMouseClicked
 
     private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
         F_ThongKe fThongKe = new F_ThongKe();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(fThongKe).setVisible(true);
-        F_BanHang.webcam.close();
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
     }//GEN-LAST:event_lblThongKeMouseClicked
 
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
@@ -527,7 +539,9 @@ public class Dashboard extends javax.swing.JFrame {
         F_NhanVien nv = new F_NhanVien();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(nv).setVisible(true);
-        F_BanHang.webcam.close();
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     /**

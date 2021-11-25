@@ -457,35 +457,35 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         timKiem();
     }//GEN-LAST:event_txtTimKiem3KeyReleased
 
-    private void cboTrangThaiThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTrangThaiThanhToanItemStateChanged
+    private void cboNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNamItemStateChanged
         // TODO add your handling code here:
-        fillTrangThai();
-    }//GEN-LAST:event_cboTrangThaiThanhToanItemStateChanged
-
-    private void cboHinhThucGiaoHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHinhThucGiaoHangItemStateChanged
-        // TODO add your handling code here:
-        fillHinhThucGiao();
-    }//GEN-LAST:event_cboHinhThucGiaoHangItemStateChanged
-
-    private void cboHinhThucThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHinhThucThanhToanItemStateChanged
-        // TODO add your handling code here:
-        fillHinhThuc();
-    }//GEN-LAST:event_cboHinhThucThanhToanItemStateChanged
-
-    private void cboTongTienItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTongTienItemStateChanged
-        // TODO add your handling code here:
-        fillTongTien();
-    }//GEN-LAST:event_cboTongTienItemStateChanged
+        fillNgayLap();
+    }//GEN-LAST:event_cboNamItemStateChanged
 
     private void cboThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboThangItemStateChanged
         // TODO add your handling code here:
         fillNgayLap();
     }//GEN-LAST:event_cboThangItemStateChanged
 
-    private void cboNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNamItemStateChanged
+    private void cboTongTienItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTongTienItemStateChanged
         // TODO add your handling code here:
-        fillNgayLap();
-    }//GEN-LAST:event_cboNamItemStateChanged
+        fillTongTien();
+    }//GEN-LAST:event_cboTongTienItemStateChanged
+
+    private void cboHinhThucThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHinhThucThanhToanItemStateChanged
+        // TODO add your handling code here:
+        fillHinhThuc();
+    }//GEN-LAST:event_cboHinhThucThanhToanItemStateChanged
+
+    private void cboHinhThucGiaoHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHinhThucGiaoHangItemStateChanged
+        // TODO add your handling code here:
+        fillHinhThucGiao();
+    }//GEN-LAST:event_cboHinhThucGiaoHangItemStateChanged
+
+    private void cboTrangThaiThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTrangThaiThanhToanItemStateChanged
+        // TODO add your handling code here:
+        fillTrangThai();
+    }//GEN-LAST:event_cboTrangThaiThanhToanItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
