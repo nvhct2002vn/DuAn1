@@ -19,15 +19,15 @@ import com.dienmaydo.iservice.ISanPhamService;
  */
 public class SanPhamService implements ISanPhamService<SanPham, String> {
 
-    String insert_SQL = "INSERT INTO dbo.SANPHAM(MASP,MADANHMUC,MAXX,TENSP)VALUES(?,?,?,?)";
-    String update_SQL = "UPDATE dbo.SANPHAM SET MAXX = ? , MADANHMUC = ? , TENSP = ? WHERE MASP = ?";
+    String insert_SQL = "INSERT INTO dbo.SANPHAM(MASP,MADANHMUC,MAXX,TENSP,TRANGTHAISP)VALUES(?,?,?,?,?)";
+    String update_SQL = "UPDATE dbo.SANPHAM SET MAXX = ? , MADANHMUC = ? , TENSP = ? , TRANGTHAISP = ? WHERE MASP = ?";
     String delete_SQL = "DELETE FROM dbo.SANPHAM WHERE MASP = ?";
-    String selectALL_SQL = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX,SANPHAM.MAXX  FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
+    String selectALL_SQL = "SELECT * FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
             + "ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX";
-    String selectByID_SQL = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX,SANPHAM.MAXX FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
+    String selectByID_SQL = "SELECT * FROM dbo.SANPHAM JOIN dbo.DANHMUC\n"
             + "ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX WHERE MASP = ?";
 
-    String selectTimKiem = "SELECT MASP, TENSP,DANHMUC.MADANHMUC,TENDM,NHASX,NUOCSX,SANPHAM.MAXX FROM dbo.SANPHAM JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX\n"
+    String selectTimKiem = "SELECT * FROM dbo.SANPHAM JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX\n"
             + "JOIN dbo.DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
             + "WHERE MASP LIKE ? OR TENSP LIKE ? OR NUOCSX LIKE ?";
     String selectByDanhMuc = "SELECT * FROM dbo.SANPHAM JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC JOIN dbo.XUATXU ON XUATXU.MAXX = SANPHAM.MAXX WHERE TENDM = ?";
@@ -36,7 +36,7 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     @Override
     public void insertData(SanPham entity) {
         try {
-            JdbcHelper.excuteUpdate(insert_SQL, entity.getMaSp(), entity.getMaDanhMuc(), entity.getMaXX(), entity.getTenSp());
+            JdbcHelper.excuteUpdate(insert_SQL, entity.getMaSp(), entity.getMaDanhMuc(), entity.getMaXX(), entity.getTenSp(), entity.isTrangThaiSP());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,7 +45,7 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
     @Override
     public void updateData(SanPham entity) {
         try {
-            JdbcHelper.excuteUpdate(update_SQL, entity.getMaXX(), entity.getMaDanhMuc(), entity.getTenSp(), entity.getMaSp());
+            JdbcHelper.excuteUpdate(update_SQL, entity.getMaXX(), entity.getMaDanhMuc(), entity.getTenSp(), entity.isTrangThaiSP(), entity.getMaSp());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,6 +79,7 @@ public class SanPhamService implements ISanPhamService<SanPham, String> {
                 entity.setTenDanhMuc(rs.getString("TENDM"));
                 entity.setNhaSX(rs.getString("NHASX"));
                 entity.setNuocSX(rs.getString("NUOCSX"));
+                entity.setTrangThaiSP(rs.getBoolean("TRANGTHAISP"));
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
