@@ -50,14 +50,14 @@ VALUES  (N'NSX Đông Sơn', N'Việt Nam'),
 
 INSERT INTO SANPHAM
 VALUES  ('SP001','DM001', 1, N'Máy lạnh',1),
-		('SP002','DM002',2, N'Loa Blooth',0),
-		('SP003','DM003',3, N'Điều hòa',0),
+		('SP002','DM002',2, N'Loa Blooth',1),
+		('SP003','DM003',3, N'Điều hòa',1),
 		('SP004','DM004',4, N'Máy giặt',1),
 		('SP005','DM005',5,N'Tivi',1),
 		('SP006','DM006',5, N'Tủ lạnh',1),
 		('SP007','DM007',4, N'Máy hút bụi',1),
 		('SP008','DM008',3, N'Lò vi sóng',1),
-		('SP009','DM009',2, N'Bình nóng lạnh',0)
+		('SP009','DM009',2, N'Bình nóng lạnh',1)
 
 
 INSERT INTO KHACHHANG
