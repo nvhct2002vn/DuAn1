@@ -15,15 +15,15 @@ VALUES  ('NH001', N'Tivi, Âm thanh, Máy chiếu', N'...'),
 
 
 INSERT INTO DANHMUC
-VALUES  ('DM001','NH001', N'Tivi,Loa,Dàn Karaoke', N'...'),
-		('DM002','NH002', N'Tủ lạnh, Tủ đông, Tủ mát', N'...'),
-		('DM003','NH003', N'Máy giặt, Sấy quần áo', N'...'),
-		('DM004','NH004', N'Máy lạnh, Quạt điều hòa', N'...'),
-		('DM005','NH005', N'Điện gia dụng, Dụng cụ', N'...'),
-		('DM006','NH006', N'Đồ dùng nhà bếp', N'...'),
-		('DM007','NH007', N'Lọc nước, Máy nước nóng', N'...'),
-		('DM008','NH008', N'Điện thoại, Laptop, Tablet', N'...'),
-		('DM009','NH009', N'Phụ kiện, Đồng hồ', N'...')
+VALUES  ('DM001','NH001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
+		('DM002','NH002', N'Tủ lạnh, Tủ đông, Tủ mát',1, N'...'),
+		('DM003','NH003', N'Máy giặt, Sấy quần áo',1, N'...'),
+		('DM004','NH004', N'Máy lạnh, Quạt điều hòa',1, N'...'),
+		('DM005','NH005', N'Điện gia dụng, Dụng cụ',1, N'...'),
+		('DM006','NH006', N'Đồ dùng nhà bếp',1, N'...'),
+		('DM007','NH007', N'Lọc nước, Máy nước nóng',1, N'...'),
+		('DM008','NH008', N'Điện thoại, Laptop, Tablet',1, N'...'),
+		('DM009','NH009', N'Phụ kiện, Đồng hồ',1, N'...')
 
 
 INSERT INTO VAITRO

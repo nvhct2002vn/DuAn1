@@ -94,8 +94,12 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chương trình khuyến mại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -281,6 +285,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 .addComponent(pnllCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -375,7 +380,10 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khuyến mại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         tblDanhSachNSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -445,6 +453,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         );
 
         jTabbedPane1.addTab("Danh sách khuyến mại nhóm sản phẩm", jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         tblDanhSachSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
