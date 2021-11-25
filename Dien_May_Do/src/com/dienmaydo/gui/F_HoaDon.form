@@ -517,14 +517,14 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="8">
-                        <StringItem index="0" value="  "/>
-                        <StringItem index="1" value="0 VND - 1,000 VND"/>
-                        <StringItem index="2" value="1,000 VND - 10,000 VND"/>
-                        <StringItem index="3" value="10,000 VND - 50,000 VND"/>
-                        <StringItem index="4" value="50,000 VND - 100,000 VND"/>
-                        <StringItem index="5" value="100,000 VND - 200,000 VND"/>
-                        <StringItem index="6" value="200,000 VND - 500.000 VND"/>
-                        <StringItem index="7" value="500,000 VND - ... VND"/>
+                        <StringItem index="0" value="    "/>
+                        <StringItem index="1" value="0 VND - 500,000 VND"/>
+                        <StringItem index="2" value="500,000 VND - 1,000,000 VND"/>
+                        <StringItem index="3" value="1,000,000 VND - 5,000,000 VND"/>
+                        <StringItem index="4" value="5,000,000 VND - 10,000,000 VND"/>
+                        <StringItem index="5" value="10,000,000 VND - 20,000,000 VND"/>
+                        <StringItem index="6" value="20,000,000 VND - 50,000,000 VND"/>
+                        <StringItem index="7" value="50,000,000 VND - ... VND"/>
                       </StringArray>
                     </Property>
                   </Properties>
