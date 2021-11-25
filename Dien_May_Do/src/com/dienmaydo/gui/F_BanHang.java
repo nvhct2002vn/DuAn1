@@ -535,9 +535,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                             .addComponent(lblTongTien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel6)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
@@ -547,8 +544,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                                 .addGap(15, 15, 15)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cboHinhThucGiaoHang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboHinhThucTT, 0, 185, Short.MAX_VALUE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cboHinhThucTT, 0, 185, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHuyHoaDon, btnLamMoi});
@@ -704,7 +702,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -858,7 +856,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                     for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
                         if (tblSanPhamChon.getValueAt(i, 0).toString().equals(tblChonSanPham.getValueAt(row1, 0))) {
                             int soLuongGoc = Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "");
-                            System.out.println(soLuongGoc);
                             tblSanPhamChon.setValueAt(soLuongGoc + Integer.parseInt(soluong), i, 3);
                             donHang();
                             capNhatHoaDon();
@@ -928,24 +925,23 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setTienThuaTraKhach(Float.parseFloat(txtTienTraKhach.getText()));
         hd.setTongTien(Float.parseFloat(lblTongTien.getText()));
         hd.setGhiChu(txtghiChu.getText());
-        if (Msgbox.confirm(this, "Bạn chắc chắn muốn hủy hóa đơn này ?")) {
-            try {
-                if (txtMaHoaDon.getText().equals("")) {
-                    Msgbox.alert(this, "Vui lòng chọn hóa đơn để hủy");
-                } else {
+        try {
+            if (txtMaHoaDon.getText().trim().equals("")) {
+                Msgbox.alert(this, "Vui lòng chọn hóa đơn để hủy");
+            } else {
+                if (Msgbox.confirm(this, "Bạn chắc chắn muốn hủy hóa đơn này ?")) {
                     hdService.update(hd);
                     capNhatSoluongXoaAll();
-                    model2.setRowCount(0);
                     donHang();
                     showHoaDonCho();
                     showProductsDM();
                     lamMoi();
                     Msgbox.alert(this, "Hóa đơn đã được hủy!");
                 }
-            } catch (Exception e) {
-                Msgbox.alert(this, "Hủy hóa đơn thất bại");
-                e.printStackTrace();
             }
+        } catch (Exception e) {
+            Msgbox.alert(this, "Hủy hóa đơn thất bại");
+            e.printStackTrace();
         }
     }
 
@@ -988,11 +984,11 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     }
 
     public void timKiem() {
-        model1.setRowCount(0);
         if (txtTimKiem.getText().trim().equals("")) {
             fillTable();
             cboDanhMuc.setSelectedIndex(0);
         } else {
+            model1.setRowCount(0);
             List<SanPhamChiTiet> list = spService.selectByTimKiem(txtTimKiem.getText().trim());
             for (SanPhamChiTiet x : list) {
                 model1.addRow(new Object[]{
@@ -1046,12 +1042,14 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 Msgbox.alert(this, "Vui lòng chọn sản phẩm trước khi nhấn thanh toán");
                 return;
             } else {
-                hdService.update(hd);
-                showHoaDonCho();
-                showProductsDM();
-                xuatHoaDon();
-                lamMoi();
-                Msgbox.alert(this, "Thanh toán thành công!");
+                if (Msgbox.confirm(this, "Bạn chắc chắn muốn thanh toán hóa đơn này chứ?")) {
+                    hdService.update(hd);
+                    showHoaDonCho();
+                    showProductsDM();
+                    xuatHoaDon();
+                    lamMoi();
+                    Msgbox.alert(this, "Thanh toán thành công!");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1425,7 +1423,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             try {
                 result = new MultiFormatReader().decode(bitmap);
             } catch (NotFoundException e) {
-                
+
             }
 
             if (result != null) {
@@ -1446,5 +1444,5 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         t.setDaemon(true);
         return t;
     }
-    
+
 }

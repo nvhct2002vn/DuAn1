@@ -240,7 +240,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Tổng tiền:");
 
-        cboTongTien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "0 VND - 1,000 VND", "1,000 VND - 10,000 VND", "10,000 VND - 50,000 VND", "50,000 VND - 100,000 VND", "100,000 VND - 200,000 VND", "200,000 VND - 500.000 VND", "500,000 VND - ... VND" }));
+        cboTongTien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "    ", "0 VND - 500,000 VND", "500,000 VND - 1,000,000 VND", "1,000,000 VND - 5,000,000 VND", "5,000,000 VND - 10,000,000 VND", "10,000,000 VND - 20,000,000 VND", "20,000,000 VND - 50,000,000 VND", "50,000,000 VND - ... VND" }));
         cboTongTien.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboTongTienItemStateChanged(evt);
@@ -715,7 +715,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             float key1;
             float key2;
             key1 = 0;
-            key2 = 1000;
+            key2 = 500000;
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
@@ -729,8 +729,8 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             model.setRowCount(0);
             float key1;
             float key2;
-            key1 = 1000;
-            key2 = 10000;
+            key1 = 500000;
+            key2 = 1000000;
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
@@ -744,8 +744,8 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             model.setRowCount(0);
             float key1;
             float key2;
-            key1 = 10000;
-            key2 = 50000;
+            key1 = 1000000;
+            key2 = 5000000;
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
@@ -759,8 +759,8 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             model.setRowCount(0);
             float key1;
             float key2;
-            key1 = 50000;
-            key2 = 100000;
+            key1 = 5000000;
+            key2 = 10000000;
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
@@ -774,8 +774,8 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             model.setRowCount(0);
             float key1;
             float key2;
-            key1 = 100000;
-            key2 = 200000;
+            key1 = 10000000;
+            key2 = 20000000;
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
@@ -789,8 +789,8 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             model.setRowCount(0);
             float key1;
             float key2;
-            key1 = 200000;
-            key2 = 500000;
+            key1 = 20000000;
+            key2 = 50000000;
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
@@ -802,7 +802,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         if (cboTongTien.getSelectedIndex() == 7) {
             DefaultTableModel model = (DefaultTableModel) tblHoaDon3.getModel();
             model.setRowCount(0);
-            float key = 500000;
+            float key = 50000000;
             List<HoaDon> list = hdService.selctByTongTienMax(key);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
