@@ -23,6 +23,9 @@ public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiT
             + "TENSPCT,SOLUONG,NHOMPHOBIEN,GIANHAP,GIABAN,TRANGTHAI,MOTA)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     String update_SQL = "UPDATE dbo.SANPHAMCHITIET SET MAIMAGE = ? ,MAMAUSAC = ? ,MAKICHTHUOC = ? ,MACHATLIEU = ? ,MATHETICH = ? ,MAKL = ? ,\n"
             + "TENSPCT = ? ,SOLUONG = ? ,NHOMPHOBIEN = ? ,GIANHAP = ? ,GIABAN = ? ,TRANGTHAI = ? ,MOTA = ? WHERE MASPCT = ?";
+
+    String updateTrangThai_SQL = "UPDATE dbo.SANPHAMCHITIET SET TRANGTHAI = ? WHERE MASP = ?";
+
     String selectALL_SQL = "SELECT * FROM dbo.SANPHAMCHITIET\n"
             + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
@@ -114,6 +117,15 @@ public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiT
             JdbcHelper.excuteUpdate(update_SQL, entity.getMaImage(), entity.getMaMauSac(), entity.getMaKichThuoc(), entity.getMaChatLieu(),
                     entity.getMaTheTich(), entity.getMaKL(), entity.getTenSPCT(), entity.getSoLuong(), entity.isNhomPhoBien(),
                     entity.getGiaNhap(), entity.getGiaBan(), entity.isTrangThai(), entity.getMoTa(), entity.getMaSPCT());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateDataTrangThai(SanPhamChiTiet entity) {
+        try {
+            JdbcHelper.excuteUpdate(updateTrangThai_SQL, entity.isTrangThai(), entity.getMaSp());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -217,4 +229,5 @@ public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiT
     public List<SanPhamChiTiet> selectAll_BY_ONL() {
         return this.selectBySQL(select_All_ONL);
     }
+
 }

@@ -2375,7 +2375,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     void updatetData() {
         SanPham sp = getFromSP();
+        SanPhamChiTiet spct = getfromUpdateTrangThai();
         try {
+            daoSPCT.updateDataTrangThai(spct);
+            fillTableSPCT();
             daoSP.updateData(sp);
             fillTableData();
             Msgbox.alert(this, "Cập nhật thành công!");
@@ -3633,4 +3636,16 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
     }
 
+    // -------------- sửa trạng thái ----------------
+    SanPhamChiTiet getfromUpdateTrangThai() {
+        SanPhamChiTiet spct = new SanPhamChiTiet();
+        String trangThai = (String) cbbTrangThaiSP.getSelectedItem();
+        if (trangThai.equals("Đang kinh doanh")) {
+            spct.setTrangThai(true);
+        } else {
+            spct.setTrangThai(false);
+        }
+        spct.setMaSp(txtMaSP.getText());
+        return spct;
+    }
 }
