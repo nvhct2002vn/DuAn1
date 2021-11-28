@@ -19,11 +19,15 @@ public interface IKhachHangService<E, K> {
     void deleteData(K key);
 
     List<E> selectAll();
+    
+    List<E> selectByLSGD(K key);
 
     E selectByID(K key);
 
     List<E> selectBySQL(String sql, Object... args);
    
     List<E> selectByTimKiem(K key);
+    
+    List<E> selectBySdt(K key);
     
 }
