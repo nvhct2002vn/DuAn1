@@ -345,6 +345,11 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
                 cboTrangThaiThanhToanItemStateChanged(evt);
             }
         });
+        cboTrangThaiThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTrangThaiThanhToanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -438,11 +443,11 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -487,6 +492,10 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         fillTrangThai();
     }//GEN-LAST:event_cboTrangThaiThanhToanItemStateChanged
+
+    private void cboTrangThaiThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTrangThaiThanhToanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboTrangThaiThanhToanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
