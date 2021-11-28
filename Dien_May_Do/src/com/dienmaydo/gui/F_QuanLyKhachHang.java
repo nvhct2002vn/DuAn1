@@ -7,6 +7,7 @@ package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.KhachHang;
 import com.dienmaydo.service.KhachHangService;
+import com.dienmaydo.service.LichSuGiaoDichService;
 import com.dienmaydo.utils.Msgbox;
 import java.util.List;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -19,7 +20,9 @@ import javax.swing.table.DefaultTableModel;
 public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     KhachHangService KHSV = new KhachHangService();  //tạo ra KHSV 
+    LichSuGiaoDichService LSGDSV = new LichSuGiaoDichService();
     boolean _GioiTinh;
+    DefaultTableModel Model = new DefaultTableModel();
 
     /**
      * Creates new form F_QuanLyKhachHang
@@ -746,9 +749,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     }
 
     void FillTableLSGD() {
-        DefaultTableModel Model = (DefaultTableModel) TbLSGD.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
+        Model = (DefaultTableModel) TbLSGD.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
-        List<KhachHang> LKH = KHSV.selectByLSGD(txtMaKH.getText());
+        List<KhachHang> LKH = LSGDSV.SelectLSGB_ByMaKH(txtMaKH.getText());
         for (KhachHang x : LKH) {
             Model.addRow(new Object[]{
                 x.getTenKh(), x.getSDT(), x.getNgayGD(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getGiaBan(), x.getTongTien(), x.getTrangThaiTT()

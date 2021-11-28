@@ -20,24 +20,11 @@ import java.util.List;
 public class KhachHangService implements IKhachHangService<KhachHang, String> {
 
     String insertSQL = "INSERT INTO dbo.KHACHHANG(MAKH,TENKH,GIOITINH,DIENTHOAI,EMAIL,DIACHI,TRANGTHAI)VALUES(?,?,?,?,?,?,?)";
-//    String selectALL_SQL = "SELECT * FROM dbo.KHACHHANG";
+    String selectALL_SQL = "SELECT * FROM dbo.KHACHHANG";
     String selectByTimKiem = "SELECT * FROM dbo.KHACHHANG WHERE MAKH LIKE ? OR TENKH LIKE ?";
     String selectBySdt = "SELECT * FROM dbo.KHACHHANG WHERE DIENTHOAI LIKE ?";
     String UPDATE_SQL = "UPDATE KHACHHANG SET TENKH = ?, GIOITINH = ?, DIENTHOAI = ?,EMAIL = ?,DIACHI = ?,TRANGTHAI = ? WHERE MAKH = ?";
-//    String selectByID = "SELECT * FROM dbo.KHACHHANG where MAKH = ?";
-    String selectByID_LSGD = "SELECT * FROM dbo.KHACHHANG\n"
-            + "JOIN dbo.HOADON ON HOADON.MAKH = KHACHHANG.MAKH\n"
-            + "JOIN dbo.HOADONCHITIET ON HOADONCHITIET.MAHD = HOADON.MAHD\n"
-            + "JOIN dbo.SANPHAMCHITIET ON SANPHAMCHITIET.MASPCT = HOADONCHITIET.MASPCT\n"
-            + "JOIN  dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
-            + "JOIN dbo.TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT\n"
-            + "WHERE KHACHHANG.MAKH = ?";
-    String selectBy_ALL_LSGD = "SELECT * FROM dbo.KHACHHANG\n"
-            + "JOIN dbo.HOADON ON HOADON.MAKH = KHACHHANG.MAKH\n"
-            + "JOIN dbo.HOADONCHITIET ON HOADONCHITIET.MAHD = HOADON.MAHD\n"
-            + "JOIN dbo.SANPHAMCHITIET ON SANPHAMCHITIET.MASPCT = HOADONCHITIET.MASPCT\n"
-            + "JOIN  dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
-            + "JOIN dbo.TRANGTHAITHANHTOAN ON TRANGTHAITHANHTOAN.MATTTT = HOADON.MATTTT";
+    String selectByID = "SELECT * FROM dbo.KHACHHANG WHERE MAKH = ?";
 
     @Override
     public void insertData(KhachHang entity) {
@@ -58,12 +45,12 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
 
     @Override
     public List<KhachHang> selectAll() {
-        return this.selectBySQL(selectBy_ALL_LSGD);
+        return this.selectBySQL(selectALL_SQL);
     }
 
     @Override
     public KhachHang selectByID(String key) {
-        List<KhachHang> list = selectBySQL(selectByID_LSGD, key);
+        List<KhachHang> list = selectBySQL(selectByID, key);
         if (list.isEmpty()) {
             return null;
         }
@@ -84,13 +71,6 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
                 entity.setEmail(rs.getString("EMAIL"));
                 entity.setDiaChi(rs.getString("DIACHI"));
                 entity.setTrangthai(rs.getString("TRANGTHAI"));
-                entity.setNgayGD(rs.getString("NGAYLAP"));
-                entity.setTenSP(rs.getString("TENSP"));
-                entity.setTenSPCT(rs.getString("TENSPCT"));
-                entity.setSoLuong(rs.getInt("SOLUONG"));
-                entity.setGiaBan(rs.getFloat("GIABAN"));
-                entity.setTongTien(rs.getFloat("TONGTIEN"));
-                entity.setTrangThaiTT(rs.getString("TENTTTT"));
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
@@ -110,10 +90,4 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
     public List<KhachHang> selectBySdt(String key) {
         return selectBySQL(selectBySdt, "%" + key + "%");
     }
-
-    @Override
-    public List<KhachHang> selectByLSGD(String key) {    //key = MAkh
-        return selectBySQL(selectByID_LSGD, key);
-    }
-
 }

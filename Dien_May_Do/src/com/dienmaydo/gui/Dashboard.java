@@ -29,7 +29,7 @@ public class Dashboard extends javax.swing.JFrame {
         new F_DangNhap(this, true).setVisible(true);
         defaultColor = new Color(255, 204, 0);
         clickColor = new Color(153, 153, 153);
-        
+
         DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
