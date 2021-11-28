@@ -13,7 +13,7 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
     String Update_SQL = "UPDATE dbo.NHANVIEN SET MAVT = ? ,MATKHAU = ?,TENNV = ? ,DIACHI = ? ,DIENTHOAI = ?,GIOITINH = ?,NGAYSINH = ?,TRANGTHAI = ? WHERE MANV = ?";
     String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT";
     String SELECT_BY_ID = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT WHERE MANV LIKE ?";
-
+    String Search_SQL = "SELECT * FROM dbo.NHANVIEN WHERE MANV LIKE  ? OR TENNV LIKE ? OR DIENTHOAI LIKE ?";
     @Override
     public List<NhanVien> selectAll() {
         return selectBySql(SELECT_ALL_SQL);
@@ -74,6 +74,6 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
 
     @Override
     public List<NhanVien> selectByTimKiem(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return selectBySql(Search_SQL, "%" + key + "%", "%" + key + "%","%" + key + "%");
     }
 }
