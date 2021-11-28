@@ -7,13 +7,13 @@ package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.NhanVien;
 import com.dienmaydo.entity.VaiTro;
-import com.dienmaydo.service.DanhMucService;
 import com.dienmaydo.service.NhanVienService;
 import com.dienmaydo.service.VaiTroService;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,8 +30,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     /**
      * Creates new form F_NhanVien
      */
-    
     DefaultComboBoxModel model_combo;
+
     public F_NhanVien() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -144,6 +144,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         jLabel6.setText("Giới tính");
 
         buttonGroup1.add(rdNam);
+        rdNam.setSelected(true);
         rdNam.setText("Nam");
 
         buttonGroup1.add(rdNu);
@@ -161,6 +162,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         btnSua.setBackground(new java.awt.Color(255, 204, 0));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setBackground(new java.awt.Color(255, 204, 0));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -259,13 +265,10 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                             .addComponent(rdNam)
                             .addComponent(jLabel6)
                             .addComponent(rdNu))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(txtTrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnThem)
@@ -382,7 +385,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -435,9 +438,18 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void tbBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangMouseClicked
-        // TODO add your handling code here:
-        
+        clickTable();
+// TODO add your handling code here:
+
     }//GEN-LAST:event_tbBangMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        if (isValidate()) {
+            return;
+        } else {
+            Sua();
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -483,34 +495,21 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         System.out.println(listNV);
         for (NhanVien x : listNV) {
             model.addRow(new Object[]{
-                x.getMaNV(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ",x.getTrangThai()
+                x.getMaNV(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
             });
         }
     }
-    public void LoadToCBB(){
-        DefaultComboBoxModel model_cbb = (DefaultComboBoxModel)cbbVaitro.getModel();
+
+    public void LoadToCBB() {
+        DefaultComboBoxModel model_cbb = (DefaultComboBoxModel) cbbVaitro.getModel();
         model_cbb.removeAllElements();
         List<VaiTro> list = vtService.selectAll();
         for (VaiTro x : list) {
             model_cbb.addElement(x);
         }
     }
-   
-    NhanVien getForm() {
-        NhanVien nv = new NhanVien();
-        nv.setMaNV(txtManv.getText());
-        VaiTro vt = (VaiTro) cbbVaitro.getSelectedItem();
-        nv.setMaVT(vt.getMaVT());
-        nv.setTenNV(txtTennv.getText());
-        nv.setMatKhau(txtMatKhau.getText());
-        nv.setTrangThai(txtTrangthai.getText());
-        nv.setDiaChi(txtDiachi.getText());
-        nv.setGioiTinh(rdNam.isSelected() ? true : false);
-        nv.setDienThoai(txtDienthoai.getText());
-        nv.setNgaySinh(XDate.toDate(txtNgaysinh.getText()));
-        return nv;
-    }
-    boolean checkTrung(){
+
+    boolean checkTrung() {
         boolean check = false;
         List<NhanVien> list = daoNV.selectAll();
         for (int i = 0; i < list.size(); i++) {
@@ -521,7 +520,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         }
         return check;
     }
-   boolean isValidate() {
+
+    boolean isValidate() {
         try {
             if (txtManv.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mã nhân viên không được để trống");
@@ -544,7 +544,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             } else if (txtTrangthai.getText().trim().equals("")) {
                 Msgbox.alert(this, "Trang thái nhân viên không được để trống");
                 return true;
-            }else if (txtNgaysinh.getText().trim().equals("")) {
+            } else if (txtNgaysinh.getText().trim().equals("")) {
                 Msgbox.alert(this, "Ngày sinh nhân viên không được để trống");
                 return true;
             } else {
@@ -555,6 +555,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             return true;
         }
     }
+
     public void lamMoi() {
         txtManv.setText("");
         txtTennv.setText("");
@@ -569,6 +570,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         row = -1;
         txtManv.setEditable(true);
     }
+
     public void Them() {
         try {
             NhanVien nv = getForm();
@@ -577,6 +579,61 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             Msgbox.alert(this, "Thêm thành công");
         } catch (Exception e) {
             e.printStackTrace();  //in ra lỗi
+        }
+    }
+
+    public void Sua() {
+        try {
+            NhanVien nv = getForm();
+            daoNV.updateData(nv);
+            FillTable();
+            Msgbox.alert(this, "Sửa thành công");
+        } catch (Exception e) {
+            e.printStackTrace();  //in ra lỗi
+        }
+    }
+
+    NhanVien getForm() {
+        NhanVien nv = new NhanVien();
+        nv.setMaNV(txtManv.getText());
+        VaiTro vt = (VaiTro) cbbVaitro.getSelectedItem();
+        nv.setMaVT(vt.getMaVT());
+        nv.setTenNV(txtTennv.getText());
+        nv.setMatKhau(txtMatKhau.getText());
+        nv.setTrangThai(txtTrangthai.getText());
+        nv.setDiaChi(txtDiachi.getText());
+        nv.setGioiTinh(rdNam.isSelected() ? true : false);
+        nv.setDienThoai(txtDienthoai.getText());
+        nv.setNgaySinh(XDate.toDate(txtNgaysinh.getText()));
+        return nv;
+    }
+
+    void clickTable() {
+        int vitri = tbBang.getSelectedRow();
+        txtManv.setText((String) tbBang.getValueAt(vitri, 0));
+        txtTennv.setText((String) tbBang.getValueAt(vitri, 1));
+        txtDiachi.setText((String) tbBang.getValueAt(vitri, 3));
+        txtDienthoai.setText((String) tbBang.getValueAt(vitri, 4));
+        setSelectedComboboxTenSP((String) tbBang.getValueAt(vitri, 2), cbbVaitro);
+        String NgaySinh = String.valueOf(tbBang.getValueAt(vitri, 5));
+        txtNgaysinh.setText(NgaySinh);
+        String gt = ((String) tbBang.getValueAt(vitri, 6));
+        if (gt.equals("Nam")) {
+            rdNam.setSelected(true);
+        } else {
+            rdNu.setSelected(true);
+        }
+        txtTrangthai.setText((String) tbBang.getValueAt(vitri, 7));
+    }
+
+    public void setSelectedComboboxTenSP(String cbbselected, JComboBox cbb) {
+        for (int i = 0; i < cbb.getItemCount(); i++) {
+            VaiTro m = (VaiTro) cbb.getItemAt(i);
+            if (m != null) {
+                if (cbbselected.trim().equals(m.getTenVT())) {
+                    cbb.setSelectedItem(m);
+                }
+            }
         }
     }
 }

@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import com.dienmaydo.iservice.INhanVienService;
 
-public class NhanVienService implements INhanVienService<NhanVien, String> {   
-    String Insert_SQL = "INSERT INTO NHANVIEN (MANV ,MAVT , MATKHAU , TENNV , DIACHI , DIENTHOAI , "
-            + "GIOITINH , NGAYSINH , TRANGTHAI) VALUES (?,?,?,?,?,?,?,?,?)";
+public class NhanVienService implements INhanVienService<NhanVien, String> {
+
+    String Insert_SQL = "INSERT INTO dbo.NHANVIEN(MANV,MAVT,MATKHAU,TENNV,DIACHI,DIENTHOAI,GIOITINH,NGAYSINH,TRANGTHAI)VALUES(?,?,?,?,?,?,?,?,?)";
+    String Update_SQL = "UPDATE dbo.NHANVIEN SET MAVT = ? ,MATKHAU = ?,TENNV = ? ,DIACHI = ? ,DIENTHOAI = ?,GIOITINH = ?,NGAYSINH = ?,TRANGTHAI = ? WHERE MANV = ?";
     String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT";
     String SELECT_BY_ID = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT WHERE MANV LIKE ?";
-    
 
     @Override
     public List<NhanVien> selectAll() {
@@ -57,13 +57,14 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
 
     @Override
     public void insertData(NhanVien entity) {
-        JdbcHelper.excuteUpdate(Insert_SQL,entity.getMaNV(),entity.getMaVT(),entity.getMatKhau(),entity.getTenNV(),entity.getDiaChi()
-        ,entity.getDienThoai(),entity.isGioiTinh(),entity.getNgaySinh(),entity.getTrangThai());
+        JdbcHelper.excuteUpdate(Insert_SQL, entity.getMaNV(), entity.getMaVT(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
+                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.getTrangThai());
     }
 
     @Override
     public void updateData(NhanVien entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JdbcHelper.excuteUpdate(Update_SQL, entity.getMaVT(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
+                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.getTrangThai(), entity.getMaNV());
     }
 
     @Override
