@@ -28,6 +28,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     int row = -1;
     String Loc;
     boolean LocGT;
+    String GanChu;
 
     /**
      * Creates new form F_NhanVien
@@ -82,10 +83,10 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbBang = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
-        rdNamLoc = new javax.swing.JRadioButton();
-        rdNuLoc = new javax.swing.JRadioButton();
-        rdQL = new javax.swing.JRadioButton();
-        rdNV = new javax.swing.JRadioButton();
+        cbbGTLoc = new javax.swing.JComboBox<>();
+        cbbVaiTRoLoc = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
 
@@ -224,7 +225,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                     .addComponent(cbbVaitro, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtManv, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                     .addComponent(txtMatKhau)
-                    .addComponent(txtDiachi, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                    .addComponent(txtDiachi)
                     .addComponent(txtTennv))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,62 +325,52 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc"));
 
-        buttonGroup3.add(rdNamLoc);
-        rdNamLoc.setText("Nam ");
-        rdNamLoc.addActionListener(new java.awt.event.ActionListener() {
+        cbbGTLoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbbGTLoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Nam", "Nữ" }));
+        cbbGTLoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdNamLocActionPerformed(evt);
+                cbbGTLocActionPerformed(evt);
             }
         });
 
-        buttonGroup3.add(rdNuLoc);
-        rdNuLoc.setText("Nữ");
-        rdNuLoc.addActionListener(new java.awt.event.ActionListener() {
+        cbbVaiTRoLoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbbVaiTRoLoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Quản Lý", "Nhân Viên" }));
+        cbbVaiTRoLoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdNuLocActionPerformed(evt);
+                cbbVaiTRoLocActionPerformed(evt);
             }
         });
 
-        buttonGroup2.add(rdQL);
-        rdQL.setText("Quản lý");
-        rdQL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdQLActionPerformed(evt);
-            }
-        });
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Lọc theo giới tính");
 
-        buttonGroup2.add(rdNV);
-        rdNV.setText("Nhân viên");
-        rdNV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdNVActionPerformed(evt);
-            }
-        });
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setText("Lọc theo vai trò");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(rdNamLoc)
-                .addGap(44, 44, 44)
-                .addComponent(rdNuLoc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
-                .addComponent(rdQL)
-                .addGap(41, 41, 41)
-                .addComponent(rdNV)
-                .addGap(74, 74, 74))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addComponent(cbbGTLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(39, 39, 39)
+                .addComponent(cbbVaiTRoLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdNV)
-                    .addComponent(rdQL)
-                    .addComponent(rdNuLoc)
-                    .addComponent(rdNamLoc))
+                    .addComponent(cbbGTLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbVaiTRoLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -398,7 +389,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -411,29 +402,29 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(47, 47, 47)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(853, 853, 853)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(147, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(72, 72, 72))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -504,82 +495,49 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         TimKiem();
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
-    private void rdNamLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNamLocActionPerformed
+    private void cbbGTLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGTLocActionPerformed
         // TODO add your handling code here:
-        if (rdNamLoc.isSelected()&&rdQL.isSelected()) {
-            Loc = "Quản Lý";
-            LocGT = true;
-            LocNamNVFillTable();
+        GanChu=(String)cbbGTLoc.getSelectedItem();
+        if (GanChu.equals(" ")) {
+            
+            FillTable();
+            
         }
-        if (rdNamLoc.isSelected()) {
+        if (GanChu.equals("Nam")) {
             LocGT = true;
+            cbbVaiTRoLoc.setSelectedIndex(0);
             LocNamFillTable();
+            
+            
         }
-        if (rdNamLoc.isSelected()&&rdNV.isSelected()) {
-            Loc = "Nhân Viên";
-            LocGT = true;
-            LocNamNVFillTable();
-        }
-    }//GEN-LAST:event_rdNamLocActionPerformed
-
-    private void rdNuLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNuLocActionPerformed
-        // TODO add your handling code here:
-        if (rdNuLoc.isSelected()&&rdQL.isSelected()) {
-            Loc = "Quản Lý";
-            LocGT = false;
-            LocNamNVFillTable();
-        }
-        if (rdNuLoc.isSelected()) {
-            LocGT = false;
+        if (GanChu.equals("Nữ")) {
+            LocGT=false;
+            cbbVaiTRoLoc.setSelectedIndex(0);
             LocNamFillTable();
+            
         }
-        if (rdNuLoc.isSelected()&&rdNV.isSelected()) {
-            Loc = "Nhân Viên";
-            LocGT = false;
-            LocNamNVFillTable();
-        }
-    }//GEN-LAST:event_rdNuLocActionPerformed
+    }//GEN-LAST:event_cbbGTLocActionPerformed
 
-    private void rdQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdQLActionPerformed
+    private void cbbVaiTRoLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbVaiTRoLocActionPerformed
         // TODO add your handling code here:
-        if (rdNamLoc.isSelected()&&rdQL.isSelected()) {
-            Loc = "Quản Lý";
-            LocGT = true;
-            LocNamNVFillTable();
+        GanChu=(String)cbbVaiTRoLoc.getSelectedItem();
+        if (GanChu.equals(" ")) {
+            
+            FillTable();
         }
-        
-        if (rdNuLoc.isSelected()&&rdQL.isSelected()) {
+        if (GanChu.equals("Quản Lý")) {
             Loc = "Quản Lý";
-            LocGT = false;
-            LocNamNVFillTable();
-        }
-        if (rdQL.isSelected()) {
-            Loc = "Quản Lý";
+            cbbGTLoc.setSelectedIndex(0);
             LocFillTable();
+            
         }
-        
-        //        Loc = "Quản Lý";
-        //        LocFillTable();
-    }//GEN-LAST:event_rdQLActionPerformed
-
-    private void rdNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNVActionPerformed
-        // TODO add your handling code here:
-         if (rdNamLoc.isSelected()&&rdNV.isSelected()) {
+        if (GanChu.equals("Nhân Viên")) {
             Loc = "Nhân Viên";
-            LocGT = true;
-            LocNamNVFillTable();
-        }
-        
-        if (rdNuLoc.isSelected()&&rdNV.isSelected()) {
-            Loc = "Nhân Viên";
-            LocGT = false;
-            LocNamNVFillTable();
-        }
-        if (rdNV.isSelected()) {
-            Loc = "Nhân Viên";
+            cbbGTLoc.setSelectedIndex(0);
             LocFillTable();
+            
         }
-    }//GEN-LAST:event_rdNVActionPerformed
+    }//GEN-LAST:event_cbbVaiTRoLocActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -589,8 +547,12 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JComboBox<String> cbbGTLoc;
+    private javax.swing.JComboBox<String> cbbVaiTRoLoc;
     private javax.swing.JComboBox<String> cbbVaitro;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -604,12 +566,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rdNV;
     private javax.swing.JRadioButton rdNam;
-    private javax.swing.JRadioButton rdNamLoc;
     private javax.swing.JRadioButton rdNu;
-    private javax.swing.JRadioButton rdNuLoc;
-    private javax.swing.JRadioButton rdQL;
     private javax.swing.JTable tbBang;
     private javax.swing.JTextField txtDiachi;
     private javax.swing.JTextField txtDienthoai;
