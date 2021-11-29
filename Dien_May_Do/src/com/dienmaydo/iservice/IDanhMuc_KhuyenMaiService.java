@@ -12,7 +12,8 @@ import java.util.List;
  * @author MSI
  */
 public interface IDanhMuc_KhuyenMaiService<E, K> {
-        void insertData(E entity);
+
+    void insertData(E entity);
 
     void updateData(E entity);
 
