@@ -36,8 +36,14 @@ public class ThongKeService {
     }
 
     public List<Object[]> getThongKe(int nam) {
-        String sql = "CALL SP_TABLETKTT(?)";
+        String sql = "{CALL SP_TABLETKTT(?)}";
         String[] cols = {"TENSANPHAM", "SOLUONGSP", "GIABANCAONHAT", "GIABANTHAPNHAT", "DOANHTHU"};
         return this.getListOfArrList(sql, cols, nam);
+    }
+    
+    public List<Object[]> getThongKeTheoDM(String danhMuc) {
+        String sql = "{CALL SP_CBBDM(?)}";
+        String[] cols = {"TENSANPHAM", "SOLUONGSP", "GIABANCAONHAT", "GIABANTHAPNHAT", "DOANHTHU"};
+        return this.getListOfArrList(sql, cols, danhMuc);
     }
 }

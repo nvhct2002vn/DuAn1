@@ -32,8 +32,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
 
         fillCbbNamTK();
         fillCbbDanhMuc();
-        fillTableTKHH();
-        
+
         doanhThu();
         soHoaDon();
         soHangHuy();
@@ -305,6 +304,11 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Năm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         cbbNam.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbbNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbNamActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -326,6 +330,11 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh mục", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         cbbDanhMuc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbbDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbDanhMucActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -415,8 +424,8 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(322, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     HÀNG HÓA     ", jPanel8);
@@ -506,8 +515,8 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     HÀNG BỊ HỦY     ", jPanel9);
@@ -556,6 +565,14 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbbNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbNamActionPerformed
+        fillTableTKHH();
+    }//GEN-LAST:event_cbbNamActionPerformed
+
+    private void cbbDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDanhMucActionPerformed
+        fillTheoDM();
+    }//GEN-LAST:event_cbbDanhMucActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -666,15 +683,24 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             model.addElement(danhMuc);
         }
     }
-    
+
     public void fillTableTKHH() {
         DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
         model.setRowCount(0);
-        int nam = (Integer) cbbNam.getSelectedItem();
+        int nam = Integer.parseInt(cbbNam.getSelectedItem().toString());
         List<Object[]> list = tksv.getThongKe(nam);
-        System.out.println(list);
         for (Object[] row : list) {
             model.addRow(row);
+        }
+    }
+    
+    public void fillTheoDM() {
+        DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
+        model.setRowCount(0);
+        String danhMuc = (String) cbbDanhMuc.getSelectedItem();
+        List<Object[]> list = tksv.getThongKeTheoDM(danhMuc);
+        for (Object[] rows : list) {
+            model.addRow(rows);
         }
     }
 }
