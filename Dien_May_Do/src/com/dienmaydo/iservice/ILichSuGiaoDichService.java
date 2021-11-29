@@ -9,24 +9,11 @@ import java.util.List;
 
 /**
  *
- * @author DO TAT HOA
+ * @author Nguyễn Viết Hiên
  */
-public interface IKhachHangService<E, K> {
+public interface ILichSuGiaoDichService<E, K> {
 
-    void insertData(E entity);
-
-    void updateData(E entity);
-
-    void deleteData(K key);
-
-    List<E> selectAll();
-
-    E selectByID(K key);
+    List<E> SelectLSGB_ByMaKH(K key);
 
     List<E> selectBySQL(String sql, Object... args);
-
-    List<E> selectByTimKiem(K key);
-
-    List<E> selectBySdt(K key);
-
 }

@@ -30,6 +30,7 @@ public class Dashboard extends javax.swing.JFrame {
         defaultColor = new Color(255, 204, 0);
         clickColor = new Color(153, 153, 153);
 
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
@@ -71,6 +72,8 @@ public class Dashboard extends javax.swing.JFrame {
         lblKhachHang = new javax.swing.JLabel();
         ThongKE = new javax.swing.JPanel();
         lblThongKe = new javax.swing.JLabel();
+        DanhMuc = new javax.swing.JPanel();
+        lblDanhMuc = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -137,7 +140,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(sanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 60));
+        jPanel2.add(sanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 220, 60));
 
         banHang.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -166,7 +169,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(banHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, 60));
+        jPanel2.add(banHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 60));
 
         hoaDon.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -195,7 +198,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(hoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 220, 60));
+        jPanel2.add(hoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 220, 60));
 
         khuyenMai.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -224,7 +227,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblKhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(khuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 220, 60));
+        jPanel2.add(khuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 60));
 
         thoat.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -253,7 +256,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 220, 60));
+        jPanel2.add(thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 220, 60));
 
         NhanVien.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -282,7 +285,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 220, 60));
+        jPanel2.add(NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 220, 60));
 
         KhachHang.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -311,7 +314,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(KhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 220, -1));
+        jPanel2.add(KhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 220, -1));
 
         ThongKE.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -340,7 +343,40 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(ThongKE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 60));
+        jPanel2.add(ThongKE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 220, 60));
+
+        DanhMuc.setBackground(new java.awt.Color(255, 204, 0));
+
+        lblDanhMuc.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDanhMuc.setForeground(new java.awt.Color(51, 51, 51));
+        lblDanhMuc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDanhMuc.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\category.png")); // NOI18N
+        lblDanhMuc.setText("Danh mục");
+        lblDanhMuc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDanhMucMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblDanhMucMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout DanhMucLayout = new javax.swing.GroupLayout(DanhMuc);
+        DanhMuc.setLayout(DanhMucLayout);
+        DanhMucLayout.setHorizontalGroup(
+            DanhMucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DanhMucLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        DanhMucLayout.setVerticalGroup(
+            DanhMucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DanhMucLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(DanhMuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, 60));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 220, 768));
 
@@ -375,6 +411,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblSanPhamMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMousePressed
         // TODO add your handling code here:
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(clickColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
@@ -387,6 +424,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblBanHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMousePressed
         // TODO add your handling code here
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(clickColor);
         hoaDon.setBackground(defaultColor);
@@ -409,6 +447,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblKhuyenMaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMousePressed
         // TODO add your handling code here:
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
@@ -421,6 +460,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMousePressed
         // TODO add your handling code here:
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
@@ -433,6 +473,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblThoatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMousePressed
         // TODO add your handling code here:
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
@@ -472,6 +513,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMousePressed
         // TODO add your handling code here:
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(clickColor);
@@ -484,6 +526,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
         // TODO add your handling code here:
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
@@ -506,6 +549,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMousePressed
         // TODO add your handling code here:
+        DanhMuc.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);
@@ -544,6 +588,29 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
+    private void lblDanhMucMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDanhMucMousePressed
+        // TODO add your handling code here:
+        DanhMuc.setBackground(clickColor);
+        sanPham.setBackground(defaultColor);
+        banHang.setBackground(defaultColor);
+        hoaDon.setBackground(defaultColor);
+        khuyenMai.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
+        thoat.setBackground(defaultColor);
+    }//GEN-LAST:event_lblDanhMucMousePressed
+
+    private void lblDanhMucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDanhMucMouseClicked
+        // TODO add your handling code here:
+        F_DanhMuc1 dm = new F_DanhMuc1();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(dm).setVisible(true);
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
+    }//GEN-LAST:event_lblDanhMucMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -580,6 +647,7 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel DanhMuc;
     private javax.swing.JPanel KhachHang;
     private javax.swing.JPanel NhanVien;
     private javax.swing.JPanel ThongKE;
@@ -592,6 +660,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel khuyenMai;
     private javax.swing.JLabel lblBanHang;
+    private javax.swing.JLabel lblDanhMuc;
     private javax.swing.JLabel lblHoaDon;
     private javax.swing.JLabel lblKhachHang;
     private javax.swing.JLabel lblKhuyenMai;

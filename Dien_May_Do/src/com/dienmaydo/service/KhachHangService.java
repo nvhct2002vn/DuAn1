@@ -22,8 +22,9 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
     String insertSQL = "INSERT INTO dbo.KHACHHANG(MAKH,TENKH,GIOITINH,DIENTHOAI,EMAIL,DIACHI,TRANGTHAI)VALUES(?,?,?,?,?,?,?)";
     String selectALL_SQL = "SELECT * FROM dbo.KHACHHANG";
     String selectByTimKiem = "SELECT * FROM dbo.KHACHHANG WHERE MAKH LIKE ? OR TENKH LIKE ?";
+    String selectBySdt = "SELECT * FROM dbo.KHACHHANG WHERE DIENTHOAI LIKE ?";
     String UPDATE_SQL = "UPDATE KHACHHANG SET TENKH = ?, GIOITINH = ?, DIENTHOAI = ?,EMAIL = ?,DIACHI = ?,TRANGTHAI = ? WHERE MAKH = ?";
-    String selectByID = "SELECT * FROM dbo.KHACHHANG where MAKH = ?";
+    String selectByID = "SELECT * FROM dbo.KHACHHANG WHERE MAKH = ?";
 
     @Override
     public void insertData(KhachHang entity) {
@@ -99,5 +100,10 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<KhachHang> selectBySdt(String key) {
+        return selectBySQL(selectBySdt, "%" + key + "%");
     }
 }

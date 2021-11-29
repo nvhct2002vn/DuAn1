@@ -9,9 +9,9 @@ import java.util.List;
 
 /**
  *
- * @author DO TAT HOA
+ * @author MSI
  */
-public interface IKhachHangService<E, K> {
+public interface IDanhMuc_KhuyenMaiService<E, K> {
 
     void insertData(E entity);
 
@@ -24,9 +24,4 @@ public interface IKhachHangService<E, K> {
     E selectByID(K key);
 
     List<E> selectBySQL(String sql, Object... args);
-
-    List<E> selectByTimKiem(K key);
-
-    List<E> selectBySdt(K key);
-
 }

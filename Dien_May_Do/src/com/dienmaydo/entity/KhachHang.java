@@ -17,6 +17,13 @@ public class KhachHang {
     private String Email;
     private String DiaChi;
     private String Trangthai;
+    private String NgayGD;
+    private String TenSP;
+    private String TenSPCT;
+    private int SoLuong;
+    private float GiaBan;
+    private float TongTien;
+    private String TrangThaiTT;
 
     public KhachHang() {
     }
@@ -88,6 +95,63 @@ public class KhachHang {
     public void setTrangthai(String Trangthai) {
         this.Trangthai = Trangthai;
     }
+
+    public String getNgayGD() {
+        return NgayGD;
+    }
+
+    public void setNgayGD(String NgayGD) {
+        this.NgayGD = NgayGD;
+    }
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
+
+    public String getTenSPCT() {
+        return TenSPCT;
+    }
+
+    public void setTenSPCT(String TenSPCT) {
+        this.TenSPCT = TenSPCT;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    public float getGiaBan() {
+        return GiaBan;
+    }
+
+    public void setGiaBan(float GiaBan) {
+        this.GiaBan = GiaBan;
+    }
+
+    public float getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(float TongTien) {
+        this.TongTien = TongTien;
+    }
+
+    public String getTrangThaiTT() {
+        return TrangThaiTT;
+    }
+
+    public void setTrangThaiTT(String TrangThaiTT) {
+        this.TrangThaiTT = TrangThaiTT;
+    }
+    
     
     
 }

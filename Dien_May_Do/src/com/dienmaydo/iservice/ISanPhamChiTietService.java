@@ -17,6 +17,8 @@ public interface ISanPhamChiTietService<E, K> {
 
     void updateData(E entity);
 
+    void updateDataTrangThai(E entity);
+
     void deleteData(K key);
 
     List<E> selectAll();

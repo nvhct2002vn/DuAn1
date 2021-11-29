@@ -27,5 +27,10 @@ public class VaiTro {
     public void setTenVT(String TenVT) {
         this.TenVT = TenVT;
     }
+
+    @Override
+    public String toString() {
+        return TenVT;
+    }
     
 }

@@ -1,29 +1,34 @@
 ﻿USE QLBH_DIENMAYDO1
 GO
 
-INSERT INTO NHOMHANG
-VALUES  ('NH001', N'Tivi, Âm thanh, Máy chiếu', N'...'),
-		('NH002', N'Máy giặt, sấy quần áo', N'...'),
-		('NH003', N'Máy lạnh', N'...'),
-		('NH004', N'Xe đạp', N'...'),
-		('NH005', N'Máy lọc nước & phụ kiện', N'...'),
-		('NH006', N'Tủ đông, Tủ lạnh', N'...'),
-		('NH007', N'Điện gia dụng nhỏ', N'...'),
-		('NH008', N'Máy nước nóng, máy rửa chén', N'...'),
-		('NH009', N'Đồ dùng gia đình', N'...')
-
-
+INSERT INTO KHUYENMAI
+VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, N'CÒN ÁP DỤNG',N'No Mô Tả'),
+		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,N'CÒN ÁP DỤNG',N'No Mô Tả'),
+		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,N'CÒN ÁP DỤNG',N'No Mô Tả'),
+		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,N'CÒN ÁP DỤNG',N'No Mô Tả'),
+		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,N'CÒN ÁP DỤNG',N'No Mô Tả')
 
 INSERT INTO DANHMUC
-VALUES  ('DM001','NH001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
-		('DM002','NH002', N'Tủ lạnh, Tủ đông, Tủ mát',1, N'...'),
-		('DM003','NH003', N'Máy giặt, Sấy quần áo',1, N'...'),
-		('DM004','NH004', N'Máy lạnh, Quạt điều hòa',1, N'...'),
-		('DM005','NH005', N'Điện gia dụng, Dụng cụ',1, N'...'),
-		('DM006','NH006', N'Đồ dùng nhà bếp',1, N'...'),
-		('DM007','NH007', N'Lọc nước, Máy nước nóng',1, N'...'),
-		('DM008','NH008', N'Điện thoại, Laptop, Tablet',1, N'...'),
-		('DM009','NH009', N'Phụ kiện, Đồng hồ',1, N'...')
+VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
+		('DM002', N'Tủ lạnh, Tủ đông, Tủ mát',1, N'...'),
+		('DM003', N'Máy giặt, Sấy quần áo',1, N'...'),
+		('DM004', N'Máy lạnh, Quạt điều hòa',1, N'...'),
+		('DM005', N'Điện gia dụng, Dụng cụ',1, N'...'),
+		('DM006', N'Đồ dùng nhà bếp',1, N'...'),
+		('DM007', N'Lọc nước, Máy nước nóng',1, N'...'),
+		('DM008', N'Điện thoại, Laptop, Tablet',1, N'...'),
+		('DM009', N'Phụ kiện, Đồng hồ',1, N'...')
+
+INSERT INTO DANHMUC_KHUYENMAI
+VALUES  ('DMKM01', 'KM001', 'DM001'),
+		('DMKM02', 'KM002', 'DM002'),
+		('DMKM03', 'KM003', 'DM003'),
+		('DMKM04', 'KM004', 'DM004'),
+		('DMKM05', 'KM005', 'DM005'),
+		('DMKM06', 'KM005', 'DM006'),
+		('DMKM07', 'KM004', 'DM007'),
+		('DMKM08', 'KM003', 'DM008'),
+		('DMKM09', 'KM002', 'DM009')
 
 
 INSERT INTO VAITRO
@@ -50,14 +55,14 @@ VALUES  (N'NSX Đông Sơn', N'Việt Nam'),
 
 INSERT INTO SANPHAM
 VALUES  ('SP001','DM001', 1, N'Máy lạnh',1),
-		('SP002','DM002',2, N'Loa Blooth',0),
-		('SP003','DM003',3, N'Điều hòa',0),
+		('SP002','DM002',2, N'Loa Blooth',1),
+		('SP003','DM003',3, N'Điều hòa',1),
 		('SP004','DM004',4, N'Máy giặt',1),
 		('SP005','DM005',5,N'Tivi',1),
 		('SP006','DM006',5, N'Tủ lạnh',1),
 		('SP007','DM007',4, N'Máy hút bụi',1),
 		('SP008','DM008',3, N'Lò vi sóng',1),
-		('SP009','DM009',2, N'Bình nóng lạnh',0)
+		('SP009','DM009',2, N'Bình nóng lạnh',1)
 
 
 INSERT INTO KHACHHANG
@@ -97,6 +102,7 @@ VALUES  ('HD001','NV001','KH01','TT002','HT001','GH001','2021-01-01',100,7200000
 		('HD009','NV003','KH09','TT002','HT001','GH001','2020-09-09',100,750000,N'NOT')
 INSERT INTO HOADON
 VALUES ('HD0010','NV004','KH05','TT003','HT002','GH001','2019-10-10',100,105000,N'NOT')
+
 
 INSERT INTO MAUSAC
 VALUES  ('MS001', N'Trắng đen'),
@@ -177,15 +183,15 @@ VALUES  ('IME001', 'maylanh.png'),
 
 
 INSERT INTO SANPHAMCHITIET
-VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001',N'AH-X9XEW', 10, 0, 900000, 1200000,1, N'No Mô Tả'),
-		('SPCT02', 'IME002', 'SP002', 'MS002', 'KT002', 'CL002', 'TT002', 'KL002',N'BM01', 10, 0, 100000, 200000,1, N'No Mô Tả'),
-		('SPCT03', 'IME003', 'SP003', 'MS004', 'KT003', 'CL003', 'TT003', 'KL003',N'KG50F62', 10, 1, 950000, 1500000,0, N'No Mô Tả'),
-		('SPCT04', 'IME004', 'SP004', 'MS001', 'KT004', 'CL004', 'TT004', 'KL004',N'FV1409S4W', 10, 0, 800000, 950000,0, N'No Mô Tả'),
-		('SPCT05', 'IME005', 'SP005', 'MS002', 'KT005', 'CL005', 'TT005', 'KL005',N'KD-43X75', 10, 0, 1700000, 2100000,1, N'No Mô Tả'),
-		('SPCT06', 'IME006', 'SP006', 'MS001', 'KT006', 'CL006', 'TT006', 'KL006',N'Inverter NR-BC360QKVN', 10, 1, 400000, 650000,0, N'No Mô Tả'),
-		('SPCT07', 'IME007', 'SP007', 'MS001', 'KT007', 'CL007', 'TT007', 'KL007',N'MC-CL575KN49 2000W', 10, 0, 100000, 280000,1, N'No Mô Tả'),
-		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL001', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 10, 0, 120000, 250000,1, N'No Mô Tả'),
-		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 10, 1, 90000, 150000,1, N'No Mô Tả')
+VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001',N'AH-X9XEW', 100, 0, 2000, 3000,1, N'No Mô Tả'),
+		('SPCT02', 'IME002', 'SP002', 'MS002', 'KT002', 'CL002', 'TT002', 'KL002',N'BM01', 1000, 0, 2500, 4000,1, N'No Mô Tả'),
+		('SPCT03', 'IME003', 'SP003', 'MS004', 'KT003', 'CL003', 'TT003', 'KL003',N'KG50F62', 50, 1, 3400, 4000,1, N'No Mô Tả'),
+		('SPCT04', 'IME004' , 'SP004', 'MS001', 'KT004', 'CL004', 'TT004', 'KL004',N'FV1409S4W', 90, 0, 2000, 3500,1, N'No Mô Tả'),
+		('SPCT05', 'IME005', 'SP005', 'MS002', 'KT005', 'CL005', 'TT005', 'KL005',N'KD-43X75', 120, 0, 2200, 3000,1, N'No Mô Tả'),
+		('SPCT06', 'IME006', 'SP006', 'MS001', 'KT006', 'CL006', 'TT006', 'KL006',N'Inverter NR-BC360QKVN', 90, 1, 1500, 2000,1, N'No Mô Tả'),
+		('SPCT07', 'IME007', 'SP007', 'MS001', 'KT007', 'CL007', 'TT007', 'KL007',N'MC-CL575KN49 2000W', 100, 0, 600, 2000,1, N'No Mô Tả'),
+		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL001', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 80, 0, 1000, 1500,1, N'No Mô Tả'),
+		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 70, 1, 900, 1000,1, N'No Mô Tả')
 
 INSERT INTO HOADONCHITIET
 VALUES  ('SPCT01', 'HD001', 6, 1200000),
@@ -197,24 +203,3 @@ VALUES  ('SPCT01', 'HD001', 6, 1200000),
 		('SPCT07', 'HD007', 9, 280000),
 		('SPCT08', 'HD008', 10, 250000),
 		('SPCT09', 'HD009', 5, 150000)
-
-
-INSERT INTO KHUYENMAI
-VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,N'CÒN ÁP DỤNG',N'No Mô Tả')
-
-
-
-INSERT INTO DANHMUC_KHUYENMAI
-VALUES  ('DMKM01', 'KM001', 'DM001'),
-		('DMKM02', 'KM002', 'DM002'),
-		('DMKM03', 'KM003', 'DM003'),
-		('DMKM04', 'KM004', 'DM004'),
-		('DMKM05', 'KM005', 'DM005'),
-		('DMKM06', 'KM005', 'DM006'),
-		('DMKM07', 'KM004', 'DM007'),
-		('DMKM08', 'KM003', 'DM008'),
-		('DMKM09', 'KM002', 'DM009')
