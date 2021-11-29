@@ -16,7 +16,7 @@ public class KhachHang {
     private String SDT;
     private String Email;
     private String DiaChi;
-    private String Trangthai;
+    private boolean Trangthai;
     private String NgayGD;
     private String TenSP;
     private String TenSPCT;
@@ -28,7 +28,7 @@ public class KhachHang {
     public KhachHang() {
     }
 
-    public KhachHang(String MaKH, String TenKh, boolean GioiTinh, String SDT, String Email, String DiaChi, String Trangthai) {
+    public KhachHang(String MaKH, String TenKh, boolean GioiTinh, String SDT, String Email, String DiaChi, boolean Trangthai, String NgayGD, String TenSP, String TenSPCT, int SoLuong, float GiaBan, float TongTien, String TrangThaiTT) {
         this.MaKH = MaKH;
         this.TenKh = TenKh;
         this.GioiTinh = GioiTinh;
@@ -36,9 +36,15 @@ public class KhachHang {
         this.Email = Email;
         this.DiaChi = DiaChi;
         this.Trangthai = Trangthai;
+        this.NgayGD = NgayGD;
+        this.TenSP = TenSP;
+        this.TenSPCT = TenSPCT;
+        this.SoLuong = SoLuong;
+        this.GiaBan = GiaBan;
+        this.TongTien = TongTien;
+        this.TrangThaiTT = TrangThaiTT;
     }
-    
-    
+
     
     public String getMaKH() {
         return MaKH;
@@ -88,13 +94,15 @@ public class KhachHang {
         this.DiaChi = DiaChi;
     }
 
-    public String getTrangthai() {
+    public boolean isTrangthai() {
         return Trangthai;
     }
 
-    public void setTrangthai(String Trangthai) {
+    public void setTrangthai(boolean Trangthai) {
         this.Trangthai = Trangthai;
     }
+
+   
 
     public String getNgayGD() {
         return NgayGD;

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author lethu
  */
 public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
-
+    
     KhachHangService KHSV = new KhachHangService();  //tạo ra KHSV 
     LichSuGiaoDichService LSGDSV = new LichSuGiaoDichService();
     boolean _GioiTinh;
@@ -33,6 +33,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         FillTable();
+        
+        rdoNam.setSelected(true);
+        rdoConHoatDong.setSelected(true);
     }
 
     /**
@@ -45,6 +48,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -60,13 +64,14 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         txtDiaChi = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtTrangThai = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnthem = new javax.swing.JButton();
         btnsua = new javax.swing.JButton();
         btnlammoi = new javax.swing.JButton();
+        rdoConHoatDong = new javax.swing.JRadioButton();
+        rdoNgungHoatDong = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -181,6 +186,12 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        buttonGroup2.add(rdoConHoatDong);
+        rdoConHoatDong.setText("Còn hoạt động");
+
+        buttonGroup2.add(rdoNgungHoatDong);
+        rdoNgungHoatDong.setText("Ngừng hoạt động");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -215,13 +226,16 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(rdoConHoatDong)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rdoNgungHoatDong))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(71, 71, 71)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
@@ -239,10 +253,12 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
-                                    .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(rdoConHoatDong)
+                                        .addComponent(rdoNgungHoatDong)))
+                                .addGap(20, 20, 20)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -429,7 +445,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -448,7 +464,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -518,9 +534,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private void tblQuanLyKhacHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyKhacHangMouseClicked
         // TODO add your handling code here:
         ClickTable();
+        FillTableLSGD();
         if (evt.getClickCount() == 2) {
             tabs.setSelectedIndex(1);
-            FillTableLSGD();
         }
     }//GEN-LAST:event_tblQuanLyKhacHangMouseClicked
 
@@ -550,6 +566,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnsua;
     private javax.swing.JButton btnthem;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbLocGioiTinh;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -572,7 +589,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JRadioButton rdoConHoatDong;
     private javax.swing.JRadioButton rdoNam;
+    private javax.swing.JRadioButton rdoNgungHoatDong;
     private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblQuanLyKhacHang;
@@ -582,7 +601,6 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTimKiem;
-    private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 
     void FillTable() {
@@ -591,11 +609,11 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         List<KhachHang> LKH = KHSV.selectAll();
         for (KhachHang x : LKH) {
             Model.addRow(new Object[]{
-                x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.getTrangthai()
+                x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.isTrangthai() ? "Còn hoạt động" : "Ngừng hoạt động"
             });
         }
     }
-
+    
     boolean isValidate() {
         try {
             if (txtMaKH.getText().trim().equals("")) {
@@ -616,9 +634,6 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             } else if (txtEmail.getText().trim().equals("")) {
                 Msgbox.alert(this, "Email khách hàng không được để trống");
                 return true;
-            } else if (txtTrangThai.getText().trim().equals("")) {
-                Msgbox.alert(this, "Trạng tháo khách hàng không được để trống");
-                return true;
             } else {
                 return false;
             }
@@ -627,7 +642,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isCheckTrung() {
         boolean check = false;
         List<KhachHang> list = KHSV.selectAll();
@@ -640,7 +655,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     KhachHang getform() {
         KhachHang KH = new KhachHang(); //tạo kh mới
         KH.setMaKH(txtMaKH.getText());
@@ -653,10 +668,10 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         KH.setSDT(txtDienThoai.getText());
         KH.setEmail(txtEmail.getText());
         KH.setDiaChi(txtDiaChi.getText());
-        KH.setTrangthai(txtTrangThai.getText());
+        KH.setTrangthai(rdoConHoatDong.isSelected());
         return KH;
     }
-
+    
     void Them() {
         try {
             KhachHang KH = getform();
@@ -667,7 +682,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-
+    
     void Sua() {
         try {
             KhachHang KH = getform();
@@ -678,7 +693,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-
+    
     void ClickTable() {
         int vitri = tblQuanLyKhacHang.getSelectedRow();
         txtMaKH.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 0));
@@ -692,9 +707,13 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         txtDienThoai.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 3));
         txtEmail.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 4));
         txtDiaChi.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 5));
-        txtTrangThai.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 6));
+        if (tblQuanLyKhacHang.getValueAt(vitri, 6).toString().equals("Còn hoạt động")) {
+            rdoConHoatDong.setSelected(true);
+        } else {
+            rdoNgungHoatDong.setSelected(true);
+        }
     }
-
+    
     void Lammoi() {
         txtMaKH.setText("");
         txtTenKH.setText("");
@@ -702,9 +721,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         txtDienThoai.setText("");
         txtEmail.setText("");
         txtDiaChi.setText("");
-        txtTrangThai.setText("");
+        rdoConHoatDong.setSelected(true);
     }
-
+    
     void LocGioiTinh() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
@@ -712,23 +731,23 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         for (KhachHang x : LKH) {
             if (x.isGioiTinh() == _GioiTinh) {
                 Model.addRow(new Object[]{
-                    x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.getTrangthai()
+                    x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.isTrangthai() ? "Còn hoạt động" : "Ngừng hoạt động"
                 });
             }
         }
     }
-
+    
     void TimKiem() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
         List<KhachHang> LKH = KHSV.selectBySdt(txtTimKiem.getText());
         for (KhachHang x : LKH) {
             Model.addRow(new Object[]{
-                x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.getTrangthai()
+                x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.isTrangthai() ? "Còn hoạt động" : "Ngừng hoạt động"
             });
         }
     }
-
+    
     void FillTableLSGD() {
         Model = (DefaultTableModel) TbLSGD.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table

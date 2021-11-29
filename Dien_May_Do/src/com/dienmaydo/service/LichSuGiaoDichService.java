@@ -44,7 +44,7 @@ public class LichSuGiaoDichService implements ILichSuGiaoDichService<KhachHang, 
                 entity.setSDT(rs.getString("DIENTHOAI"));
                 entity.setEmail(rs.getString("EMAIL"));
                 entity.setDiaChi(rs.getString("DIACHI"));
-                entity.setTrangthai(rs.getString("TRANGTHAI"));
+                entity.setTrangthai(rs.getBoolean("TRANGTHAI"));
                 entity.setNgayGD(rs.getString("NGAYLAP"));
                 entity.setTenSP(rs.getString("TENSP"));
                 entity.setTenSPCT(rs.getString("TENSPCT"));

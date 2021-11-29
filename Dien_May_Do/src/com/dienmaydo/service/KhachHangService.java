@@ -29,13 +29,13 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
     @Override
     public void insertData(KhachHang entity) {
         JdbcHelper.excuteUpdate(insertSQL, entity.getMaKH(), entity.getTenKh(), entity.isGioiTinh(), entity.getSDT(),
-                entity.getEmail(), entity.getDiaChi(), entity.getTrangthai());
+                entity.getEmail(), entity.getDiaChi(), entity.isTrangthai());
     }
 
     @Override
     public void updateData(KhachHang entity) {
         JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getTenKh(), entity.isGioiTinh(), entity.getSDT(),
-                entity.getEmail(), entity.getDiaChi(), entity.getTrangthai(), entity.getMaKH());
+                entity.getEmail(), entity.getDiaChi(), entity.isTrangthai(), entity.getMaKH());
     }
 
     @Override
@@ -70,7 +70,7 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
                 entity.setSDT(rs.getString("DIENTHOAI"));
                 entity.setEmail(rs.getString("EMAIL"));
                 entity.setDiaChi(rs.getString("DIACHI"));
-                entity.setTrangthai(rs.getString("TRANGTHAI"));
+                entity.setTrangthai(rs.getBoolean("TRANGTHAI"));
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
