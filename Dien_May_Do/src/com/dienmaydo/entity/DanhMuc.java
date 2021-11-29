@@ -14,7 +14,6 @@ import java.awt.Checkbox;
 public class DanhMuc {
 
     private String MaDanhMuc;
-    private String MaNH;
     private String TenDanhMuc;
     private boolean TrangThai;
     private String GhiChu;
@@ -30,14 +29,6 @@ public class DanhMuc {
 
     public void setMaDanhMuc(String MaDanhMuc) {
         this.MaDanhMuc = MaDanhMuc;
-    }
-
-    public String getMaNH() {
-        return MaNH;
-    }
-
-    public void setMaNH(String MaNH) {
-        this.MaNH = MaNH;
     }
 
     public String getTenDanhMuc() {
