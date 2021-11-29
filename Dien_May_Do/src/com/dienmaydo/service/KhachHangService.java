@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -85,4 +85,19 @@ public class KhachHangService implements IKhachHangService<KhachHang, String> {
         return selectBySQL(selectByTimKiem, "%" + key + "%", "%" + key + "%");
     }
 
+    public List<Integer> selectTongKhachHang() {
+        String sql = "SELECT COUNT(MAKH) AS TONGKHACHHANG FROM KHACHHANG";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -201,4 +201,68 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
     public List<HoaDon> selctByTongTienMax(float key) {
         return selectBySQL(SELECT_BY_TONGTIEN_MAX, key);
     }
+
+    public List<Integer> selectDoanhThu() {
+        String sql = "SELECT SUM(TONGTIEN) FROM HOADON";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Integer> selectSoHoaDon() {
+        String sql = "SELECT COUNT(MAHD) FROM HOADON";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Integer> selectSoHangHuy() {
+        String sql = "SELECT COUNT(MAHD) FROM HOADON WHERE MATTTT = 'TT003'";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Integer> selectYears() {
+        String sql = "SELECT DISTINCT YEAR(NGAYLAP) AS NAM FROM HOADON ORDER BY YEAR(NGAYLAP) DESC";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }

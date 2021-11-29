@@ -72,4 +72,20 @@ public class DanhMucService implements IDanhMucService<DanhMuc, String> {
         }
     }
 
+    public List<String> selectDanhMuc() {
+        String sql = "SELECT DISTINCT TENDM FROM DANHMUC";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }
