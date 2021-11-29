@@ -40,4 +40,10 @@ public class ThongKeService {
         String[] cols = {"TENSANPHAM", "SOLUONGSP", "GIABANCAONHAT", "GIABANTHAPNHAT", "DOANHTHU"};
         return this.getListOfArrList(sql, cols, nam);
     }
+    
+    public List<Object[]> getThongKeTheoDM(String danhMuc) {
+        String sql = "{CALL SP_CBBDM(?)}";
+        String[] cols = {"TENSANPHAM", "SOLUONGSP", "GIABANCAONHAT", "GIABANTHAPNHAT", "DOANHTHU"};
+        return this.getListOfArrList(sql, cols, danhMuc);
+    }
 }

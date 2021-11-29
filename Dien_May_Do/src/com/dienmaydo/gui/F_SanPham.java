@@ -27,6 +27,7 @@ import com.dienmaydo.service.SanPhamChiTietService;
 import com.dienmaydo.service.SanPhamService;
 import com.dienmaydo.service.TheTichService;
 import com.dienmaydo.service.XuatXuService;
+import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XImage;
 import java.awt.CardLayout;
@@ -1496,6 +1497,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
         pnCardGocTable.add(pnCardTB1, "cardTB1");
 
+        pnCardTB2.setBackground(new java.awt.Color(255, 255, 255));
+
         tblTTKichThuoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1523,16 +1526,21 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         pnCardTB2.setLayout(pnCardTB2Layout);
         pnCardTB2Layout.setHorizontalGroup(
             pnCardTB2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE)
+            .addGroup(pnCardTB2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnCardTB2Layout.setVerticalGroup(
             pnCardTB2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCardTB2Layout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 70, Short.MAX_VALUE))
         );
 
         pnCardGocTable.add(pnCardTB2, "cardTB2");
+
+        pnCardTB3.setBackground(new java.awt.Color(255, 255, 255));
 
         tbTTXuatXu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1569,8 +1577,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         pnCardTB3Layout.setVerticalGroup(
             pnCardTB3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCardTB3Layout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 70, Short.MAX_VALUE))
         );
 
         pnCardGocTable.add(pnCardTB3, "cardTB3");
@@ -1615,7 +1623,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -2385,31 +2393,39 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void insertData() {
-        SanPham sp = getFromSP();
-        try {
-            daoSP.insertData(sp);
-            fillTableData();
-            Msgbox.alert(this, "Thêm thành công!");
-            refeshTextFiled();
-        } catch (Exception e) {
-            Msgbox.alert(this, "Thêm thất bại");
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm sản phẩm");
+        } else {
+            SanPham sp = getFromSP();
+            try {
+                daoSP.insertData(sp);
+                fillTableData();
+                Msgbox.alert(this, "Thêm thành công!");
+                refeshTextFiled();
+            } catch (Exception e) {
+                Msgbox.alert(this, "Thêm thất bại");
+                e.printStackTrace();
+            }
         }
     }
 
     void updatetData() {
-        SanPham sp = getFromSPUpdate();
-        SanPhamChiTiet spct = getfromUpdateTrangThai();
-        try {
-            daoSPCT.updateDataTrangThai(spct);
-            fillTableSPCT();
-            daoSP.updateData(sp);
-            fillTableData();
-            refeshTextFiled();
-            Msgbox.alert(this, "Cập nhật thành công!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            Msgbox.alert(this, "Cập nhật thất bại!");
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
+        } else {
+            SanPham sp = getFromSPUpdate();
+            SanPhamChiTiet spct = getfromUpdateTrangThai();
+            try {
+                daoSPCT.updateDataTrangThai(spct);
+                fillTableSPCT();
+                daoSP.updateData(sp);
+                fillTableData();
+                refeshTextFiled();
+                Msgbox.alert(this, "Cập nhật thành công!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Msgbox.alert(this, "Cập nhật thất bại!");
+            }
         }
     }
 
@@ -2536,27 +2552,35 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void insertDataSPCT() {
-        SanPhamChiTiet spct = getFromSPSPCT();
-        try {
-            daoSPCT.insertData(spct);
-            fillTableSPCT_MaSP_Combobox();
-            Msgbox.alert(this, "Thêm thành công!");
-            ganText = "";
-        } catch (Exception e) {
-            Msgbox.alert(this, "Thêm thất bại");
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm sản phẩm chi tiết");
+        } else {
+            SanPhamChiTiet spct = getFromSPSPCT();
+            try {
+                daoSPCT.insertData(spct);
+                fillTableSPCT_MaSP_Combobox();
+                Msgbox.alert(this, "Thêm thành công!");
+                ganText = "";
+            } catch (Exception e) {
+                Msgbox.alert(this, "Thêm thất bại");
+                e.printStackTrace();
+            }
         }
     }
 
     void updatetDataSPCT() {
-        SanPhamChiTiet spct = getFromSPSPCTUpdate();
-        try {
-            daoSPCT.updateData(spct);
-            fillTableSPCT_MaSP_Combobox();
-            Msgbox.alert(this, "Cập nhật thành công!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            Msgbox.alert(this, "Cập nhật thất bại!");
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm chi tiết");
+        } else {
+            SanPhamChiTiet spct = getFromSPSPCTUpdate();
+            try {
+                daoSPCT.updateData(spct);
+                fillTableSPCT_MaSP_Combobox();
+                Msgbox.alert(this, "Cập nhật thành công!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Msgbox.alert(this, "Cập nhật thất bại!");
+            }
         }
     }
 
@@ -3061,26 +3085,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void InsertTheTich() {
-        try {
-            TheTich tt = GetFromTTInsert();
-            daoTT.insertData(tt);
-            fillTableTheTich();
-            Msgbox.alert(this, "Thêm thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm thuộc tính");
+        } else {
+            try {
+                TheTich tt = GetFromTTInsert();
+                daoTT.insertData(tt);
+                fillTableTheTich();
+                Msgbox.alert(this, "Thêm thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     void UpdateTheTich() {
-        try {
-            TheTich tt = GetFromTT();
-            daoTT.updateData(tt);
-            fillTableTheTich();
-            Msgbox.alert(this, "Sửa thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa thuộc tính");
+        } else {
+            try {
+                TheTich tt = GetFromTT();
+                daoTT.updateData(tt);
+                fillTableTheTich();
+                Msgbox.alert(this, "Sửa thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -3119,26 +3151,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void InsertKhoiLuong() {
-        try {
-            KhoiLuong kl = GetFromKLInsert();
-            daoKL.insertData(kl);
-            fillTableKhoiLuong();
-            Msgbox.alert(this, "Thêm thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm khối lượng");
+        } else {
+            try {
+                KhoiLuong kl = GetFromKLInsert();
+                daoKL.insertData(kl);
+                fillTableKhoiLuong();
+                Msgbox.alert(this, "Thêm thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     void UpdateKhoiLuong() {
-        try {
-            KhoiLuong kl = GetFromKL();
-            daoKL.updateData(kl);
-            fillTableKhoiLuong();
-            Msgbox.alert(this, "Sửa thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa khối lượng");
+        } else {
+            try {
+                KhoiLuong kl = GetFromKL();
+                daoKL.updateData(kl);
+                fillTableKhoiLuong();
+                Msgbox.alert(this, "Sửa thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -3166,26 +3206,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void InsertChatLieu() {
-        try {
-            ChatLieu cl = GetFromCLInsert();
-            daoCL.insertData(cl);
-            fillTableChatlieu();
-            Msgbox.alert(this, "Thêm thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm chất liệu");
+        } else {
+            try {
+                ChatLieu cl = GetFromCLInsert();
+                daoCL.insertData(cl);
+                fillTableChatlieu();
+                Msgbox.alert(this, "Thêm thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     void UpdateChatLieu() {
-        try {
-            ChatLieu cl = GetFromCL();
-            daoCL.updateData(cl);
-            fillTableChatlieu();
-            Msgbox.alert(this, "Sửa thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa chát liệu");
+        } else {
+            try {
+                ChatLieu cl = GetFromCL();
+                daoCL.updateData(cl);
+                fillTableChatlieu();
+                Msgbox.alert(this, "Sửa thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -3213,26 +3261,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void InsertMauSac() {
-        try {
-            MauSac ms = GetFromMSInsert();
-            daoMS.insertData(ms);
-            fillTableMauSac();
-            Msgbox.alert(this, "Thêm thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm màu sắc");
+        } else {
+            try {
+                MauSac ms = GetFromMSInsert();
+                daoMS.insertData(ms);
+                fillTableMauSac();
+                Msgbox.alert(this, "Thêm thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     void UpdateMauSac() {
-        try {
-            MauSac ms = GetFromMS();
-            daoMS.updateData(ms);
-            fillTableMauSac();
-            Msgbox.alert(this, "Sửa thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa màu sắc");
+        } else {
+            try {
+                MauSac ms = GetFromMS();
+                daoMS.updateData(ms);
+                fillTableMauSac();
+                Msgbox.alert(this, "Sửa thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -3276,26 +3332,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 //        return check;
 //    }
     void InsertKichThuoc() {
-        try {
-            KichThuoc kt = GetFromKTInsert();
-            daoKT.insertData(kt);
-            fillTableKichThuoc();
-            Msgbox.alert(this, "Thêm thành công!");
-            LamMoiFromTTKT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm kích thước");
+        } else {
+            try {
+                KichThuoc kt = GetFromKTInsert();
+                daoKT.insertData(kt);
+                fillTableKichThuoc();
+                Msgbox.alert(this, "Thêm thành công!");
+                LamMoiFromTTKT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     void UpdateKichThuoc() {
-        try {
-            KichThuoc kt = GetFromKT();
-            daoKT.updateData(kt);
-            fillTableKichThuoc();
-            Msgbox.alert(this, "Sửa thành công!");
-            LamMoiFromTTKT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa kích thước");
+        } else {
+            try {
+                KichThuoc kt = GetFromKT();
+                daoKT.updateData(kt);
+                fillTableKichThuoc();
+                Msgbox.alert(this, "Sửa thành công!");
+                LamMoiFromTTKT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -3323,26 +3387,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void InsertImage() {
-        try {
-            Image img = GetFromIMGInsert();
-            daoIMG.insertData(img);
-            fillTableImage();
-            Msgbox.alert(this, "Thêm thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm hình ảnh");
+        } else {
+            try {
+                Image img = GetFromIMGInsert();
+                daoIMG.insertData(img);
+                fillTableImage();
+                Msgbox.alert(this, "Thêm thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     void UpdateImage() {
-        try {
-            Image img = GetFromIMG();
-            daoIMG.updateData(img);
-            fillTableImage();
-            Msgbox.alert(this, "Sửa thành công!");
-            LamMoiFromTT();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa hình ảnh");
+        } else {
+            try {
+                Image img = GetFromIMG();
+                daoIMG.updateData(img);
+                fillTableImage();
+                Msgbox.alert(this, "Sửa thành công!");
+                LamMoiFromTT();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -3409,26 +3481,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void InsertXuatXu() {
-        try {
-            XuatXu xx = GetFromXX();
-            daoXX.insertData(xx);
-            fillTableXuatXu();
-            Msgbox.alert(this, "Thêm thành công!");
-            LamMoiFromTTXX();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm xuất xứ");
+        } else {
+            try {
+                XuatXu xx = GetFromXX();
+                daoXX.insertData(xx);
+                fillTableXuatXu();
+                Msgbox.alert(this, "Thêm thành công!");
+                LamMoiFromTTXX();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     void UpdateXuatXu() {
-        try {
-            XuatXu xx = GetFromXXUD();
-            daoXX.updateData(xx);
-            fillTableXuatXu();
-            Msgbox.alert(this, "Sửa thành công!");
-            LamMoiFromTTXX();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sửa xuất xứ");
+        } else {
+            try {
+                XuatXu xx = GetFromXXUD();
+                daoXX.updateData(xx);
+                fillTableXuatXu();
+                Msgbox.alert(this, "Sửa thành công!");
+                LamMoiFromTTXX();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 //--------------------GetFRom---------------------------------------------------

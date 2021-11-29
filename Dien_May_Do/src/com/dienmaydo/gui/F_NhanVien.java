@@ -503,45 +503,41 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
     private void cbbGTLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGTLocActionPerformed
         // TODO add your handling code here:
-        GanChu=(String)cbbGTLoc.getSelectedItem();
+        GanChu = (String) cbbGTLoc.getSelectedItem();
         if (GanChu.equals(" ")) {
-            
+
             FillTable();
-            
+
         }
         if (GanChu.equals("Nam")) {
             LocGT = true;
             cbbVaiTRoLoc.setSelectedIndex(0);
             LocNamFillTable();
-            
-            
+
         }
         if (GanChu.equals("Nữ")) {
-            LocGT=false;
+            LocGT = false;
             cbbVaiTRoLoc.setSelectedIndex(0);
             LocNamFillTable();
-            
+
         }
     }//GEN-LAST:event_cbbGTLocActionPerformed
 
     private void cbbVaiTRoLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbVaiTRoLocActionPerformed
         // TODO add your handling code here:
-        GanChu=(String)cbbVaiTRoLoc.getSelectedItem();
-        if (GanChu.equals(" ")) {
-            
+        String GanChuVT = (String) cbbVaiTRoLoc.getSelectedItem();
+        if (GanChuVT.equals(" ")) {
             FillTable();
         }
-        if (GanChu.equals("Quản Lý")) {
+        if (GanChuVT.equals("Quản Lý")) {
             Loc = true;
             cbbGTLoc.setSelectedIndex(0);
             LocFillTable();
-            
         }
-        if (GanChu.equals("Nhân Viên")) {
+        if (GanChuVT.equals("Nhân Viên")) {
             Loc = false;
             cbbGTLoc.setSelectedIndex(0);
             LocFillTable();
-            
         }
     }//GEN-LAST:event_cbbVaiTRoLocActionPerformed
 
@@ -598,7 +594,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         List<NhanVien> listNV = daoNV.selectAll();
         for (NhanVien x : listNV) {
             model.addRow(new Object[]{
-                x.getMaNV(),x.getMatKhau(), x.getTenNV(),x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
                 x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
             });
         }
@@ -702,7 +698,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     void clickTable() {
         int vitri = tbBang.getSelectedRow();
         txtManv.setText((String) tbBang.getValueAt(vitri, 0));
-        txtMatKhau.setText((String)tbBang.getValueAt(vitri, 1));
+        txtMatKhau.setText((String) tbBang.getValueAt(vitri, 1));
         txtTennv.setText((String) tbBang.getValueAt(vitri, 2));
         txtDiachi.setText((String) tbBang.getValueAt(vitri, 4));
         txtDienthoai.setText((String) tbBang.getValueAt(vitri, 5));
@@ -718,40 +714,42 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     }
 
     void TimKiem() {
-        DefaultTableModel Model = (DefaultTableModel) tbBang.getModel(); 
-        Model.setRowCount(0);  
+        DefaultTableModel Model = (DefaultTableModel) tbBang.getModel();
+        Model.setRowCount(0);
         List<NhanVien> SNV = daoNV.selectByTimKiem(txtTimKiem.getText());
         for (NhanVien x : SNV) {
             Model.addRow(new Object[]{
-               x.getMaNV(),x.getMatKhau(), x.getTenNV(),x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
                 x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
             });
         }
     }
+
     public void LocFillTable() {
         DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
         model.setRowCount(0);
         List<NhanVien> listNV = daoNV.selectAll();
         for (NhanVien x : listNV) {
-            if (x.isVaiTro() == LocGT) {
+            if (x.isVaiTro() == Loc) {
                 model.addRow(new Object[]{
-                x.getMaNV(),x.getMatKhau(), x.getTenNV(),x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
-                x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
-            });
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                });
             }
         }
     }
-     public void LocNamFillTable() {
+
+    public void LocNamFillTable() {
         DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
         model.setRowCount(0);
         List<NhanVien> listNV = daoNV.selectAll();
         System.out.println(listNV);
         for (NhanVien x : listNV) {
-            if (x.isGioiTinh()== LocGT) {
+            if (x.isGioiTinh() == LocGT) {
                 model.addRow(new Object[]{
-                x.getMaNV(),x.getMatKhau(), x.getTenNV(),x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
-                x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
-            });
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                });
             }
         }
     }

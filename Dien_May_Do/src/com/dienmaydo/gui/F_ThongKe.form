@@ -483,8 +483,8 @@
                                   <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="285" max="-2" attributes="0"/>
-                              <EmptySpace pref="317" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="280" max="-2" attributes="0"/>
+                              <EmptySpace pref="322" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -585,6 +585,9 @@
                               <StringArray count="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbDanhMucActionPerformed"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -730,8 +733,8 @@
                                   <Component id="jPanel10" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="280" max="-2" attributes="0"/>
+                              <EmptySpace pref="310" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
