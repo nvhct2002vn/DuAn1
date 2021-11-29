@@ -568,7 +568,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
 
 
     private void cbbDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDanhMucActionPerformed
-        fillTheoDM();
+//        fillTheoDM();
     }//GEN-LAST:event_cbbDanhMucActionPerformed
 
 
