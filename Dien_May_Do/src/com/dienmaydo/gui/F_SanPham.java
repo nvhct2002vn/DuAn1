@@ -1130,6 +1130,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Tên thuộc tính:");
 
+        txtTTMaThuocTinh.setEditable(false);
+
         javax.swing.GroupLayout pnCard1Layout = new javax.swing.GroupLayout(pnCard1);
         pnCard1.setLayout(pnCard1Layout);
         pnCard1Layout.setHorizontalGroup(
@@ -1175,6 +1177,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel26.setText("Chiều cao:");
+
+        txtMaKT.setEditable(false);
 
         javax.swing.GroupLayout pnCard2Layout = new javax.swing.GroupLayout(pnCard2);
         pnCard2.setLayout(pnCard2Layout);
@@ -1236,6 +1240,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel30.setText("Mã xuất xứ:");
+
+        txtTTMaXuatXu.setEditable(false);
 
         javax.swing.GroupLayout pnCard3Layout = new javax.swing.GroupLayout(pnCard3);
         pnCard3.setLayout(pnCard3Layout);
@@ -1752,9 +1758,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         if (rdTTChatLieu.isSelected()) {
             if (isValidateThuocTinh()) {
                 return;
-            } else if (isCheckThuocTinhCL()) {
-                return;
-            } else {
+            } //            else if (isCheckThuocTinhCL()) {
+            //                return;
+            //            } 
+            else {
                 InsertChatLieu();
                 addDataCbbCL();
             }
@@ -1762,9 +1769,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         if (rdTTKhoiLuong.isSelected()) {
             if (isValidateThuocTinh()) {
                 return;
-            } else if (isCheckThuocTinhKL()) {
-                return;
-            } else {
+            } //            else if (isCheckThuocTinhKL()) {
+            //                return;
+            //            }
+            else {
                 InsertKhoiLuong();
                 addDataCbbKL();
             }
@@ -1772,9 +1780,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         if (rdTTMauSac.isSelected()) {
             if (isValidateThuocTinh()) {
                 return;
-            } else if (isCheckThuocTinhMS()) {
-                return;
-            } else {
+            } //            else if (isCheckThuocTinhMS()) {
+            //                return;
+            //            }
+            else {
                 InsertMauSac();
                 addDataCbbMS();
             }
@@ -1782,9 +1791,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         if (rdTTTheTich.isSelected()) {
             if (isValidateThuocTinh()) {
                 return;
-            } else if (isCheckThuocTinhTT()) {
-                return;
-            } else {
+            } //            else if (isCheckThuocTinhTT()) {
+            //                return;
+            //            }
+            else {
                 InsertTheTich();
                 addDataCbbTT();
             }
@@ -1792,9 +1802,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         if (rdTTKichThuoc.isSelected()) {
             if (isValidateThuocTinhKT()) {
                 return;
-            } else if (isCheckThuocTinhKT()) {
-                return;
-            } else {
+            } //            else if (isCheckThuocTinhKT()) {
+            //                return;
+            //            } 
+            else {
                 InsertKichThuoc();
                 addDataCbbKT();
             }
@@ -1808,13 +1819,14 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
         if (rdTTHinhAnh.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhIMG()) {
-                return;
-            } else {
-                InsertImage();
-            }
+//            if (isValidateThuocTinh()) {
+//                return;
+//            } //            else if (isCheckThuocTinhIMG()) {
+            //                return;
+            //            } 
+//            else {
+            InsertImage();
+//            }
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTTThemActionPerformed
@@ -2980,12 +2992,31 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     //--------------------Thuộc tính--------------------------------------------
+    void LamMoiFromTT() {
+        txtTTMaThuocTinh.setText("");
+        txtTTTenThuocTinh.setText("");
+    }
+
+    void LamMoiFromTTKT() {
+        txtMaKT.setText("");
+        txtChieuDai.setText("");
+        txtChieuRong.setText("");
+        txtChieuCao.setText("");
+    }
+
+    void LamMoiFromTTXX() {
+        txtTTMaXuatXu.setText("");
+        txtTTNhaSanXuat.setText("");
+        txtTTNuocSanXuat.setText("");
+    }
+
     boolean isValidateThuocTinh() {
         try {
-            if (txtTTMaThuocTinh.getText().trim().equals("")) {
-                Msgbox.alert(this, "Mã thuộc tính không được để trống");
-                return true;
-            } else if (txtTTTenThuocTinh.getText().trim().equals("")) {
+//            if (txtTTMaThuocTinh.getText().trim().equals("")) {
+//                Msgbox.alert(this, "Mã thuộc tính không được để trống");
+//                return true;
+//            } else
+            if (txtTTTenThuocTinh.getText().trim().equals("")) {
                 Msgbox.alert(this, "Tên thuộc tinh không được để trống");
                 return true;
             } else {
@@ -3000,19 +3031,18 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
     }
 
-    boolean isCheckThuocTinhTT() {
-        boolean check = false;
-        List<TheTich> list = daoTT.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaTheTich().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
-                Msgbox.alert(this, "Mã thể tích đã tồn tại");
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
-
+//    boolean isCheckThuocTinhTT() {
+//        boolean check = false;
+//        List<TheTich> list = daoTT.selectAll();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getMaTheTich().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+//                Msgbox.alert(this, "Mã thể tích đã tồn tại");
+//                check = true;
+//                break;
+//            }
+//        }
+//        return check;
+//    }
     void fillTableTheTich() {
         DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
         model.setRowCount(0);
@@ -3026,10 +3056,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     void InsertTheTich() {
         try {
-            TheTich tt = GetFromTT();
+            TheTich tt = GetFromTTInsert();
             daoTT.insertData(tt);
             fillTableTheTich();
             Msgbox.alert(this, "Thêm thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3041,6 +3072,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoTT.updateData(tt);
             fillTableTheTich();
             Msgbox.alert(this, "Sửa thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3057,19 +3089,18 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
     }
 
-    boolean isCheckThuocTinhKL() {
-        boolean check = false;
-        List<KhoiLuong> list = daoKL.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaKL().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
-                Msgbox.alert(this, "Mã khối lượng đã tồn tại");
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
-
+//    boolean isCheckThuocTinhKL() {
+//        boolean check = false;
+//        List<KhoiLuong> list = daoKL.selectAll();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getMaKL().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+//                Msgbox.alert(this, "Mã khối lượng đã tồn tại");
+//                check = true;
+//                break;
+//            }
+//        }
+//        return check;
+//    }
     void fillTableKhoiLuong() {
         DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
         model.setRowCount(0);
@@ -3083,10 +3114,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     void InsertKhoiLuong() {
         try {
-            KhoiLuong kl = GetFromKL();
+            KhoiLuong kl = GetFromKLInsert();
             daoKL.insertData(kl);
             fillTableKhoiLuong();
             Msgbox.alert(this, "Thêm thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3098,24 +3130,24 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoKL.updateData(kl);
             fillTableKhoiLuong();
             Msgbox.alert(this, "Sửa thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    boolean isCheckThuocTinhCL() {
-        boolean check = false;
-        List<ChatLieu> list = daoCL.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaChatLieu().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
-                Msgbox.alert(this, "Mã chất liệu đã tồn tại");
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
-
+//    boolean isCheckThuocTinhCL() {
+//        boolean check = false;
+//        List<ChatLieu> list = daoCL.selectAll();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getMaChatLieu().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+//                Msgbox.alert(this, "Mã chất liệu đã tồn tại");
+//                check = true;
+//                break;
+//            }
+//        }
+//        return check;
+//    }
     void fillTableChatlieu() {
         DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
         model.setRowCount(0);
@@ -3129,10 +3161,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     void InsertChatLieu() {
         try {
-            ChatLieu cl = GetFromCL();
+            ChatLieu cl = GetFromCLInsert();
             daoCL.insertData(cl);
             fillTableChatlieu();
             Msgbox.alert(this, "Thêm thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3144,24 +3177,24 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoCL.updateData(cl);
             fillTableChatlieu();
             Msgbox.alert(this, "Sửa thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    boolean isCheckThuocTinhMS() {
-        boolean check = false;
-        List<MauSac> list = daoMS.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaMauSac().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
-                Msgbox.alert(this, "Mã màu sắc đã tồn tại");
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
-
+//    boolean isCheckThuocTinhMS() {
+//        boolean check = false;
+//        List<MauSac> list = daoMS.selectAll();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getMaMauSac().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+//                Msgbox.alert(this, "Mã màu sắc đã tồn tại");
+//                check = true;
+//                break;
+//            }
+//        }
+//        return check;
+//    }
     void fillTableMauSac() {
         DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
         model.setRowCount(0);
@@ -3175,10 +3208,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     void InsertMauSac() {
         try {
-            MauSac ms = GetFromMS();
+            MauSac ms = GetFromMSInsert();
             daoMS.insertData(ms);
             fillTableMauSac();
             Msgbox.alert(this, "Thêm thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3190,6 +3224,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoMS.updateData(ms);
             fillTableMauSac();
             Msgbox.alert(this, "Sửa thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3197,10 +3232,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isValidateThuocTinhKT() {
         try {
-            if (txtMaKT.getText().trim().equals("")) {
-                Msgbox.alert(this, "Mã kích thước không được để trống");
-                return true;
-            } else if (txtChieuDai.getText().trim().equals("")) {
+//            if (txtMaKT.getText().trim().equals("")) {
+//                Msgbox.alert(this, "Mã kích thước không được để trống");
+//                return true;
+//            } else
+            if (txtChieuDai.getText().trim().equals("")) {
                 Msgbox.alert(this, "Chiều dài không được để trống");
                 return true;
             } else if (txtChieuRong.getText().trim().equals("")) {
@@ -3221,25 +3257,25 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
     }
 
-    boolean isCheckThuocTinhKT() {
-        boolean check = false;
-        List<KichThuoc> list = daoKT.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaKichThuoc().equalsIgnoreCase(txtMaKT.getText())) {
-                Msgbox.alert(this, "Mã kích thước đã tồn tại");
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
-
+//    boolean isCheckThuocTinhKT() {
+//        boolean check = false;
+//        List<KichThuoc> list = daoKT.selectAll();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getMaKichThuoc().equalsIgnoreCase(txtMaKT.getText())) {
+//                Msgbox.alert(this, "Mã kích thước đã tồn tại");
+//                check = true;
+//                break;
+//            }
+//        }
+//        return check;
+//    }
     void InsertKichThuoc() {
         try {
-            KichThuoc kt = GetFromKT();
+            KichThuoc kt = GetFromKTInsert();
             daoKT.insertData(kt);
             fillTableKichThuoc();
             Msgbox.alert(this, "Thêm thành công!");
+            LamMoiFromTTKT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3251,24 +3287,24 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoKT.updateData(kt);
             fillTableKichThuoc();
             Msgbox.alert(this, "Sửa thành công!");
+            LamMoiFromTTKT();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    boolean isCheckThuocTinhIMG() {
-        boolean check = false;
-        List<Image> list = daoIMG.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaImage().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
-                Msgbox.alert(this, "Mã image đã tồn tại");
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
-
+//    boolean isCheckThuocTinhIMG() {
+//        boolean check = false;
+//        List<Image> list = daoIMG.selectAll();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getMaImage().equalsIgnoreCase(txtTTMaThuocTinh.getText())) {
+//                Msgbox.alert(this, "Mã image đã tồn tại");
+//                check = true;
+//                break;
+//            }
+//        }
+//        return check;
+//    }
     void fillTableImage() {
         DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
         model.setRowCount(0);
@@ -3282,10 +3318,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     void InsertImage() {
         try {
-            Image img = GetFromIMG();
+            Image img = GetFromIMGInsert();
             daoIMG.insertData(img);
             fillTableImage();
             Msgbox.alert(this, "Thêm thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3297,6 +3334,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoIMG.updateData(img);
             fillTableImage();
             Msgbox.alert(this, "Sửa thành công!");
+            LamMoiFromTT();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3304,10 +3342,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isValidateThuocTinhXX() {
         try {
-            if (txtTTNhaSanXuat.getText().trim().equals("")) {
-                Msgbox.alert(this, "Nhà sản xuất không được để trống");
-                return true;
-            } else if (txtTTNuocSanXuat.getText().trim().equals("")) {
+//            if (txtTTNhaSanXuat.getText().trim().equals("")) {
+//                Msgbox.alert(this, "Nhà sản xuất không được để trống");
+//                return true;
+//            } else
+            if (txtTTNuocSanXuat.getText().trim().equals("")) {
                 Msgbox.alert(this, "Nước sản xuất không được để trống");
                 return true;
             } else {
@@ -3369,6 +3408,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoXX.insertData(xx);
             fillTableXuatXu();
             Msgbox.alert(this, "Thêm thành công!");
+            LamMoiFromTTXX();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3380,10 +3420,12 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             daoXX.updateData(xx);
             fillTableXuatXu();
             Msgbox.alert(this, "Sửa thành công!");
+            LamMoiFromTTXX();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+//--------------------GetFRom---------------------------------------------------
 
     TheTich GetFromTT() {
         TheTich tt = new TheTich();
@@ -3447,6 +3489,62 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         xx.setNuocSX(txtTTNuocSanXuat.getText());
         return xx;
     }
+
+    // ------------------------------Update ThuoTinh -------------------
+    TheTich GetFromTTInsert() {
+        TheTich tt = new TheTich();
+        int SoLuongTheTich = tblTTThuocTinh.getRowCount();
+        tt.setMaTheTich("TT" + SoLuongTheTich + 1);
+        tt.setTheTich(Float.valueOf(txtTTTenThuocTinh.getText()));
+        return tt;
+    }
+
+    ChatLieu GetFromCLInsert() {
+        ChatLieu cl = new ChatLieu();
+        int SoLuongChatLieu = tblTTThuocTinh.getRowCount();
+        cl.setMaChatLieu("CL" + SoLuongChatLieu + 1);
+        cl.setChatLieu(txtTTTenThuocTinh.getText());
+        return cl;
+    }
+
+    KhoiLuong GetFromKLInsert() {
+        KhoiLuong kl = new KhoiLuong();
+        int SoLuongKhoiLuong = tblTTThuocTinh.getRowCount();
+        DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
+        kl.setMaKL("KL" + SoLuongKhoiLuong + 1);
+        kl.setMaDV(dvt.getMaDV());
+        kl.setKhoiLuong(Float.valueOf(txtTTTenThuocTinh.getText()));
+        return kl;
+    }
+
+    MauSac GetFromMSInsert() {
+        MauSac ms = new MauSac();
+        int SoLuongMS = tblTTThuocTinh.getRowCount();
+        ms.setMaMauSac("MS" + SoLuongMS + 1);
+        ms.setTenMauSac(txtTTTenThuocTinh.getText());
+        return ms;
+    }
+
+    Image GetFromIMGInsert() {
+        Image img = new Image();
+        int SoLuongIMG = tblTTThuocTinh.getRowCount();
+        img.setMaImage("IMG" + SoLuongIMG + 1);
+        img.setTenHinh(lblTTHinhAnh.getToolTipText());
+        return img;
+    }
+
+    KichThuoc GetFromKTInsert() {
+        KichThuoc kt = new KichThuoc();
+        int SoLuongKichThuoc = tblTTKichThuoc.getRowCount();
+        DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
+        kt.setMaKichThuoc("KT" + SoLuongKichThuoc + 1);
+        kt.setChieuDai(Float.parseFloat(txtChieuDai.getText()));
+        kt.setChieuRong(Float.parseFloat(txtChieuRong.getText()));
+        kt.setChieuCao(Float.parseFloat(txtChieuCao.getText()));
+        kt.setMaDV(dvt.getMaDV());
+        return kt;
+    }
+//------------------------------------------------------------------------------
 
     void clickTbaleThuocTinh() {
         int vitriThuocTinh = tblTTThuocTinh.getSelectedRow();

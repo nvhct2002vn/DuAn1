@@ -1913,6 +1913,9 @@
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="txtTTMaThuocTinh">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                              </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="txtTTTenThuocTinh">
                             </Component>
@@ -2035,6 +2038,9 @@
                             <Component class="javax.swing.JTextField" name="txtChieuDai">
                             </Component>
                             <Component class="javax.swing.JTextField" name="txtMaKT">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -2128,6 +2134,9 @@
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="txtTTMaXuatXu">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
