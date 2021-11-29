@@ -1116,6 +1116,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     public void fillCboDanhMuc() {
         cboDanhMuc.addItem("   ");
         List<DanhMuc> list = dmService.selectAll();
+        System.out.println(list);
         for (int i = 0; i < list.size(); i++) {
             cboDanhMuc.addItem(list.get(i).getTenDanhMuc());
         }

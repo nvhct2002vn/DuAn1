@@ -588,16 +588,6 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
-    private void lblDanhMucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDanhMucMouseClicked
-        // TODO add your handling code here:
-        F_DanhMuc1 dm = new F_DanhMuc1();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(dm).setVisible(true);
-        if (F_BanHang.webcam != null) {
-            F_BanHang.webcam.close();
-        }
-    }//GEN-LAST:event_lblDanhMucMouseClicked
-
     private void lblDanhMucMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDanhMucMousePressed
         // TODO add your handling code here:
         DanhMuc.setBackground(clickColor);
@@ -610,6 +600,16 @@ public class Dashboard extends javax.swing.JFrame {
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
     }//GEN-LAST:event_lblDanhMucMousePressed
+
+    private void lblDanhMucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDanhMucMouseClicked
+        // TODO add your handling code here:
+        F_DanhMuc1 dm = new F_DanhMuc1();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(dm).setVisible(true);
+        if (F_BanHang.webcam != null) {
+            F_BanHang.webcam.close();
+        }
+    }//GEN-LAST:event_lblDanhMucMouseClicked
 
     /**
      * @param args the command line arguments
