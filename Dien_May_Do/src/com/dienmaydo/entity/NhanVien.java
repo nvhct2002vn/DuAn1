@@ -13,15 +13,14 @@ import java.util.Date;
 public class NhanVien {
 
     private String MaNV;
-    private String MaVT;
     private String MatKhau;
     private String TenNV;
-    private String TenVT;
     private String DiaChi;
     private String DienThoai;
     private boolean GioiTinh;
     private Date NgaySinh;
-    private String TrangThai;
+    private boolean VaiTro;
+    private boolean TrangThai;
 
     public String getMaNV() {
         return MaNV;
@@ -29,14 +28,6 @@ public class NhanVien {
 
     public void setMaNV(String MaNV) {
         this.MaNV = MaNV;
-    }
-
-    public String getMaVT() {
-        return MaVT;
-    }
-
-    public void setMaVT(String MaVT) {
-        this.MaVT = MaVT;
     }
 
     public String getMatKhau() {
@@ -87,20 +78,21 @@ public class NhanVien {
         this.NgaySinh = NgaySinh;
     }
 
-    public String getTrangThai() {
+    public boolean isTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(String TrangThai) {
+    public void setTrangThai(boolean TrangThai) {
         this.TrangThai = TrangThai;
     }
 
-    public String getTenVT() {
-        return TenVT;
+ 
+    public boolean isVaiTro() {
+        return VaiTro;
     }
 
-    public void setTenVT(String TenVT) {
-        this.TenVT = TenVT;
+    public void setVaiTro(boolean VaiTro) {
+        this.VaiTro = VaiTro;
     }
 
 }

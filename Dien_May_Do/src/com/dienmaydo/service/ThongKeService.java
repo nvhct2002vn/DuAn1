@@ -20,7 +20,7 @@ public class ThongKeService {
         try {
             List<Object[]> list = new ArrayList<>();
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
-            while (rs.next()) {
+            while (rs.next()) {                
                 Object[] vals = new Object[cols.length];
                 for (int i = 0; i < cols.length; i++) {
                     vals[i] = rs.getObject(cols[i]);
@@ -36,7 +36,7 @@ public class ThongKeService {
     }
 
     public List<Object[]> getThongKe(int nam) {
-        String sql = "CALL SP_TABLETKTT(?)";
+        String sql = "{CALL SP_TABLETKTT(?)}";
         String[] cols = {"TENSANPHAM", "SOLUONGSP", "GIABANCAONHAT", "GIABANTHAPNHAT", "DOANHTHU"};
         return this.getListOfArrList(sql, cols, nam);
     }
