@@ -95,4 +95,9 @@ public class NhanVien {
         this.VaiTro = VaiTro;
     }
 
+    @Override
+    public String toString() {
+        return "NhanVien{" + "MaNV=" + MaNV + ", MatKhau=" + MatKhau + ", TenNV=" + TenNV + ", DiaChi=" + DiaChi + ", DienThoai=" + DienThoai + ", GioiTinh=" + GioiTinh + ", NgaySinh=" + NgaySinh + ", VaiTro=" + VaiTro + ", TrangThai=" + TrangThai + '}';
+    }
+
 }

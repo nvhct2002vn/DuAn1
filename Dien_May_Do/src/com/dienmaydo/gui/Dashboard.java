@@ -11,6 +11,7 @@ import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import java.awt.Color;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -27,6 +28,7 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         new F_DangNhap(this, true).setVisible(true);
+
         defaultColor = new Color(255, 204, 0);
         clickColor = new Color(153, 153, 153);
 
@@ -39,6 +41,27 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
+        
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        }else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        }else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        }else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
 
     }
 
@@ -111,13 +134,13 @@ public class Dashboard extends javax.swing.JFrame {
         TaiKhoanLayout.setVerticalGroup(
             TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TaiKhoanLayout.createSequentialGroup()
-                .addComponent(lblTaiKhoan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(txtTenNhanVien)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jPanel2.add(TaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 140));
+        jPanel2.add(TaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 190));
 
         sanPham.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -146,7 +169,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(sanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, 60));
+        jPanel2.add(sanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, 60));
 
         banHang.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -175,7 +198,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(banHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 60));
+        jPanel2.add(banHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 220, 60));
 
         hoaDon.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -204,7 +227,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(hoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 220, 60));
+        jPanel2.add(hoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 220, 60));
 
         khuyenMai.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -233,7 +256,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblKhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(khuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 220, 60));
+        jPanel2.add(khuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 220, 60));
 
         thoat.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -262,7 +285,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 220, 60));
+        jPanel2.add(thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 220, 60));
 
         NhanVien.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -291,7 +314,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 220, 60));
+        jPanel2.add(NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 220, 60));
 
         KhachHang.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -320,7 +343,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(KhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 220, -1));
+        jPanel2.add(KhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 220, -1));
 
         ThongKE.setBackground(new java.awt.Color(255, 204, 0));
 
@@ -349,7 +372,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(lblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(ThongKE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 60));
+        jPanel2.add(ThongKE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 220, 60));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 220, 768));
 
