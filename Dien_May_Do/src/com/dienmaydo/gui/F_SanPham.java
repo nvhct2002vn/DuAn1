@@ -3249,7 +3249,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 Msgbox.alert(this, "Chiều rộng không được để trống");
                 return true;
             } else if (txtChieuCao.getText().trim().equals("")) {
-                Msgbox.alert(this, "Chiều cao tinh không được để trống");
+                Msgbox.alert(this, "Chiều cao không được để trống");
                 return true;
             } else {
                 return false;

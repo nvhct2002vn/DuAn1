@@ -66,7 +66,6 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         btnthem = new javax.swing.JButton();
         btnsua = new javax.swing.JButton();
-        btnxoa = new javax.swing.JButton();
         btnlammoi = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
@@ -146,15 +145,6 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             }
         });
 
-        btnxoa.setBackground(new java.awt.Color(255, 204, 51));
-        btnxoa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnxoa.setText("Xóa");
-        btnxoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnxoaActionPerformed(evt);
-            }
-        });
-
         btnlammoi.setBackground(new java.awt.Color(255, 204, 0));
         btnlammoi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnlammoi.setText("Làm mới");
@@ -173,23 +163,20 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnthem, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsua, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnxoa)
                     .addComponent(btnlammoi))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnlammoi, btnsua, btnthem, btnxoa});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnlammoi, btnsua, btnthem});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(btnthem)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(btnsua)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnxoa)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(btnlammoi)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -537,11 +524,6 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblQuanLyKhacHangMouseClicked
 
-    private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnxoaActionPerformed
-
     private void cbLocGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLocGioiTinhActionPerformed
         // TODO add your handling code here:
         String GioiTinhCbb = (String) cbLocGioiTinh.getSelectedItem();  //lấy chuỗi trên cbb(giới tính) để gán vào giới tính cbb
@@ -567,7 +549,6 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnlammoi;
     private javax.swing.JButton btnsua;
     private javax.swing.JButton btnthem;
-    private javax.swing.JButton btnxoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbLocGioiTinh;
     private javax.swing.JComboBox<String> jComboBox2;
