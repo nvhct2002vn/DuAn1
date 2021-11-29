@@ -31,18 +31,13 @@ VALUES  ('DMKM01', 'KM001', 'DM001'),
 		('DMKM09', 'KM002', 'DM009')
 
 
-INSERT INTO VAITRO
-VALUES  ('VT01', N'Quản Lý'),
-		('VT02', N'Nhân Viên')
-
-
 INSERT INTO NHANVIEN
-VALUES  ('NV001','VT01','123', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19',N'Đang làm việc'),
-		('NV002','VT02','123', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21',N'Đang làm việc'),
-		('NV003','VT01','123', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01',N'Đang làm việc'),
-		('NV004','VT02','123', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 1, '1998-02-02',N'Đang làm việc'),
-		('NV005','VT01','123', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03',N'Đang làm việc'),
-		('NV006','VT02','123', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04',N'Đang làm việc')
+VALUES  ('NV001','123', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19',1,1),
+		('NV002','123', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21',1,1),
+		('NV003','123', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01',1,1),
+		('NV004','123', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 0, '1998-02-02',0,1),
+		('NV005','123', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03',0,1),
+		('NV006','123', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04',0,1)
 
 
 INSERT INTO XUATXU

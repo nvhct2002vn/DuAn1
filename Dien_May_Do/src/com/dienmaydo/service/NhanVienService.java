@@ -10,9 +10,9 @@ import com.dienmaydo.iservice.INhanVienService;
 public class NhanVienService implements INhanVienService<NhanVien, String> {
 
     String Insert_SQL = "INSERT INTO dbo.NHANVIEN(MANV,MAVT,MATKHAU,TENNV,DIACHI,DIENTHOAI,GIOITINH,NGAYSINH,TRANGTHAI)VALUES(?,?,?,?,?,?,?,?,?)";
-    String Update_SQL = "UPDATE dbo.NHANVIEN SET MAVT = ? ,MATKHAU = ?,TENNV = ? ,DIACHI = ? ,DIENTHOAI = ?,GIOITINH = ?,NGAYSINH = ?,TRANGTHAI = ? WHERE MANV = ?";
-    String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT";
-    String SELECT_BY_ID = "SELECT * FROM NHANVIEN JOIN VAITRO ON NHANVIEN.MAVT = VAITRO.MAVT WHERE MANV LIKE ?";
+    String Update_SQL = "UPDATE dbo.NHANVIEN SET VAITRO = ? ,MATKHAU = ?,TENNV = ? ,DIACHI = ? ,DIENTHOAI = ?,GIOITINH = ?,NGAYSINH = ?,TRANGTHAI = ? WHERE MANV = ?";
+    String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN";
+    String SELECT_BY_ID = "SELECT * FROM NHANVIEN WHERE MANV LIKE ?";
     String Search_SQL = "SELECT * FROM dbo.NHANVIEN WHERE MANV LIKE  ? OR TENNV LIKE ? OR DIENTHOAI LIKE ?";
     @Override
     public List<NhanVien> selectAll() {
@@ -27,15 +27,14 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
             while (rs.next()) {
                 NhanVien nv = new NhanVien();
                 nv.setMaNV(rs.getString("MANV"));
-                nv.setMaVT(rs.getString("MAVT"));
                 nv.setMatKhau(rs.getString("MATKHAU"));
                 nv.setTenNV(rs.getString("TENNV"));
-                nv.setTenVT(rs.getString("TENVT"));
                 nv.setDiaChi(rs.getString("DIACHI"));
                 nv.setDienThoai(rs.getString("DIENTHOAI"));
                 nv.setGioiTinh(rs.getBoolean("GIOITINH"));
                 nv.setNgaySinh(rs.getDate("NGAYSINH"));
-                nv.setTrangThai(rs.getString("TRANGTHAI"));
+                nv.setVaiTro(rs.getBoolean("VAITRO"));
+                nv.setTrangThai(rs.getBoolean("TRANGTHAI"));
                 list.add(nv);
             }
             rs.getStatement().getConnection().close();
@@ -57,14 +56,14 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
 
     @Override
     public void insertData(NhanVien entity) {
-        JdbcHelper.excuteUpdate(Insert_SQL, entity.getMaNV(), entity.getMaVT(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
-                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.getTrangThai());
+        JdbcHelper.excuteUpdate(Insert_SQL, entity.getMaNV(), entity.isVaiTro(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
+                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.isTrangThai());
     }
 
     @Override
     public void updateData(NhanVien entity) {
-        JdbcHelper.excuteUpdate(Update_SQL, entity.getMaVT(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
-                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.getTrangThai(), entity.getMaNV());
+        JdbcHelper.excuteUpdate(Update_SQL, entity.isVaiTro(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
+                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.isTrangThai(), entity.getMaNV());
     }
 
     @Override

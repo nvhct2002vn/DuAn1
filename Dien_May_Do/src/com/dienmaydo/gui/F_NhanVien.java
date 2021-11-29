@@ -6,9 +6,7 @@
 package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.NhanVien;
-import com.dienmaydo.entity.VaiTro;
 import com.dienmaydo.service.NhanVienService;
-import com.dienmaydo.service.VaiTroService;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
 import java.util.List;
@@ -24,9 +22,8 @@ import javax.swing.table.DefaultTableModel;
 public class F_NhanVien extends javax.swing.JInternalFrame {
 
     NhanVienService daoNV = new NhanVienService();
-    VaiTroService vtService = new VaiTroService();
     int row = -1;
-    String Loc;
+    boolean Loc;
     boolean LocGT;
     String GanChu;
 
@@ -41,7 +38,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         FillTable();
-        LoadToCBB();
+        rdoDangLamViec.setSelected(true);
+        rdNam.setSelected(true);
     }
 
     /**
@@ -56,6 +54,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         txtManv = new javax.swing.JTextField();
@@ -77,9 +76,10 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         btnSua = new javax.swing.JButton();
         btnLammoi = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        txtTrangthai = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JTextField();
+        rdoDangLamViec = new javax.swing.JRadioButton();
+        rdoNghiViec = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbBang = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -118,6 +118,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Vai trò");
+
+        cbbVaitro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên" }));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Địa chỉ");
@@ -190,6 +192,12 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup2.add(rdoDangLamViec);
+        rdoDangLamViec.setText("Đang làm việc");
+
+        buttonGroup2.add(rdoNghiViec);
+        rdoNghiViec.setText("Nghỉ việc");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -241,9 +249,12 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                                 .addComponent(rdNam, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(11, 11, 11)
                                 .addComponent(rdNu, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDienthoai)
+                            .addComponent(txtDienthoai, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                             .addComponent(txtNgaysinh)
-                            .addComponent(txtTrangthai, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rdoDangLamViec)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rdoNghiViec)))))
                 .addGap(109, 109, 109))
         );
         jPanel1Layout.setVerticalGroup(
@@ -265,10 +276,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                             .addComponent(rdNam)
                             .addComponent(jLabel6)
                             .addComponent(rdNu))
-                        .addGap(19, 19, 19)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(rdoDangLamViec)
+                            .addComponent(rdoNghiViec))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLammoi))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -424,7 +436,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -497,45 +509,41 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
     private void cbbGTLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGTLocActionPerformed
         // TODO add your handling code here:
-        GanChu=(String)cbbGTLoc.getSelectedItem();
+        GanChu = (String) cbbGTLoc.getSelectedItem();
         if (GanChu.equals(" ")) {
-            
+
             FillTable();
-            
+
         }
         if (GanChu.equals("Nam")) {
             LocGT = true;
             cbbVaiTRoLoc.setSelectedIndex(0);
             LocNamFillTable();
-            
-            
+
         }
         if (GanChu.equals("Nữ")) {
-            LocGT=false;
+            LocGT = false;
             cbbVaiTRoLoc.setSelectedIndex(0);
             LocNamFillTable();
-            
+
         }
     }//GEN-LAST:event_cbbGTLocActionPerformed
 
     private void cbbVaiTRoLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbVaiTRoLocActionPerformed
         // TODO add your handling code here:
-        GanChu=(String)cbbVaiTRoLoc.getSelectedItem();
-        if (GanChu.equals(" ")) {
-            
+        String GanChuVT = (String) cbbVaiTRoLoc.getSelectedItem();
+        if (GanChuVT.equals(" ")) {
             FillTable();
         }
-        if (GanChu.equals("Quản Lý")) {
-            Loc = "Quản Lý";
+        if (GanChuVT.equals("Quản Lý")) {
+            Loc = true;
             cbbGTLoc.setSelectedIndex(0);
             LocFillTable();
-            
         }
-        if (GanChu.equals("Nhân Viên")) {
-            Loc = "Nhân Viên";
+        if (GanChuVT.equals("Nhân Viên")) {
+            Loc = false;
             cbbGTLoc.setSelectedIndex(0);
             LocFillTable();
-            
         }
     }//GEN-LAST:event_cbbVaiTRoLocActionPerformed
 
@@ -547,6 +555,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JComboBox<String> cbbGTLoc;
     private javax.swing.JComboBox<String> cbbVaiTRoLoc;
     private javax.swing.JComboBox<String> cbbVaitro;
@@ -568,6 +577,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rdNam;
     private javax.swing.JRadioButton rdNu;
+    private javax.swing.JRadioButton rdoDangLamViec;
+    private javax.swing.JRadioButton rdoNghiViec;
     private javax.swing.JTable tbBang;
     private javax.swing.JTextField txtDiachi;
     private javax.swing.JTextField txtDienthoai;
@@ -576,27 +587,17 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNgaysinh;
     private javax.swing.JTextField txtTennv;
     private javax.swing.JTextField txtTimKiem;
-    private javax.swing.JTextField txtTrangthai;
     // End of variables declaration//GEN-END:variables
 
     public void FillTable() {
         DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
         model.setRowCount(0);
         List<NhanVien> listNV = daoNV.selectAll();
-        System.out.println(listNV);
         for (NhanVien x : listNV) {
             model.addRow(new Object[]{
-                x.getMaNV(),x.getMatKhau(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
+                x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
             });
-        }
-    }
-
-    public void LoadToCBB() {
-        DefaultComboBoxModel model_cbb = (DefaultComboBoxModel) cbbVaitro.getModel();
-        model_cbb.removeAllElements();
-        List<VaiTro> list = vtService.selectAll();
-        for (VaiTro x : list) {
-            model_cbb.addElement(x);
         }
     }
 
@@ -632,9 +633,6 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             } else if (txtMatKhau.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mật khẩu nhân viên không được để trống");
                 return true;
-            } else if (txtTrangthai.getText().trim().equals("")) {
-                Msgbox.alert(this, "Trang thái nhân viên không được để trống");
-                return true;
             } else if (txtNgaysinh.getText().trim().equals("")) {
                 Msgbox.alert(this, "Ngày sinh nhân viên không được để trống");
                 return true;
@@ -652,7 +650,6 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         txtTennv.setText("");
         txtDienthoai.setText("");
         txtMatKhau.setText("");
-        txtTrangthai.setText("");
         txtDiachi.setText("");
         rdNam.setSelected(true);
         cbbVaitro.setSelectedIndex(0);
@@ -660,6 +657,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         int row;
         row = -1;
         txtManv.setEditable(true);
+        rdoDangLamViec.setSelected(true);
     }
 
     public void Them() {
@@ -687,13 +685,12 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     NhanVien getForm() {
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtManv.getText());
-        VaiTro vt = (VaiTro) cbbVaitro.getSelectedItem();
-        nv.setMaVT(vt.getMaVT());
+        nv.setVaiTro(cbbVaitro.getSelectedIndex() == 0 ? true : false);
         nv.setTenNV(txtTennv.getText());
         nv.setMatKhau(txtMatKhau.getText());
-        nv.setTrangThai(txtTrangthai.getText());
+        nv.setTrangThai(rdoDangLamViec.isSelected());
         nv.setDiaChi(txtDiachi.getText());
-        nv.setGioiTinh(rdNam.isSelected() ? true : false);
+        nv.setGioiTinh(rdNam.isSelected());
         nv.setDienThoai(txtDienthoai.getText());
         nv.setNgaySinh(XDate.toDate(txtNgaysinh.getText()));
         return nv;
@@ -702,11 +699,10 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     void clickTable() {
         int vitri = tbBang.getSelectedRow();
         txtManv.setText((String) tbBang.getValueAt(vitri, 0));
-        txtMatKhau.setText((String)tbBang.getValueAt(vitri, 1));
+        txtMatKhau.setText((String) tbBang.getValueAt(vitri, 1));
         txtTennv.setText((String) tbBang.getValueAt(vitri, 2));
         txtDiachi.setText((String) tbBang.getValueAt(vitri, 4));
         txtDienthoai.setText((String) tbBang.getValueAt(vitri, 5));
-        setSelectedComboboxTenSP((String) tbBang.getValueAt(vitri, 3), cbbVaitro);
         String NgaySinh = String.valueOf(tbBang.getValueAt(vitri, 6));
         txtNgaysinh.setText(NgaySinh);
         String gt = ((String) tbBang.getValueAt(vitri, 7));
@@ -715,67 +711,60 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         } else {
             rdNu.setSelected(true);
         }
-        txtTrangthai.setText((String) tbBang.getValueAt(vitri, 8));
+        rdNam.setSelected(Boolean.valueOf(tbBang.getValueAt(vitri, 8).toString()));
     }
 
-    public void setSelectedComboboxTenSP(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            VaiTro m = (VaiTro) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getTenVT())) {
-                    cbb.setSelectedItem(m);
-                }
-            }
-        }
-    }
     void TimKiem() {
-        DefaultTableModel Model = (DefaultTableModel) tbBang.getModel(); 
-        Model.setRowCount(0);  
+        DefaultTableModel Model = (DefaultTableModel) tbBang.getModel();
+        Model.setRowCount(0);
         List<NhanVien> SNV = daoNV.selectByTimKiem(txtTimKiem.getText());
         for (NhanVien x : SNV) {
             Model.addRow(new Object[]{
-               x.getMaNV(),x.getMatKhau(), x.getTenNV(), x.getTenVT(), x.getDiaChi(),
-                x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
+                x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
             });
         }
     }
+
     public void LocFillTable() {
         DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
         model.setRowCount(0);
         List<NhanVien> listNV = daoNV.selectAll();
-        System.out.println(listNV);
         for (NhanVien x : listNV) {
-            if (x.getTenVT().equals(Loc)) {
+            if (x.isVaiTro() == Loc) {
                 model.addRow(new Object[]{
-                x.getMaNV(),x.getMatKhau(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
-            });
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                });
             }
         }
     }
-     public void LocNamFillTable() {
+
+    public void LocNamFillTable() {
         DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
         model.setRowCount(0);
         List<NhanVien> listNV = daoNV.selectAll();
         System.out.println(listNV);
         for (NhanVien x : listNV) {
-            if (x.isGioiTinh()== LocGT) {
+            if (x.isGioiTinh() == LocGT) {
                 model.addRow(new Object[]{
-                x.getMaNV(),x.getMatKhau(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
-            });
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                });
             }
         }
     }
-      public void LocNamNVFillTable() {
-        DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
-        model.setRowCount(0);
-        List<NhanVien> listNV = daoNV.selectAll();
-        System.out.println(listNV);
-        for (NhanVien x : listNV) {
-            if (x.isGioiTinh()== LocGT&&x.getTenVT().equals(Loc)) {
-                model.addRow(new Object[]{
-                x.getMaNV(),x.getMatKhau(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
-            });
-            }
-        }
-    }
+//      public void LocNamNVFillTable() {
+//        DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
+//        model.setRowCount(0);
+//        List<NhanVien> listNV = daoNV.selectAll();
+//        System.out.println(listNV);
+//        for (NhanVien x : listNV) {
+//            if (x.isGioiTinh()== LocGT&&x.getTenVT().equals(Loc)) {
+//                model.addRow(new Object[]{
+//                x.getMaNV(),x.getMatKhau(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
+//            });
+//            }
+//        }
+//    }
 }

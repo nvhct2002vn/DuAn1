@@ -127,9 +127,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="24" style="1"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\revenue.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Doanh Thu"/>
                   </Properties>
                 </Component>
@@ -197,9 +194,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="24" style="1"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\receipt.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; H&#xf3;a &#x110;&#x1a1;n"/>
                   </Properties>
                 </Component>
@@ -258,9 +252,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="24" style="1"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\cancelProduct.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; H&#xe0;ng H&#x1ee7;y"/>
                   </Properties>
@@ -323,9 +314,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="24" style="1"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\client.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Kh&#xe1;ch H&#xe0;ng"/>
                   </Properties>

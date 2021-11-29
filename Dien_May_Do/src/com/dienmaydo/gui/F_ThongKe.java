@@ -99,7 +99,6 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\revenue.png")); // NOI18N
         jLabel1.setText("Doanh Thu");
 
         lblDoanhThu.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -144,7 +143,6 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel12.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\receipt.png")); // NOI18N
         jLabel13.setText("Số Hóa Đơn");
 
         lblHoaDon.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -182,7 +180,6 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel13.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\cancelProduct.png")); // NOI18N
         jLabel14.setText("Số Hàng Hủy");
 
         lblHangHuy.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -220,7 +217,6 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel14.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\client.png")); // NOI18N
         jLabel15.setText("Tổng Khách Hàng");
 
         lblKhachHang.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -569,6 +565,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
     private void cbbNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbNamActionPerformed
         fillTableTKHH();
     }//GEN-LAST:event_cbbNamActionPerformed
+
 
     private void cbbDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDanhMucActionPerformed
         fillTheoDM();

@@ -20,7 +20,7 @@ public class ThongKeService {
         try {
             List<Object[]> list = new ArrayList<>();
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
-            while (rs.next()) {
+            while (rs.next()) {                
                 Object[] vals = new Object[cols.length];
                 for (int i = 0; i < cols.length; i++) {
                     vals[i] = rs.getObject(cols[i]);
