@@ -796,6 +796,12 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         txtManv.setText((String) tbBang.getValueAt(vitri, 0));
         txtMatKhau.setText((String) tbBang.getValueAt(vitri, 1));
         txtTennv.setText((String) tbBang.getValueAt(vitri, 2));
+        String vaiTro = (String) tbBang.getValueAt(vitri, 3);
+        if (vaiTro.equals("Quản lý")) {
+            cbbVaitro.setSelectedIndex(0);
+        } else {
+            cbbVaitro.setSelectedIndex(1);
+        }
         txtDiachi.setText((String) tbBang.getValueAt(vitri, 4));
         txtDienthoai.setText((String) tbBang.getValueAt(vitri, 5));
         String NgaySinh = String.valueOf(tbBang.getValueAt(vitri, 6));
@@ -806,7 +812,12 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         } else {
             rdNu.setSelected(true);
         }
-        rdNam.setSelected(Boolean.valueOf(tbBang.getValueAt(vitri, 8).toString()));
+        String trangThaiViecLam = tbBang.getValueAt(vitri, 8).toString();
+        if (trangThaiViecLam.equals("Đang làm việc")) {
+            rdoDangLamViec.setSelected(true);
+        } else {
+            rdoNghiViec.setSelected(true);
+        }
     }
 
     void TimKiem() {
@@ -849,25 +860,18 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             }
         }
     }
-//      public void LocNamNVFillTable() {
-//        DefaultTableModel model = (DefaultTableModel) tbBang.getModel();
-//        model.setRowCount(0);
-//        List<NhanVien> listNV = daoNV.selectAll();
-//        System.out.println(listNV);
-//        for (NhanVien x : listNV) {
-//            if (x.isGioiTinh()== LocGT&&x.getTenVT().equals(Loc)) {
-//                model.addRow(new Object[]{
-//                x.getMaNV(),x.getMatKhau(), x.getTenNV(), x.getTenVT(), x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getTrangThai()
-//            });
-//            }
-//        }
-//    }
 
     private void clickTableNghiViec() {
         int vitri = tbBangNghiViec.getSelectedRow();
         txtManv.setText((String) tbBangNghiViec.getValueAt(vitri, 0));
         txtMatKhau.setText((String) tbBangNghiViec.getValueAt(vitri, 1));
         txtTennv.setText((String) tbBangNghiViec.getValueAt(vitri, 2));
+        String vaiTro = (String) tbBangNghiViec.getValueAt(vitri, 3);
+        if (vaiTro.equals("Quản lý")) {
+            cbbVaitro.setSelectedIndex(0);
+        } else {
+            cbbVaitro.setSelectedIndex(1);
+        }
         txtDiachi.setText((String) tbBangNghiViec.getValueAt(vitri, 4));
         txtDienthoai.setText((String) tbBangNghiViec.getValueAt(vitri, 5));
         String NgaySinh = String.valueOf(tbBangNghiViec.getValueAt(vitri, 6));
@@ -878,6 +882,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         } else {
             rdNu.setSelected(true);
         }
-        rdNam.setSelected(Boolean.valueOf(tbBangNghiViec.getValueAt(vitri, 8).toString()));
+        String trangThaiViecLam = tbBangNghiViec.getValueAt(vitri, 8).toString();
+        if (trangThaiViecLam.equals("Đang làm việc")) {
+            rdoDangLamViec.setSelected(true);
+        } else {
+            rdoNghiViec.setSelected(true);
+        }
     }
 }
