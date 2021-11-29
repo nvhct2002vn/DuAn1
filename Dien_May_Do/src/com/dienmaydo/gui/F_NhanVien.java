@@ -488,12 +488,6 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void tbBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangMouseClicked
-        clickTable();
-// TODO add your handling code here:
-
-    }//GEN-LAST:event_tbBangMouseClicked
-
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         if (isValidate()) {
             return;
@@ -550,6 +544,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             
         }
     }//GEN-LAST:event_cbbVaiTRoLocActionPerformed
+
+    private void tbBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangMouseClicked
+        clickTable();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbBangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
