@@ -190,7 +190,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         btnXoaSP.setBackground(new java.awt.Color(255, 204, 0));
         btnXoaSP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnXoaSP.setForeground(new java.awt.Color(51, 51, 51));
-        btnXoaSP.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\delete_26px.png")); // NOI18N
         btnXoaSP.setText("Xóa sản phẩm");
         btnXoaSP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0)));
         btnXoaSP.setPreferredSize(new java.awt.Dimension(60, 30));
@@ -203,7 +202,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         btnXoaTatCa.setBackground(new java.awt.Color(255, 204, 0));
         btnXoaTatCa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnXoaTatCa.setForeground(new java.awt.Color(51, 51, 51));
-        btnXoaTatCa.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\delete_26px.png")); // NOI18N
         btnXoaTatCa.setText("Xóa tất cả");
         btnXoaTatCa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0)));
         btnXoaTatCa.setPreferredSize(new java.awt.Dimension(60, 30));
@@ -275,7 +273,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         btnThemSanPham.setBackground(new java.awt.Color(255, 204, 0));
         btnThemSanPham.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnThemSanPham.setForeground(new java.awt.Color(51, 51, 51));
-        btnThemSanPham.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\add_24px.png")); // NOI18N
         btnThemSanPham.setText("Thêm sản phẩm");
         btnThemSanPham.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0)));
         btnThemSanPham.setPreferredSize(new java.awt.Dimension(60, 30));
@@ -347,7 +344,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
         btnLuu.setBackground(new java.awt.Color(255, 204, 0));
         btnLuu.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        btnLuu.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\save_16px.png")); // NOI18N
         btnLuu.setText("Lưu");
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +377,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
         btnHuyHoaDon.setBackground(new java.awt.Color(255, 204, 0));
         btnHuyHoaDon.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        btnHuyHoaDon.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\update_16px.png")); // NOI18N
         btnHuyHoaDon.setText("Hủy hóa đơn");
         btnHuyHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,7 +386,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
         btnLamMoi.setBackground(new java.awt.Color(255, 204, 0));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        btnLamMoi.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\refresh_16px.png")); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,7 +408,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         btnThanhToan.setBackground(new java.awt.Color(255, 204, 0));
         btnThanhToan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnThanhToan.setForeground(new java.awt.Color(51, 51, 51));
-        btnThanhToan.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\create_26px.png")); // NOI18N
         btnThanhToan.setText("Thanh toán");
         btnThanhToan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0)));
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
@@ -434,7 +427,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
         btnShow.setBackground(new java.awt.Color(255, 204, 0));
         btnShow.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnShow.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\show_password_16px.png")); // NOI18N
         btnShow.setText("Show");
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,7 +436,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
         btnChon.setBackground(new java.awt.Color(255, 204, 0));
         btnChon.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        btnChon.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\save_16px.png")); // NOI18N
         btnChon.setText("Chọn");
         btnChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -504,14 +495,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnHuyHoaDon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
@@ -548,6 +532,12 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                             .addComponent(cboHinhThucTT, 0, 185, Short.MAX_VALUE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnHuyHoaDon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHuyHoaDon, btnLamMoi});
@@ -847,50 +837,52 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 Msgbox.alert(this, "Vui lòng chọn sản phẩm trên table!");
             } else {
                 String soluong = Msgbox.prompt(this, "Mời bạn nhập số lượng sản phẩm:");
-                if (Integer.parseInt(soluong) > Integer.parseInt(tblChonSanPham.getValueAt(row1, 7) + "")) {
-                    Msgbox.alert(this, "Số lượng sản phẩm bạn vừa nhập vượt quá số lượng trong kho!");
-                    return;
-                } else if (Integer.parseInt(soluong) < 0) {
-                    Msgbox.alert(this, "Số lượng sản phẩm không được nhỏ hơn 0!");
-                    return;
-                } else {
-                    for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
-                        if (tblSanPhamChon.getValueAt(i, 0).toString().equals(tblChonSanPham.getValueAt(row1, 0))) {
-                            int soLuongGoc = Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "");
-                            tblSanPhamChon.setValueAt(soLuongGoc + Integer.parseInt(soluong), i, 3);
-                            donHang();
-                            capNhatHoaDon();
-                            //Cập nhật số lượng sản phẩm tồn (begin)
-                            SanPhamChiTiet s = spService.selectByID(tblChonSanPham.getValueAt(row1, 0) + "");
-                            int soLuongMoi = (s.getSoLuong() - Integer.parseInt(soluong));
+                if (soluong != null) {
+                    if (Integer.parseInt(soluong) > Integer.parseInt(tblChonSanPham.getValueAt(row1, 7) + "")) {
+                        Msgbox.alert(this, "Số lượng sản phẩm bạn vừa nhập vượt quá số lượng trong kho!");
+                        return;
+                    } else if (Integer.parseInt(soluong) < 0) {
+                        Msgbox.alert(this, "Số lượng sản phẩm không được nhỏ hơn 0!");
+                        return;
+                    } else {
+                        for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
+                            if (tblSanPhamChon.getValueAt(i, 0).toString().equals(tblChonSanPham.getValueAt(row1, 0))) {
+                                int soLuongGoc = Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "");
+                                tblSanPhamChon.setValueAt(soLuongGoc + Integer.parseInt(soluong), i, 3);
+                                donHang();
+                                capNhatHoaDon();
+                                //Cập nhật số lượng sản phẩm tồn (begin)
+                                SanPhamChiTiet s = spService.selectByID(tblChonSanPham.getValueAt(row1, 0) + "");
+                                int soLuongMoi = (s.getSoLuong() - Integer.parseInt(soluong));
 
-                            SanPhamChiTiet sp = new SanPhamChiTiet();
-                            sp.setSoLuong(soLuongMoi);
-                            sp.setMaSPCT(tblChonSanPham.getValueAt(row1, 0) + "");
-                            spService.updateBanHang(sp);
-                            // cập nhật số lượng sản phầm tồn (end)
-                            fillTable();
-                            return;
+                                SanPhamChiTiet sp = new SanPhamChiTiet();
+                                sp.setSoLuong(soLuongMoi);
+                                sp.setMaSPCT(tblChonSanPham.getValueAt(row1, 0) + "");
+                                spService.updateBanHang(sp);
+                                // cập nhật số lượng sản phầm tồn (end)
+                                fillTable();
+                                return;
+                            }
                         }
-                    }
-                    Vector v = new Vector();
-                    v.add(tblChonSanPham.getValueAt(row1, 0));
-                    v.add(tblChonSanPham.getValueAt(row1, 1));
-                    v.add(tblChonSanPham.getValueAt(row1, 2));
-                    v.add(soluong);
-                    model2.addRow(v);
-                    donHang();
-                    capNhatHoaDon();
-                    //Cập nhật số lượng sản phẩm tồn (begin)
-                    SanPhamChiTiet s = spService.selectByID(tblChonSanPham.getValueAt(row1, 0) + "");
-                    int soLuongMoi = (s.getSoLuong() - Integer.parseInt(soluong));
+                        Vector v = new Vector();
+                        v.add(tblChonSanPham.getValueAt(row1, 0));
+                        v.add(tblChonSanPham.getValueAt(row1, 1));
+                        v.add(tblChonSanPham.getValueAt(row1, 2));
+                        v.add(soluong);
+                        model2.addRow(v);
+                        donHang();
+                        capNhatHoaDon();
+                        //Cập nhật số lượng sản phẩm tồn (begin)
+                        SanPhamChiTiet s = spService.selectByID(tblChonSanPham.getValueAt(row1, 0) + "");
+                        int soLuongMoi = (s.getSoLuong() - Integer.parseInt(soluong));
 
-                    SanPhamChiTiet sp = new SanPhamChiTiet();
-                    sp.setSoLuong(soLuongMoi);
-                    sp.setMaSPCT(tblChonSanPham.getValueAt(row1, 0) + "");
-                    spService.updateBanHang(sp);
-                    // cập nhật số lượng sản phầm tồn (end)
-                    fillTable();
+                        SanPhamChiTiet sp = new SanPhamChiTiet();
+                        sp.setSoLuong(soLuongMoi);
+                        sp.setMaSPCT(tblChonSanPham.getValueAt(row1, 0) + "");
+                        spService.updateBanHang(sp);
+                        // cập nhật số lượng sản phầm tồn (end)
+                        fillTable();
+                    }
                 }
             }
         } catch (NumberFormatException e) {
@@ -1047,8 +1039,10 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                     hdService.update(hd);
                     showHoaDonCho();
                     showProductsDM();
-                    xuatHoaDon();
                     lamMoi();
+                    if (Msgbox.confirm(this, "Bạn muốn in hóa đơn này không ??")) {
+                        xuatHoaDon();
+                    }
                     Msgbox.alert(this, "Thanh toán thành công!");
                 }
             }

@@ -28,6 +28,7 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {// output của bạn đâu
         initComponents();
         setLocationRelativeTo(null);
+        setResizable(false);
         //setIconImage(XImage.getAppIcon());
         new F_DangNhap(this, true).setVisible(true);
 

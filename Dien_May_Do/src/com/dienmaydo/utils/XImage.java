@@ -22,9 +22,10 @@ import javax.swing.ImageIcon;
 public class XImage {
 
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("./logos/logoDienMayDo.png");
+        URL url = XImage.class.getResource("./src/com/dienmaydo/icon/logo.png");
+        System.out.println(url);
         return new ImageIcon(url).getImage();
-    }
+    }  
 
     public static void save(File src) {
         File dst = new File("logos", src.getName());
