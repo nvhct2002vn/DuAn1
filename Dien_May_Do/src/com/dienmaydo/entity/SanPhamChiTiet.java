@@ -4,7 +4,7 @@
  */
 package com.dienmaydo.entity;
 
-import javafx.scene.control.CheckBox;
+import java.scene.control.CheckBox;
 
 /**
  *
