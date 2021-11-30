@@ -50,6 +50,7 @@ public class MauSacService implements IMauSacService<MauSac, String> {
                 entity.setTenMauSac(rs.getString("TENMAUSAC"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

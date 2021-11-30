@@ -55,6 +55,7 @@ public class KichThuocService implements IKichThuocService<KichThuoc, String> {
                 entity.setChieuCao(rs.getFloat("CHIEUCAO"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

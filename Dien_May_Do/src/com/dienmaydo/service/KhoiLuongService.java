@@ -51,6 +51,7 @@ public class KhoiLuongService implements IKhoiLuongService<KhoiLuong, String> {
                 entity.setKhoiLuong(rs.getFloat("KHOILUONG"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

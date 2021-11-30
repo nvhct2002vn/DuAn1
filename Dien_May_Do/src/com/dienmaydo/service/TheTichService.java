@@ -50,6 +50,7 @@ public class TheTichService implements ITheTichService<TheTich, String> {
                 entity.setTheTich(rs.getFloat("THETICH"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

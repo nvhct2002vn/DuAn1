@@ -59,6 +59,7 @@ public class ImageService implements IImageService<Image, String> {
                 entity.setTenHinh(rs.getString("TENHINH"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

@@ -82,6 +82,7 @@ public class XuatXuService implements IXuatXuService<XuatXu, String> {
                 entity.setNuocSX(rs.getString("NUOCSX"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

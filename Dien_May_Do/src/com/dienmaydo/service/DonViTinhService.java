@@ -61,6 +61,7 @@ public class DonViTinhService implements IDonViTinhService<DonViTinh, String> {
                 entity.setTenDV(rs.getString("TENDV"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
