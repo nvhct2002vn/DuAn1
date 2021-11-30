@@ -11,8 +11,7 @@ import java.util.Date;
  * @author letha
  */
 public class KhuyenMai {
-
-     private String MaKM;
+ private String MaKM;
     private String TenDM;
     private String HinhThuc;
     private String TenChuongTrinh;
@@ -22,14 +21,24 @@ public class KhuyenMai {
     private String TrangThai;
     private String MoTa;
     private String tenSP;
+    private String TenSPCT;
 
-    public String gettenSp() {
+    public String getTenSP() {
         return tenSP;
     }
 
-    public void settenSp(String tenSP) {
+    public void setTenSP(String tenSP) {
         this.tenSP = tenSP;
     }
+
+    public String getTenSPCT() {
+        return TenSPCT;
+    }
+
+    public void setTenSPCT(String TenSPCT) {
+        this.TenSPCT = TenSPCT;
+    }
+
 
     public String getMaKM() {
         return MaKM;
@@ -103,4 +112,5 @@ public class KhuyenMai {
         this.TenDM = TenDM;
     }
 
+    
 }

@@ -4,6 +4,8 @@
  */
 package com.dienmaydo.entity;
 
+import javafx.scene.control.CheckBox;
+
 /**
  *
  * @author letha
@@ -36,6 +38,7 @@ public class SanPhamChiTiet {
     private String MoTa;
     private String TenDVTinh;
     private String MaDVT;
+    private CheckBox select;
 
     public String getMaSPCT() {
         return MaSPCT;
@@ -249,6 +252,14 @@ public class SanPhamChiTiet {
     public String getKichCo() {
         String kichCoDRC = String.valueOf(ChieuDai) + " - " + String.valueOf(ChieuRong) + " - " + String.valueOf(ChieuCao);
         return kichCoDRC;
+    }
+
+    public CheckBox getSelect() {
+        return select;
+    }
+
+    public void setSelect(CheckBox select) {
+        this.select = select;
     }
     
     @Override
