@@ -370,6 +370,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm kiếm"));
         jPanel4.setToolTipText("");
 
@@ -392,6 +393,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setOpaque(true);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         tbBang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -428,6 +434,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         );
 
         jTabbedPane1.addTab("Đang làm việc", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         tbBangNghiViec.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

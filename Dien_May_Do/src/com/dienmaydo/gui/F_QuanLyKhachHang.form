@@ -581,7 +581,7 @@
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbLocGioiTinh" pref="167" max="32767" attributes="0"/>
                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboLocTrangThai" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="23" max="32767" attributes="0"/>
                               </Group>
@@ -597,7 +597,7 @@
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboLocTrangThai" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="51" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -637,17 +637,19 @@
                             <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox2">
+                        <Component class="javax.swing.JComboBox" name="cboLocTrangThai">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
+                              <StringArray count="3">
+                                <StringItem index="0" value="All"/>
+                                <StringItem index="1" value="C&#xf2;n ho&#x1ea1;t &#x111;&#x1ed9;ng"/>
+                                <StringItem index="2" value="Ng&#x1eeb;ng ho&#x1ea1;t &#x111;&#x1ed9;ng"/>
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboLocTrangThaiActionPerformed"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>

@@ -18,10 +18,11 @@ import javax.swing.table.DefaultTableModel;
  * @author lethu
  */
 public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
-    
+
     KhachHangService KHSV = new KhachHangService();  //tạo ra KHSV 
     LichSuGiaoDichService LSGDSV = new LichSuGiaoDichService();
     boolean _GioiTinh;
+    boolean _TrangThai;
     DefaultTableModel Model = new DefaultTableModel();
 
     /**
@@ -33,7 +34,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         FillTable();
-        
+
         rdoNam.setSelected(true);
         rdoConHoatDong.setSelected(true);
     }
@@ -83,7 +84,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         cbLocGioiTinh = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cboLocTrangThai = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TbLSGD = new javax.swing.JTable();
@@ -339,7 +340,12 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Trạng thái:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLocTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Còn hoạt động", "Ngừng hoạt động" }));
+        cboLocTrangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLocTrangThaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -351,7 +357,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(cbLocGioiTinh, 0, 167, Short.MAX_VALUE)
                     .addComponent(jLabel10)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cboLocTrangThai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -364,7 +370,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboLocTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
@@ -559,6 +565,20 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         TimKiem();
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+    private void cboLocTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocTrangThaiActionPerformed
+        // TODO add your handling code here:
+        String TrangThaiCbb = (String) cboLocTrangThai.getSelectedItem();  //lấy chuỗi trên cbb(giới tính) để gán vào giới tính cbb
+        if (TrangThaiCbb.equals("Còn hoạt động")) {
+            _TrangThai = true;
+            LocTrangThai();
+        } else if (TrangThaiCbb.equals("All")) {
+            FillTable();
+        } else {
+            _TrangThai = false;
+            LocTrangThai();
+        }
+    }//GEN-LAST:event_cboLocTrangThaiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TbLSGD;
@@ -568,7 +588,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbLocGioiTinh;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cboLocTrangThai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -613,7 +633,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             });
         }
     }
-    
+
     boolean isValidate() {
         try {
             if (txtMaKH.getText().trim().equals("")) {
@@ -642,7 +662,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             return true;
         }
     }
-    
+
     boolean isCheckTrung() {
         boolean check = false;
         List<KhachHang> list = KHSV.selectAll();
@@ -655,7 +675,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         }
         return check;
     }
-    
+
     KhachHang getform() {
         KhachHang KH = new KhachHang(); //tạo kh mới
         KH.setMaKH(txtMaKH.getText());
@@ -671,7 +691,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         KH.setTrangthai(rdoConHoatDong.isSelected());
         return KH;
     }
-    
+
     void Them() {
         try {
             KhachHang KH = getform();
@@ -682,7 +702,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-    
+
     void Sua() {
         try {
             KhachHang KH = getform();
@@ -693,7 +713,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-    
+
     void ClickTable() {
         int vitri = tblQuanLyKhacHang.getSelectedRow();
         txtMaKH.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 0));
@@ -713,7 +733,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             rdoNgungHoatDong.setSelected(true);
         }
     }
-    
+
     void Lammoi() {
         txtMaKH.setText("");
         txtTenKH.setText("");
@@ -723,7 +743,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         txtDiaChi.setText("");
         rdoConHoatDong.setSelected(true);
     }
-    
+
     void LocGioiTinh() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
@@ -736,7 +756,20 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+
+    void LocTrangThai() {
+        DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel();
+        Model.setRowCount(0);
+        List<KhachHang> LKH = KHSV.selectAll();
+        for (KhachHang x : LKH) {
+            if (x.isTrangthai()== _TrangThai) {
+                Model.addRow(new Object[]{
+                    x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.isTrangthai() ? "Còn hoạt động" : "Ngừng hoạt động"
+                });
+            }
+        }
+    }
+
     void TimKiem() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
@@ -747,7 +780,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             });
         }
     }
-    
+
     void FillTableLSGD() {
         Model = (DefaultTableModel) TbLSGD.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table

@@ -585,13 +585,13 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             .addGroup(pnSanPhamLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
                     .addComponent(btnChiTietSP)
                     .addComponent(btnLamMoi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -672,9 +672,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         lblHinhAnh.setText("Chọn ảnh");
         lblHinhAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        cbbIMG.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbbIMGItemStateChanged(evt);
+        cbbIMG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbIMGActionPerformed(evt);
             }
         });
 
@@ -1084,7 +1084,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         pnSPCTLayout.setHorizontalGroup(
             pnSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSPCTLayout.createSequentialGroup()
-                .addGap(309, 309, 309)
+                .addGap(317, 317, 317)
                 .addComponent(btnThemSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(btnSuaSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1116,7 +1116,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pnTongQuat.addTab("Sản phẩm chi tiết", pnSPCT);
@@ -1623,7 +1623,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1653,6 +1653,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm?")) {
             if (isValidate()) {
+                return;
+            } else if (isCheckTrung()) {
                 return;
             } else {
                 insertData();
@@ -1693,6 +1695,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm chi tiết?")) {
             if (isValidateSPCT()) {
                 return;
+            } else if (isCheckTrungSPCT()) {
+                return;
             } else {
                 insertDataSPCT();
             }
@@ -1732,12 +1736,6 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         timKiemSP();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimKiemKeyReleased
-
-    private void cbbIMGItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbIMGItemStateChanged
-        Image img = (Image) cbbIMG.getSelectedItem();
-        lblHinhAnh.setIcon(XImage.read(img.getTenHinh()));
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbbIMGItemStateChanged
 
     private void txtGiaNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaNhapActionPerformed
         // TODO add your handling code here:
@@ -1839,6 +1837,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         if (rdTTHinhAnh.isSelected()) {
             InsertImage();
+            addDataCbbIMG();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTTThemActionPerformed
@@ -1897,6 +1896,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 return;
             } else {
                 UpdateImage();
+                addDataCbbIMG();
             }
         }
         // TODO add your handling code here:
@@ -2096,6 +2096,14 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbFillXuatXuActionPerformed
 
+    private void cbbIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbIMGActionPerformed
+        if (cbbIMG.getItemCount() > 0) {
+            Image img = (Image) cbbIMG.getSelectedItem();
+            lblHinhAnh.setIcon(XImage.read(img.getTenHinh()));
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbIMGActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaMoTa;
@@ -2254,18 +2262,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
     }
 
-//    boolean isCheckTrung() {
-//        boolean check = false;
-//        List<SanPham> list = daoSP.selectAll();
-//        for (int i = 0; i < list.size(); i++) {
-//            if (list.get(i).getMaSp().equalsIgnoreCase(txtMaSP.getText())) {
-//                Msgbox.alert(this, "Mã sản phẩm đã tồn tại");
-//                check = true;
-//                break;
-//            }
-//        }
-//        return check;
-//    }
+    boolean isCheckTrung() {
+        boolean check = false;
+        List<SanPham> list = daoSP.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getTenSp().equalsIgnoreCase(txtTenSP.getText())) {
+                Msgbox.alert(this, "Tên sản phẩm đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
     void addDataCbbXX() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
         model.removeAllElements();
@@ -2530,18 +2539,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
     }
 
-//    boolean isCheckTrungSPCT() {
-//        boolean check = false;
-//        List<SanPhamChiTiet> list = daoSPCT.selectAll();
-//        for (int i = 0; i < list.size(); i++) {
-//            if (list.get(i).getMaSPCT().equalsIgnoreCase(txtMaSPCT.getText())) {
-//                Msgbox.alert(this, "Mã sản phẩm chi tiết đã tồn tại");
-//                check = true;
-//                break;
-//            }
-//        }
-//        return check;
-//    }
+    boolean isCheckTrungSPCT() {
+        boolean check = false;
+        List<SanPhamChiTiet> list = daoSPCT.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getTenSPCT().equalsIgnoreCase(txtTenSPCT.getText())) {
+                Msgbox.alert(this, "Tên sản phẩm chi tiết đã tồn tại");
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
     void addDataCbbTT() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
         model.removeAllElements();
@@ -3636,6 +3646,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         int vitriThuocTinh = tblTTThuocTinh.getSelectedRow();
         txtTTMaThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 0));
         txtTTTenThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1));
+        if (rdTTHinhAnh.isSelected()) {
+            lblTTHinhAnh.setIcon(XImage.read((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1)));
+        }
     }
 
     void clickTbaleThuocTinhKichThuoc() {
