@@ -9,6 +9,7 @@ import com.dienmaydo.entity.HoaDon;
 import com.dienmaydo.entity.HoaDonChiTiet;
 import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
+import com.dienmaydo.utils.XImage;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -27,21 +28,11 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {// output của bạn đâu
         initComponents();
         setLocationRelativeTo(null);
+        //setIconImage(XImage.getAppIcon());
         new F_DangNhap(this, true).setVisible(true);
 
         defaultColor = new Color(255, 204, 0);
         clickColor = new Color(153, 153, 153);
-
-        TaiKhoan.setBackground(defaultColor);
-        sanPham.setBackground(defaultColor);
-        banHang.setBackground(defaultColor);
-        hoaDon.setBackground(defaultColor);
-        khuyenMai.setBackground(defaultColor);
-        ThongKE.setBackground(defaultColor);
-        NhanVien.setBackground(defaultColor);
-        KhachHang.setBackground(defaultColor);
-        thoat.setBackground(defaultColor);
-        
 
         if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
             lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
@@ -52,17 +43,30 @@ public class Dashboard extends javax.swing.JFrame {
         } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
             lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
             txtTenNhanVien.setText("NGUYEN VIET HIEN");
-        }else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
             lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
             txtTenNhanVien.setText("LE THI NGOC THUY");
-        }else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
             lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
             txtTenNhanVien.setText("LE THANH VINH");
-        }else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
             lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
             txtTenNhanVien.setText("NGUYEN HONG SON");
         }
 
+        TaiKhoan.setBackground(defaultColor);
+        sanPham.setBackground(defaultColor);
+        banHang.setBackground(clickColor);
+        hoaDon.setBackground(defaultColor);
+        khuyenMai.setBackground(defaultColor);
+        ThongKE.setBackground(defaultColor);
+        NhanVien.setBackground(defaultColor);
+        KhachHang.setBackground(defaultColor);
+        thoat.setBackground(defaultColor);
+
+        F_BanHang b = new F_BanHang();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(b).setVisible(true);
     }
 
     /**
@@ -416,6 +420,26 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
     }//GEN-LAST:event_lblSanPhamMousePressed
 
     private void lblBanHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMousePressed
@@ -429,6 +453,26 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
     }//GEN-LAST:event_lblBanHangMousePressed
 
     private void lblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseClicked
@@ -452,6 +496,26 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
     }//GEN-LAST:event_lblKhuyenMaiMousePressed
 
     private void lblThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMousePressed
@@ -465,6 +529,26 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
     }//GEN-LAST:event_lblThongKeMousePressed
 
     private void lblThoatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMousePressed
@@ -478,6 +562,26 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(clickColor);
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
     }//GEN-LAST:event_lblThoatMousePressed
 
     private void lblBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseClicked
@@ -518,6 +622,26 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
     }//GEN-LAST:event_lblHoaDonMousePressed
 
     private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
@@ -554,6 +678,26 @@ public class Dashboard extends javax.swing.JFrame {
         NhanVien.setBackground(defaultColor);
         KhachHang.setBackground(clickColor);
         thoat.setBackground(defaultColor);
+
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
     }//GEN-LAST:event_lblKhachHangMousePressed
 
     private void lblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseClicked
@@ -586,7 +730,26 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMousePressed
         // TODO add your handling code here:
-        TaiKhoan.setBackground(clickColor);
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq01.png"));
+            txtTenNhanVien.setText("THIEU QUANG VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hoadt02.png"));
+            txtTenNhanVien.setText("DO TAT HOA");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/hiennv03.png"));
+            txtTenNhanVien.setText("NGUYEN VIET HIEN");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/thuylt04.png"));
+            txtTenNhanVien.setText("LE THI NGOC THUY");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/vinhlt05.png"));
+            txtTenNhanVien.setText("LE THANH VINH");
+        } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+            lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh06.png"));
+            txtTenNhanVien.setText("NGUYEN HONG SON");
+        }
+
         sanPham.setBackground(defaultColor);
         banHang.setBackground(defaultColor);
         hoaDon.setBackground(defaultColor);

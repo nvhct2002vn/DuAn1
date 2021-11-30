@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
 public class XImage {
 
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("IconAss/logo.png");
+        URL url = XImage.class.getResource("./logos/logoDienMayDo.png");
         return new ImageIcon(url).getImage();
     }
 
