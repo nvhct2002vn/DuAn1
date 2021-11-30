@@ -50,6 +50,7 @@ public class ChatLieuService implements IChatLieuService<ChatLieu, String> {
                 entity.setChatLieu(rs.getString("CHATLIEU"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

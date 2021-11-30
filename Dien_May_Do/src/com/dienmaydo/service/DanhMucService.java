@@ -64,6 +64,7 @@ public class DanhMucService implements IDanhMucService<DanhMuc, String> {
                 entity.setGhiChu(rs.getString("GHICHU"));
                 list.add(entity);
             }
+            rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
