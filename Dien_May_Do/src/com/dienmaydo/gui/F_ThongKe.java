@@ -5,6 +5,7 @@
  */
 package com.dienmaydo.gui;
 
+import com.dienmaydo.entity.HoaDon;
 import com.dienmaydo.service.DanhMucService;
 import com.dienmaydo.service.HoaDonService;
 import com.dienmaydo.service.KhachHangService;
@@ -30,6 +31,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         setResizable(false);
 
+        fillTable();
         fillCbbNamTK();
         fillCbbDanhMuc();
 
@@ -288,10 +290,12 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(radThang)
-                .addComponent(radNam)
-                .addComponent(radTatCa))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radThang)
+                    .addComponent(radNam)
+                    .addComponent(radTatCa))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -304,6 +308,11 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Năm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         cbbNam.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbbNam.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbNamItemStateChanged(evt);
+            }
+        });
         cbbNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbNamActionPerformed(evt);
@@ -330,6 +339,11 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh mục", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         cbbDanhMuc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbbDanhMuc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbDanhMucItemStateChanged(evt);
+            }
+        });
         cbbDanhMuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbDanhMucActionPerformed(evt);
@@ -530,7 +544,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
+                .addGap(0, 2, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -546,9 +560,9 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -567,13 +581,21 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbbNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbNamActionPerformed
-        fillTableTKHH();
+        
     }//GEN-LAST:event_cbbNamActionPerformed
 
 
     private void cbbDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDanhMucActionPerformed
-//        fillTheoDM();
+        
     }//GEN-LAST:event_cbbDanhMucActionPerformed
+
+    private void cbbNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbNamItemStateChanged
+        fillTableTheoNam();
+    }//GEN-LAST:event_cbbNamItemStateChanged
+
+    private void cbbDanhMucItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbDanhMucItemStateChanged
+        fillTheoDM();
+    }//GEN-LAST:event_cbbDanhMucItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -667,9 +689,18 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         }
     }
 
+    public void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
+        model.setRowCount(0);
+        List<Object[]> list = tksv.getTableThongKe();
+        for (Object[] tk : list) {
+            model.addRow(tk);
+        }
+    }
+
     public void fillCbbNamTK() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbNam.getModel();
-        model.removeAllElements();
+        model.addElement(null);
         List<Integer> list = hdsv.selectYears();
         for (Integer year : list) {
             model.addElement(year);
@@ -678,30 +709,40 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
 
     public void fillCbbDanhMuc() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbDanhMuc.getModel();
-        model.removeAllElements();
+        model.addElement(null);
         List<String> list = dmsv.selectDanhMuc();
         for (String danhMuc : list) {
             model.addElement(danhMuc);
         }
     }
 
-    public void fillTableTKHH() {
-        DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
-        model.setRowCount(0);
-        int nam = Integer.parseInt(cbbNam.getSelectedItem().toString());
-        List<Object[]> list = tksv.getThongKe(nam);
-        for (Object[] row : list) {
-            model.addRow(row);
+    public void fillTableTheoNam() {
+        if (cbbNam.getSelectedItem() == null) {
+            fillTable();
+        } else if (cbbNam.getSelectedIndex() > 0) {
+            DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
+            model.setRowCount(0);
+            int nam = Integer.parseInt(cbbNam.getSelectedItem().toString());
+            List<Object[]> list = tksv.getThongKe(nam);
+            for (Object[] row : list) {
+                model.addRow(row);
+            }
         }
+        cbbDanhMuc.setSelectedIndex(0);
     }
-    
+
     public void fillTheoDM() {
-        DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
-        model.setRowCount(0);
-        String danhMuc = (String) cbbDanhMuc.getSelectedItem();
-        List<Object[]> list = tksv.getThongKeTheoDM(danhMuc);
-        for (Object[] rows : list) {
-            model.addRow(rows);
+        if (cbbDanhMuc.getSelectedItem() == null) {
+            fillTable();
+        } else if (cbbDanhMuc.getSelectedIndex() > 0) {
+            DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
+            model.setRowCount(0);
+            String danhMuc = (String) cbbDanhMuc.getSelectedItem();
+            List<Object[]> list = tksv.getThongKeTheoDM(danhMuc);
+            for (Object[] rows : list) {
+                model.addRow(rows);
+            }
         }
+        cbbNam.setSelectedIndex(0);
     }
 }
