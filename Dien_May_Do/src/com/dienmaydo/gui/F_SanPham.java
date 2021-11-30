@@ -3945,7 +3945,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 row.createCell(13).setCellValue(SPCT.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh");
             }
 
-            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\nguyen viet hien\\OneDrive\\Máy tính\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\excel\\SPCT.xlsx"));
+            FileOutputStream out = new FileOutputStream(new File("src\\com\\dienmaydo\\excel\\SPCT.xlsx"));
             workbook.write(out);
             out.close();
             Msgbox.alert(this, "Xuất file thành công!");
