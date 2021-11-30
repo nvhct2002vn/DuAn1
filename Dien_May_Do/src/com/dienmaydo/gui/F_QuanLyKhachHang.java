@@ -636,6 +636,8 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     boolean isValidate() {
         try {
+            String dinhDangEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+            String dinhDangSDT = "0\\d{9}";
             if (txtMaKH.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mã khách hàng không được để trống");
                 return true;
@@ -650,6 +652,12 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                 return true;
             } else if (txtDienThoai.getText().length() > 15) {
                 Msgbox.alert(this, "Số điện thoại tối đa 15 kí tự");
+                return true;
+            } else if (!txtDienThoai.getText().matches(dinhDangSDT)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng số điện thoại");
+                return true;
+            } else if (!txtEmail.getText().matches(dinhDangEmail)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng Email");
                 return true;
             } else if (txtEmail.getText().trim().equals("")) {
                 Msgbox.alert(this, "Email khách hàng không được để trống");
@@ -762,7 +770,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         Model.setRowCount(0);
         List<KhachHang> LKH = KHSV.selectAll();
         for (KhachHang x : LKH) {
-            if (x.isTrangthai()== _TrangThai) {
+            if (x.isTrangthai() == _TrangThai) {
                 Model.addRow(new Object[]{
                     x.getMaKH(), x.getTenKh(), x.isGioiTinh() ? "Nam" : "Nữ", x.getSDT(), x.getEmail(), x.getDiaChi(), x.isTrangthai() ? "Còn hoạt động" : "Ngừng hoạt động"
                 });
