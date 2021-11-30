@@ -1849,6 +1849,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else {
                 UpdateChatLieu();
                 addDataCbbCL();
+                fillTableSPCT();
             }
         }
         if (rdTTKhoiLuong.isSelected()) {
@@ -1857,6 +1858,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else {
                 UpdateKhoiLuong();
                 addDataCbbKL();
+                fillTableSPCT();
             }
         }
         if (rdTTMauSac.isSelected()) {
@@ -1865,6 +1867,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else {
                 UpdateMauSac();
                 addDataCbbMS();
+                fillTableSPCT();
             }
         }
         if (rdTTTheTich.isSelected()) {
@@ -1873,6 +1876,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else {
                 UpdateTheTich();
                 addDataCbbTT();
+                fillTableSPCT();
             }
         }
         if (rdTTKichThuoc.isSelected()) {
@@ -1881,6 +1885,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else {
                 UpdateKichThuoc();
                 addDataCbbKT();
+                fillTableSPCT();
             }
         }
         if (rdTTXuatXu.isSelected()) {
@@ -1889,6 +1894,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else {
                 UpdateXuatXu();
                 addDataCbbXX();
+                fillTableData();
             }
         }
         if (rdTTHinhAnh.isSelected()) {
@@ -1897,6 +1903,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else {
                 UpdateImage();
                 addDataCbbIMG();
+                fillTableSPCT();
             }
         }
         // TODO add your handling code here:
