@@ -3009,8 +3009,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         spct.setMaSPCT(ganText + soLuongSPCT + 1);
         spct.setTenSPCT(txtTenSPCT.getText());
         spct.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
-        spct.setGiaNhap(Float.parseFloat(txtGiaNhap.getText()));
-        spct.setGiaBan(Float.parseFloat(txtGiaBan.getText()));
+        spct.setGiaNhap(Long.parseLong(txtGiaNhap.getText()));
+        spct.setGiaBan(Long.parseLong(txtGiaBan.getText()));
         if (nhomPhoBien.equals("Phổ biến")) {
             spct.setNhomPhoBien(true);
         } else {
@@ -3047,8 +3047,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         spct.setMaSPCT(txtMaSPCT.getText());
         spct.setTenSPCT(txtTenSPCT.getText());
         spct.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
-        spct.setGiaNhap(Float.parseFloat(txtGiaNhap.getText()));
-        spct.setGiaBan(Float.parseFloat(txtGiaBan.getText()));
+        spct.setGiaNhap(Long.parseLong(txtGiaNhap.getText()));
+        spct.setGiaBan(Long.parseLong(txtGiaBan.getText()));
         String nhomPhoBien = (String) cbbNhomPhoBien.getSelectedItem();
         if (nhomPhoBien.equals("Phổ biến")) {
             spct.setNhomPhoBien(true);

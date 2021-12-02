@@ -176,8 +176,8 @@ public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiT
                 entity.setTenSP(rs.getString("TENSP"));
                 entity.setTenSPCT(rs.getString("TENSPCT"));
                 entity.setSoLuong(rs.getInt("SOLUONG"));
-                entity.setGiaBan(rs.getFloat("GIABAN"));
-                entity.setGiaNhap(rs.getFloat("GIANHAP"));
+                entity.setGiaBan(rs.getLong("GIABAN"));
+                entity.setGiaNhap(rs.getLong("GIANHAP"));
                 entity.setNhomPhoBien(rs.getBoolean("NHOMPHOBIEN"));
                 entity.setTenMauSac(rs.getString("TENMAUSAC"));
                 entity.setTheTich(rs.getFloat("THETICH"));
