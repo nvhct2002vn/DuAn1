@@ -4084,7 +4084,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4106,7 +4106,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4128,7 +4128,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4150,7 +4150,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4172,7 +4172,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4195,7 +4195,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4217,7 +4217,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4239,7 +4239,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4261,7 +4261,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4283,7 +4283,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
                         x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
