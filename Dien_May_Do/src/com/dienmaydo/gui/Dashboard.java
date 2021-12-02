@@ -29,7 +29,7 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        //setIconImage(XImage.getAppIcon());
+        setIconImage(new ImageIcon("./logos/Logo.jpg").getImage());
         new F_DangNhap(this, true).setVisible(true);
 
         defaultColor = new Color(255, 204, 0);

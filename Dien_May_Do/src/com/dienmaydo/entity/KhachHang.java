@@ -159,6 +159,11 @@ public class KhachHang {
     public void setTrangThaiTT(String TrangThaiTT) {
         this.TrangThaiTT = TrangThaiTT;
     }
+
+    @Override
+    public String toString() {
+        return "KhachHang{" + "MaKH=" + MaKH + ", TenKh=" + TenKh + ", GioiTinh=" + GioiTinh + ", SDT=" + SDT + ", Email=" + Email + ", DiaChi=" + DiaChi + ", Trangthai=" + Trangthai + ", NgayGD=" + NgayGD + ", TenSP=" + TenSP + ", TenSPCT=" + TenSPCT + ", SoLuong=" + SoLuong + ", GiaBan=" + GiaBan + ", TongTien=" + TongTien + ", TrangThaiTT=" + TrangThaiTT + '}';
+    }
     
     
     

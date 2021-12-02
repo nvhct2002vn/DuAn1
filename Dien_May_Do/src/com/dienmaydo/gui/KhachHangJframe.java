@@ -36,7 +36,7 @@ public class KhachHangJframe extends javax.swing.JFrame {
         rdoNam.setSelected(true);
         rdoConHoatDong.setSelected(true);
         
-        setIconImage(new ImageIcon("./logos/logoDienMayDo.png").getImage());
+        setIconImage(new ImageIcon("./logos/Logo.jpg").getImage());
     }
 
     /**
