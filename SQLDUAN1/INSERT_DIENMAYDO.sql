@@ -19,16 +19,16 @@ VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
 		('DM008', N'Điện thoại, Laptop, Tablet',1, N'...'),
 		('DM009', N'Phụ kiện, Đồng hồ',1, N'...')
 
-INSERT INTO DANHMUC_KHUYENMAI
-VALUES  ('DMKM01', 'KM001', 'DM001'),
-		('DMKM02', 'KM002', 'DM002'),
-		('DMKM03', 'KM003', 'DM003'),
-		('DMKM04', 'KM004', 'DM004'),
-		('DMKM05', 'KM005', 'DM005'),
-		('DMKM06', 'KM005', 'DM006'),
-		('DMKM07', 'KM004', 'DM007'),
-		('DMKM08', 'KM003', 'DM008'),
-		('DMKM09', 'KM002', 'DM009')
+INSERT INTO SANPHAMCHITIET_KHUYENMAI
+VALUES  ('SPKM01', 'KM001', 'SPCT01'),
+		('SPKM02', 'KM002', 'SPCT02'),
+		('SPKM03', 'KM003', 'SPCT03'),
+		('SPKM04', 'KM004', 'SPCT04'),
+		('SPKM05', 'KM005', 'SPCT05'),
+		('SPKM06', 'KM005', 'SPCT06'),
+		('SPKM07', 'KM004', 'SPCT07'),
+		('SPKM08', 'KM003', 'SPCT08'),
+		('SPKM09', 'KM002', 'SPCT09')
 
 
 INSERT INTO NHANVIEN
