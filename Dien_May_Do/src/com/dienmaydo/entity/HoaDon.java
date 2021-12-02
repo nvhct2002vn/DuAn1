@@ -18,8 +18,8 @@ public class HoaDon {
     private String diaChi;
     private String sdt;
     private Date NgayLap;
-    private Float TienThuaTraKhach;
-    private float TongTien;
+    private long TienThuaTraKhach;
+    private long TongTien;
     private String GhiChu;
 
     public String getMaHD() {
@@ -46,11 +46,11 @@ public class HoaDon {
         this.NgayLap = NgayLap;
     }
 
-    public float getTongTien() {
+    public long getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(float TongTien) {
+    public void setTongTien(long TongTien) {
         this.TongTien = TongTien;
     }
 
@@ -70,11 +70,11 @@ public class HoaDon {
         this.MaKH = MaKH;
     }
 
-    public Float getTienThuaTraKhach() {
+    public long getTienThuaTraKhach() {
         return TienThuaTraKhach;
     }
 
-    public void setTienThuaTraKhach(Float TienThuaTraKhach) {
+    public void setTienThuaTraKhach(long TienThuaTraKhach) {
         this.TienThuaTraKhach = TienThuaTraKhach;
     }
 
@@ -162,7 +162,5 @@ public class HoaDon {
     public void setTenHTGH(String TenHTGH) {
         this.TenHTGH = TenHTGH;
     }
-    
-    
-    
+
 }
