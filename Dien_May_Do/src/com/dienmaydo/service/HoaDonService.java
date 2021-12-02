@@ -123,8 +123,8 @@ public class HoaDonService implements IHoaDonService<HoaDon, String> {
                 hd.setTenTTTT(rs.getString("TENTTTT"));
                 hd.setTenHTTT(rs.getString("TENHTTT"));
                 hd.setTenHTGH(rs.getString("TENHTGH"));
-                hd.setTienThuaTraKhach(rs.getFloat("TIENTHUATRAKHACH"));
-                hd.setTongTien(rs.getFloat("TONGTIEN"));
+                hd.setTienThuaTraKhach(rs.getLong("TIENTHUATRAKHACH"));
+                hd.setTongTien(rs.getLong("TONGTIEN"));
                 hd.setGhiChu(rs.getString("GHICHU"));
                 list.add(hd);
             }

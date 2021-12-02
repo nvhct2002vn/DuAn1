@@ -934,8 +934,8 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaHTTT(httt.getMaHTTT());
         hd.setMaTTTT("TT003");
         hd.setMaHTGH(htgh.getMaHTGH());
-        hd.setTienThuaTraKhach(Float.parseFloat(txtTienTraKhach.getText()));
-        hd.setTongTien(Float.parseFloat(lblTongTien.getText()));
+        hd.setTienThuaTraKhach(Long.parseLong(txtTienTraKhach.getText()));
+        hd.setTongTien(Long.parseLong(lblTongTien.getText()));
         hd.setGhiChu(txtghiChu.getText());
         try {
             if (lblMaHoaDon.getText().equals("Vui lòng tạo!")) {
@@ -1051,8 +1051,8 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaHTTT(httt.getMaHTTT());
         hd.setMaTTTT("TT002");
         hd.setMaHTGH(htgh.getMaHTGH());
-        hd.setTienThuaTraKhach(Float.parseFloat(txtTienTraKhach.getText()));
-        hd.setTongTien(Float.parseFloat(lblTongTien.getText()));
+        hd.setTienThuaTraKhach(Long.parseLong(txtTienTraKhach.getText()));
+        hd.setTongTien(Long.parseLong(lblTongTien.getText()));
         hd.setGhiChu(txtghiChu.getText());
         try {
             if (lblMaHoaDon.getText().equals("")) {
@@ -1127,8 +1127,8 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaHTTT(httt.getMaHTTT());
         hd.setMaTTTT("TT001");
         hd.setMaHTGH(htgh.getMaHTGH());
-        hd.setTienThuaTraKhach(Float.parseFloat(txtTienTraKhach.getText()));
-        hd.setTongTien(Float.parseFloat(lblTongTien.getText()));
+        hd.setTienThuaTraKhach(Long.parseLong(txtTienTraKhach.getText()));
+        hd.setTongTien(Long.parseLong(lblTongTien.getText()));
         hd.setGhiChu(txtghiChu.getText());
         return hd;
     }

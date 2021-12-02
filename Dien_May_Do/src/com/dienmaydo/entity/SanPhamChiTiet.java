@@ -32,8 +32,8 @@ public class SanPhamChiTiet {
     private String TenSP;
     private int SoLuong;
     private boolean NhomPhoBien;
-    private Float GiaNhap;
-    private Float GiaBan;
+    private long GiaNhap;
+    private long GiaBan;
     private boolean TrangThai;
     private String MoTa;
     private String TenDVTinh;
@@ -200,19 +200,19 @@ public class SanPhamChiTiet {
         this.NhomPhoBien = NhomPhoBien;
     }
 
-    public Float getGiaNhap() {
+    public long getGiaNhap() {
         return GiaNhap;
     }
 
-    public void setGiaNhap(Float GiaNhap) {
+    public void setGiaNhap(long GiaNhap) {
         this.GiaNhap = GiaNhap;
     }
 
-    public Float getGiaBan() {
+    public long getGiaBan() {
         return GiaBan;
     }
 
-    public void setGiaBan(Float GiaBan) {
+    public void setGiaBan(long GiaBan) {
         this.GiaBan = GiaBan;
     }
 
@@ -248,7 +248,6 @@ public class SanPhamChiTiet {
         this.MaDVT = MaDVT;
     }
 
-
     public String getKichCo() {
         String kichCoDRC = String.valueOf(ChieuDai) + " - " + String.valueOf(ChieuRong) + " - " + String.valueOf(ChieuCao);
         return kichCoDRC;
@@ -261,7 +260,7 @@ public class SanPhamChiTiet {
     public void setSelect(Checkbox select) {
         this.select = select;
     }
-    
+
     @Override
     public String toString() {
         return "SanPhamChiTiet{" + "MaSPCT=" + MaSPCT + ", MaImage=" + MaImage + ", TenImage=" + TenImage + ", MaSp=" + MaSp + ", MaMauSac=" + MaMauSac + ", TenMauSac=" + TenMauSac + ", MaKichThuoc=" + MaKichThuoc + ", ChieuDai=" + ChieuDai + ", ChieuRong=" + ChieuRong + ", ChieuCao=" + ChieuCao + ", MaChatLieu=" + MaChatLieu + ", TenChatLieu=" + TenChatLieu + ", MaTheTich=" + MaTheTich + ", TheTich=" + TheTich + ", MaKL=" + MaKL + ", KhoiLuong=" + KhoiLuong + ", TenSPCT=" + TenSPCT + ", TenSP=" + TenSP + ", SoLuong=" + SoLuong + ", NhomPhoBien=" + NhomPhoBien + ", GiaNhap=" + GiaNhap + ", GiaBan=" + GiaBan + ", TrangThai=" + TrangThai + ", MoTa=" + MoTa + ", TenDVTinh=" + TenDVTinh + ", MaDVT=" + MaDVT + '}';

@@ -54,7 +54,6 @@ public class Dashboard extends javax.swing.JFrame {
             lblTaiKhoan.setIcon(new ImageIcon("logos/sonnh.png"));
             txtTenNhanVien.setText("NGUYEN HONG SON");
         }
-
         TaiKhoan.setBackground(defaultColor);
         sanPham.setBackground(defaultColor);
         banHang.setBackground(clickColor);
