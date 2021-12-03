@@ -2,11 +2,11 @@
 GO
 
 INSERT INTO KHUYENMAI
-VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,N'CÒN ÁP DỤNG',N'No Mô Tả')
+VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000,1,N'No Mô Tả'),
+		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,0,N'No Mô Tả'),
+		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,1,N'No Mô Tả'),
+		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,1,N'No Mô Tả'),
+		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,1,N'No Mô Tả')
 
 INSERT INTO DANHMUC
 VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
@@ -19,25 +19,14 @@ VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
 		('DM008', N'Điện thoại, Laptop, Tablet',1, N'...'),
 		('DM009', N'Phụ kiện, Đồng hồ',1, N'...')
 
-INSERT INTO SANPHAMCHITIET_KHUYENMAI
-VALUES  ('SPKM01', 'KM001', 'SPCT01'),
-		('SPKM02', 'KM002', 'SPCT02'),
-		('SPKM03', 'KM003', 'SPCT03'),
-		('SPKM04', 'KM004', 'SPCT04'),
-		('SPKM05', 'KM005', 'SPCT05'),
-		('SPKM06', 'KM005', 'SPCT06'),
-		('SPKM07', 'KM004', 'SPCT07'),
-		('SPKM08', 'KM003', 'SPCT08'),
-		('SPKM09', 'KM002', 'SPCT09')
-
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','123', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19',1,1),
-		('NV002','123', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21',1,1),
-		('NV003','123', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01',1,1),
-		('NV004','123', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 0, '1998-02-02',0,1),
-		('NV005','123', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03',0,1),
-		('NV006','123', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04',0,1)
+VALUES  ('NV001','123', N'Thiều Quang Vinh', N'Thanh Hóa', '09867655439', 1, '2002-08-19',1,1),
+		('NV002','123', N'Đỗ Tất Hòa', N'Thanh Hóa', '04573927342', 1, '2002-09-21',1,1),
+		('NV003','123', N'Nguyễn Viết Hiên', N'Bắc Ninh', '08756475834', 1, '2002-01-01',1,1),
+		('NV004','123', N'Lê Thị Ngọc Thúy', N'Hà Nội', '07645362734', 0, '1998-02-02',0,1),
+		('NV005','123', N'Lê Thành Vinh', N'Hà Nội', '01234567898', 1, '1998-03-03',0,1),
+		('NV006','123', N'Nguyễn Hồng Sơn', N'Hải Dương', '06743478596', 1, '2002-04-04',0,1)
 
 
 INSERT INTO XUATXU
@@ -51,7 +40,7 @@ VALUES  (N'NSX Đông Sơn', N'Việt Nam'),
 INSERT INTO SANPHAM
 VALUES  ('SP001','DM001', 1, N'Máy lạnh',1),
 		('SP002','DM002',2, N'Loa Blooth',1),
-		('SP003','DM003',3, N'Điều hòa',1),
+		('SP003','DM003',3, N'Quạt điều hòa',1),
 		('SP004','DM004',4, N'Máy giặt',1),
 		('SP005','DM005',5,N'Tivi',1),
 		('SP006','DM006',5, N'Tủ lạnh',1),
@@ -62,15 +51,15 @@ VALUES  ('SP001','DM001', 1, N'Máy lạnh',1),
 
 INSERT INTO KHACHHANG
 VALUES	('KH00',N'Khách bán lẻ',1,'Not','Not',N'Not',1),
-		('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',1),
-		('KH02',N'Trinh Thi Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hoa',1),
-		('KH03',N'Hoang Hoa Tham',0,'056858758','tham234@gmail.com',N'Thanh Hoa',1),
-		('KH04',N'Nguyen Thi Hoa',1,'035685675','hoanguyen@gmail.com',N'Đa Nang',1),
-		('KH05',N'Tran Van Binh',0,'0385896758','binhgold123@gmail.com',N'Thai Nguyen',1),
-		('KH06',N'Do Thi Chanh',1,'0658456758','chanh987gmail.com',N'Ha Noi',1),
-		('KH07',N'Nguyen Van Quan',0,'0956856758','quan235@gmail.com',N'Bac Can',1),
-		('KH08',N'Do Hai Anh',0,'0658946758','haianh365@gmail.com',N'Thai Binh',1),
-		('KH09',N'Duong Huyen Trang',1,'0365494758','trang145@gmail.com',N'Bac Ninh',1)
+		('KH01',N'Võ Thị Sáu',1,'0389456758','sdhsa@gmail.com',N'Thanh Hóa',1),
+		('KH02',N'Trịnh Thị Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hóa',1),
+		('KH03',N'Hoàng Hoa Thám',0,'056858758','tham234@gmail.com',N'Thanh Hóa',1),
+		('KH04',N'Nguyễn Thị Hoa',1,'035685675','hoanguyen@gmail.com',N'Đà Nẵng',1),
+		('KH05',N'Trần Văn Bình',0,'0385896758','binhgold123@gmail.com',N'Thái Nguyên',1),
+		('KH06',N'Đỗ Thị Chanh',1,'0658456758','chanh987gmail.com',N'Hà Nội',1),
+		('KH07',N'Nguyễn Văn Quân',0,'0956856758','quan235@gmail.com',N'Bắc Cạn',1),
+		('KH08',N'Đỗ Thị Hải Anh',0,'0658946758','haianh365@gmail.com',N'Thái Bình',1),
+		('KH09',N'Đường Huyền Trang',1,'0365494758','trang145@gmail.com',N'Bắc Ninh',1)
 
 INSERT INTO TRANGTHAITHANHTOAN	
 VALUES ('TT001',N'Chờ thanh toán'),
@@ -185,8 +174,36 @@ VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001
 		('SPCT06', 'IME006', 'SP006', 'MS001', 'KT006', 'CL006', 'TT006', 'KL006',N'Inverter NR-BC360QKVN', 10, 1, 400000, 650000,1, N'No Mô Tả'),
 		('SPCT07', 'IME007', 'SP007', 'MS001', 'KT007', 'CL007', 'TT007', 'KL007',N'MC-CL575KN49 2000W', 10, 0, 100000, 280000,1, N'No Mô Tả'),
 		('SPCT08', 'IME008', 'SP008', 'MS002', 'KT008', 'CL001', 'TT008', 'KL008',N'MG23K3575AS/SV-N', 10, 0, 120000, 250000,1, N'No Mô Tả'),
-		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 10, 1, 90000, 150000,1, N'No Mô Tả')
+		('SPCT09', 'IME009', 'SP009', 'MS004', 'KT009', 'CL004', 'TT009', 'KL009',N'EWE451LB-DPX2', 10, 1, 90000, 150000,1, N'No Mô Tả'),
+		('SPCT10', 'IME001', 'SP001', 'MS001', 'KT001', 'CL001', 'TT001', 'KL001',N'Inverter 1 HP AR10TYGCDWKNSV', 10, 0, 10090000, 12090000,1, N'No Mô Tả'),
+		('SPCT11', 'IME001', 'SP001', 'MS002', 'KT002', 'CL002', 'TT001', 'KL002',N'RAS-H10E2KCVG-V', 10, 0, 11490000, 13490000,1, N'No Mô Tả'),
+		('SPCT12', 'IME002', 'SP002', 'MS003', 'KT003', 'CL003', 'TT002', 'KL003',N'E8', 10, 0, 950000, 12500000,1, N'No Mô Tả'),
+		('SPCT13', 'IME002', 'SP002', 'MS004', 'KT004', 'CL004', 'TT002', 'KL004',N'W5-Plus', 10, 0, 450000, 700000,1, N'No Mô Tả'),
+		('SPCT14', 'IME003', 'SP003', 'MS005', 'KT005', 'CL001', 'TT003', 'KL005',N'DEL-AC07DR', 10, 0, 2300000, 3300000,1, N'No Mô Tả'),
+		('SPCT15', 'IME003', 'SP003', 'MS006', 'KT006', 'CL002', 'TT003', 'KL006',N'FEAB-110', 10, 0, 6000000, 7000000,1, N'No Mô Tả'),
+		('SPCT16', 'IME004', 'SP004', 'MS001', 'KT007', 'CL004', 'TT004', 'KL007',N'FV1450S3W2', 10, 0, 13000000, 15000000,1, N'No Mô Tả'),
+		('SPCT17', 'IME004', 'SP004', 'MS002', 'KT008', 'CL003', 'TT004', 'KL008',N'FV1410S3B', 10, 0, 14900000, 16900000,1, N'No Mô Tả'),
+		('SPCT18', 'IME005', 'SP005', 'MS008', 'KT009', 'CL001', 'TT005', 'KL009',N'UA32T4500', 10, 0, 9000000, 12000000,1, N'No Mô Tả'),
+		('SPCT19', 'IME005', 'SP005', 'MS009', 'KT001', 'CL002', 'TT005', 'KL001',N'QA65Q65A', 10, 0, 32000000, 33000000,1, N'No Mô Tả'),
+		('SPCT20', 'IME006', 'SP006', 'MS0010', 'KT002', 'CL004', 'TT006', 'KL002',N'RS62R5001B4/SV', 10, 0, 21900000, 23900000,1, N'No Mô Tả'),
+		('SPCT21', 'IME006', 'SP006', 'MS0011', 'KT003', 'CL002', 'TT006', 'KL003',N'SJ-FX600V-SL', 10, 0, 31800000, 33800000,1, N'No Mô Tả'),
+		('SPCT22', 'IME007', 'SP007', 'MS007', 'KT004', 'CL001', 'TT007', 'KL004',N'FC6728', 10, 0, 8990000, 9990000,1, N'No Mô Tả'),
+		('SPCT23', 'IME007', 'SP007', 'MS0011', 'KT005', 'CL003', 'TT007', 'KL005',N'CM1300', 10, 0, 1420000, 1920000,1, N'No Mô Tả'),
+		('SPCT24', 'IME008', 'SP008', 'MS002', 'KT006', 'CL001', 'TT008', 'KL006',N'MOB-7741', 10, 0, 2659000, 2999000,1, N'No Mô Tả'),
+		('SPCT25', 'IME008', 'SP008', 'MS001', 'KT007', 'CL002', 'TT008', 'KL007',N'D90D25ETL-ZWA', 10, 0, 2800000, 3800000,1, N'No Mô Tả'),
+		('SPCT26', 'IME009', 'SP009', 'MS008', 'KT008', 'CL001', 'TT009', 'KL008',N'EWE451GX-DWB', 10, 0, 2390000, 3390000,1, N'No Mô Tả'),
+		('SPCT27', 'IME009', 'SP009', 'MS004', 'KT009', 'CL003', 'TT009', 'KL009',N'SM45E SBS VN', 10, 0, 2890000, 3690000,1, N'No Mô Tả')
 
+INSERT INTO SANPHAMCHITIET_KHUYENMAI
+VALUES  ( 'KM001', 'SPCT01'),
+		( 'KM002', 'SPCT02'),
+		( 'KM003', 'SPCT03'),
+		( 'KM004', 'SPCT04'),
+		( 'KM005', 'SPCT05'),
+		( 'KM005', 'SPCT06'),
+		( 'KM004', 'SPCT07'),
+		('KM003', 'SPCT08'),
+		('KM002', 'SPCT09')
 INSERT INTO HOADONCHITIET
 VALUES  ('SPCT01', 1, 6, 1200000),
 		('SPCT02', 2, 7, 200000),

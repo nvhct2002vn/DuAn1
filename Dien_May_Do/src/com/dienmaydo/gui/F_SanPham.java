@@ -1803,12 +1803,12 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1130, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1872,6 +1872,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
 
     private void txtTimKiemSPCTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemSPCTKeyReleased
+        txtTimKiemGiaBan.setText("");
         timKiemSPCT();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimKiemSPCTKeyReleased
@@ -2128,6 +2129,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rdTTHinhAnhActionPerformed
 
     private void txtTimKiemGiaBanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemGiaBanKeyReleased
+        txtTimKiemSPCT.setText("");
         String dieuKienTimKiem = (String) cbbDieuKienTimKiem.getSelectedItem();
         String loaiGia = (String) cbbLoaiGia.getSelectedItem();
         if (loaiGia.equals("Giá bán")) {
@@ -2267,39 +2269,49 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     private void cbbLocChiTietSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbLocChiTietSanPhamActionPerformed
         String locSP = (String) cbbLocChiTietSanPham.getSelectedItem();
         if (locSP.equals(" ")) {
+            LamMoiLoc();
             fillTableSPCT_MaSP_Combobox();
         }
         if (locSP.equals("All")) {
+            LamMoiLoc();
             fillTableSPCT();
         }
         if (locSP.equals("Không phổ biến")) {
+            LamMoiLoc();
             nhomPhoBien = false;
             fillTableSPCT_NhomSPCT();
         }
         if (locSP.equals("Phổ biến")) {
+            LamMoiLoc();
             nhomPhoBien = true;
             fillTableSPCT_NhomSPCT();
         }
         if (locSP.equals("Dưới định mức")) {
+            LamMoiLoc();
             dieuKien = 5;
             fillTableSPCT_SoLuongSPCT_DuoiDinhMucTon();
         }
         if (locSP.equals("Vượt định mức")) {
+            LamMoiLoc();
             dieuKien = 20;
             fillTableSPCT_SoLuongSPCT_VuotDinhMucTon();
         }
         if (locSP.equals("Còn hàng")) {
+            LamMoiLoc();
             dieuKien = 0;
             fillTableSPCT_SoLuongSPCT_VuotDinhMucTon();
         }
         if (locSP.equals("Hết hàng")) {
+            LamMoiLoc();
             dieuKien = 1;
             fillTableSPCT_SoLuongSPCT_DuoiDinhMucTon();
         }
         if (locSP.equals("Đang kinh doanh")) {
+            LamMoiLoc();
             fillTableSPCT_DangKinhDoanh();
         }
         if (locSP.equals("Ngừng kinh doanh")) {
+            LamMoiLoc();
             fillTableSPCT_NgungKinhDoanh();
         }
         // TODO add your handling code here:
@@ -2521,38 +2533,54 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void addDataCbbXX() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
-        model.removeAllElements();
-        List<XuatXu> list = daoXX.selectAll();
-        for (XuatXu cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
+            model.removeAllElements();
+            List<XuatXu> list = daoXX.selectAll();
+            for (XuatXu cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     void addDataCbbDM() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbDanhMuc.getModel();
-        model.removeAllElements();
-        List<DanhMuc> list = daoDM.selectAll();
-        for (DanhMuc cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbDanhMuc.getModel();
+            model.removeAllElements();
+            List<DanhMuc> list = daoDM.selectAll();
+            for (DanhMuc cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     void addDataFillCbbDM() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillDanhMuc.getModel();
-        model.removeAllElements();
-        List<DanhMuc> list = daoDM.selectAll();
-        for (DanhMuc dm : list) {
-            model.addElement(dm);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillDanhMuc.getModel();
+            model.removeAllElements();
+            List<DanhMuc> list = daoDM.selectAll();
+            for (DanhMuc dm : list) {
+                model.addElement(dm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     void addDataFillCbbXX() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillXuatXu.getModel();
-        model.removeAllElements();
-        List<XuatXu> list = daoXX.selectAll();
-        for (XuatXu xx : list) {
-            model.addElement(xx);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillXuatXu.getModel();
+            model.removeAllElements();
+            List<XuatXu> list = daoXX.selectAll();
+            for (XuatXu xx : list) {
+                model.addElement(xx);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -2605,45 +2633,61 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     public void setSelectedComboboxTenSP(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            SanPham m = (SanPham) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getMaSp() + " - " + m.getTenSp())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                SanPham m = (SanPham) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getMaSp() + " - " + m.getTenSp())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setSelectedComboboxDM(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            DanhMuc m = (DanhMuc) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getTenDanhMuc())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                DanhMuc m = (DanhMuc) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getTenDanhMuc())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setSelectedComboboxXX(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            XuatXu m = (XuatXu) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getNhaSX() + " - " + m.getNuocSX())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                XuatXu m = (XuatXu) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getNhaSX() + " - " + m.getNuocSX())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     void clickTable() {
-        txtMaSP.setText(model1.getValueAt(viTri, 0).toString());
-        txtTenSP.setText(model1.getValueAt(viTri, 1).toString());
-        setSelectedComboboxXX(tblSanPham.getValueAt(viTri, 3).toString() + " - " + tblSanPham.getValueAt(viTri, 4).toString(), cbbXuatXu);
-        setSelectedComboboxDM(tblSanPham.getValueAt(viTri, 2).toString(), cbbDanhMuc);
-        setSelectedComboboxTenSP(tblSanPham.getValueAt(viTri, 1).toString(), cbbMaSP);
-        cbbTrangThaiSP.setSelectedItem(tblSanPham.getValueAt(viTri, 5));
+        try {
+            txtMaSP.setText(model1.getValueAt(viTri, 0).toString());
+            txtTenSP.setText(model1.getValueAt(viTri, 1).toString());
+            setSelectedComboboxXX(tblSanPham.getValueAt(viTri, 3).toString() + " - " + tblSanPham.getValueAt(viTri, 4).toString(), cbbXuatXu);
+            setSelectedComboboxDM(tblSanPham.getValueAt(viTri, 2).toString(), cbbDanhMuc);
+            setSelectedComboboxTenSP(tblSanPham.getValueAt(viTri, 1).toString(), cbbMaSP);
+            cbbTrangThaiSP.setSelectedItem(tblSanPham.getValueAt(viTri, 5));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     void insertData() {
@@ -2729,12 +2773,16 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     public void timKiemSP() {
-        model1.setRowCount(0);
-        List<SanPham> list = daoSP.selectByTimKiem(txtTimKiem.getText());
-        for (SanPham x : list) {
-            model1.addRow(new Object[]{
-                x.getMaSp(), x.getTenSp(), x.getTenDanhMuc(), x.getNhaSX(), x.getNuocSX(), x.isTrangThaiSP() ? "Đang kinh doanh" : "Ngừng kinh doanh"
-            });
+        try {
+            model1.setRowCount(0);
+            List<SanPham> list = daoSP.selectByTimKiem(txtTimKiem.getText());
+            for (SanPham x : list) {
+                model1.addRow(new Object[]{
+                    x.getMaSp(), x.getTenSp(), x.getTenDanhMuc(), x.getNhaSX(), x.getNuocSX(), x.isTrangThaiSP() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -2798,11 +2846,15 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void addDataCbbTT() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
-        model.removeAllElements();
-        List<TheTich> list = daoTT.selectAll();
-        for (TheTich cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
+            model.removeAllElements();
+            List<TheTich> list = daoTT.selectAll();
+            for (TheTich cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -2857,11 +2909,15 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void FillCbbMaSP() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMaSP.getModel();
-        model.removeAllElements();
-        List<SanPham> list = daoSP.selectAll();
-        for (SanPham cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMaSP.getModel();
+            model.removeAllElements();
+            List<SanPham> list = daoSP.selectAll();
+            for (SanPham cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3093,32 +3149,40 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void clickTabelSPCT() {
-        vitriSPCT = tblSanPhamChiTiet.getSelectedRow();
-        txtMaSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 0).toString());
-        txtTenSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 1).toString());
-        txtSoLuong.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 2).toString());
-        txtGiaNhap.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString());
-        txtGiaBan.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 4).toString());
-        AreaMoTa.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 12).toString());
-        setSelectedComboboxTT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 7).toString() + " Lít", cbbTheTich);
-        setSelectedComboboxKT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 8).toString() + " - " + "CM", cbbKichThuoc);
-        setSelectedComboboxKL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 9).toString() + " - " + "KG", cbbKhoiLuong);
-        setSelectedComboboxCL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 10).toString(), cbbChatLieu);
-        setSelectedComboboxMS(tblSanPhamChiTiet.getValueAt(vitriSPCT, 6).toString(), cbbMauSac);
-        setSelectedComboboxIMG(tblSanPhamChiTiet.getValueAt(vitriSPCT, 11).toString(), cbbIMG);
-        cbbTrangThaiSPCT.setSelectedItem(tblSanPhamChiTiet.getValueAt(vitriSPCT, 13));
-        cbbNhomPhoBien.setSelectedItem(tblSanPhamChiTiet.getValueAt(vitriSPCT, 5).toString());
+        try {
+            vitriSPCT = tblSanPhamChiTiet.getSelectedRow();
+            txtMaSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 0).toString());
+            txtTenSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 1).toString());
+            txtSoLuong.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 2).toString());
+            txtGiaNhap.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString());
+            txtGiaBan.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 4).toString());
+            AreaMoTa.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 12).toString());
+            setSelectedComboboxTT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 7).toString() + " Lít", cbbTheTich);
+            setSelectedComboboxKT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 8).toString() + " - " + "CM", cbbKichThuoc);
+            setSelectedComboboxKL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 9).toString() + " - " + "KG", cbbKhoiLuong);
+            setSelectedComboboxCL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 10).toString(), cbbChatLieu);
+            setSelectedComboboxMS(tblSanPhamChiTiet.getValueAt(vitriSPCT, 6).toString(), cbbMauSac);
+            setSelectedComboboxIMG(tblSanPhamChiTiet.getValueAt(vitriSPCT, 11).toString(), cbbIMG);
+            cbbTrangThaiSPCT.setSelectedItem(tblSanPhamChiTiet.getValueAt(vitriSPCT, 13));
+            cbbNhomPhoBien.setSelectedItem(tblSanPhamChiTiet.getValueAt(vitriSPCT, 5).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void timKiemSPCT() {
-        modelSPCT.setRowCount(0);
-        List<SanPhamChiTiet> list = daoSPCT.selectByTimKiemSPCT(txtTimKiemSPCT.getText());
-        for (SanPhamChiTiet x : list) {
-            modelSPCT.addRow(new Object[]{
-                x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
-            });
+        try {
+            modelSPCT.setRowCount(0);
+            List<SanPhamChiTiet> list = daoSPCT.selectByTimKiemSPCT(txtTimKiemSPCT.getText());
+            for (SanPhamChiTiet x : list) {
+                modelSPCT.addRow(new Object[]{
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3134,56 +3198,80 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     private void addDataCbbKL() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKhoiLuong.getModel();
-        model.removeAllElements();
-        List<KhoiLuong> list = daoKL.selectAll();
-        for (KhoiLuong cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKhoiLuong.getModel();
+            model.removeAllElements();
+            List<KhoiLuong> list = daoKL.selectAll();
+            for (KhoiLuong cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private void addDataCbbKT() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKichThuoc.getModel();
-        model.removeAllElements();
-        List<KichThuoc> list = daoKT.selectAll();
-        for (KichThuoc cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKichThuoc.getModel();
+            model.removeAllElements();
+            List<KichThuoc> list = daoKT.selectAll();
+            for (KichThuoc cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private void addDataCbbCL() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbChatLieu.getModel();
-        model.removeAllElements();
-        List<ChatLieu> list = daoCL.selectAll();
-        for (ChatLieu cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbChatLieu.getModel();
+            model.removeAllElements();
+            List<ChatLieu> list = daoCL.selectAll();
+            for (ChatLieu cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private void addDataCbbMS() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMauSac.getModel();
-        model.removeAllElements();
-        List<MauSac> list = daoMS.selectAll();
-        for (MauSac cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMauSac.getModel();
+            model.removeAllElements();
+            List<MauSac> list = daoMS.selectAll();
+            for (MauSac cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private void addDataCbbIMG() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbIMG.getModel();
-        model.removeAllElements();
-        List<Image> list = daoIMG.selectAll();
-        for (Image cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbIMG.getModel();
+            model.removeAllElements();
+            List<Image> list = daoIMG.selectAll();
+            for (Image cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private void addDataCbbDVT() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTTDonViTinh.getModel();
-        model.removeAllElements();
-        List<DonViTinh> list = daoDVT.selectAll();
-        for (DonViTinh cd : list) {
-            model.addElement(cd);
+        try {
+            DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTTDonViTinh.getModel();
+            model.removeAllElements();
+            List<DonViTinh> list = daoDVT.selectAll();
+            for (DonViTinh cd : list) {
+                model.addElement(cd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3207,70 +3295,99 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     public void setSelectedComboboxTT(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            TheTich m = (TheTich) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getTheTich() + " Lít")) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                TheTich m = (TheTich) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getTheTich() + " Lít")) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setSelectedComboboxKT(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            KichThuoc m = (KichThuoc) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getChieuDai() + " - " + m.getChieuRong()
-                        + " - " + m.getChieuCao() + " - " + m.getMaDV())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                KichThuoc m = (KichThuoc) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getChieuDai() + " - " + m.getChieuRong()
+                            + " - " + m.getChieuCao() + " - " + m.getMaDV())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setSelectedComboboxKL(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            KhoiLuong m = (KhoiLuong) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getKhoiLuong() + " - " + m.getMaDV())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                KhoiLuong m = (KhoiLuong) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getKhoiLuong() + " - " + m.getMaDV())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setSelectedComboboxCL(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            ChatLieu m = (ChatLieu) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getChatLieu())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                ChatLieu m = (ChatLieu) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getChatLieu())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setSelectedComboboxMS(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            MauSac m = (MauSac) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getTenMauSac())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                MauSac m = (MauSac) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getTenMauSac())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setSelectedComboboxIMG(String cbbselected, JComboBox cbb) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            Image m = (Image) cbb.getItemAt(i);
-            if (m != null) {
-                if (cbbselected.trim().equals(m.getTenHinh())) {
-                    cbb.setSelectedItem(m);
+        try {
+            for (int i = 0; i < cbb.getItemCount(); i++) {
+                Image m = (Image) cbb.getItemAt(i);
+                if (m != null) {
+                    if (cbbselected.trim().equals(m.getTenHinh())) {
+                        cbb.setSelectedItem(m);
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    void LamMoiLoc() {
+        txtTimKiemGiaBan.setText("");
+        txtTimKiemSPCT.setText("");
     }
 
     //--------------------Thuộc tính--------------------------------------------
@@ -3327,13 +3444,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void fillTableTheTich() {
-        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
-        model.setRowCount(0);
-        List<TheTich> list = daoTT.selectAll();
-        for (TheTich x : list) {
-            model.addRow(new Object[]{
-                x.getMaTheTich(), x.getTheTich() + ""
-            });
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+            model.setRowCount(0);
+            List<TheTich> list = daoTT.selectAll();
+            for (TheTich x : list) {
+                model.addRow(new Object[]{
+                    x.getMaTheTich(), x.getTheTich() + ""
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3370,13 +3491,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void fillTableKichThuoc() {
-        DefaultTableModel model = (DefaultTableModel) tblTTKichThuoc.getModel();
-        model.setRowCount(0);
-        List<KichThuoc> list = daoKT.selectAll();
-        for (KichThuoc x : list) {
-            model.addRow(new Object[]{
-                x.getMaKichThuoc(), x.getChieuDai() + "", x.getChieuRong() + "", x.getChieuCao() + ""
-            });
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblTTKichThuoc.getModel();
+            model.setRowCount(0);
+            List<KichThuoc> list = daoKT.selectAll();
+            for (KichThuoc x : list) {
+                model.addRow(new Object[]{
+                    x.getMaKichThuoc(), x.getChieuDai() + "", x.getChieuRong() + "", x.getChieuCao() + ""
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3394,13 +3519,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void fillTableKhoiLuong() {
-        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
-        model.setRowCount(0);
-        List<KhoiLuong> list = daoKL.selectAll();
-        for (KhoiLuong x : list) {
-            model.addRow(new Object[]{
-                x.getMaKL(), x.getKhoiLuong() + ""
-            });
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+            model.setRowCount(0);
+            List<KhoiLuong> list = daoKL.selectAll();
+            for (KhoiLuong x : list) {
+                model.addRow(new Object[]{
+                    x.getMaKL(), x.getKhoiLuong() + ""
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3450,13 +3579,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void fillTableChatlieu() {
-        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
-        model.setRowCount(0);
-        List<ChatLieu> list = daoCL.selectAll();
-        for (ChatLieu x : list) {
-            model.addRow(new Object[]{
-                x.getMaChatLieu(), x.getChatLieu() + ""
-            });
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+            model.setRowCount(0);
+            List<ChatLieu> list = daoCL.selectAll();
+            for (ChatLieu x : list) {
+                model.addRow(new Object[]{
+                    x.getMaChatLieu(), x.getChatLieu() + ""
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3506,13 +3639,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void fillTableMauSac() {
-        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
-        model.setRowCount(0);
-        List<MauSac> list = daoMS.selectAll();
-        for (MauSac x : list) {
-            model.addRow(new Object[]{
-                x.getMaMauSac(), x.getTenMauSac() + ""
-            });
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+            model.setRowCount(0);
+            List<MauSac> list = daoMS.selectAll();
+            for (MauSac x : list) {
+                model.addRow(new Object[]{
+                    x.getMaMauSac(), x.getTenMauSac() + ""
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3636,13 +3773,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }
 
     void fillTableImage() {
-        DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
-        model.setRowCount(0);
-        List<Image> list = daoIMG.selectAll();
-        for (Image x : list) {
-            model.addRow(new Object[]{
-                x.getMaImage(), x.getTenHinh() + ""
-            });
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
+            model.setRowCount(0);
+            List<Image> list = daoIMG.selectAll();
+            for (Image x : list) {
+                model.addRow(new Object[]{
+                    x.getMaImage(), x.getTenHinh() + ""
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -3896,190 +4037,263 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 //------------------------------------------------------------------------------
 
     void clickTbaleThuocTinh() {
-        int vitriThuocTinh = tblTTThuocTinh.getSelectedRow();
-        txtTTMaThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 0));
-        txtTTTenThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1));
-        if (rdTTHinhAnh.isSelected()) {
-            lblTTHinhAnh.setIcon(XImage.read((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1)));
+        try {
+            int vitriThuocTinh = tblTTThuocTinh.getSelectedRow();
+            txtTTMaThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 0));
+            txtTTTenThuocTinh.setText((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1));
+            if (rdTTHinhAnh.isSelected()) {
+                lblTTHinhAnh.setIcon(XImage.read((String) tblTTThuocTinh.getValueAt(vitriThuocTinh, 1)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     void clickTbaleThuocTinhKichThuoc() {
-        int vitriThuocTinh = tblTTKichThuoc.getSelectedRow();
-        txtMaKT.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 0));
-        txtChieuDai.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 1));
-        txtChieuRong.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 2));
-        txtChieuCao.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 3));
+        try {
+            int vitriThuocTinh = tblTTKichThuoc.getSelectedRow();
+            txtMaKT.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 0));
+            txtChieuDai.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 1));
+            txtChieuRong.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 2));
+            txtChieuCao.setText((String) tblTTKichThuoc.getValueAt(vitriThuocTinh, 3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     void clickTbaleThuocTinhXuatXu() {
-        int vitriThuocTinh = tbTTXuatXu.getSelectedRow();
-        txtTTMaXuatXu.setText((String) tbTTXuatXu.getValueAt(vitriThuocTinh, 0));
-        txtTTNhaSanXuat.setText((String) tbTTXuatXu.getValueAt(vitriThuocTinh, 1));
-        txtTTNuocSanXuat.setText((String) tbTTXuatXu.getValueAt(vitriThuocTinh, 2));
+        try {
+            int vitriThuocTinh = tbTTXuatXu.getSelectedRow();
+            txtTTMaXuatXu.setText((String) tbTTXuatXu.getValueAt(vitriThuocTinh, 0));
+            txtTTNhaSanXuat.setText((String) tbTTXuatXu.getValueAt(vitriThuocTinh, 1));
+            txtTTNuocSanXuat.setText((String) tbTTXuatXu.getValueAt(vitriThuocTinh, 2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 //----------------------tìm kiếm theo giá bán -------------------------
     private void timKiemTheoGiaBanLonHon() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaBan.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaBan() > giaBan) {
-                modelTimKiemGiaBan.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaBan.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaBan() > giaBan) {
+                    modelTimKiemGiaBan.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException e) {
+            txtTimKiemGiaBan.setText("");
+//            Msgbox.alert(this, "Vui lòng nhập số!");
+            e.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaBanLonHonHoacBang() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaBan.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaBan() >= giaBan) {
-                modelTimKiemGiaBan.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaBan.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaBan() >= giaBan) {
+                    modelTimKiemGiaBan.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+//            Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaBanNhoHon() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaBan.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaBan() < giaBan) {
-                modelTimKiemGiaBan.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaBan.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaBan() < giaBan) {
+                    modelTimKiemGiaBan.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+//            Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaBanNhoHonHoacBang() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaBan.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaBan() <= giaBan) {
-                modelTimKiemGiaBan.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaBan.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaBan() <= giaBan) {
+                    modelTimKiemGiaBan.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+//            Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaBanBang() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaBan.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (Objects.equals(x.getGiaBan(), giaBan)) {
-                modelTimKiemGiaBan.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaBan.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaBan() == giaBan) {
+                    modelTimKiemGiaBan.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+//            Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 // ---------------------------- tìm kiếm theo giá nhập ----------------------------------------------
 
     private void timKiemTheoGiaNhapLonHon() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaNhap.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaNhap() > giaBan) {
-                modelTimKiemGiaNhap.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaNhap.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaNhap() > giaNhap) {
+                    modelTimKiemGiaNhap.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+            //Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaNhapLonHonHoacBang() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaNhap.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaNhap() >= giaBan) {
-                modelTimKiemGiaNhap.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaNhap.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaNhap() >= giaNhap) {
+                    modelTimKiemGiaNhap.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+            //Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaNhapNhoHon() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaNhap.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaNhap() < giaBan) {
-                modelTimKiemGiaNhap.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaNhap.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaNhap() < giaNhap) {
+                    modelTimKiemGiaNhap.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+            //Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaNhapNhoHonHoacBang() {
-        Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaNhap.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (x.getGiaNhap() <= giaBan) {
-                modelTimKiemGiaNhap.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaNhap.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaNhap() <= giaNhap) {
+                    modelTimKiemGiaNhap.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+            //Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
 
     private void timKiemTheoGiaNhapBang() {
-        Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
-        DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-        modelTimKiemGiaNhap.setRowCount(0);
-        List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-        for (SanPhamChiTiet x : listSPCT) {
-            if (Objects.equals(x.getGiaNhap(), giaNhap)) {
-                modelTimKiemGiaNhap.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa()
-                });
+        try {
+            Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
+            DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+            modelTimKiemGiaNhap.setRowCount(0);
+            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : listSPCT) {
+                if (x.getGiaNhap() == giaNhap) {
+                    modelTimKiemGiaNhap.addRow(new Object[]{
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
+                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    });
+                }
             }
+        } catch (NumberFormatException numberFormatException) {
+            txtTimKiemGiaBan.setText("");
+            //Msgbox.alert(this, "Vui lòng nhập số!");
+            numberFormatException.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------------------
 
     public void XuatFileExcel() {
         try {

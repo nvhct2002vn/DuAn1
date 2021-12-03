@@ -16,7 +16,7 @@ public class HoaDonChiTiet {
     private String TenSP;
     private String TenSPCT;
     private int SoLuong;
-    private float DonGia;
+    private long DonGia;
 
     public String getTenSP() {
         return TenSP;
@@ -58,11 +58,11 @@ public class HoaDonChiTiet {
         this.SoLuong = SoLuong;
     }
 
-    public float getDonGia() {
+    public long getDonGia() {
         return DonGia;
     }
 
-    public void setDonGia(float DonGia) {
+    public void setDonGia(long DonGia) {
         this.DonGia = DonGia;
     }
 

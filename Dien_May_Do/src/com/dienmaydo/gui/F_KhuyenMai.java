@@ -11,10 +11,12 @@ import com.dienmaydo.service.KhuyenMaiService;
 import com.dienmaydo.service.SanPhamChiTietService;
 import com.dienmaydo.service.SanPhamService;
 import com.dienmaydo.utils.Auth;
+import com.dienmaydo.utils.XMoney;
 import java.awt.CardLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -76,7 +78,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
         chkSelectAllSP = new javax.swing.JCheckBox();
-        lblDonVi = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         dcBatDau = new com.toedter.calendar.JDateChooser();
@@ -203,7 +204,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(chkSelectAllNSP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
         );
 
         pnllCard.add(pnlTableNSP, "card2");
@@ -225,7 +226,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -260,7 +261,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(chkSelectAllSP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
         );
 
         pnllCard.add(pnltblSP, "card3");
@@ -274,19 +275,16 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(131, 131, 131)
-                                        .addComponent(jLabel4)
-                                        .addGap(5, 5, 5))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(cboHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDonVi, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(131, 131, 131)
+                                    .addComponent(jLabel4)
+                                    .addGap(5, 5, 5))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(cboHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txtMaKM, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTenCT, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlApDUng, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,15 +311,13 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cboHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblDonVi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlApDUng, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnllCard, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+                .addComponent(pnllCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -390,6 +386,11 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         btnLuu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLuu.setForeground(new java.awt.Color(51, 51, 51));
         btnLuu.setText("Lưu ");
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuActionPerformed(evt);
+            }
+        });
 
         btnLammoi.setBackground(new java.awt.Color(255, 204, 0));
         btnLammoi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -402,8 +403,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         });
 
         btnSua1.setBackground(new java.awt.Color(255, 204, 0));
-        btnSua1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnSua1.setText("Sửa khuyến mại");
+        btnSua1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnSua1.setText("Sửa");
         btnSua1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSua1ActionPerformed(evt);
@@ -431,9 +432,12 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                         .addGap(35, 35, 35)
                         .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))))
+                        .addComponent(btnSua1)
+                        .addGap(34, 34, 34))))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLuu, btnSua1});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -449,6 +453,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                     .addComponent(btnSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLuu, btnSua1});
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khuyến mại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -547,7 +553,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -591,12 +597,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 
     private void cboHinhThucItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHinhThucItemStateChanged
         // TODO add your handling code here:
-        int km = cboHinhThuc.getSelectedIndex();
-        if (km == 0) {
-            lblDonVi.setText("%");
-        } else {
-            lblDonVi.setText("đ");
-        }
+     
     }//GEN-LAST:event_cboHinhThucItemStateChanged
 
     private void cboApDungItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboApDungItemStateChanged
@@ -623,6 +624,12 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 
     private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
         // TODO add your handling code here:
+         int ad = cboApDung.getSelectedIndex();
+        if (ad == 0) {
+            updatetNSP();
+        } else {
+            updatetSP();
+        }
     }//GEN-LAST:event_btnSua1ActionPerformed
 
     private void tblDanhSachSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachSPMouseClicked
@@ -662,6 +669,16 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         clearForm();
     }//GEN-LAST:event_btnLammoiActionPerformed
 
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+        // TODO add your handling code here:
+        int ad = cboApDung.getSelectedIndex();
+        if (ad == 0) {
+            insertKhuyenMaiNSP();
+        } else {
+            insertKhuyenMaiSP();
+        }
+    }//GEN-LAST:event_btnLuuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLammoi;
@@ -695,7 +712,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblDonVi;
     private javax.swing.JPanel pnlApDUng;
     private javax.swing.JPanel pnlTableNSP;
     private javax.swing.JPanel pnllCard;
@@ -716,9 +732,16 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         try {
             List<KhuyenMai> listKM = kmSV.selectAll();
             for (KhuyenMai x : listKM) {
-                model.addRow(new Object[]{
-                    x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), x.getGiamGia(), x.getTenDM(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.getTrangThai(), x.getMoTa()
-                });
+                if (x.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
+                    model.addRow(new Object[]{
+                       x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), x.getGiamGia() + " %", x.getTenDM(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
+                    });
+                } else {
+                    model.addRow(new Object[]{
+                        x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), XMoney.themDauCham(x.getGiamGia()) + " VNĐ", x.getTenDM(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
+                    });
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -731,15 +754,20 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         try {
             List<KhuyenMai> listKM = kmSV.selectAll();
             for (KhuyenMai x : listKM) {
-                model.addRow(new Object[]{
-                    x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), x.getGiamGia(), x.getTenSP() + " " + x.getTenSPCT(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.getTrangThai(), x.getMoTa()
-                });
+                if (x.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
+                    model.addRow(new Object[]{
+                        x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(),x.getGiamGia() + " %", x.getTenSP() + " " + x.getTenSPCT(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
+                    });
+                } else {
+                    model.addRow(new Object[]{
+                        x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), XMoney.themDauCham(x.getGiamGia()) + " VNĐ", x.getTenSP() + " " + x.getTenSPCT(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
+                    });
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     void clicktblKhuyenMaiNSP() {
 
@@ -750,7 +778,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             row = tblDanhSachNSP.getSelectedRow();
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tblDanhSachNSP.getValueAt(row, 5).toString());
             Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblDanhSachNSP.getValueAt(row, 6).toString());
-
+            dcBatDau.setDate(date);
+            dcKetThuc.setDate(date1);
             txtMaKM.setText((String) tblDanhSachNSP.getValueAt(tblDanhSachNSP.getSelectedRow(), 0));
             txtTenCT.setText((String) tblDanhSachNSP.getValueAt(tblDanhSachNSP.getSelectedRow(), 1));
             if (tblDanhSachNSP.getValueAt(row, 2).toString().equalsIgnoreCase("Giảm theo %")) {
@@ -758,7 +787,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             } else {
                 cboHinhThuc.setSelectedIndex(1);
             }
-            txtGiamGia.setText(String.valueOf((Float) tblDanhSachNSP.getValueAt(tblDanhSachNSP.getSelectedRow(), 3)));
             txtMoTa.setText((String) tblDanhSachNSP.getValueAt(tblDanhSachNSP.getSelectedRow(), 8));
             for (int i = 0; i < tblNhomSanPham.getRowCount(); i++) {
                 if (tblDanhSachNSP.getValueAt(row, 4).toString().equals(tblNhomSanPham.getValueAt(row, 2))) {
@@ -766,8 +794,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                     tblNhomSanPham.setValueAt(true, row, 0);
                 }
             }
-            dcBatDau.setDate(date);
-            dcKetThuc.setDate(date1);
+            txtGiamGia.setText(String.valueOf(tblDanhSachNSP.getValueAt(tblDanhSachNSP.getSelectedRow(), 3)));
+
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -783,7 +811,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             row = tblDanhSachSP.getSelectedRow();
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tblDanhSachSP.getValueAt(row, 5).toString());
             Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblDanhSachSP.getValueAt(row, 6).toString());
-
+            dcBatDau.setDate(date);
+            dcKetThuc.setDate(date1);
             txtMaKM.setText((String) tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 0));
             txtTenCT.setText((String) tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 1));
             if (tblDanhSachSP.getValueAt(row, 2).toString().equalsIgnoreCase("Giảm theo %")) {
@@ -791,7 +820,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             } else {
                 cboHinhThuc.setSelectedIndex(1);
             }
-            txtGiamGia.setText(String.valueOf((Float) tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 3)));
+
             txtMoTa.setText((String) tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 8));
 
             for (int i = 0; i < tblSanPham.getRowCount(); i++) {
@@ -803,6 +832,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             }
             dcBatDau.setDate(date);
             dcKetThuc.setDate(date1);
+
+            txtGiamGia.setText(String.valueOf(tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 3)));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -848,82 +879,140 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         cboApDung.setSelectedIndex(0);
         dcBatDau.setDate(null);
         dcKetThuc.setDate(null);
-        lblDonVi.setText("");
+        chkSelectAllNSP.setSelected(false);
+        chkSelectAllSP.setSelected(false);
     }
 
     KhuyenMai getForm() {
         SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
-        String theDate = formater.format(dcBatDau.getDate());
+//        String theDate = formater.format(dcBatDau.getDate());
         //DanhMuc dm = (DanhMuc) cboTenDanhMuc.getSelectedItem();
+        LocalDateTime timenow = LocalDateTime.now();
         KhuyenMai km = new KhuyenMai();
-
         km.setMaKM(txtMaKM.getText());
         km.setTenChuongTrinh(txtTenCT.getText());
         km.setHinhThuc((String) cboHinhThuc.getSelectedItem() + "");
-        km.setGiamGia(Float.parseFloat(txtGiamGia.getText()));
+        if (cboHinhThuc.getSelectedIndex() == 0) {
+            km.setGiamGia(50);
+        } else {
+            km.setGiamGia(Long.parseLong(txtGiamGia.getText().substring(0, txtGiamGia.getText().length()-4)));
+        }
 
-//
-//        km.setThoiGianBatDau(theDate);
-//        km.setThoiGianKetThuc(theDate);
+        km.setThoiGianBatDau(dcBatDau.getDate());
+        km.setThoiGianKetThuc(dcKetThuc.getDate());
+        
+        km.setMoTa(txtMoTa.getText());
         return km;
     }
-//    void insertKhuyenMai() {
-//        KhuyenMai km = getForm();
-//        try {
-//            kmSV.insertData(km);
-//            fillToTableNSP();
-//            Msgbox.alert(this, "Thêm thành công");
-//              clearForm();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Msgbox.alert(this, "Thêm thất bại");
+
+    void insertKhuyenMaiNSP() {
+        KhuyenMai km = getForm();
+        try {
+            kmSV.insertData(km);
+            fillToTableNSP();
+            Msgbox.alert(this, "Thêm khuyến mại nhóm sản phẩm thành công");
+            clearForm();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Msgbox.alert(this, "Thêm khuyến mại nhóm sản phẩm thất bại");
+        }
+    }
+
+    void insertKhuyenMaiSP() {
+        KhuyenMai kmsp = getForm();
+        try {
+            kmSV.insertData(kmsp);
+            fillToTableSP();
+            Msgbox.alert(this, "Thêm khuyến mại sản phẩm thành công");
+            clearForm();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Msgbox.alert(this, "Thêm khuyến mại sản phẩm thất bại");
+        }
+    }
+
+////-------------Chức năng xóa của nhóm sp---------------------------------
+//    void deleteKMNSP() {
+//        row = tblDanhSachNSP.getSelectedRow();
+//        String maKM = (String) tblDanhSachNSP.getValueAt(row, 0);
+//        if (!Auth.isManager()) {
+//            Msgbox.alert(this, "Bạn không có quyền xóa nhóm sản phẩm này!!");
+//        } else if (row < 0) {
+//            Msgbox.alert(this, "Vui lòng chọn khuyến mại bạn muốn xóa!");
+//            return;
+//        } else if (Msgbox.confirm(this, "Bạn có chắc muốn xóa khuyến mại này?")) {
+//            try {
+//                kmSV.deleteData(maKM);
+//                fillToTableNSP();
+//                Msgbox.alert(this, "Xóa thành công!!");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                Msgbox.alert(this, "Xóa thất bại!");
+//            }
 //        }
 //    }
-       
-//-------------Chức năng xóa của nhóm sp---------------------------------
-    void deleteKMNSP() {
-        row = tblDanhSachNSP.getSelectedRow();
-        String maKM = (String) tblDanhSachNSP.getValueAt(row, 0);
+//
+////-------------Chức năng xóa của sp---------------------------------
+//    void deleteKMsp() {
+//        row = tblDanhSachSP.getSelectedRow();
+//        String maKM = (String) tblDanhSachSP.getValueAt(row, 0);
+//        if (!Auth.isManager()) {
+//            Msgbox.alert(this, "Bạn không có quyền xóa sản phẩm khuyến mại này!!");
+//        } else if (row < 0) {
+//            Msgbox.alert(this, "Vui lòng chọn khuyến mại bạn muốn xóa!");
+//            return;
+//        } else if (Msgbox.confirm(this, "Bạn có chắc muốn xóa khuyến mại này?")) {
+//            try {
+//                kmSV.deleteData(maKM);
+//                fillToTableSP();
+//                Msgbox.alert(this, "Xóa thành công!!");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                Msgbox.alert(this, "Xóa thất bại!");
+//            }
+//        }
+//    }
+    void CapNhapkhuyenMai() {
+        KhuyenMai km = getForm();
+        kmSV.updateData(km);
+        for (int i = 0; i < tblDanhSachNSP.getRowCount(); i++) {
+
+        }
+    }
+    void updatetNSP() {
         if (!Auth.isManager()) {
-            Msgbox.alert(this, "Bạn không có quyền xóa nhóm sản phẩm này!!");
-        } else if (row < 0) {
-            Msgbox.alert(this, "Vui lòng chọn khuyến mại bạn muốn xóa!");
-            return;
-        } else if (Msgbox.confirm(this, "Bạn có chắc muốn xóa khuyến mại này?")) {
+            Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
+        } else {
+            KhuyenMai km = getForm();
             try {
-                kmSV.deleteData(maKM);
+                kmSV.updateData(km);
                 fillToTableNSP();
-                Msgbox.alert(this, "Xóa thành công!!");
+                clearForm();
+                Msgbox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
                 e.printStackTrace();
-                Msgbox.alert(this, "Xóa thất bại!");
+                Msgbox.alert(this, "Cập nhật thất bại!");
             }
         }
     }
-
-
-//-------------Chức năng xóa của sp---------------------------------
-    void deleteKMsp() {
-        row = tblDanhSachSP.getSelectedRow();
-        String maKM = (String) tblDanhSachSP.getValueAt(row, 0);
+    void updatetSP() {
         if (!Auth.isManager()) {
-            Msgbox.alert(this, "Bạn không có quyền xóa sản phẩm khuyến mại này!!");
-        } else if (row < 0) {
-            Msgbox.alert(this, "Vui lòng chọn khuyến mại bạn muốn xóa!");
-            return;
-        } else if (Msgbox.confirm(this, "Bạn có chắc muốn xóa khuyến mại này?")) {
+            Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
+        } else {
+            KhuyenMai km = getForm();
             try {
-                kmSV.deleteData(maKM);
+                kmSV.updateData(km);
                 fillToTableSP();
-                Msgbox.alert(this, "Xóa thành công!!");
+                clearForm();
+                Msgbox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
                 e.printStackTrace();
-                Msgbox.alert(this, "Xóa thất bại!");
+                Msgbox.alert(this, "Cập nhật thất bại!");
             }
         }
     }
-
 //------------------------Điều kiện check--------------------------------------
+
     boolean Validate() {
         try {
             if (txtMaKM.getText().trim().equals("")) {

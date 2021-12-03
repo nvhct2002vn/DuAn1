@@ -20,6 +20,7 @@ import com.dienmaydo.service.SanPhamChiTietService;
 import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
+import com.dienmaydo.utils.XMoney;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -30,17 +31,6 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.CMYKColor;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -57,6 +47,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 /**
  *
@@ -82,8 +78,8 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
     private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
-    
-        public static final String FONT = "resources/fonts/FreeSans.ttf";
+
+    public static final String FONT = "resources/fonts/FreeSans.ttf";
 
     /**
      * Creates new form F_BanHang
@@ -123,6 +119,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         tblSanPhamChon = new javax.swing.JTable();
         btnXoaSP = new javax.swing.JButton();
         btnXoaTatCa = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblChonSanPham = new javax.swing.JTable();
@@ -223,6 +220,13 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -230,10 +234,15 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnXoaSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXoaTatCa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnXoaSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnXoaTatCa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1)))
                 .addGap(19, 19, 19))
         );
         jPanel2Layout.setVerticalGroup(
@@ -241,7 +250,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(4, 4, 4)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnXoaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addComponent(btnXoaTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -374,7 +385,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         txtghiChu.setRows(5);
         jScrollPane3.setViewportView(txtghiChu);
 
-        lblGiamGia.setText("0.0");
+        lblGiamGia.setText("0");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Mã hóa đơn:");
@@ -402,12 +413,12 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             }
         });
 
-        txtTienTraKhach.setText("0.0");
+        txtTienTraKhach.setText("0");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Tiền thừa trả khách:");
 
-        lblTongTien.setText("0.0");
+        lblTongTien.setText("0");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Ghi chú:");
@@ -503,7 +514,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtTienKhachDua.setText("0.0");
+        txtTienKhachDua.setText("0");
 
         lblMaHoaDon.setText("Vui lòng tạo!");
 
@@ -789,6 +800,11 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         showTTKH();
     }//GEN-LAST:event_btnThayDoiActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        xuatHoaDon();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChon;
@@ -803,6 +819,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     private javax.swing.JComboBox<String> cboDanhMuc;
     private javax.swing.JComboBox<String> cboHinhThucGiaoHang;
     private javax.swing.JComboBox<String> cboHinhThucTT;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -905,6 +922,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             }
         } catch (NumberFormatException e) {
             Msgbox.alert(this, "Số lượng sản phẩm phải là số nguyên");
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -919,7 +937,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             hdct.setMaSPCT(tblSanPhamChon.getValueAt(i, 0) + "");
             hdct.setMaHD(lblMaHoaDon.getText());
             hdct.setSoLuong(Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + ""));
-            hdct.setDonGia(Float.parseFloat(tblSanPhamChon.getValueAt(i, 2) + ""));
+            hdct.setDonGia(XMoney.loaiBoVND(tblSanPhamChon.getValueAt(i, 2) + ""));
             hdctService.insert(hdct);
         }
     }
@@ -935,7 +953,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaTTTT("TT003");
         hd.setMaHTGH(htgh.getMaHTGH());
         hd.setTienThuaTraKhach(Long.parseLong(txtTienTraKhach.getText()));
-        hd.setTongTien(Long.parseLong(lblTongTien.getText()));
+        hd.setTongTien(XMoney.loaiBoDauCham(lblTongTien.getText()));
         hd.setGhiChu(txtghiChu.getText());
         try {
             if (lblMaHoaDon.getText().equals("Vui lòng tạo!")) {
@@ -1012,7 +1030,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             List<SanPhamChiTiet> list = spService.selectByTimKiem(txtTimKiem.getText().trim());
             for (SanPhamChiTiet x : list) {
                 model1.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
+                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
                     x.getTheTich(), x.getSoLuong()
                 });
             }
@@ -1021,23 +1039,22 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     }
 
     public void donHang() {
-        float tongTien = 0;
+        long tongTien = 0;
         int soDong = tblSanPhamChon.getRowCount();
         if (soDong == 0) {
-            lblTongTien.setText("0.0");
-            lblGiamGia.setText("0.0");
-            txtTienKhachDua.setText("0.0");
-            txtTienTraKhach.setText("0.0");
+            lblTongTien.setText("0");
+            lblGiamGia.setText("0");
+            txtTienKhachDua.setText("0");
+            txtTienTraKhach.setText("0");
         } else {
             for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
-                float donGia = Float.parseFloat(tblSanPhamChon.getValueAt(i, 2) + "");
-                int soLuong = Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "");
-                tongTien += (float) (soLuong * donGia);
+                long donGia = XMoney.loaiBoVND(tblSanPhamChon.getValueAt(i, 2).toString());
+                int soLuong = Integer.parseInt(tblSanPhamChon.getValueAt(i, 3).toString());
+                tongTien += (long) (soLuong * donGia);
 
-                lblTongTien.setText(tongTien + "");
+                lblTongTien.setText(XMoney.themDauCham(tongTien));
                 lblGiamGia.setText("0");
             }
-
         }
     }
 
@@ -1052,7 +1069,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaTTTT("TT002");
         hd.setMaHTGH(htgh.getMaHTGH());
         hd.setTienThuaTraKhach(Long.parseLong(txtTienTraKhach.getText()));
-        hd.setTongTien(Long.parseLong(lblTongTien.getText()));
+        hd.setTongTien(XMoney.loaiBoDauCham(lblTongTien.getText()));
         hd.setGhiChu(txtghiChu.getText());
         try {
             if (lblMaHoaDon.getText().equals("")) {
@@ -1062,9 +1079,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 Msgbox.alert(this, "Vui lòng chọn sản phẩm trước khi nhấn thanh toán");
                 return;
             } else {
-                float tongTien = Float.parseFloat(lblTongTien.getText());
-                float tienKhachDua = Float.parseFloat(txtTienKhachDua.getText());
-                float tienTraKhach = Float.parseFloat(txtTienTraKhach.getText());
+                long tongTien = XMoney.loaiBoDauCham(lblTongTien.getText());
+                long tienKhachDua = Long.parseLong(txtTienKhachDua.getText());
+                long tienTraKhach = Long.parseLong(txtTienTraKhach.getText());
 
                 if (Msgbox.confirm(this, "Bạn chắc chắn muốn thanh toán hóa đơn này chứ?")) {
                     if (tienKhachDua < tongTien) {
@@ -1128,7 +1145,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaTTTT("TT001");
         hd.setMaHTGH(htgh.getMaHTGH());
         hd.setTienThuaTraKhach(Long.parseLong(txtTienTraKhach.getText()));
-        hd.setTongTien(Long.parseLong(lblTongTien.getText()));
+        hd.setTongTien(XMoney.loaiBoDauCham(lblTongTien.getText()));
         hd.setGhiChu(txtghiChu.getText());
         return hd;
     }
@@ -1140,11 +1157,11 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         lblMaKH.setForeground(Color.red);
         lblTenKH.setText("Khách bán lẻ");
         lblTenKH.setForeground(Color.red);
-        lblTongTien.setText("0.0");
-        lblGiamGia.setText("0.0");
-        txtTienKhachDua.setText("0.0");
+        lblTongTien.setText("0");
+        lblGiamGia.setText("0");
+        txtTienKhachDua.setText("0");
         txtTienKhachDua.setBackground(Color.white);
-        txtTienTraKhach.setText("0.0");
+        txtTienTraKhach.setText("0");
         txtTienTraKhach.setBackground(Color.white);
         cboHinhThucTT.setSelectedIndex(0);
         cboHinhThucGiaoHang.setSelectedIndex(0);
@@ -1174,7 +1191,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             List<SanPhamChiTiet> list = spService.selectByDM(cboDanhMuc.getSelectedItem() + "");
             for (SanPhamChiTiet x : list) {
                 model1.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
+                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
                     x.getTheTich(), x.getSoLuong()
                 });
             }
@@ -1228,7 +1245,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         List<SanPhamChiTiet> list = spService.selectAll_BY_ONL();
         for (SanPhamChiTiet x : list) {
             model1.addRow(new Object[]{
-                x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
+                x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
                 x.getTheTich(), x.getSoLuong()
             });
         }
@@ -1250,8 +1267,8 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 lblTenKH.setText(hd.getTenKH());
                 lblTenKH.setForeground(Color.black);
             }
-            lblTongTien.setText(hd.getTongTien() + "");
-            txtTienKhachDua.setText("0.0");
+            lblTongTien.setText(XMoney.themDauCham(hd.getTongTien()));
+            txtTienKhachDua.setText("0");
             txtTienTraKhach.setText(hd.getTienThuaTraKhach() + "");
             cboHinhThucTT.setSelectedItem(hd.getTenHTTT());
             cboHinhThucGiaoHang.setSelectedItem(hd.getTenHTGH());
@@ -1260,7 +1277,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             List<HoaDonChiTiet> list = hdctService.selectById(lblMaHoaDon.getText());
             for (HoaDonChiTiet x : list) {
                 model2.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getDonGia(), x.getSoLuong()
+                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getDonGia()) + " VNĐ", x.getSoLuong()
                 });
             }
             btnTao.setEnabled(false);
@@ -1301,87 +1318,107 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
     public void xuatHoaDon() {
         HoaDon hd = hdService.selectById(lblMaHoaDon.getText());
-        Document document = new Document();
         try {
-            PdfWriter.getInstance(document, new FileOutputStream(new File("./src/com/dienmaydo/pdf/" + lblMaHoaDon.getText() + ".pdf")));
+            XWPFDocument document = new XWPFDocument();
+            FileOutputStream out = new FileOutputStream(new File("src/com/dienmaydo/pdf/" + lblMaHoaDon.getText() + ".docx"));
 
-            document.open();
+            XWPFParagraph paragraph = document.createParagraph();
+            XWPFRun run = paragraph.createRun();
+            paragraph.setAlignment(ParagraphAlignment.CENTER);
+            run.setText("SIÊU THỊ ĐIỆN MÁY ĐỎ");
+            run.setFontSize(20);
+            run.setBold(true);
 
-            Paragraph maHD2 = new Paragraph(lblMaHoaDon.getText());
-            Paragraph tenKH2 = new Paragraph(hd.getTenKH());
-            Paragraph diaChi2 = new Paragraph(hd.getDiaChi());
-            Paragraph soDienThoai2 = new Paragraph(hd.getSdt());
+            XWPFParagraph paragraph2 = document.createParagraph();
+            XWPFRun run2 = paragraph2.createRun();
+            paragraph2.setAlignment(ParagraphAlignment.CENTER);
+            run2.setText("ĐC: Phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội");
 
-            Paragraph tieuDe = new Paragraph("HÓA ĐƠN THANH TOÁN", FontFactory.getFont(FONT ,BaseFont.IDENTITY_H,BaseFont.EMBEDDED, 20, Font.BOLDITALIC));
-            Paragraph ngayThang = new Paragraph("Thoi gian: " + XDate.toString(hd.getNgayLap()), FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.BOLDITALIC));
-            Paragraph maHD1 = new Paragraph("Ma hoa don: " + maHD2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
-            Paragraph tenKH1 = new Paragraph("Khach hang: " + tenKH2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
-            Paragraph diaChi1 = new Paragraph("Dia chi: " + diaChi2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
-            Paragraph soDienThoai1 = new Paragraph("SDT: " + soDienThoai2, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC));
+            XWPFParagraph paragraph3 = document.createParagraph();
+            XWPFRun run3 = paragraph3.createRun();
+            paragraph3.setAlignment(ParagraphAlignment.CENTER);
+            run3.setText("ĐT: 0975.086.003");
+            run3.setTextPosition(50);
 
-            tieuDe.setAlignment(Element.ALIGN_CENTER);
-            ngayThang.setAlignment(Element.ALIGN_CENTER);
-            ngayThang.setSpacingAfter(15);
-            maHD1.setAlignment(Element.ALIGN_RIGHT);
-            tenKH1.setSpacingBefore(15);
-            tenKH1.setAlignment(Element.ALIGN_LEFT);
-            diaChi1.setAlignment(Element.ALIGN_LEFT);
-            soDienThoai1.setAlignment(Element.ALIGN_LEFT);
-            soDienThoai1.setSpacingAfter(15);
+            XWPFParagraph paragraph4 = document.createParagraph();
+            XWPFRun run4 = paragraph4.createRun();
+            paragraph4.setAlignment(ParagraphAlignment.CENTER);
+            run4.setText("HÓA ĐƠN BÁN HÀNG");
+            run4.setFontSize(30);
+            run4.setBold(true);
 
-            PdfPTable table = new PdfPTable(5);
-            float[] withsKM = {10f, 20f, 10f, 5f, 15f};
-            table.setWidthPercentage(100);
-            table.setWidths(withsKM);
-            table.setSpacingAfter(25);
-            PdfPCell tenCot1 = new PdfPCell(new Paragraph("Ma san pham", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot2 = new PdfPCell(new Paragraph("Ten san pham", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot3 = new PdfPCell(new Paragraph("Don Gia", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot4 = new PdfPCell(new Paragraph("So luong", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
-            PdfPCell tenCot5 = new PdfPCell(new Paragraph("Thanh Tien", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 0))));
+            XWPFParagraph paragraph5 = document.createParagraph();
+            XWPFRun run5 = paragraph5.createRun();
+            paragraph5.setAlignment(ParagraphAlignment.CENTER);
+            run5.setText("Hóa đơn số: " + hd.getMaHD());
+            run5.setTextPosition(50);
 
-            tenCot1.setPadding(5);
-            tenCot2.setPadding(5);
-            tenCot3.setPadding(5);
-            tenCot4.setPadding(5);
-            tenCot5.setPadding(5);
+            XWPFParagraph paragraph6 = document.createParagraph();
+            XWPFRun run6 = paragraph6.createRun();
+            run6.setText("Khách hàng: " + hd.getTenKH());
 
-            tenCot1.setBackgroundColor(BaseColor.DARK_GRAY);
-            tenCot2.setBackgroundColor(BaseColor.DARK_GRAY);
-            tenCot3.setBackgroundColor(BaseColor.DARK_GRAY);
-            tenCot4.setBackgroundColor(BaseColor.DARK_GRAY);
-            tenCot5.setBackgroundColor(BaseColor.DARK_GRAY);
+            XWPFParagraph paragraph7 = document.createParagraph();
+            XWPFRun run7 = paragraph7.createRun();
+            run7.setText("Địa chỉ: " + hd.getDiaChi());
 
-            tenCot1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tenCot2.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tenCot3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tenCot4.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tenCot5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            XWPFParagraph paragraph8 = document.createParagraph();
+            XWPFRun run8 = paragraph8.createRun();
+            run8.setText("SĐT: " + hd.getSdt());
 
-            table.addCell(tenCot1);
-            table.addCell(tenCot2);
-            table.addCell(tenCot3);
-            table.addCell(tenCot4);
-            table.addCell(tenCot5);
+            XWPFParagraph paragraph9 = document.createParagraph();
+            XWPFRun run9 = paragraph9.createRun();
+            run9.setText("Ngày lập: " + XDate.toString(hd.getNgayLap()));
+            run9.setTextPosition(50);
+
+            XWPFTable table = document.createTable(tblSanPhamChon.getRowCount() + 2, 5);
+            table.setWidth("100%");
+
+            XWPFTableRow row = table.getRow(0);
+            XWPFParagraph paragraph10 = row.getCell(0).addParagraph();
+            paragraph10.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run10 = paragraph10.createRun();
+            run10.setText("Mã sản phẩm");
+            run10.setBold(true);
+            run10.setTextPosition(20);
+
+            XWPFTableRow row2 = table.getRow(0);
+            XWPFParagraph paragraph11 = row.getCell(1).addParagraph();
+            paragraph11.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run11 = paragraph11.createRun();
+            run11.setText("Tên sản phẩm");
+            run11.setBold(true);
+            run11.setTextPosition(20);
+
+            XWPFTableRow row3 = table.getRow(0);
+            XWPFParagraph paragraph12 = row.getCell(2).addParagraph();
+            paragraph12.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run12 = paragraph12.createRun();
+            run12.setText("Số lượng");
+            run12.setBold(true);
+            run12.setTextPosition(20);
+
+            XWPFTableRow row4 = table.getRow(0);
+            XWPFParagraph paragraph13 = row.getCell(3).addParagraph();
+            paragraph13.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run13 = paragraph13.createRun();
+            run13.setText("Đơn giá");
+            run13.setBold(true);
+            run13.setTextPosition(20);
+
+            XWPFTableRow row5 = table.getRow(0);
+            XWPFParagraph paragraph14 = row.getCell(4).addParagraph();
+            paragraph14.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run14 = paragraph14.createRun();
+            run14.setText("Thành tiền");
+            run14.setBold(true);
+            run14.setTextPosition(20);
 
             for (int i = 0; i < tblSanPhamChon.getRowCount(); i++) {
-                PdfPCell data1 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 0) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-                PdfPCell data2 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 1) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-                PdfPCell data3 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 2) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-                PdfPCell data4 = new PdfPCell(new Paragraph(tblSanPhamChon.getValueAt(i, 3) + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-                PdfPCell data5 = new PdfPCell(new Paragraph(Float.parseFloat(tblSanPhamChon.getValueAt(i, 2) + "") * Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "") + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-
-                data1.setHorizontalAlignment(Element.ALIGN_CENTER);
-                data2.setHorizontalAlignment(Element.ALIGN_CENTER);
-                data3.setHorizontalAlignment(Element.ALIGN_CENTER);
-                data4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                data5.setHorizontalAlignment(Element.ALIGN_CENTER);
-
-                table.addCell(data1);
-                table.addCell(data2);
-                table.addCell(data3);
-                table.addCell(data4);
-                table.addCell(data5);
+                table.getRow(i + 1).getCell(0).setText(tblSanPhamChon.getValueAt(i, 0).toString());
+                table.getRow(i + 1).getCell(1).setText(tblSanPhamChon.getValueAt(i, 1).toString());
+                table.getRow(i + 1).getCell(2).setText(tblSanPhamChon.getValueAt(i, 3).toString());
+                table.getRow(i + 1).getCell(3).setText(tblSanPhamChon.getValueAt(i, 2).toString());
+                table.getRow(i + 1).getCell(4).setText(XMoney.themDauCham(XMoney.loaiBoVND(tblSanPhamChon.getValueAt(i, 2) + "") * Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "")) + " VNĐ");
             }
 
             int tongSL = 0;
@@ -1389,49 +1426,45 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 tongSL += Integer.parseInt(tblSanPhamChon.getValueAt(i, 3) + "");
             }
 
-            PdfPCell data1 = new PdfPCell(new Paragraph("TONG:", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-            PdfPCell data2 = new PdfPCell(new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-            PdfPCell data3 = new PdfPCell(new Paragraph("", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-            PdfPCell data4 = new PdfPCell(new Paragraph(tongSL + "", FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
-            PdfPCell data5 = new PdfPCell(new Paragraph(lblTongTien.getText(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+            table.getRow(tblSanPhamChon.getRowCount() + 1).getCell(0).setText("TỔNG");
+            table.getRow(tblSanPhamChon.getRowCount() + 1).getCell(1).setText("");
+            table.getRow(tblSanPhamChon.getRowCount() + 1).getCell(2).setText(tongSL + "");
+            table.getRow(tblSanPhamChon.getRowCount() + 1).getCell(3).setText("");
+            table.getRow(tblSanPhamChon.getRowCount() + 1).getCell(4).setText(XMoney.themDauCham(hd.getTongTien()));
 
-            data1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            data2.setHorizontalAlignment(Element.ALIGN_CENTER);
-            data3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            data4.setHorizontalAlignment(Element.ALIGN_CENTER);
-            data5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            XWPFParagraph paragraph15 = document.createParagraph();
+            paragraph15.setAlignment(ParagraphAlignment.RIGHT);
 
-            data1.setPadding(5);
-            data2.setPadding(5);
-            data3.setPadding(5);
-            data4.setPadding(5);
-            data5.setPadding(5);
+            XWPFParagraph paragraph16 = document.createParagraph();
+            paragraph16.setAlignment(ParagraphAlignment.RIGHT);
+            XWPFRun run16 = paragraph16.createRun();
+            run16.setText("Người lập hóa đơn");
+            run16.setBold(true);
+            run16.setFontSize(15);
 
-            table.addCell(data1);
-            table.addCell(data2);
-            table.addCell(data3);
-            table.addCell(data4);
-            table.addCell(data5);
+            XWPFParagraph paragraph17 = document.createParagraph();
+            paragraph17.setAlignment(ParagraphAlignment.RIGHT);
+            XWPFRun run17 = paragraph17.createRun();
+            run17.setText("Đỗ Tất Hòa");
+            run17.setTextPosition(80);
 
-            Paragraph footer = new Paragraph("NGUOI LAP HOA DON", FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.BOLDITALIC));
-            Paragraph nguoiLap = new Paragraph(hd.getTenNV(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 14));
-            footer.setAlignment(Element.ALIGN_RIGHT);
-            nguoiLap.setAlignment(Element.ALIGN_RIGHT);
-            nguoiLap.setIndentationRight(20);
+            XWPFParagraph paragraph18 = document.createParagraph();
+            paragraph18.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run18 = paragraph18.createRun();
+            run18.setText("Cảm ơn quý khách đã mua hàng!");
 
-            document.add(tieuDe);
-            document.add(ngayThang);
-            document.add(maHD1);
-            document.add(tenKH1);
-            document.add(diaChi1);
-            document.add(soDienThoai1);
-            document.add(table);
-            document.add(footer);
-            document.add(nguoiLap);
+            XWPFParagraph paragraph19 = document.createParagraph();
+            paragraph19.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run19 = paragraph19.createRun();
+            run19.setText("Hẹn gặp lại!");
 
+            document.write(out);
+            out.close();
             document.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            System.out.println("Thành công");
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -1479,7 +1512,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 model1.setRowCount(0);
                 SanPhamChiTiet x = spService.selectWebcam(result.getText());
                 model1.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), x.getGiaBan(), x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
+                    x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
                     x.getTheTich(), x.getSoLuong()
                 });
                 cboDanhMuc.setSelectedIndex(0);

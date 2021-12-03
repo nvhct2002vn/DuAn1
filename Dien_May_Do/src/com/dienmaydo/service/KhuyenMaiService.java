@@ -19,7 +19,7 @@ import java.util.List;
 public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
 
     String INSERT_SQL = "insert into dbo.KHUYENMAI(MAKM, TENCT,HINHTHUC,BATDAU,KETTHUC,GIAMGIA,TRANGTHAI,MOTA) VALUES(?,?,?,?,?,?,?,?)"
-            + "insert into dbo.DANHMUC_KHUYENMAI values(?,?,?)";
+            + "insert into dbo.SANPHAMCHITIET_KHUYENMAI values(?,?)";
     String UPDATE_SQL = "UPDATE dbo.KHUYENMAI SET TENCT = ? , HINHTHUC = ? , BATDAU = ? , KETTHUC = ? , GIAMGIA = ? , TRANGTHAI = ? , MOTA = ? WHERE MAKM = ?";
     String DELETE_SQL = "BEGIN TRY\n"
             + "	BEGIN TRAN\n"
@@ -47,7 +47,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
     public void insertData(KhuyenMai entity) {
         try {
             JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaKM(), entity.getTenChuongTrinh(), entity.getHinhThuc(), entity.getThoiGianBatDau(), entity.getThoiGianKetThuc(),
-                    entity.getGiamGia(), entity.getTrangThai(), entity.getMoTa());
+                    entity.getGiamGia(), entity.isTrangThai(), entity.getMoTa());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +57,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
     public void updateData(KhuyenMai entity) {
         try {
             JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getTenChuongTrinh(), entity.getHinhThuc(), entity.getThoiGianBatDau(), entity.getThoiGianKetThuc(),
-                    entity.getGiamGia(), entity.getTrangThai(), entity.getMoTa(), entity.getMaKM());
+                    entity.getGiamGia(), entity.isTrangThai(), entity.getMoTa(), entity.getMaKM());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -96,13 +96,13 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
                 entity.setMaKM(rs.getString("MaKM"));
                 entity.setTenChuongTrinh(rs.getString("TenCT"));
                 entity.setHinhThuc(rs.getString("HinhThuc"));
-                entity.setGiamGia(rs.getFloat("GiamGia"));
+                entity.setGiamGia(rs.getLong("GiamGia"));
                 entity.setTenDM(rs.getString("TenDM"));
                 entity.setTenSP(rs.getString("tensp"));
                 entity.setTenSPCT(rs.getString("TenSPCT"));
                 entity.setThoiGianBatDau(rs.getDate("BatDau"));
                 entity.setThoiGianKetThuc(rs.getDate("KetThuc"));
-                entity.setTrangThai(rs.getString("TrangThai"));
+                entity.setTrangThai(rs.getBoolean("TrangThai"));
                 entity.setMoTa(rs.getString("MoTa"));
                 list.add(entity);
             }
