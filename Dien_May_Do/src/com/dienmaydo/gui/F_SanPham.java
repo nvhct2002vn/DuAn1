@@ -30,6 +30,7 @@ import com.dienmaydo.service.XuatXuService;
 import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XImage;
+import com.dienmaydo.utils.XMoney;
 import java.awt.CardLayout;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -1808,7 +1809,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1943,6 +1944,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rdTTTheTichActionPerformed
 
     private void rdTTKhoiLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTKhoiLuongActionPerformed
+        cbbTTDonViTinh.setSelectedIndex(1);
         fillTableKhoiLuong();
         card.show(pnCardGoc, "card1"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB1"); // mở panel 1
@@ -1958,6 +1960,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     private void rdTTKichThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdTTKichThuocActionPerformed
         fillTableKichThuoc();
+        cbbTTDonViTinh.setSelectedIndex(0);
         card.show(pnCardGoc, "card2"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB2");
         // TODO add your handling code here:
@@ -2741,7 +2744,6 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
         SanPham sp = new SanPham();
         int soLuongSP = tblSanPham.getRowCount();
-        System.out.println("SP" + soLuongSP + 1);
         sp.setMaSp("SP" + soLuongSP + 1);
         sp.setMaDanhMuc(dm.getMaDanhMuc());
         sp.setTenSp(txtTenSP.getText());
@@ -2793,6 +2795,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 //                Msgbox.alert(this, "Mã sản phẩm chi tiết không được để trống");
 //                return true;
 //            } else
+            long giaNhap = XMoney.loaiBoDauCham(txtGiaNhap.getText());
+            long giaBan = XMoney.loaiBoDauCham(txtGiaNhap.getText());
             if (txtTenSPCT.getText().trim().equals("")) {
                 Msgbox.alert(this, "Tên sản phẩm chi tiết không được để trống");
                 return true;
@@ -2808,14 +2812,14 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             } else if (txtMaSPCT.getText().length() > 10) {
                 Msgbox.alert(this, "Mã sản phẩm chi tiết tối đa 10 kí tự");
                 return true;
-            } else if (Integer.parseInt(txtSoLuong.getText()) < 0) {
+            } else if (Integer.parseInt(txtSoLuong.getText()) <= 0) {
                 Msgbox.alert(this, "Số lượng sản phẩm phải lớn hơn 0");
                 return true;
-            } else if (Double.parseDouble(txtGiaNhap.getText()) < 0) {
-                Msgbox.alert(this, "Giá nhập không được bé hơn 0");
+            } else if (giaNhap <= 0) {
+                Msgbox.alert(this, "Giá nhập phải lớn hơn 0");
                 return true;
-            } else if (Double.parseDouble(txtGiaBan.getText()) < 0) {
-                Msgbox.alert(this, "Giá bán không được bé hơn 0");
+            } else if (giaBan < 0) {
+                Msgbox.alert(this, "Giá bán phải lớn hơn 0");
                 return true;
             } else if (AreaMoTa.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mô tả không được để trống");
@@ -2898,9 +2902,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
             for (SanPhamChiTiet x : listSPCT) {
                 modelSPCT.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                    x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                 });
             }
         } catch (Exception e) {
@@ -2928,9 +2932,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             List<SanPhamChiTiet> listSPCT = daoSPCT.selectBySPCT(txtMaSP.getText());
             for (SanPhamChiTiet x : listSPCT) {
                 modelSPCT.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                    x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                 });
             }
         } catch (Exception e) {
@@ -2947,9 +2951,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.isNhomPhoBien() == nhomPhoBien) {
                     modelSPCT.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -2967,9 +2971,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getSoLuong() > dieuKien) {
                     modelSPCT.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -2986,9 +2990,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getSoLuong() < dieuKien) {
                     modelSPCT.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -3005,9 +3009,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.isTrangThai() == true) {
                     modelSPCT.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -3024,9 +3028,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.isTrangThai() == false) {
                     modelSPCT.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -3043,9 +3047,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             List<SanPhamChiTiet> listSPCT = daoSPCT.selectBySPCT(sp.getMaSp());
             for (SanPhamChiTiet x : listSPCT) {
                 modelSPCT.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                    x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                 });
             }
         } catch (Exception e) {
@@ -3083,12 +3087,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         for (String x : words) {
             ganText += x.substring(0, 1);
         }
-        System.out.println(ganText);
         spct.setMaSPCT(ganText + soLuongSPCT + 1);
         spct.setTenSPCT(txtTenSPCT.getText());
         spct.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
-        spct.setGiaNhap(Long.parseLong(txtGiaNhap.getText()));
-        spct.setGiaBan(Long.parseLong(txtGiaBan.getText()));
+        spct.setGiaNhap(XMoney.loaiBoDauCham(txtGiaNhap.getText()));
+        spct.setGiaBan(XMoney.loaiBoDauCham(txtGiaBan.getText()));
         if (nhomPhoBien.equals("Phổ biến")) {
             spct.setNhomPhoBien(true);
         } else {
@@ -3125,8 +3128,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         spct.setMaSPCT(txtMaSPCT.getText());
         spct.setTenSPCT(txtTenSPCT.getText());
         spct.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
-        spct.setGiaNhap(Long.parseLong(txtGiaNhap.getText()));
-        spct.setGiaBan(Long.parseLong(txtGiaBan.getText()));
+        spct.setGiaNhap(XMoney.loaiBoDauCham(txtGiaNhap.getText()));
+        spct.setGiaBan(XMoney.loaiBoDauCham(txtGiaBan.getText()));
         String nhomPhoBien = (String) cbbNhomPhoBien.getSelectedItem();
         if (nhomPhoBien.equals("Phổ biến")) {
             spct.setNhomPhoBien(true);
@@ -3150,16 +3153,20 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     void clickTabelSPCT() {
         try {
+//            long giaNhap = XMoney.loaiBoVND(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString());
+//            long giaBan = XMoney.loaiBoVND(tblSanPhamChiTiet.getValueAt(vitriSPCT, 4).toString());
+//            XMoney.themDauCham(giaNhap);
+//            XMoney.themDauCham(giaBan);
             vitriSPCT = tblSanPhamChiTiet.getSelectedRow();
             txtMaSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 0).toString());
             txtTenSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 1).toString());
             txtSoLuong.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 2).toString());
-            txtGiaNhap.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString());
-            txtGiaBan.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 4).toString());
+            txtGiaNhap.setText(String.valueOf(XMoney.themDauCham(XMoney.loaiBoVND(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString()))));
+            txtGiaBan.setText(String.valueOf(XMoney.themDauCham(XMoney.loaiBoVND(tblSanPhamChiTiet.getValueAt(vitriSPCT, 4).toString()))));
             AreaMoTa.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 12).toString());
-            setSelectedComboboxTT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 7).toString() + " Lít", cbbTheTich);
-            setSelectedComboboxKT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 8).toString() + " - " + "CM", cbbKichThuoc);
-            setSelectedComboboxKL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 9).toString() + " - " + "KG", cbbKhoiLuong);
+            setSelectedComboboxTT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 7).toString(), cbbTheTich);
+            setSelectedComboboxKT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 8).toString(), cbbKichThuoc);
+            setSelectedComboboxKL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 9).toString(), cbbKhoiLuong);
             setSelectedComboboxCL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 10).toString(), cbbChatLieu);
             setSelectedComboboxMS(tblSanPhamChiTiet.getValueAt(vitriSPCT, 6).toString(), cbbMauSac);
             setSelectedComboboxIMG(tblSanPhamChiTiet.getValueAt(vitriSPCT, 11).toString(), cbbIMG);
@@ -3176,9 +3183,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             List<SanPhamChiTiet> list = daoSPCT.selectByTimKiemSPCT(txtTimKiemSPCT.getText());
             for (SanPhamChiTiet x : list) {
                 modelSPCT.addRow(new Object[]{
-                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                    x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                    x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                    x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                 });
             }
         } catch (Exception e) {
@@ -3793,7 +3800,6 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         } else {
             try {
                 Image img = GetFromIMGInsert();
-                System.out.println(img.getMaImage());
                 daoIMG.insertData(img);
                 fillTableImage();
                 Msgbox.alert(this, "Thêm thành công!");
@@ -4082,9 +4088,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaBan() > giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4104,9 +4110,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaBan() >= giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4126,9 +4132,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaBan() < giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4148,9 +4154,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaBan() <= giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4170,9 +4176,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaBan() == giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4193,9 +4199,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaNhap() > giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4215,9 +4221,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaNhap() >= giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4237,9 +4243,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaNhap() < giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4259,9 +4265,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaNhap() <= giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
@@ -4281,9 +4287,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             for (SanPhamChiTiet x : listSPCT) {
                 if (x.getGiaNhap() == giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
-                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), x.getGiaNhap(), x.getGiaBan(),
-                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich(),
-                        x.getKichCo(), x.getKhoiLuong(), x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                        x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
+                        x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
+                        x.getKichCo() + " - " + "CM", x.getKhoiLuong() + " - " + "KG", x.getTenChatLieu(), x.getTenImage(), x.getMoTa(), x.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     });
                 }
             }
