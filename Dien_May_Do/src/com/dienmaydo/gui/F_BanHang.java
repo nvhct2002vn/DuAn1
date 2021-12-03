@@ -44,7 +44,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
@@ -119,7 +118,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         tblSanPhamChon = new javax.swing.JTable();
         btnXoaSP = new javax.swing.JButton();
         btnXoaTatCa = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblChonSanPham = new javax.swing.JTable();
@@ -220,13 +218,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -234,15 +225,10 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnXoaSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnXoaTatCa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1)))
+                    .addComponent(btnXoaSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXoaTatCa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
         jPanel2Layout.setVerticalGroup(
@@ -250,9 +236,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(42, 42, 42)
                         .addComponent(btnXoaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addComponent(btnXoaTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -357,7 +341,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                             .addComponent(cboDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnThemSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -630,7 +614,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                     .addComponent(btnHuyHoaDon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -723,11 +707,11 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1140, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 739, Short.MAX_VALUE)
         );
 
         jPanel1.getAccessibleContext().setAccessibleDescription("");
@@ -800,11 +784,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         showTTKH();
     }//GEN-LAST:event_btnThayDoiActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        xuatHoaDon();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChon;
@@ -819,7 +798,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     private javax.swing.JComboBox<String> cboDanhMuc;
     private javax.swing.JComboBox<String> cboHinhThucGiaoHang;
     private javax.swing.JComboBox<String> cboHinhThucTT;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -922,7 +900,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             }
         } catch (NumberFormatException e) {
             Msgbox.alert(this, "Số lượng sản phẩm phải là số nguyên");
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1445,7 +1422,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             XWPFParagraph paragraph17 = document.createParagraph();
             paragraph17.setAlignment(ParagraphAlignment.RIGHT);
             XWPFRun run17 = paragraph17.createRun();
-            run17.setText("Đỗ Tất Hòa");
+            run17.setText(hd.getTenNV());
             run17.setTextPosition(80);
 
             XWPFParagraph paragraph18 = document.createParagraph();

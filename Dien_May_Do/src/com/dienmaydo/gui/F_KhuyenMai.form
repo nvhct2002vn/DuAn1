@@ -556,6 +556,9 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="dcBatDau">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
@@ -566,6 +569,9 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="dcKetThuc">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd&#xa;"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>

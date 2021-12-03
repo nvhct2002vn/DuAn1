@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -326,8 +327,12 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel7.setText("Thời gian bắt đầu giảm giá");
 
+        dcBatDau.setDateFormatString("yyyy-MM-dd");
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel8.setText("Thời gian kết thúc giảm giá");
+
+        dcKetThuc.setDateFormatString("yyyy-MM-dd\n");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel9.setText("Mô tả");
@@ -597,7 +602,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 
     private void cboHinhThucItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHinhThucItemStateChanged
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_cboHinhThucItemStateChanged
 
     private void cboApDungItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboApDungItemStateChanged
@@ -624,7 +629,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 
     private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
         // TODO add your handling code here:
-         int ad = cboApDung.getSelectedIndex();
+        int ad = cboApDung.getSelectedIndex();
         if (ad == 0) {
             updatetNSP();
         } else {
@@ -734,7 +739,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             for (KhuyenMai x : listKM) {
                 if (x.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                     model.addRow(new Object[]{
-                       x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), x.getGiamGia() + " %", x.getTenDM(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
+                        x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), x.getGiamGia() + " %", x.getTenDM(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
                     });
                 } else {
                     model.addRow(new Object[]{
@@ -756,7 +761,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             for (KhuyenMai x : listKM) {
                 if (x.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                     model.addRow(new Object[]{
-                        x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(),x.getGiamGia() + " %", x.getTenSP() + " " + x.getTenSPCT(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
+                        x.getMaKM(), x.getTenChuongTrinh(), x.getHinhThuc(), x.getGiamGia() + " %", x.getTenSP() + " " + x.getTenSPCT(), x.getThoiGianBatDau(), x.getThoiGianKetThuc(), x.isTrangThai(), x.getMoTa()
                     });
                 } else {
                     model.addRow(new Object[]{
@@ -884,10 +889,11 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
     }
 
     KhuyenMai getForm() {
-        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+        // SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
 //        String theDate = formater.format(dcBatDau.getDate());
         //DanhMuc dm = (DanhMuc) cboTenDanhMuc.getSelectedItem();
-        LocalDateTime timenow = LocalDateTime.now();
+
+        LocalDate timenow = LocalDate.now();
         KhuyenMai km = new KhuyenMai();
         km.setMaKM(txtMaKM.getText());
         km.setTenChuongTrinh(txtTenCT.getText());
@@ -895,12 +901,41 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         if (cboHinhThuc.getSelectedIndex() == 0) {
             km.setGiamGia(50);
         } else {
-            km.setGiamGia(Long.parseLong(txtGiamGia.getText().substring(0, txtGiamGia.getText().length()-4)));
+            km.setGiamGia(Long.parseLong(txtGiamGia.getText().substring(0, txtGiamGia.getText().length() - 4)));
         }
+        String hientai = timenow + "";
+        String BatDau = dcBatDau.getDate() + "";
+        String KetThuc = dcKetThuc.getDate() + "";
+//------------------------------------------trạng thái-------------------------------------------------------------------
+        int ngayhientai = (Integer.parseInt(hientai.substring(hientai.length() - 1, hientai.length())));
+        int ngaybatdau = (Integer.parseInt(hientai.substring(BatDau.length() - 1, hientai.length())));
+        int ngayketthuc = (Integer.parseInt(hientai.substring(KetThuc.length() - 1, hientai.length())));
 
+        int thanghientai = (Integer.parseInt(hientai.substring(hientai.length() - 4, hientai.length() - 2)));
+        int thangbatdau = (Integer.parseInt(hientai.substring(BatDau.length() - 4, hientai.length() - 2)));
+        int thangketthuc = (Integer.parseInt(hientai.substring(KetThuc.length() - 4, hientai.length() - 2)));
+
+        int namhientai = (Integer.parseInt(hientai.substring(0, hientai.length() - 6)));
+        int nambatdau = (Integer.parseInt(BatDau.substring(0, BatDau.length() - 6)));
+        int namketthuc = (Integer.parseInt(KetThuc.substring(0, KetThuc.length() - 6)));
+        if (thanghientai == thangbatdau && thanghientai == thangketthuc) {
+            if (ngayhientai >= ngaybatdau && ngayhientai <= ngayketthuc) {
+                km.setTrangThai(true);
+            } else {
+                km.setTrangThai(false);
+            }
+        }
+        if (namhientai == nambatdau && namhientai == namketthuc) {
+            if (thanghientai < thangbatdau && thanghientai < thangketthuc) {
+                km.setTrangThai(false); //nếu như tháng hiện tại chưa đến thắng bắt đầu và tháng kết thúc, thì mình có lên cho cập nhập vào đây để đế khi tháng hiện tại đến thì nó sẽ cập nhập lại và trở thành true? được không bạn nhở
+            }
+        }
+        if (namhientai > nambatdau && namhientai > namketthuc) {
+            km.setTrangThai(false);
+        }
         km.setThoiGianBatDau(dcBatDau.getDate());
         km.setThoiGianKetThuc(dcKetThuc.getDate());
-        
+
         km.setMoTa(txtMoTa.getText());
         return km;
     }
@@ -931,54 +966,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         }
     }
 
-////-------------Chức năng xóa của nhóm sp---------------------------------
-//    void deleteKMNSP() {
-//        row = tblDanhSachNSP.getSelectedRow();
-//        String maKM = (String) tblDanhSachNSP.getValueAt(row, 0);
-//        if (!Auth.isManager()) {
-//            Msgbox.alert(this, "Bạn không có quyền xóa nhóm sản phẩm này!!");
-//        } else if (row < 0) {
-//            Msgbox.alert(this, "Vui lòng chọn khuyến mại bạn muốn xóa!");
-//            return;
-//        } else if (Msgbox.confirm(this, "Bạn có chắc muốn xóa khuyến mại này?")) {
-//            try {
-//                kmSV.deleteData(maKM);
-//                fillToTableNSP();
-//                Msgbox.alert(this, "Xóa thành công!!");
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                Msgbox.alert(this, "Xóa thất bại!");
-//            }
-//        }
-//    }
-//
-////-------------Chức năng xóa của sp---------------------------------
-//    void deleteKMsp() {
-//        row = tblDanhSachSP.getSelectedRow();
-//        String maKM = (String) tblDanhSachSP.getValueAt(row, 0);
-//        if (!Auth.isManager()) {
-//            Msgbox.alert(this, "Bạn không có quyền xóa sản phẩm khuyến mại này!!");
-//        } else if (row < 0) {
-//            Msgbox.alert(this, "Vui lòng chọn khuyến mại bạn muốn xóa!");
-//            return;
-//        } else if (Msgbox.confirm(this, "Bạn có chắc muốn xóa khuyến mại này?")) {
-//            try {
-//                kmSV.deleteData(maKM);
-//                fillToTableSP();
-//                Msgbox.alert(this, "Xóa thành công!!");
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                Msgbox.alert(this, "Xóa thất bại!");
-//            }
-//        }
-//    }
-    void CapNhapkhuyenMai() {
-        KhuyenMai km = getForm();
-        kmSV.updateData(km);
-        for (int i = 0; i < tblDanhSachNSP.getRowCount(); i++) {
-
-        }
-    }
     void updatetNSP() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
@@ -995,6 +982,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             }
         }
     }
+
     void updatetSP() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
@@ -1011,8 +999,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             }
         }
     }
-//------------------------Điều kiện check--------------------------------------
 
+//------------------------Điều kiện check--------------------------------------
     boolean Validate() {
         try {
             if (txtMaKM.getText().trim().equals("")) {

@@ -43,6 +43,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
             + "				   JOIN dbo.DANHMUC ON DBO.SANPHAM.MADANHMUC = DBO.DANHMUC.MADANHMUC\n"
             + "				   where DBO.KHUYENMAI.MAKM = ?";
 
+    String SQL_UpdateTrangThai = "Update dbo.KhuyenMai set TrangThai = ? where MaKM = ?";
     @Override
     public void insertData(KhuyenMai entity) {
         try {
