@@ -8,18 +8,27 @@ package com.dienmaydo.entity;
  *
  * @author letha
  */
-public class DanhMucKhuyenMai {
-    private String MaDMKM;
+public class SanPhamChiTietKhuyenMai {
+    private String MaSPCTKM;
     private String MaKM;
-    private String MaDanhMuc;
+    private String MaSPCT;
 
-    public String getMaDMKM() {
-        return MaDMKM;
+    public String getMaSPCTKM() {
+        return MaSPCTKM;
     }
 
-    public void setMaDMKM(String MaDMKM) {
-        this.MaDMKM = MaDMKM;
+    public void setMaSPCTKM(String MaSPCTKM) {
+        this.MaSPCTKM = MaSPCTKM;
     }
+
+    public String getMaSPCT() {
+        return MaSPCT;
+    }
+
+    public void setMaSPCT(String MaSPCT) {
+        this.MaSPCT = MaSPCT;
+    }
+
 
     public String getMaKM() {
         return MaKM;
@@ -29,12 +38,6 @@ public class DanhMucKhuyenMai {
         this.MaKM = MaKM;
     }
 
-    public String getMaDanhMuc() {
-        return MaDanhMuc;
-    }
 
-    public void setMaDanhMuc(String MaDanhMuc) {
-        this.MaDanhMuc = MaDanhMuc;
-    }
     
 }
