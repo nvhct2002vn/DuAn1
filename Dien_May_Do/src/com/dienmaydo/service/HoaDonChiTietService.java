@@ -33,7 +33,7 @@ public class HoaDonChiTietService implements IHoaDonChiTietService<HoaDonChiTiet
                 hd.setTenSPCT(rs.getString("TENSPCT"));
                 hd.setMaHD(rs.getString("MAHD"));
                 hd.setSoLuong(rs.getInt("SOLUONG"));
-                hd.setDonGia(rs.getFloat("DONGIA"));
+                hd.setDonGia(rs.getLong("DONGIA"));
                 list.add(hd);
             }
             rs.getStatement().getConnection().close();

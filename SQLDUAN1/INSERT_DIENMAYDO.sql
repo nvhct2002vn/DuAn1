@@ -32,12 +32,12 @@ VALUES  ('DMKM01', 'KM001', 'DM001'),
 
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','123', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19',1,1),
-		('NV002','123', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21',1,1),
-		('NV003','123', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01',1,1),
-		('NV004','123', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 0, '1998-02-02',0,1),
-		('NV005','123', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03',0,1),
-		('NV006','123', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04',0,1)
+VALUES  ('NV001','123', N'Thiều Quang Vinh', N'Thanh Hóa', '09867655439', 1, '2002-08-19',1,1),
+		('NV002','123', N'Đỗ Tất Hòa', N'Thanh Hóa', '04573927342', 1, '2002-09-21',1,1),
+		('NV003','123', N'Nguyễn Viết Hiên', N'Bắc Ninh', '08756475834', 1, '2002-01-01',1,1),
+		('NV004','123', N'Lê Thị Ngọc Thúy', N'Hà Nội', '07645362734', 0, '1998-02-02',0,1),
+		('NV005','123', N'Lê Thành Vinh', N'Hà Nội', '01234567898', 1, '1998-03-03',0,1),
+		('NV006','123', N'Nguyễn Hồng Sơn', N'Hải Dương', '06743478596', 1, '2002-04-04',0,1)
 
 
 INSERT INTO XUATXU
@@ -62,15 +62,15 @@ VALUES  ('SP001','DM001', 1, N'Máy lạnh',1),
 
 INSERT INTO KHACHHANG
 VALUES	('KH00',N'Khách bán lẻ',1,'Not','Not',N'Not',1),
-		('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',1),
-		('KH02',N'Trinh Thi Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hoa',1),
-		('KH03',N'Hoang Hoa Tham',0,'056858758','tham234@gmail.com',N'Thanh Hoa',1),
-		('KH04',N'Nguyen Thi Hoa',1,'035685675','hoanguyen@gmail.com',N'Đa Nang',1),
-		('KH05',N'Tran Van Binh',0,'0385896758','binhgold123@gmail.com',N'Thai Nguyen',1),
-		('KH06',N'Do Thi Chanh',1,'0658456758','chanh987gmail.com',N'Ha Noi',1),
-		('KH07',N'Nguyen Van Quan',0,'0956856758','quan235@gmail.com',N'Bac Can',1),
-		('KH08',N'Do Hai Anh',0,'0658946758','haianh365@gmail.com',N'Thai Binh',1),
-		('KH09',N'Duong Huyen Trang',1,'0365494758','trang145@gmail.com',N'Bac Ninh',1)
+		('KH01',N'Võ Thị Sáu',1,'0389456758','sdhsa@gmail.com',N'Thanh Hóa',1),
+		('KH02',N'Trịnh Thị Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hóa',1),
+		('KH03',N'Hoàng Hoa Thám',0,'056858758','tham234@gmail.com',N'Thanh Hóa',1),
+		('KH04',N'Nguyễn Thị Hoa',1,'035685675','hoanguyen@gmail.com',N'Đà Nẵng',1),
+		('KH05',N'Trần Văn Bình',0,'0385896758','binhgold123@gmail.com',N'Thái Nguyên',1),
+		('KH06',N'Đỗ Thị Chanh',1,'0658456758','chanh987gmail.com',N'Hà Nội',1),
+		('KH07',N'Nguyễn Văn Quân',0,'0956856758','quan235@gmail.com',N'Bắc Cạn',1),
+		('KH08',N'Đỗ Thị Hải Anh',0,'0658946758','haianh365@gmail.com',N'Thái Bình',1),
+		('KH09',N'Đường Huyền Trang',1,'0365494758','trang145@gmail.com',N'Bắc Ninh',1)
 
 INSERT INTO TRANGTHAITHANHTOAN	
 VALUES ('TT001',N'Chờ thanh toán'),
