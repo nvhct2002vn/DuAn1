@@ -49,8 +49,8 @@ public class LichSuGiaoDichService implements ILichSuGiaoDichService<KhachHang, 
                 entity.setTenSP(rs.getString("TENSP"));
                 entity.setTenSPCT(rs.getString("TENSPCT"));
                 entity.setSoLuong(rs.getInt("SOLUONG"));
-                entity.setGiaBan(rs.getFloat("GIABAN"));
-                entity.setTongTien(rs.getFloat("TONGTIEN"));
+                entity.setGiaBan(rs.getLong("GIABAN"));
+                entity.setTongTien(rs.getLong("TONGTIEN"));
                 entity.setTrangThaiTT(rs.getString("TENTTTT"));
                 list.add(entity);
             }
