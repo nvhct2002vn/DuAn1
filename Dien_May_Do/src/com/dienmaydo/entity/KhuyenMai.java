@@ -12,13 +12,14 @@ import java.util.Date;
  */
 public class KhuyenMai {
 
-     private String MaKM;
+    private String MaKM;
+    private String MaSPCT;
     private String TenDM;
     private String HinhThuc;
     private String TenChuongTrinh;
     private Date ThoiGianBatDau;
     private Date ThoiGianKetThuc;
-    private float GiamGia;
+    private long GiamGia;
     private String TrangThai;
     private String MoTa;
     private String tenSP;
@@ -46,6 +47,14 @@ public class KhuyenMai {
 
     public void setMaKM(String MaKM) {
         this.MaKM = MaKM;
+    }
+
+    public String getMaSPCT() {
+        return MaSPCT;
+    }
+
+    public void setMaSPCT(String MaSPCT) {
+        this.MaSPCT = MaSPCT;
     }
 
     public String getHinhThuc() {
@@ -80,11 +89,11 @@ public class KhuyenMai {
         this.ThoiGianKetThuc = ThoiGianKetThuc;
     }
 
-    public float getGiamGia() {
+    public long getGiamGia() {
         return GiamGia;
     }
 
-    public void setGiamGia(float GiamGia) {
+    public void setGiamGia(long GiamGia) {
         this.GiamGia = GiamGia;
     }
 
