@@ -11,6 +11,7 @@ import com.dienmaydo.service.DanhMucService;
 import com.dienmaydo.service.HoaDonService;
 import com.dienmaydo.service.KhachHangService;
 import com.dienmaydo.service.ThongKeService;
+import com.dienmaydo.utils.XMoney;
 import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -131,13 +132,13 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(6, 6, 6))
         );
@@ -658,7 +659,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radNam)
                             .addComponent(radThang))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(27, 27, 27)
                         .addComponent(paneCardl, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(radTatCa))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -811,7 +812,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         try {
             List<Integer> list = hdsv.selectDoanhThu();
             for (Integer doanhThu : list) {
-                lblDoanhThu.setText(doanhThu.toString());
+                lblDoanhThu.setText(XMoney.themDauCham(doanhThu)); 
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -931,10 +932,10 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                 for (Object[] rows : list) {
                     model.addRow(rows);
                 }
-                cbbNam.setSelectedIndex(0);
-                txtTimKiem.setText("");
-            }
 
+            }
+            cbbNam.setSelectedIndex(0);
+            txtTimKiem.setText("");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -991,7 +992,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             if (cbbTheoThang.getSelectedIndex() == 0) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang1();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang1();
                 for (Integer hd : hoaDon) {
@@ -1008,7 +1009,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 1) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang2();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang2();
                 for (Integer hd : hoaDon) {
@@ -1025,7 +1026,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 2) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang3();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang3();
                 for (Integer hd : hoaDon) {
@@ -1042,7 +1043,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 3) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang4();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang4();
                 for (Integer hd : hoaDon) {
@@ -1059,7 +1060,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 4) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang5();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang5();
                 for (Integer hd : hoaDon) {
@@ -1076,7 +1077,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 5) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang6();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang6();
                 for (Integer hd : hoaDon) {
@@ -1093,7 +1094,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 6) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang7();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang7();
                 for (Integer hd : hoaDon) {
@@ -1110,7 +1111,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 7) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang8();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang8();
                 for (Integer hd : hoaDon) {
@@ -1127,7 +1128,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 8) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang9();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang9();
                 for (Integer hd : hoaDon) {
@@ -1144,7 +1145,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 9) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang10();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang10();
                 for (Integer hd : hoaDon) {
@@ -1161,7 +1162,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 10) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang11();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang11();
                 for (Integer hd : hoaDon) {
@@ -1178,7 +1179,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoThang.getSelectedIndex() == 11) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang12();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoThang12();
                 for (Integer hd : hoaDon) {
@@ -1203,7 +1204,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             if (cbbTheoNam.getSelectedIndex() == 0) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoNam2019();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoNam2019();
                 for (Integer hd : hoaDon) {
@@ -1220,7 +1221,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoNam.getSelectedIndex() == 1) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoNam2020();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoNam2020();
                 for (Integer hd : hoaDon) {
@@ -1237,7 +1238,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             } else if (cbbTheoNam.getSelectedIndex() == 2) {
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoNam2021();
                 for (Integer dt : doanhThu) {
-                    lblDoanhThu.setText(dt.toString());
+                    lblDoanhThu.setText(XMoney.themDauCham(dt));
                 }
                 List<Integer> hoaDon = tksv.selectHDTheoNam2021();
                 for (Integer hd : hoaDon) {
