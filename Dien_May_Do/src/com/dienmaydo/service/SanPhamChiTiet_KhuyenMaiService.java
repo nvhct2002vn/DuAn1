@@ -5,31 +5,31 @@
  */
 package com.dienmaydo.service;
 
-import com.dienmaydo.entity.DanhMucKhuyenMai;
-import com.dienmaydo.iservice.IDanhMuc_KhuyenMaiService;
+import com.dienmaydo.entity.SanPhamChiTietKhuyenMai;
 import com.dienmaydo.utils.JdbcHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import com.dienmaydo.iservice.ISanPhamChiTiet_KhuyenMaiService;
 
 /**
  *
  * @author MSI
  */
-public class DanhMuc_KhuyenMaiService implements IDanhMuc_KhuyenMaiService<DanhMucKhuyenMai, String>{
-    String INSERT_SQL = "INSERT INTO DBO.DANHMUC_KHUYENMAI(MADMKM,MAKM,MADANHMUC) VALUES(?,?,?)";
-    String Update_SQL = "Update DBO.DANHMUC_KHUYENMAI SET MAKM =? , MADANHMUC =? WHERE MADMKM =?";
-    String DELTE_SEL ="DELETE FROM DBO.DANHMUC_KHUYENMAI WHERE MADMKM=?";
-    String SELECT_ALL_SQL="SELECT*FROM DBO.DANHMUC_KHUYENMAI";
-    String SELECT_BY_ID="SELECT*FROM DBO.DANHMUC_KHUYENMAI WHERE MADMKM=?";
+public class SanPhamChiTiet_KhuyenMaiService implements ISanPhamChiTiet_KhuyenMaiService<SanPhamChiTietKhuyenMai, String>{
+    String INSERT_SQL = "INSERT INTO DBO.SANPHAMCHITIET_KHUYENMAI(MASPCTKM,MAKM,MASPCT) VALUES(?,?,?)";
+    String Update_SQL = "Update DBO.SANPHAMCHITIET_KHUYENMAI SET MAKM =? , MASPCT =? WHERE MASPCTKM =?";
+    String DELTE_SEL ="DELETE FROM DBO.SANPHAMCHITIET_KHUYENMAI WHERE MASPCTKM=?";
+    String SELECT_ALL_SQL="SELECT*FROM DBO.SANPHAMCHITIET_KHUYENMAI";
+    String SELECT_BY_ID="SELECT*FROM DBO.SANPHAMCHITIET_KHUYENMAI WHERE MAspctkm=?";
 
     @Override
-    public void insertData(DanhMucKhuyenMai entity) {
+    public void insertData(SanPhamChiTietKhuyenMai entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void updateData(DanhMucKhuyenMai entity) {
+    public void updateData(SanPhamChiTietKhuyenMai entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,25 +39,25 @@ public class DanhMuc_KhuyenMaiService implements IDanhMuc_KhuyenMaiService<DanhM
     }
 
     @Override
-    public List<DanhMucKhuyenMai> selectAll() {
-          return this.selectBySQL(SELECT_ALL_SQL);
+    public List<SanPhamChiTietKhuyenMai> selectAll() {
+         return this.selectBySQL(SELECT_ALL_SQL);
     }
 
     @Override
-    public DanhMucKhuyenMai selectByID(String key) {
+    public SanPhamChiTietKhuyenMai selectByID(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<DanhMucKhuyenMai> selectBySQL(String sql, Object... args) {
-         List<DanhMucKhuyenMai> list = new ArrayList<>();
+    public List<SanPhamChiTietKhuyenMai> selectBySQL(String sql, Object... args) {
+         List<SanPhamChiTietKhuyenMai> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
             while (rs.next()) {
-                DanhMucKhuyenMai entity = new DanhMucKhuyenMai();
-                entity.setMaDMKM(rs.getString("MADMKM"));
+                SanPhamChiTietKhuyenMai entity = new SanPhamChiTietKhuyenMai();
+                entity.setMaSPCTKM(rs.getString("MASPCTKM"));
                 entity.setMaKM(rs.getString("MAKM"));
-                entity.setMaDanhMuc(rs.getString("MADANHMUC"));
+                entity.setMaSPCT(rs.getString("MASPCT"));
                 list.add(entity);
             }
             return list;
@@ -66,6 +66,8 @@ public class DanhMuc_KhuyenMaiService implements IDanhMuc_KhuyenMaiService<DanhM
             throw new RuntimeException(e);
         }
     }
+
+   
 
    
 }

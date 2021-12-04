@@ -567,7 +567,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
         List<HoaDon> list = hdService.selectAll();
         for (HoaDon x : list) {
             model.addRow(new Object[]{
-                x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                 XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
             });
         }
@@ -599,7 +599,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByHinhThuc(key);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -625,7 +625,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByHinhThucGiao(key);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -651,7 +651,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByTrangThai(key);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -676,7 +676,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selctByThangNam(cboThang.getSelectedItem().toString(), cboNam.getSelectedItem().toString());
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -692,7 +692,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
                 List<HoaDon> list = hdService.selctByThang(cboThang.getSelectedItem().toString());
                 for (HoaDon x : list) {
                     model.addRow(new Object[]{
-                        x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                        x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                         XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                     });
                 }
@@ -708,7 +708,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
                 List<HoaDon> list = hdService.selctByNam(cboNam.getSelectedItem().toString());
                 for (HoaDon x : list) {
                     model.addRow(new Object[]{
-                        x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                        x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                         XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                     });
                 }
@@ -737,7 +737,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -758,7 +758,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -779,7 +779,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -800,7 +800,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -821,7 +821,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -842,7 +842,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selectByTongTien(key1, key2);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }
@@ -860,7 +860,7 @@ public class F_HoaDon extends javax.swing.JInternalFrame {
             List<HoaDon> list = hdService.selctByTongTienMax(key);
             for (HoaDon x : list) {
                 model.addRow(new Object[]{
-                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(row) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
+                    x.getMaHD(), XMoney.themDauCham(x.getTongTien()) + " VNĐ", XMoney.themDauCham(x.getTienThuaTraKhach()) + " VNĐ", x.getTenHTTT(), x.getTenHTGH(),
                     XDate.toString(x.getNgayLap()), x.getTenTTTT(), x.getMaNV(), x.getTenNV(), x.getMaKH(), x.getTenKH(), x.getGhiChu()
                 });
             }

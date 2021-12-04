@@ -35,7 +35,7 @@ public class NewJInternalFrame1 extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 743, Short.MAX_VALUE)
+            .addGap(0, 746, Short.MAX_VALUE)
         );
 
         pack();

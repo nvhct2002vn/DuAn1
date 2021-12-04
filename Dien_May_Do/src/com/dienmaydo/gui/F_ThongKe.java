@@ -6,10 +6,12 @@
 package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.HoaDon;
+import com.dienmaydo.entity.KhachHang;
 import com.dienmaydo.service.DanhMucService;
 import com.dienmaydo.service.HoaDonService;
 import com.dienmaydo.service.KhachHangService;
 import com.dienmaydo.service.ThongKeService;
+import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -21,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class F_ThongKe extends javax.swing.JInternalFrame {
 
+    CardLayout cardCbb;
+
     /**
      * Creates new form F_ThongKe
      */
@@ -31,14 +35,14 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         setResizable(false);
 
+        radTatCa.setSelected(true);
+
         fillTable();
+        fillTable2();
         fillCbbNamTK();
         fillCbbDanhMuc();
+        fillCbbHangHuy();
 
-        doanhThu();
-        soHoaDon();
-        soHangHuy();
-        tongKH();
     }
 
     /**
@@ -68,10 +72,6 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         lblKhachHang = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        radThang = new javax.swing.JRadioButton();
-        radNam = new javax.swing.JRadioButton();
-        radTatCa = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel8 = new javax.swing.JPanel();
@@ -90,6 +90,12 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         cbbNamHangHuy = new javax.swing.JComboBox<>();
         jPanel16 = new javax.swing.JPanel();
         txtTimKiemHoaDonHuy = new javax.swing.JTextField();
+        radTatCa = new javax.swing.JRadioButton();
+        radThang = new javax.swing.JRadioButton();
+        radNam = new javax.swing.JRadioButton();
+        jPanel5 = new javax.swing.JPanel();
+        cbbTheoNam = new javax.swing.JComboBox<>();
+        cbbTheoThang = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(1146, 768));
 
@@ -258,46 +264,6 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         gridBagConstraints.weighty = 10.0;
         jPanel2.add(jPanel14, gridBagConstraints);
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-
-        radThang.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(radThang);
-        radThang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        radThang.setText("Theo Tháng");
-
-        radNam.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(radNam);
-        radNam.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        radNam.setText("Theo Năm");
-
-        radTatCa.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(radTatCa);
-        radTatCa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        radTatCa.setText("Tất Cả");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(radTatCa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(radThang)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radNam)
-                .addGap(427, 427, 427))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radThang)
-                    .addComponent(radNam)
-                    .addComponent(radTatCa))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -370,6 +336,14 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         txtTimKiem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -438,8 +412,8 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     HÀNG HÓA     ", jPanel8);
@@ -468,6 +442,11 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Năm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         cbbNamHangHuy.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbbNamHangHuy.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbNamHangHuyItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -489,6 +468,11 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         txtTimKiemHoaDonHuy.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTimKiemHoaDonHuy.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemHoaDonHuyKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -529,8 +513,8 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     HÀNG BỊ HỦY     ", jPanel9);
@@ -544,25 +528,93 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        radTatCa.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(radTatCa);
+        radTatCa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        radTatCa.setText("Tất Cả");
+        radTatCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radTatCaActionPerformed(evt);
+            }
+        });
+
+        radThang.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(radThang);
+        radThang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        radThang.setText("Theo Tháng");
+        radThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radThangActionPerformed(evt);
+            }
+        });
+
+        radNam.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(radNam);
+        radNam.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        radNam.setText("Theo Năm");
+        radNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radNamActionPerformed(evt);
+            }
+        });
+
+        jPanel5.setLayout(new java.awt.CardLayout());
+
+        cbbTheoNam.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbbTheoNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm 2019", "Năm 2020", "Năm 2021" }));
+        cbbTheoNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTheoNamActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cbbTheoNam, "card2");
+
+        cbbTheoThang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbbTheoThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" }));
+        cbbTheoThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTheoThangActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cbbTheoThang, "card3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radNam)
+                            .addComponent(radThang))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(radTatCa)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(radThang)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radNam))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -581,12 +633,12 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbbNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbNamActionPerformed
-        
+
     }//GEN-LAST:event_cbbNamActionPerformed
 
 
     private void cbbDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDanhMucActionPerformed
-        
+
     }//GEN-LAST:event_cbbDanhMucActionPerformed
 
     private void cbbNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbNamItemStateChanged
@@ -597,6 +649,57 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         fillTheoDM();
     }//GEN-LAST:event_cbbDanhMucItemStateChanged
 
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        timKiemSP();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemKeyPressed
+
+    private void cbbNamHangHuyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbNamHangHuyItemStateChanged
+        fillTableHangHuy();
+    }//GEN-LAST:event_cbbNamHangHuyItemStateChanged
+
+    private void txtTimKiemHoaDonHuyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemHoaDonHuyKeyReleased
+        timKiemHangHuy();
+    }//GEN-LAST:event_txtTimKiemHoaDonHuyKeyReleased
+
+    private void radNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNamActionPerformed
+        if (radNam.isSelected()) {
+            cardCbb.show(cbbTheoNam, "card2");
+        } else {
+            cardCbb.removeLayoutComponent(cbbTheoNam);
+        }
+    }//GEN-LAST:event_radNamActionPerformed
+
+    private void radThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radThangActionPerformed
+        if (radThang.isSelected()) {
+            cardCbb.show(cbbTheoThang, "card3");
+        } else {
+            cardCbb.removeLayoutComponent(cbbTheoThang);
+        }
+    }//GEN-LAST:event_radThangActionPerformed
+
+    private void radTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radTatCaActionPerformed
+        if (radTatCa.isSelected()) {
+            doanhThu();
+            soHoaDon();
+            soHangHuy();
+            tongKH();
+            cardCbb.removeLayoutComponent(cbbTheoNam);
+            cardCbb.removeLayoutComponent(cbbTheoThang);
+        }
+    }//GEN-LAST:event_radTatCaActionPerformed
+
+    private void cbbTheoThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTheoThangActionPerformed
+        fillCbbTheoThang();
+    }//GEN-LAST:event_cbbTheoThangActionPerformed
+
+    private void cbbTheoNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTheoNamActionPerformed
+        fillCbbTheoNam();
+    }//GEN-LAST:event_cbbTheoNamActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -604,6 +707,8 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbbDanhMuc;
     private javax.swing.JComboBox<String> cbbNam;
     private javax.swing.JComboBox<String> cbbNamHangHuy;
+    private javax.swing.JComboBox<String> cbbTheoNam;
+    private javax.swing.JComboBox<String> cbbTheoThang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -620,8 +725,8 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -660,7 +765,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         try {
             List<Integer> list = hdsv.selectSoHoaDon();
             for (Integer hoaDon : list) {
-                lblHoaDon.setText(hoaDon + "");
+                lblHoaDon.setText(hoaDon.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -671,7 +776,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         try {
             List<Integer> list = hdsv.selectSoHangHuy();
             for (Integer soHH : list) {
-                lblHangHuy.setText(soHH + "");
+                lblHangHuy.setText(soHH.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -682,7 +787,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         try {
             List<Integer> list = khsv.selectTongKhachHang();
             for (Integer khachHang : list) {
-                lblKhachHang.setText(khachHang + "");
+                lblKhachHang.setText(khachHang.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -696,6 +801,16 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         for (Object[] tk : list) {
             model.addRow(tk);
         }
+    }
+
+    public void fillTable2() {
+        DefaultTableModel model = (DefaultTableModel) tableHangHuy.getModel();
+        model.setRowCount(0);
+        List<Object[]> list = tksv.getTableHangHuy();
+        for (Object[] hh : list) {
+            model.addRow(hh);
+        }
+
     }
 
     public void fillCbbNamTK() {
@@ -716,33 +831,372 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         }
     }
 
-    public void fillTableTheoNam() {
-        if (cbbNam.getSelectedItem() == null) {
-            fillTable();
-        } else if (cbbNam.getSelectedIndex() > 0) {
-            DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
-            model.setRowCount(0);
-            int nam = Integer.parseInt(cbbNam.getSelectedItem().toString());
-            List<Object[]> list = tksv.getThongKe(nam);
-            for (Object[] row : list) {
-                model.addRow(row);
-            }
+    public void fillCbbHangHuy() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbNamHangHuy.getModel();
+        model.addElement(null);
+        List<Integer> list = hdsv.selectYears();
+        for (Integer year : list) {
+            model.addElement(year);
         }
-        cbbDanhMuc.setSelectedIndex(0);
+    }
+
+    public void fillTableTheoNam() {
+        try {
+            if (cbbNam.getSelectedItem() == null) {
+                fillTable();
+            } else if (cbbNam.getSelectedIndex() > 0) {
+                DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
+                model.setRowCount(0);
+                int nam = Integer.parseInt(cbbNam.getSelectedItem().toString());
+                List<Object[]> list = tksv.getThongKe(nam);
+                for (Object[] row : list) {
+                    model.addRow(row);
+                }
+                cbbDanhMuc.setSelectedIndex(0);
+                txtTimKiem.setText("");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void fillTheoDM() {
-        if (cbbDanhMuc.getSelectedItem() == null) {
+        try {
+            if (cbbDanhMuc.getSelectedItem() == null) {
+                fillTable();
+            } else if (cbbDanhMuc.getSelectedIndex() > 0) {
+                DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
+                model.setRowCount(0);
+                String danhMuc = (String) cbbDanhMuc.getSelectedItem();
+                List<Object[]> list = tksv.getThongKeTheoDM(danhMuc);
+                for (Object[] rows : list) {
+                    model.addRow(rows);
+                }
+                cbbNam.setSelectedIndex(0);
+                txtTimKiem.setText("");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void timKiemSP() {
+        if (txtTimKiem.getText().equalsIgnoreCase("")) {
             fillTable();
-        } else if (cbbDanhMuc.getSelectedIndex() > 0) {
+        } else {
             DefaultTableModel model = (DefaultTableModel) tableTTTK.getModel();
             model.setRowCount(0);
-            String danhMuc = (String) cbbDanhMuc.getSelectedItem();
-            List<Object[]> list = tksv.getThongKeTheoDM(danhMuc);
-            for (Object[] rows : list) {
-                model.addRow(rows);
+            String tim = txtTimKiem.getText();
+            List<Object[]> list = tksv.selectByTimKiem(tim);
+            for (Object[] rowTim : list) {
+                model.addRow(rowTim);
             }
         }
         cbbNam.setSelectedIndex(0);
+        cbbDanhMuc.setSelectedIndex(0);
+    }
+
+    public void fillTableHangHuy() {
+        if (cbbNamHangHuy.getSelectedItem() == null) {
+            fillTable2();
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tableHangHuy.getModel();
+            model.setRowCount(0);
+            int namHuy = Integer.parseInt(cbbNamHangHuy.getSelectedItem().toString());
+            List<Object[]> list = tksv.getHangHuy(namHuy);
+            for (Object[] hh : list) {
+                model.addRow(hh);
+            }
+        }
+        txtTimKiemHoaDonHuy.setText("");
+    }
+
+    public void timKiemHangHuy() {
+        if (txtTimKiemHoaDonHuy.getText().equalsIgnoreCase("")) {
+            fillTable2();
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tableHangHuy.getModel();
+            model.setRowCount(0);
+            String tim = txtTimKiemHoaDonHuy.getText();
+            List<Object[]> list = tksv.selectTimKiemToHangHuy(tim);
+            for (Object[] hhTim : list) {
+                model.addRow(hhTim);
+            }
+        }
+        cbbNamHangHuy.setSelectedIndex(0);
+    }
+
+    public void fillCbbTheoThang() {
+        try {
+            if (cbbTheoThang.getSelectedIndex() == 0) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang1();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang1();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang1();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang1();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 1) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang2();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang2();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang2();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang2();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 2) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang3();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang3();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang3();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang3();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 3) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang4();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang4();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang4();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang4();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 4) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang5();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang5();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang5();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang5();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 5) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang6();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang6();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang6();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang6();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 6) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang7();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang7();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang7();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang7();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 7) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang8();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang8();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang8();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang8();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 8) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang9();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang9();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang9();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang9();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 9) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang10();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang10();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang10();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang10();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 10) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang11();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang11();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang11();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang11();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoThang.getSelectedIndex() == 11) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang12();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoThang12();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang12();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoThang12();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void fillCbbTheoNam() {
+        try {
+            if (cbbTheoNam.getSelectedIndex() == 0) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoNam2019();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoNam2019();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoNam2019();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoNam2019();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoNam.getSelectedIndex() == 1) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoNam2020();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoNam2020();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoNam2020();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoNam2020();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            } else if (cbbTheoNam.getSelectedIndex() == 2) {
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoNam2021();
+                for (Integer dt : doanhThu) {
+                    lblDoanhThu.setText(dt.toString());
+                }
+                List<Integer> hoaDon = tksv.selectHDTheoNam2021();
+                for (Integer hd : hoaDon) {
+                    lblHoaDon.setText(hd.toString());
+                }
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoNam2021();
+                for (Integer hdHuy : hoaDonHuy) {
+                    lblHangHuy.setText(hdHuy.toString());
+                }
+                List<Integer> khachHang = tksv.selectKHTheoNam2021();
+                for (Integer kh : khachHang) {
+                    lblKhachHang.setText(kh.toString());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

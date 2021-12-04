@@ -10,22 +10,22 @@ import com.dienmaydo.service.NhanVienService;
 import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
-import javax.swing.ImageIcon;
 
 /**
  *
  * @author DO TAT HOA
  */
-public class TaiKhoanJframe extends javax.swing.JFrame {
+public class TaiKhoanJDiaLog extends javax.swing.JDialog {
 
     NhanVienService nvService = new NhanVienService();
-
+    private Dashboard dashboard;
     /**
-     * Creates new form TaiKhoanJframe
+     * Creates new form TaiKhoanJDiaLog
      */
-    public TaiKhoanJframe() {
+    public TaiKhoanJDiaLog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        setIconImage(new ImageIcon("./logos/Logo.jpg").getImage());
+
         setLocationRelativeTo(this);
         setResizable(false);
 
@@ -34,6 +34,8 @@ public class TaiKhoanJframe extends javax.swing.JFrame {
         } else {
             Msgbox.alert(this, "Vui lòng đăng nhập trước khi dùng tính năng này");
         }
+        
+        dashboard = (Dashboard) parent;
     }
 
     /**
@@ -74,7 +76,7 @@ public class TaiKhoanJframe extends javax.swing.JFrame {
         btnHuyBo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("TÀI KHOẢN");
+        setTitle("THÔNG TIN TÀI KHOẢN");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -245,9 +247,6 @@ public class TaiKhoanJframe extends javax.swing.JFrame {
                             .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHuyBo, btnXacNhan});
-
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -303,6 +302,19 @@ public class TaiKhoanJframe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+        if (Msgbox.confirm(this, "Bạn muốn đăng xuất?")) {
+            Auth.clear();
+            if (F_BanHang.webcam != null) {
+                F_BanHang.webcam.close();
+            }
+            dashboard.dispose();
+            new Dashboard().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
         doiMatKhau();
@@ -314,13 +326,6 @@ public class TaiKhoanJframe extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_btnHuyBoActionPerformed
-
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        // TODO add your handling code here:
-        if (Msgbox.confirm(this, "Bạn muốn đăng xuất?")) {
-            Auth.clear();
-        }
-    }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,20 +344,27 @@ public class TaiKhoanJframe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanJDiaLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanJDiaLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanJDiaLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanJDiaLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaiKhoanJframe().setVisible(true);
+                TaiKhoanJDiaLog dialog = new TaiKhoanJDiaLog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

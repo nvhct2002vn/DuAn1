@@ -2,11 +2,11 @@
 GO
 
 INSERT INTO KHUYENMAI
-VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,N'CÒN ÁP DỤNG',N'No Mô Tả'),
-		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,N'CÒN ÁP DỤNG',N'No Mô Tả')
+VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, 1,N'No Mô Tả'),
+		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,1,N'No Mô Tả'),
+		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,1,N'No Mô Tả'),
+		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,1,N'No Mô Tả'),
+		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,1,N'No Mô Tả')
 
 INSERT INTO DANHMUC
 VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
@@ -21,12 +21,12 @@ VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
 
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','123', N'Thieu Quang Vinh', N'Thanh Hoa', '09867655439', 1, '2002-08-19',1,1),
-		('NV002','123', N'Do Tat Hoa', N'Thanh Hoa', '04573927342', 1, '2002-09-21',1,1),
-		('NV003','123', N'Nguyen Viet Hien', N'Bac Ninh', '08756475834', 1, '2002-01-01',1,1),
-		('NV004','123', N'Le Thi Ngoc Thuy', N'Ha Noi', '07645362734', 0, '1998-02-02',0,1),
-		('NV005','123', N'Le Thanh Vinh', N'Ha Noi', '01234567898', 1, '1998-03-03',0,1),
-		('NV006','123', N'Nguyen Hong Son', N'Hai Duong', '06743478596', 1, '2002-04-04',0,1)
+VALUES  ('NV001','123', N'Thiều Quang Vinh', N'Thanh Hóa', '09867655439', 1, '2002-08-19',1,1),
+		('NV002','123', N'Đỗ Tất Hòa', N'Thanh Hóa', '04573927342', 1, '2002-09-21',1,1),
+		('NV003','123', N'Nguyễn Viết Hiên', N'Bắc Ninh', '08756475834', 1, '2002-01-01',1,1),
+		('NV004','123', N'Lê Thị Ngọc Thúy', N'Hà Nội', '07645362734', 0, '1998-02-02',0,1),
+		('NV005','123', N'Lê Thành Vinh', N'Hà Nội', '01234567898', 1, '1998-03-03',0,1),
+		('NV006','123', N'Nguyễn Hồng Sơn', N'Hải Dương', '06743478596', 1, '2002-04-04',0,1)
 
 
 INSERT INTO XUATXU
@@ -51,15 +51,15 @@ VALUES  ('SP001','DM001', 1, N'Máy lạnh',1),
 
 INSERT INTO KHACHHANG
 VALUES	('KH00',N'Khách bán lẻ',1,'Not','Not',N'Not',1),
-		('KH01',N'Vo Thi Sau',1,'0389456758','sdhsa@gmail.com',N'Thanh Hoa',1),
-		('KH02',N'Trinh Thi Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hoa',1),
-		('KH03',N'Hoang Hoa Tham',0,'056858758','tham234@gmail.com',N'Thanh Hoa',1),
-		('KH04',N'Nguyen Thi Hoa',1,'035685675','hoanguyen@gmail.com',N'Đa Nang',1),
-		('KH05',N'Tran Van Binh',0,'0385896758','binhgold123@gmail.com',N'Thai Nguyen',1),
-		('KH06',N'Do Thi Chanh',1,'0658456758','chanh987gmail.com',N'Ha Noi',1),
-		('KH07',N'Nguyen Van Quan',0,'0956856758','quan235@gmail.com',N'Bac Can',1),
-		('KH08',N'Do Hai Anh',0,'0658946758','haianh365@gmail.com',N'Thai Binh',1),
-		('KH09',N'Duong Huyen Trang',1,'0365494758','trang145@gmail.com',N'Bac Ninh',1)
+		('KH01',N'Võ Thị Sáu',1,'0389456758','sdhsa@gmail.com',N'Thanh Hóa',1),
+		('KH02',N'Trịnh Thị Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hóa',1),
+		('KH03',N'Hoàng Hoa Thám',0,'056858758','tham234@gmail.com',N'Thanh Hóa',1),
+		('KH04',N'Nguyễn Thị Hoa',1,'035685675','hoanguyen@gmail.com',N'Đà Nẵng',1),
+		('KH05',N'Trần Văn Bình',0,'0385896758','binhgold123@gmail.com',N'Thái Nguyên',1),
+		('KH06',N'Đỗ Thị Chanh',1,'0658456758','chanh987gmail.com',N'Hà Nội',1),
+		('KH07',N'Nguyễn Văn Quân',0,'0956856758','quan235@gmail.com',N'Bắc Cạn',1),
+		('KH08',N'Đỗ Thị Hải Anh',0,'0658946758','haianh365@gmail.com',N'Thái Bình',1),
+		('KH09',N'Đường Huyền Trang',1,'0365494758','trang145@gmail.com',N'Bắc Ninh',1)
 
 INSERT INTO TRANGTHAITHANHTOAN	
 VALUES ('TT001',N'Chờ thanh toán'),
@@ -76,15 +76,15 @@ VALUES ('GH001',N'Bán trực tiếp'),
 	   ('GH002',N'Khác')
 
 INSERT INTO HOADON
-VALUES  ('NV001','KH01','TT002','HT001','GH001','2021-01-01',100,7200000,N'NOT'),
-		('NV002','KH02','TT002','HT001','GH001','2021-02-02',100,1400000,N'NOT'),
-		('NV003','KH03','TT002','HT002','GH001','2020-03-03',100,7500000,N'NOT'),
-		('NV004','KH04','TT002','HT001','GH001','2021-04-04',100,4750000,N'NOT'),
-		('NV005','KH05','TT002','HT001','GH001','2021-05-05',100,8400000,N'NOT'),
-		('NV006','KH06','TT002','HT002','GH001','2020-06-06',100,4550000,N'NOT'),
-		('NV001','KH07','TT002','HT001','GH001','2021-07-07',100,2520000,N'NOT'),
-		('NV002','KH08','TT002','HT003','GH001','2019-08-08',100,105000,N'NOT'),
-		('NV003','KH09','TT002','HT001','GH001','2020-09-09',100,750000,N'NOT')
+VALUES  ('NV001','KH01','TT002','HT001','GH001','2021-01-01',10000,7200000,N'NOT'),
+		('NV002','KH02','TT002','HT001','GH001','2021-02-02',10000,1400000,N'NOT'),
+		('NV003','KH03','TT002','HT002','GH001','2020-03-03',10000,7500000,N'NOT'),
+		('NV004','KH04','TT002','HT001','GH001','2021-04-04',10000,4750000,N'NOT'),
+		('NV005','KH05','TT002','HT001','GH001','2021-05-05',10000,8400000,N'NOT'),
+		('NV006','KH06','TT002','HT002','GH001','2020-06-06',10000,4550000,N'NOT'),
+		('NV001','KH07','TT002','HT001','GH001','2021-07-07',10000,2520000,N'NOT'),
+		('NV002','KH08','TT002','HT003','GH001','2019-08-08',10000,105000,N'NOT'),
+		('NV003','KH09','TT002','HT001','GH001','2020-09-09',10000,750000,N'NOT')
 
 
 INSERT INTO MAUSAC
@@ -104,7 +104,8 @@ VALUES  ('MS001', N'Trắng đen'),
 
 INSERT INTO DONVITINH
 VALUES  ('KG', N'Kilogam'),
-		('CM', N'Centimet')
+		('CM', N'Centimet'),
+		('G', N'Gam')
 
 INSERT INTO KICHTHUOC
 VALUES  ('KT001', 'CM', 74, 25.5, 48.2),
@@ -194,15 +195,16 @@ VALUES  ('SPCT01', 'IME001', 'SP001', 'MS004', 'KT001', 'CL001', 'TT001', 'KL001
 		('SPCT27', 'IME009', 'SP009', 'MS004', 'KT009', 'CL003', 'TT009', 'KL009',N'SM45E SBS VN', 10, 0, 2890000, 3690000,1, N'No Mô Tả')
 
 INSERT INTO SANPHAMCHITIET_KHUYENMAI
-VALUES  ('SPKM01', 'KM001', 'SPCT01'),
-		('SPKM02', 'KM002', 'SPCT02'),
-		('SPKM03', 'KM003', 'SPCT03'),
-		('SPKM04', 'KM004', 'SPCT04'),
-		('SPKM05', 'KM005', 'SPCT05'),
-		('SPKM06', 'KM005', 'SPCT06'),
-		('SPKM07', 'KM004', 'SPCT07'),
-		('SPKM08', 'KM003', 'SPCT08'),
-		('SPKM09', 'KM002', 'SPCT09')
+
+VALUES  ('KM001', 'SPCT01'),
+		('KM002', 'SPCT02'),
+		('KM003', 'SPCT03'),
+		('KM004', 'SPCT04'),
+		('KM005', 'SPCT05'),
+		('KM005', 'SPCT06'),
+		('KM004', 'SPCT07'),
+		('KM003', 'SPCT08'),
+		('KM002', 'SPCT09')
 INSERT INTO HOADONCHITIET
 VALUES  ('SPCT01', 1, 6, 1200000),
 		('SPCT02', 2, 7, 200000),

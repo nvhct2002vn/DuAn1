@@ -18,8 +18,8 @@ public class KhuyenMai {
     private String TenChuongTrinh;
     private Date ThoiGianBatDau;
     private Date ThoiGianKetThuc;
-    private float GiamGia;
-    private String TrangThai;
+    private long GiamGia;
+    private boolean TrangThai;
     private String MoTa;
     private String tenSP;
     private String TenSPCT;
@@ -80,21 +80,24 @@ public class KhuyenMai {
         this.ThoiGianKetThuc = ThoiGianKetThuc;
     }
 
-    public float getGiamGia() {
+    public long getGiamGia() {
         return GiamGia;
     }
 
-    public void setGiamGia(float GiamGia) {
+    public void setGiamGia(long GiamGia) {
         this.GiamGia = GiamGia;
     }
 
-    public String getTrangThai() {
+
+    public boolean isTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(String TrangThai) {
+    public void setTrangThai(boolean TrangThai) {
         this.TrangThai = TrangThai;
     }
+
+
 
     public String getMoTa() {
         return MoTa;
