@@ -26,7 +26,6 @@ public class XDate {
     public static String toString(Date date) {
         return formater.format(date);
     }
-
     public static Date addDays(Date date, long days) {
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 100);
         return date;
