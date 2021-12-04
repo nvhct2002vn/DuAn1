@@ -13,7 +13,7 @@ import java.util.Date;
  * @author MSI
  */
 public class XDate {
-     static SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+    public static SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
 
     public static Date toDate(String date) {
         try {

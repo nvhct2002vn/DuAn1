@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
 
-    String INSERT_SQL = "insert into dbo.KHUYENMAI(MAKM, TENCT,HINHTHUC,BATDAU,KETTHUC,GIAMGIA,TRANGTHAI,MOTA) VALUES(?,?,?,?,?,?,?,?)"
-            + "insert into dbo.SANPHAMCHITIET_KHUYENMAI values(?,?)";
+    String INSERT_SQL = "insert into dbo.KHUYENMAI(MAKM, TENCT,HINHTHUC,BATDAU,KETTHUC,GIAMGIA,TRANGTHAI,MOTA) VALUES(?,?,?,?,?,?,?,?)";
+    String INSERT_BANGCHUNG = "insert into dbo.SANPHAMCHITIET_KHUYENMAI values(?,?)";
     String UPDATE_SQL = "UPDATE dbo.KHUYENMAI SET TENCT = ? , HINHTHUC = ? , BATDAU = ? , KETTHUC = ? , GIAMGIA = ? , TRANGTHAI = ? , MOTA = ? WHERE MAKM = ?";
     String DELETE_SQL = "BEGIN TRY\n"
             + "	BEGIN TRAN\n"
@@ -30,7 +30,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
             + "BEGIN CATCH\n"
             + "	ROLLBACK TRAN\n"
             + "END CATCH";
-    String SELECT_ALL_SQL = "SELECT dbo.KHUYENMAI.MAKM , TENCT,HINHTHUC,GIAMGIA ,dbo.SANPHAMCHITIET.TENSPCT,dbo.SANPHAM.TENSP,dbo.DANHMUC.TENDM,BATDAU,KETTHUC,KHUYENMAI.TRANGTHAI,KHUYENMAI.MOTA\n"
+    String SELECT_ALL_SQL = "SELECT dbo.KHUYENMAI.MAKM ,dbo.SANPHAMCHITIET.MASPCT, TENCT,HINHTHUC,GIAMGIA ,dbo.SANPHAMCHITIET.TENSPCT,dbo.SANPHAM.TENSP,dbo.DANHMUC.TENDM,BATDAU,KETTHUC,KHUYENMAI.TRANGTHAI,KHUYENMAI.MOTA\n"
             + "from DBO.KHUYENMAI JOIN DBO.SANPHAMCHITIET_KHUYENMAI ON DBO.KHUYENMAI.MAKM = DBO.SANPHAMCHITIET_KHUYENMAI.MAKM\n"
             + "				   JOIN DBO.SANPHAMCHITIET ON DBO.SANPHAMCHITIET_KHUYENMAI.MASPCT = DBO.SANPHAMCHITIET.MASPCT\n"
             + "				   JOIN dbo.SANPHAM ON dbo.SANPHAMCHITIET.MASP = dbo.SANPHAM.MASP\n"
@@ -48,17 +48,25 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
     public void insertData(KhuyenMai entity) {
         try {
             JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaKM(), entity.getTenChuongTrinh(), entity.getHinhThuc(), entity.getThoiGianBatDau(), entity.getThoiGianKetThuc(),
-                    entity.getGiamGia(), entity.isTrangThai(), entity.getMoTa());
+                    entity.getGiamGia(), entity.getTrangThai(), entity.getMoTa());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void insertBangChung(KhuyenMai entity){
+        try {
+            JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaKM(), entity.getMaSPCT());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     @Override
     public void updateData(KhuyenMai entity) {
         try {
             JdbcHelper.excuteUpdate(UPDATE_SQL, entity.getTenChuongTrinh(), entity.getHinhThuc(), entity.getThoiGianBatDau(), entity.getThoiGianKetThuc(),
-                    entity.getGiamGia(), entity.isTrangThai(), entity.getMoTa(), entity.getMaKM());
+                    entity.getGiamGia(), entity.getTrangThai(), entity.getMoTa(), entity.getMaKM());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,6 +103,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
             while (rs.next()) {
                 KhuyenMai entity = new KhuyenMai();
                 entity.setMaKM(rs.getString("MaKM"));
+                entity.setMaSPCT(rs.getString("MASPCT"));
                 entity.setTenChuongTrinh(rs.getString("TenCT"));
                 entity.setHinhThuc(rs.getString("HinhThuc"));
                 entity.setGiamGia(rs.getLong("GiamGia"));
@@ -103,7 +112,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
                 entity.setTenSPCT(rs.getString("TenSPCT"));
                 entity.setThoiGianBatDau(rs.getDate("BatDau"));
                 entity.setThoiGianKetThuc(rs.getDate("KetThuc"));
-                entity.setTrangThai(rs.getBoolean("TrangThai"));
+                entity.setTrangThai(rs.getString("TrangThai"));
                 entity.setMoTa(rs.getString("MoTa"));
                 list.add(entity);
             }
