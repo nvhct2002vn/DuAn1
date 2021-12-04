@@ -938,7 +938,10 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+// 1. bạn xử lý lấy getForm lấy thêm mã sản pphaamr
+// 2. bạn insert như dòng 957
+// 3. validate
+// 4. tạo thêm pt nữa là cập nhật trạng thái
 //------------------------------------------trạng thái-------------------------------------------------------------------
         km.setThoiGianBatDau(dcBatDau.getDate());
         km.setThoiGianKetThuc(dcKetThuc.getDate());
@@ -951,6 +954,9 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         try {
             kmSV.insertData(km);
             kmSV.insertBangChung(km);
+//            for (int i = 0; i < list; i++) {
+//                kmSV.i
+//            } nếu khuyến mại theo danh  mục thì phải lấy đc tất cả các mã sản phẩm có trong danh mục đấy, thực hieemn vòng for add từng thằng 1 vào với mã km là mmax vừa tạo
             fillToTableNSP();
             Msgbox.alert(this, "Thêm khuyến mại nhóm sản phẩm thành công");
             clearForm();
