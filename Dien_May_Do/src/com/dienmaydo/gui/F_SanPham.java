@@ -1850,11 +1850,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        if (Msgbox.confirm(this, "Bạn muốn sửa sản phẩm?")) {
-            if (isValidate()) {
-                return;
-            } else {
-                updatetData();
+        int rowUpdate = tblSanPham.getSelectedRow();
+        if (rowUpdate < 0) {
+            Msgbox.alert(this, "Vui lòng chọn sản phẩm để sửa!");
+            return;
+        } else {
+            if (Msgbox.confirm(this, "Bạn muốn sửa sản phẩm?")) {
+                if (isValidate()) {
+                    return;
+                } else {
+                    updatetData();
+                }
             }
         }
         // TODO add your handling code here:
@@ -1892,11 +1898,17 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnThemSPCTActionPerformed
 
     private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
-        if (Msgbox.confirm(this, "Bạn muốn sửa sản phẩm chi tiết?")) {
-            if (isValidateSPCT()) {
-                return;
-            } else {
-                updatetDataSPCT();
+        int rowUpdate = tblSanPhamChiTiet.getSelectedRow();
+        if (rowUpdate < 0) {
+            Msgbox.alert(this, "Vui lòng chọn sản phẩm để sửa!");
+            return;
+        } else {
+            if (Msgbox.confirm(this, "Bạn muốn sửa sản phẩm chi tiết?")) {
+                if (isValidateSPCT()) {
+                    return;
+                } else {
+                    updatetDataSPCT();
+                }
             }
         }
         // TODO add your handling code here:
