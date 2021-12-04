@@ -5,7 +5,10 @@
  */
 package com.dienmaydo.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -13,15 +16,12 @@ import java.util.Date;
  */
 public class NewClass {
 
-    public static void main(String[] args) {
-        Date hienTai = XDate.toDate("2021-12-04");
-        Date batDau = XDate.toDate("2021-12-04");
-        Date ketThuc = XDate.toDate("2021-12-10");
-        
-        if (hienTai.before(ketThuc)) {
-            System.out.println("Còn hoạt đọng");
-        }else{
-            System.out.println("Không hoạt động");
-        }
+    public static void main(String[] args) throws Exception {
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = new Date();
+        String date2 = s.format(date);
+        System.out.println(date2);
+        Date dateFormat = s.parse(date2);
+        System.out.println(dateFormat);
     }
 }

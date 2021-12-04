@@ -2,11 +2,11 @@
 GO
 
 INSERT INTO KHUYENMAI
-VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, 1,N'No Mô Tả'),
-		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,1,N'No Mô Tả'),
-		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,1,N'No Mô Tả'),
-		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,1,N'No Mô Tả'),
-		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,1,N'No Mô Tả')
+VALUES  ('KM001' ,N'Ngày 11-11',N'Giảm theo tiền','2021-01-01','2021-01-02',500000, N'Hết Hạn',N'No Mô Tả'),
+		('KM002' ,N'Ngày 11-11',N'Giảm theo %','2021-02-02','2021-02-03',50,N'Hết hạn',N'No Mô Tả'),
+		('KM003' ,N'Ngày 11-11',N'Giảm theo %','2021-03-03','2021-03-04',10,N'Hết hạn',N'No Mô Tả'),
+		('KM004' ,N'Ngày 11-11',N'Giảm theo tiền','2021-04-04','2021-04-05',200000,N'Hết hạn',N'No Mô Tả'),
+		('KM005' ,N'Ngày 11-11',N'Giảm theo %','2021-05-05','2021-05-06',20,N'Hết hạn',N'No Mô Tả')
 
 INSERT INTO DANHMUC
 VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
