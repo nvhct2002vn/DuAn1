@@ -121,4 +121,9 @@ public class KhuyenMai {
         this.TenDM = TenDM;
     }
 
+    @Override
+    public String toString() {
+        return "KhuyenMai{" + "MaKM=" + MaKM + ", MaSPCT=" + MaSPCT + ", TenDM=" + TenDM + ", HinhThuc=" + HinhThuc + ", TenChuongTrinh=" + TenChuongTrinh + ", ThoiGianBatDau=" + ThoiGianBatDau + ", ThoiGianKetThuc=" + ThoiGianKetThuc + ", GiamGia=" + GiamGia + ", TrangThai=" + TrangThai + ", MoTa=" + MoTa + ", tenSP=" + tenSP + ", TenSPCT=" + TenSPCT + '}';
+    }
+
 }

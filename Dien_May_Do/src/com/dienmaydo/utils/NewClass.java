@@ -17,11 +17,9 @@ import java.util.logging.SimpleFormatter;
 public class NewClass {
 
     public static void main(String[] args) throws Exception {
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
-        Date date = new Date();
-        String date2 = s.format(date);
-        System.out.println(date2);
-        Date dateFormat = s.parse(date2);
-        System.out.println(dateFormat);
+       long tien = 50000;
+       float giaTri = 50;
+       giaTri = giaTri / 100;
+        System.out.println(giaTri);
     }
 }

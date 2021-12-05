@@ -44,6 +44,14 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
             + "				   where DBO.KHUYENMAI.MAKM = ?";
 
     String SQL_UpdateTrangThai = "Update dbo.KhuyenMai set TrangThai = ? where MaKM = ?";
+
+    String SELECT_GIAMGIA = "SELECT KHUYENMAI.MAKM, SANPHAMCHITIET.MASPCT,TenCT,HINHTHUC ,GIAMGIA,TenDM,TENSP,TenSPCT,BatDau,KetThuc,KHUYENMAI.TrangThai,KHUYENMAI.MoTa\n"
+            + "            FROM KHUYENMAI JOIN SANPHAMCHITIET_KHUYENMAI ON SANPHAMCHITIET_KHUYENMAI.MAKM = KHUYENMAI.MAKM\n"
+            + "            			   JOIN SANPHAMCHITIET ON SANPHAMCHITIET.MASPCT = SANPHAMCHITIET_KHUYENMAI.MASPCT	\n"
+            + "						   JOIN SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+            + "						   JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
+            + "            			   WHERE SANPHAMCHITIET.MASPCT = ?";
+
     @Override
     public void insertData(KhuyenMai entity) {
         try {
@@ -54,14 +62,14 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
         }
     }
 
-    public void insertBangChung(KhuyenMai entity){
+    public void insertBangChung(KhuyenMai entity) {
         try {
             JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaKM(), entity.getMaSPCT());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public void updateData(KhuyenMai entity) {
         try {
@@ -122,6 +130,14 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
             e.printStackTrace();
             throw new RuntimeException();
         }
+    }
+
+    public KhuyenMai selectGiamGia(String key) {
+        List<KhuyenMai> list = selectBySQL(SELECT_GIAMGIA, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 
 }

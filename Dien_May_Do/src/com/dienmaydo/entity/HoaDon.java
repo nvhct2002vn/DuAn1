@@ -20,6 +20,7 @@ public class HoaDon {
     private Date NgayLap;
     private long TienThuaTraKhach;
     private long TongTien;
+    private long ThanhToan;
     private String GhiChu;
 
     public String getMaHD() {
@@ -163,4 +164,13 @@ public class HoaDon {
         this.TenHTGH = TenHTGH;
     }
 
+    public long getThanhToan() {
+        return ThanhToan;
+    }
+
+    public void setThanhToan(long ThanhToan) {
+        this.ThanhToan = ThanhToan;
+    }
+
+    
 }
