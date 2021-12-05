@@ -1335,7 +1335,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         for (int i = 0; i < tblChonSanPham.getRowCount(); i++) {
             KhuyenMai km = kmService.selectGiamGia(tblChonSanPham.getValueAt(i, 0).toString());
             if (km == null) {
-                tblChonSanPham.setValueAt("Không giảm giá", i, 3);
+                tblChonSanPham.setValueAt("0", i, 3);
             } else {
                 if (km.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                     tblChonSanPham.setValueAt(km.getGiamGia() + "%", i, 3);

@@ -14,8 +14,8 @@ import java.util.List;
 public interface IKhuyenMaiService<E, K> {
     void insertData(E entity);
     void updateData(E entity);
-    void deleteData(K key);
-
+    void UpdateTrangThai(E entity);
+    
     List<E> selectAll();
 
     E selectByID(K key);

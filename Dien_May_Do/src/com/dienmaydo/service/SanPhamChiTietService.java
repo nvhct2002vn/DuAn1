@@ -103,7 +103,16 @@ public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiT
             + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
             + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
             + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE WHERE MASPCT = ? AND SANPHAMCHITIET.TRANGTHAI = 1";
-
+    String select_SQL_KhuyenMai = "SELECT * FROM dbo.SANPHAMCHITIET\n"
+            + "JOIN dbo.SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+            + "JOIN dbo.MAUSAC ON MAUSAC.MAMAUSAC = SANPHAMCHITIET.MAMAUSAC\n"
+            + "JOIN dbo.KICHTHUOC ON KICHTHUOC.MAKICHTHUOC = SANPHAMCHITIET.MAKICHTHUOC\n"
+            + "JOIN dbo.DONVITINH ON DONVITINH.MADV = KICHTHUOC.MADV\n"
+            + "JOIN dbo.KHOILUONG ON KHOILUONG.MAKL = SANPHAMCHITIET.MAKL\n"
+            + "JOIN dbo.THETICH ON THETICH.MATHETICH = SANPHAMCHITIET.MATHETICH\n"
+            + "JOIN dbo.CHATLIEU ON CHATLIEU.MACHATLIEU = SANPHAMCHITIET.MACHATLIEU\n"
+            + "JOIN dbo._IMAGE ON _IMAGE.MAIMAGE = SANPHAMCHITIET.MAIMAGE \n"
+            + "Where dbo.DANHMUC.MADM = ?";
     @Override
     public void insertData(SanPhamChiTiet entity) {
         JdbcHelper.excuteUpdate(insert_SQL, entity.getMaSPCT(), entity.getMaImage(), entity.getMaSp(), entity.getMaMauSac(), entity.getMaKichThuoc(),
@@ -149,7 +158,7 @@ public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiT
         }
         return list.get(0);
     }
-
+    
     @Override
     public List<SanPhamChiTiet> selectBySPCT(String masp) {
         String sql = "SELECT MASPCT,TENSP,TENSPCT,SOLUONG,GIANHAP,GIABAN,NHOMPHOBIEN,TENMAUSAC,THETICH,CHIEUDAI,CHIEURONG,CHIEUCAO,KHOILUONG,CHATLIEU,TRANGTHAI,TENHINH,MOTA\n"
@@ -229,5 +238,7 @@ public class SanPhamChiTietService implements ISanPhamChiTietService<SanPhamChiT
     public List<SanPhamChiTiet> selectAll_BY_ONL() {
         return this.selectBySQL(select_All_ONL);
     }
-
+    public List<SanPhamChiTiet> select_ALL_By_KhuyenMai(){
+        return this.selectBySQL(select_SQL_KhuyenMai);
+    }
 }

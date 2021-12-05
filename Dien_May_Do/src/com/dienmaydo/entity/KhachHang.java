@@ -10,6 +10,7 @@ package com.dienmaydo.entity;
  * @author lethu
  */
 public class KhachHang {
+
     private String MaKH;
     private String TenKh;
     private boolean GioiTinh;
@@ -21,31 +22,10 @@ public class KhachHang {
     private String TenSP;
     private String TenSPCT;
     private int SoLuong;
-    private float GiaBan;
-    private float TongTien;
+    private long GiaBan;
+    private long TongTien;
     private String TrangThaiTT;
 
-    public KhachHang() {
-    }
-
-    public KhachHang(String MaKH, String TenKh, boolean GioiTinh, String SDT, String Email, String DiaChi, boolean Trangthai, String NgayGD, String TenSP, String TenSPCT, int SoLuong, float GiaBan, float TongTien, String TrangThaiTT) {
-        this.MaKH = MaKH;
-        this.TenKh = TenKh;
-        this.GioiTinh = GioiTinh;
-        this.SDT = SDT;
-        this.Email = Email;
-        this.DiaChi = DiaChi;
-        this.Trangthai = Trangthai;
-        this.NgayGD = NgayGD;
-        this.TenSP = TenSP;
-        this.TenSPCT = TenSPCT;
-        this.SoLuong = SoLuong;
-        this.GiaBan = GiaBan;
-        this.TongTien = TongTien;
-        this.TrangThaiTT = TrangThaiTT;
-    }
-
-    
     public String getMaKH() {
         return MaKH;
     }
@@ -102,8 +82,6 @@ public class KhachHang {
         this.Trangthai = Trangthai;
     }
 
-   
-
     public String getNgayGD() {
         return NgayGD;
     }
@@ -136,19 +114,19 @@ public class KhachHang {
         this.SoLuong = SoLuong;
     }
 
-    public float getGiaBan() {
+    public long getGiaBan() {
         return GiaBan;
     }
 
-    public void setGiaBan(float GiaBan) {
+    public void setGiaBan(long GiaBan) {
         this.GiaBan = GiaBan;
     }
 
-    public float getTongTien() {
+    public long getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(float TongTien) {
+    public void setTongTien(long TongTien) {
         this.TongTien = TongTien;
     }
 
@@ -160,11 +138,4 @@ public class KhachHang {
         this.TrangThaiTT = TrangThaiTT;
     }
 
-    @Override
-    public String toString() {
-        return "KhachHang{" + "MaKH=" + MaKH + ", TenKh=" + TenKh + ", GioiTinh=" + GioiTinh + ", SDT=" + SDT + ", Email=" + Email + ", DiaChi=" + DiaChi + ", Trangthai=" + Trangthai + ", NgayGD=" + NgayGD + ", TenSP=" + TenSP + ", TenSPCT=" + TenSPCT + ", SoLuong=" + SoLuong + ", GiaBan=" + GiaBan + ", TongTien=" + TongTien + ", TrangThaiTT=" + TrangThaiTT + '}';
-    }
-    
-    
-    
 }
