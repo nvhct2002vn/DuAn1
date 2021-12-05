@@ -2031,6 +2031,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         fillTableChatlieu();
         card.show(pnCardGoc, "card1"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB1"); // mở panel 1
+        LamMoiFromTT();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTChatLieuActionPerformed
 
@@ -2038,6 +2039,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         fillTableTheTich();
         card.show(pnCardGoc, "card1"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB1"); // mở panel 1
+        LamMoiFromTT();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTTheTichActionPerformed
 
@@ -2046,6 +2048,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         fillTableKhoiLuong();
         card.show(pnCardGoc, "card1"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB1"); // mở panel 1
+        LamMoiFromTT();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTKhoiLuongActionPerformed
 
@@ -2053,6 +2056,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         fillTableMauSac();
         card.show(pnCardGoc, "card1"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB1"); // mở panel 1
+        LamMoiFromTT();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTMauSacActionPerformed
 
@@ -2061,6 +2065,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         cbbTTDonViTinh.setSelectedIndex(0);
         card.show(pnCardGoc, "card2"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB2");
+        LamMoiFromTTKT();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTKichThuocActionPerformed
 
@@ -2228,6 +2233,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         fillTableImage();
         card.show(pnCardGoc, "card1"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB1"); // mở panel 1
+        LamMoiFromTT();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTHinhAnhActionPerformed
 
@@ -2356,6 +2362,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         fillTableXuatXu();
         card.show(pnCardGoc, "card3"); // mở panel 1
         cardTB.show(pnCardGocTable, "cardTB3"); // mở panel 1
+        LamMoiFromTTXX();
         // TODO add your handling code here:
     }//GEN-LAST:event_rdTTXuatXuActionPerformed
 
@@ -3040,8 +3047,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckTrungSPCT() {
         boolean check = false;
-//        List<SanPhamChiTiet> list = daoSPCT.selectAll();
-        for (int i = 0; i < _listSPCT.size(); i++) {
+        List<SanPhamChiTiet> list = daoSPCT.selectAll();
+        for (int i = 0; i < list.size(); i++) {
             if (_listSPCT.get(i).getTenSPCT().equalsIgnoreCase(txtTenSPCT.getText())) {
                 Msgbox.alert(this, "Tên sản phẩm chi tiết đã tồn tại");
                 check = true;
@@ -3516,6 +3523,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         txtTimKiemGiaBan.setText("");
         cbbLocChiTietSanPham.setSelectedIndex(0);
         cbbFillMaSP.setSelectedIndex(0);
+        cbbMaSP.setSelectedIndex(0);
     }
 
     public void setSelectedComboboxTT(String cbbselected, JComboBox cbb) {
