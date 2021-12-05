@@ -2463,14 +2463,16 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbbFillMaSPActionPerformed
 
     private void cbbFillMaSPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbFillMaSPItemStateChanged
-        String ganText = cbbFillMaSP.getSelectedItem().toString();
-        if (ganText.equals(" ")) {
-            fillTableSPCT();
-        } else {
-            fillTableSPCT_MaSP_Combobox();
-            cbbLocChiTietSanPham.setSelectedIndex(0);
-            txtTimKiemSPCT.setText("");
-            txtTimKiemGiaBan.setText("");
+        if (cbbFillMaSP.getItemCount() > 0) {
+            String ganText = cbbFillMaSP.getSelectedItem().toString();
+            if (ganText.equals(" ")) {
+                fillTableSPCT();
+            } else {
+                fillTableSPCT_MaSP_Combobox();
+                cbbLocChiTietSanPham.setSelectedIndex(0);
+                txtTimKiemSPCT.setText("");
+                txtTimKiemGiaBan.setText("");
+            }
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbFillMaSPItemStateChanged
@@ -2888,6 +2890,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 fillTableData();
                 Msgbox.alert(this, "Thêm thành công!");
                 refeshTextFiled();
+                FillCbbMaSP();
+                FillCbbMaSPFIll();
             } catch (Exception e) {
                 Msgbox.alert(this, "Thêm thất bại");
                 e.printStackTrace();
@@ -2907,6 +2911,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 daoSP.updateData(sp);
                 fillTableData();
                 refeshTextFiled();
+                FillCbbMaSP();
+                FillCbbMaSPFIll();
                 Msgbox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -3081,6 +3087,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 fillTableSPCT();
                 Msgbox.alert(this, "Thêm thành công!");
                 ganText = "";
+                clearFromSPCT();
             } catch (Exception e) {
                 Msgbox.alert(this, "Thêm thất bại");
                 e.printStackTrace();
@@ -3096,6 +3103,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             try {
                 daoSPCT.updateData(spct);
                 fillTableSPCT();
+                clearFromSPCT();
                 Msgbox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
                 e.printStackTrace();
