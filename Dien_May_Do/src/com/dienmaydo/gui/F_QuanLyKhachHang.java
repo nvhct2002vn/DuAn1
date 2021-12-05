@@ -9,6 +9,7 @@ import com.dienmaydo.entity.KhachHang;
 import com.dienmaydo.service.KhachHangService;
 import com.dienmaydo.service.LichSuGiaoDichService;
 import com.dienmaydo.utils.Msgbox;
+import com.dienmaydo.utils.XMoney;
 import java.util.List;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author lethu
  */
 public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
-
+    
     KhachHangService KHSV = new KhachHangService();  //tạo ra KHSV 
     LichSuGiaoDichService LSGDSV = new LichSuGiaoDichService();
     boolean _GioiTinh;
@@ -34,7 +35,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         FillTable();
-
+        
         rdoNam.setSelected(true);
         rdoConHoatDong.setSelected(true);
     }
@@ -540,9 +541,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private void tblQuanLyKhacHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyKhacHangMouseClicked
         // TODO add your handling code here:
         ClickTable();
-        FillTableLSGD();
         if (evt.getClickCount() == 2) {
             tabs.setSelectedIndex(1);
+            FillTableLSGD();
         }
     }//GEN-LAST:event_tblQuanLyKhacHangMouseClicked
 
@@ -633,7 +634,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             });
         }
     }
-
+    
     boolean isValidate() {
         try {
             String dinhDangEmail = "\\w+@\\w+(\\.\\w+){1,2}";
@@ -670,7 +671,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isCheckTrung() {
         boolean check = false;
         List<KhachHang> list = KHSV.selectAll();
@@ -683,7 +684,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     KhachHang getform() {
         KhachHang KH = new KhachHang(); //tạo kh mới
         KH.setMaKH(txtMaKH.getText());
@@ -699,7 +700,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         KH.setTrangthai(rdoConHoatDong.isSelected());
         return KH;
     }
-
+    
     void Them() {
         try {
             KhachHang KH = getform();
@@ -710,7 +711,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-
+    
     void Sua() {
         try {
             KhachHang KH = getform();
@@ -721,7 +722,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-
+    
     void ClickTable() {
         int vitri = tblQuanLyKhacHang.getSelectedRow();
         txtMaKH.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 0));
@@ -741,7 +742,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             rdoNgungHoatDong.setSelected(true);
         }
     }
-
+    
     void Lammoi() {
         txtMaKH.setText("");
         txtTenKH.setText("");
@@ -751,7 +752,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         txtDiaChi.setText("");
         rdoConHoatDong.setSelected(true);
     }
-
+    
     void LocGioiTinh() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
@@ -764,7 +765,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void LocTrangThai() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel();
         Model.setRowCount(0);
@@ -777,7 +778,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void TimKiem() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
@@ -788,14 +789,14 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             });
         }
     }
-
+    
     void FillTableLSGD() {
         Model = (DefaultTableModel) TbLSGD.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
         List<KhachHang> LKH = LSGDSV.SelectLSGB_ByMaKH(txtMaKH.getText());
         for (KhachHang x : LKH) {
             Model.addRow(new Object[]{
-                x.getTenKh(), x.getSDT(), x.getNgayGD(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), x.getGiaBan(), x.getTongTien(), x.getTrangThaiTT()
+                x.getTenKh(), x.getSDT(), x.getNgayGD(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaBan()) + " VND", XMoney.themDauCham(x.getTongTien()) + " VND", x.getTrangThaiTT()
             });
         }
     }

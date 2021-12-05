@@ -60,32 +60,37 @@ public class F_SanPham extends javax.swing.JInternalFrame {
      * Creates new form HangHoaJfame
      */
     SanPhamService daoSP = new SanPhamService();
+    List<SanPham> _listSP = daoSP.selectAll();
+
     XuatXuService daoXX = new XuatXuService();
+    List<XuatXu> _listXX = daoXX.selectAll();
+
     DanhMucService daoDM = new DanhMucService();
+    List<DanhMuc> _listDM = daoDM.selectAll();
+
     SanPhamChiTietService daoSPCT = new SanPhamChiTietService();
-    List<DanhMuc> listDM = daoDM.selectAll();
-    List<XuatXu> listXX = daoXX.selectAll();
+    List<SanPhamChiTiet> _listSPCT = daoSPCT.selectAll();
 
     MauSacService daoMS = new MauSacService();
-    List<MauSac> listMS = daoMS.selectAll();
+    List<MauSac> _listMS = daoMS.selectAll();
 
     TheTichService daoTT = new TheTichService();
-    List<TheTich> listTT = daoTT.selectAll();
+    List<TheTich> _listTT = daoTT.selectAll();
 
     KichThuocService daoKT = new KichThuocService();
-    List<KichThuoc> listKT = daoKT.selectAll();
+    List<KichThuoc> _listKT = daoKT.selectAll();
 
     KhoiLuongService daoKL = new KhoiLuongService();
-    List<KhoiLuong> listKL = daoKL.selectAll();
+    List<KhoiLuong> _listKL = daoKL.selectAll();
 
     DonViTinhService daoDVT = new DonViTinhService();
-    List<DonViTinh> listDVT = daoDVT.selectAll();
+    List<DonViTinh> _listDVT = daoDVT.selectAll();
 
     ChatLieuService daoCL = new ChatLieuService();
-    List<ChatLieu> listCL = daoCL.selectAll();
+    List<ChatLieu> _listCL = daoCL.selectAll();
 
     ImageService daoIMG = new ImageService();
-    List<Image> listIMG = daoIMG.selectAll();
+    List<Image> _listIMG = daoIMG.selectAll();
 
     DefaultTableModel model1, modelSPCT;
     int viTri = 0;
@@ -814,30 +819,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                     .addComponent(jLabel31))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbbTrangThaiSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbbNhomPhoBien, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtMaSPCT)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTenSPCT, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(txtSoLuong)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtGiaNhap)
-                                    .addComponent(txtGiaBan))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel38)
-                                    .addComponent(jLabel39))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbbNhomPhoBien, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtMaSPCT)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTenSPCT, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                    .addComponent(txtSoLuong)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtGiaNhap)
+                                            .addComponent(txtGiaBan))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel38)
+                                            .addComponent(jLabel39))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cbbTrangThaiSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -857,7 +866,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                                 .addGap(51, 51, 51)
                                 .addComponent(jLabel36))))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1852,7 +1861,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         int rowUpdate = tblSanPham.getSelectedRow();
         if (rowUpdate < 0) {
-            Msgbox.alert(this, "Vui lòng chọn sản phẩm để sửa!");
+            Msgbox.alert(this, "Vui lòng chọn sản phẩm để sửa");
             return;
         } else {
             if (Msgbox.confirm(this, "Bạn muốn sửa sản phẩm?")) {
@@ -1863,6 +1872,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 }
             }
         }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -1900,7 +1910,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     private void btnSuaSPCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPCTActionPerformed
         int rowUpdate = tblSanPhamChiTiet.getSelectedRow();
         if (rowUpdate < 0) {
-            Msgbox.alert(this, "Vui lòng chọn sản phẩm để sửa!");
+            Msgbox.alert(this, "Vui lòng chọn sản phẩm chi tiết để sửa");
             return;
         } else {
             if (Msgbox.confirm(this, "Bạn muốn sửa sản phẩm chi tiết?")) {
@@ -2536,9 +2546,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckTrung() {
         boolean check = false;
-        List<SanPham> list = daoSP.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getTenSp().equalsIgnoreCase(txtTenSP.getText())) {
+//        List<SanPham> list = daoSP.selectAll();
+        for (int i = 0; i < _listSP.size(); i++) {
+            if (_listSP.get(i).getTenSp().equalsIgnoreCase(txtTenSP.getText())) {
                 Msgbox.alert(this, "Tên sản phẩm đã tồn tại");
                 check = true;
                 break;
@@ -2551,8 +2561,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
             model.removeAllElements();
-            List<XuatXu> list = daoXX.selectAll();
-            for (XuatXu cd : list) {
+//            List<XuatXu> list = daoXX.selectAll();
+            for (XuatXu cd : _listXX) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -2564,8 +2574,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbDanhMuc.getModel();
             model.removeAllElements();
-            List<DanhMuc> list = daoDM.selectAll();
-            for (DanhMuc cd : list) {
+//            List<DanhMuc> list = daoDM.selectAll();
+            for (DanhMuc cd : _listDM) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -2577,8 +2587,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillDanhMuc.getModel();
             model.removeAllElements();
-            List<DanhMuc> list = daoDM.selectAll();
-            for (DanhMuc dm : list) {
+//            List<DanhMuc> list = daoDM.selectAll();
+            for (DanhMuc dm : _listDM) {
                 model.addElement(dm);
             }
         } catch (Exception e) {
@@ -2590,8 +2600,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillXuatXu.getModel();
             model.removeAllElements();
-            List<XuatXu> list = daoXX.selectAll();
-            for (XuatXu xx : list) {
+//            List<XuatXu> list = daoXX.selectAll();
+            for (XuatXu xx : _listXX) {
                 model.addElement(xx);
             }
         } catch (Exception e) {
@@ -2636,8 +2646,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         model1 = (DefaultTableModel) tblSanPham.getModel();
         model1.setRowCount(0);
         try {
-            List<SanPham> listSP = daoSP.selectAll();
-            for (SanPham x : listSP) {
+//            List<SanPham> listSP = daoSP.selectAll();
+            for (SanPham x : _listSP) {
                 model1.addRow(new Object[]{
                     x.getMaSp(), x.getTenSp(), x.getTenDanhMuc(), x.getNhaSX(), x.getNuocSX(), x.isTrangThaiSP() ? "Đang kinh doanh" : "Ngừng kinh doanh"
                 });
@@ -2696,10 +2706,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             txtMaSP.setText(model1.getValueAt(viTri, 0).toString());
             txtTenSP.setText(model1.getValueAt(viTri, 1).toString());
-            setSelectedComboboxXX(tblSanPham.getValueAt(viTri, 3).toString() + " - " + tblSanPham.getValueAt(viTri, 4).toString(), cbbXuatXu);
-            setSelectedComboboxDM(tblSanPham.getValueAt(viTri, 2).toString(), cbbDanhMuc);
-            setSelectedComboboxTenSP(tblSanPham.getValueAt(viTri, 1).toString(), cbbMaSP);
-            cbbTrangThaiSP.setSelectedItem(tblSanPham.getValueAt(viTri, 5));
+            setSelectedComboboxXX(model1.getValueAt(viTri, 3).toString() + " - " + model1.getValueAt(viTri, 4).toString(), cbbXuatXu);
+            setSelectedComboboxDM(model1.getValueAt(viTri, 2).toString(), cbbDanhMuc);
+            setSelectedComboboxTenSP(model1.getValueAt(viTri, 1).toString(), cbbMaSP);
+            cbbTrangThaiSP.setSelectedItem(model1.getValueAt(viTri, 5));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2850,9 +2860,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckTrungSPCT() {
         boolean check = false;
-        List<SanPhamChiTiet> list = daoSPCT.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getTenSPCT().equalsIgnoreCase(txtTenSPCT.getText())) {
+//        List<SanPhamChiTiet> list = daoSPCT.selectAll();
+        for (int i = 0; i < _listSPCT.size(); i++) {
+            if (_listSPCT.get(i).getTenSPCT().equalsIgnoreCase(txtTenSPCT.getText())) {
                 Msgbox.alert(this, "Tên sản phẩm chi tiết đã tồn tại");
                 check = true;
                 break;
@@ -2865,8 +2875,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
             model.removeAllElements();
-            List<TheTich> list = daoTT.selectAll();
-            for (TheTich cd : list) {
+//            List<TheTich> list = daoTT.selectAll();
+            for (TheTich cd : _listTT) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -2911,8 +2921,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
         try {
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 modelSPCT.addRow(new Object[]{
                     x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
                     x.isNhomPhoBien() ? "Phổ biến" : "Không phổ biến", x.getTenMauSac(), x.getTheTich() + " Lít",
@@ -2928,8 +2938,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMaSP.getModel();
             model.removeAllElements();
-            List<SanPham> list = daoSP.selectAll();
-            for (SanPham cd : list) {
+//            List<SanPham> list = daoSP.selectAll();
+            for (SanPham cd : _listSP) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -2959,8 +2969,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
         try {
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.isNhomPhoBien() == nhomPhoBien) {
                     modelSPCT.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -2979,8 +2989,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
         try {
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getSoLuong() > dieuKien) {
                     modelSPCT.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -2998,8 +3008,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
         try {
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getSoLuong() < dieuKien) {
                     modelSPCT.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -3017,8 +3027,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
         try {
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.isTrangThai() == true) {
                     modelSPCT.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -3036,8 +3046,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
         try {
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.isTrangThai() == false) {
                     modelSPCT.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -3170,20 +3180,20 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 //            XMoney.themDauCham(giaNhap);
 //            XMoney.themDauCham(giaBan);
             vitriSPCT = tblSanPhamChiTiet.getSelectedRow();
-            txtMaSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 0).toString());
-            txtTenSPCT.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 1).toString());
-            txtSoLuong.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 2).toString());
-            txtGiaNhap.setText(String.valueOf(XMoney.themDauCham(XMoney.loaiBoVND(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString()))));
-            txtGiaBan.setText(String.valueOf(XMoney.themDauCham(XMoney.loaiBoVND(tblSanPhamChiTiet.getValueAt(vitriSPCT, 4).toString()))));
-            AreaMoTa.setText(tblSanPhamChiTiet.getValueAt(vitriSPCT, 12).toString());
-            setSelectedComboboxTT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 7).toString(), cbbTheTich);
-            setSelectedComboboxKT(tblSanPhamChiTiet.getValueAt(vitriSPCT, 8).toString(), cbbKichThuoc);
-            setSelectedComboboxKL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 9).toString(), cbbKhoiLuong);
-            setSelectedComboboxCL(tblSanPhamChiTiet.getValueAt(vitriSPCT, 10).toString(), cbbChatLieu);
-            setSelectedComboboxMS(tblSanPhamChiTiet.getValueAt(vitriSPCT, 6).toString(), cbbMauSac);
-            setSelectedComboboxIMG(tblSanPhamChiTiet.getValueAt(vitriSPCT, 11).toString(), cbbIMG);
-            cbbTrangThaiSPCT.setSelectedItem(tblSanPhamChiTiet.getValueAt(vitriSPCT, 13));
-            cbbNhomPhoBien.setSelectedItem(tblSanPhamChiTiet.getValueAt(vitriSPCT, 5).toString());
+            txtMaSPCT.setText(modelSPCT.getValueAt(vitriSPCT, 0).toString());
+            txtTenSPCT.setText(modelSPCT.getValueAt(vitriSPCT, 1).toString());
+            txtSoLuong.setText(modelSPCT.getValueAt(vitriSPCT, 2).toString());
+            txtGiaNhap.setText(String.valueOf(XMoney.themDauCham(XMoney.loaiBoVND(modelSPCT.getValueAt(vitriSPCT, 3).toString()))));
+            txtGiaBan.setText(String.valueOf(XMoney.themDauCham(XMoney.loaiBoVND(modelSPCT.getValueAt(vitriSPCT, 4).toString()))));
+            AreaMoTa.setText(modelSPCT.getValueAt(vitriSPCT, 12).toString());
+            setSelectedComboboxTT(modelSPCT.getValueAt(vitriSPCT, 7).toString(), cbbTheTich);
+            setSelectedComboboxKT(modelSPCT.getValueAt(vitriSPCT, 8).toString(), cbbKichThuoc);
+            setSelectedComboboxKL(modelSPCT.getValueAt(vitriSPCT, 9).toString(), cbbKhoiLuong);
+            setSelectedComboboxCL(modelSPCT.getValueAt(vitriSPCT, 10).toString(), cbbChatLieu);
+            setSelectedComboboxMS(modelSPCT.getValueAt(vitriSPCT, 6).toString(), cbbMauSac);
+            setSelectedComboboxIMG(modelSPCT.getValueAt(vitriSPCT, 11).toString(), cbbIMG);
+            cbbTrangThaiSPCT.setSelectedItem(modelSPCT.getValueAt(vitriSPCT, 13));
+            cbbNhomPhoBien.setSelectedItem(modelSPCT.getValueAt(vitriSPCT, 5).toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3220,8 +3230,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKhoiLuong.getModel();
             model.removeAllElements();
-            List<KhoiLuong> list = daoKL.selectAll();
-            for (KhoiLuong cd : list) {
+//            List<KhoiLuong> list = daoKL.selectAll();
+            for (KhoiLuong cd : _listKL) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -3233,8 +3243,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKichThuoc.getModel();
             model.removeAllElements();
-            List<KichThuoc> list = daoKT.selectAll();
-            for (KichThuoc cd : list) {
+//            List<KichThuoc> list = daoKT.selectAll();
+            for (KichThuoc cd : _listKT) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -3246,8 +3256,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbChatLieu.getModel();
             model.removeAllElements();
-            List<ChatLieu> list = daoCL.selectAll();
-            for (ChatLieu cd : list) {
+//            List<ChatLieu> list = daoCL.selectAll();
+            for (ChatLieu cd : _listCL) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -3259,8 +3269,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMauSac.getModel();
             model.removeAllElements();
-            List<MauSac> list = daoMS.selectAll();
-            for (MauSac cd : list) {
+//            List<MauSac> list = daoMS.selectAll();
+            for (MauSac cd : _listMS) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -3272,8 +3282,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbIMG.getModel();
             model.removeAllElements();
-            List<Image> list = daoIMG.selectAll();
-            for (Image cd : list) {
+//            List<Image> list = daoIMG.selectAll();
+            for (Image cd : _listIMG) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -3285,8 +3295,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTTDonViTinh.getModel();
             model.removeAllElements();
-            List<DonViTinh> list = daoDVT.selectAll();
-            for (DonViTinh cd : list) {
+//            List<DonViTinh> list = daoDVT.selectAll();
+            for (DonViTinh cd : _listDVT) {
                 model.addElement(cd);
             }
         } catch (Exception e) {
@@ -3451,9 +3461,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckThuocTinhTT() {
         boolean check = false;
-        List<TheTich> list = daoTT.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (Objects.equals(list.get(i).getTheTich(), Float.valueOf(txtTTTenThuocTinh.getText()))) {
+//        List<TheTich> list = daoTT.selectAll();
+        for (int i = 0; i < _listTT.size(); i++) {
+            if (Objects.equals(_listTT.get(i).getTheTich(), Float.valueOf(txtTTTenThuocTinh.getText()))) {
                 Msgbox.alert(this, "Thể tích đã tồn tại");
                 check = true;
                 break;
@@ -3466,8 +3476,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
             model.setRowCount(0);
-            List<TheTich> list = daoTT.selectAll();
-            for (TheTich x : list) {
+//            List<TheTich> list = daoTT.selectAll();
+            for (TheTich x : _listTT) {
                 model.addRow(new Object[]{
                     x.getMaTheTich(), x.getTheTich() + ""
                 });
@@ -3513,8 +3523,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTKichThuoc.getModel();
             model.setRowCount(0);
-            List<KichThuoc> list = daoKT.selectAll();
-            for (KichThuoc x : list) {
+//            List<KichThuoc> list = daoKT.selectAll();
+            for (KichThuoc x : _listKT) {
                 model.addRow(new Object[]{
                     x.getMaKichThuoc(), x.getChieuDai() + "", x.getChieuRong() + "", x.getChieuCao() + ""
                 });
@@ -3526,9 +3536,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckThuocTinhKL() {
         boolean check = false;
-        List<KhoiLuong> list = daoKL.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getKhoiLuong() == Float.valueOf(txtTTTenThuocTinh.getText())) {
+//        List<KhoiLuong> list = daoKL.selectAll();
+        for (int i = 0; i < _listKL.size(); i++) {
+            if (_listKL.get(i).getKhoiLuong() == Float.valueOf(txtTTTenThuocTinh.getText())) {
                 Msgbox.alert(this, "Khối lượng đã tồn tại");
                 check = true;
                 break;
@@ -3541,8 +3551,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
             model.setRowCount(0);
-            List<KhoiLuong> list = daoKL.selectAll();
-            for (KhoiLuong x : list) {
+//            List<KhoiLuong> list = daoKL.selectAll();
+            for (KhoiLuong x : _listKL) {
                 model.addRow(new Object[]{
                     x.getMaKL(), x.getKhoiLuong() + ""
                 });
@@ -3586,9 +3596,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckThuocTinhCL() {
         boolean check = false;
-        List<ChatLieu> list = daoCL.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getChatLieu().equalsIgnoreCase(txtTTTenThuocTinh.getText())) {
+//        List<ChatLieu> list = daoCL.selectAll();
+        for (int i = 0; i < _listCL.size(); i++) {
+            if (_listCL.get(i).getChatLieu().equalsIgnoreCase(txtTTTenThuocTinh.getText())) {
                 Msgbox.alert(this, "Chất liệu đã tồn tại");
                 check = true;
                 break;
@@ -3601,8 +3611,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
             model.setRowCount(0);
-            List<ChatLieu> list = daoCL.selectAll();
-            for (ChatLieu x : list) {
+//            List<ChatLieu> list = daoCL.selectAll();
+            for (ChatLieu x : _listCL) {
                 model.addRow(new Object[]{
                     x.getMaChatLieu(), x.getChatLieu() + ""
                 });
@@ -3646,9 +3656,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckThuocTinhMS() {
         boolean check = false;
-        List<MauSac> list = daoMS.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getTenMauSac().equalsIgnoreCase(txtTTTenThuocTinh.getText())) {
+//        List<MauSac> list = daoMS.selectAll();
+        for (int i = 0; i < _listMS.size(); i++) {
+            if (_listMS.get(i).getTenMauSac().equalsIgnoreCase(txtTTTenThuocTinh.getText())) {
                 Msgbox.alert(this, "Màu sắc đã tồn tại");
                 check = true;
                 break;
@@ -3661,8 +3671,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
             model.setRowCount(0);
-            List<MauSac> list = daoMS.selectAll();
-            for (MauSac x : list) {
+//            List<MauSac> list = daoMS.selectAll();
+            for (MauSac x : _listMS) {
                 model.addRow(new Object[]{
                     x.getMaMauSac(), x.getTenMauSac() + ""
                 });
@@ -3733,11 +3743,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckThuocTinhKT() {
         boolean check = false;
-        List<KichThuoc> list = daoKT.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getChieuDai() == Float.valueOf(txtChieuDai.getText())
-                    && list.get(i).getChieuRong() == Float.valueOf(txtChieuRong.getText())
-                    && list.get(i).getChieuCao() == Float.valueOf(txtChieuCao.getText())) {
+//        List<KichThuoc> list = daoKT.selectAll();
+        for (int i = 0; i < _listKT.size(); i++) {
+            if (_listKT.get(i).getChieuDai() == Float.valueOf(txtChieuDai.getText())
+                    && _listKT.get(i).getChieuRong() == Float.valueOf(txtChieuRong.getText())
+                    && _listKT.get(i).getChieuCao() == Float.valueOf(txtChieuCao.getText())) {
                 Msgbox.alert(this, "Kích thước đã tồn tại");
                 check = true;
                 break;
@@ -3780,9 +3790,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckThuocTinhIMG() {
         boolean check = false;
-        List<Image> list = daoIMG.selectAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getTenHinh().equalsIgnoreCase(txtTTTenThuocTinh.getText())) {
+//        List<Image> list = daoIMG.selectAll();
+        for (int i = 0; i < _listIMG.size(); i++) {
+            if (_listIMG.get(i).getTenHinh().equalsIgnoreCase(txtTTTenThuocTinh.getText())) {
                 Msgbox.alert(this, "Hình ảnh đã tồn tại");
                 check = true;
                 break;
@@ -3795,8 +3805,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
             model.setRowCount(0);
-            List<Image> list = daoIMG.selectAll();
-            for (Image x : list) {
+//            List<Image> list = daoIMG.selectAll();
+            for (Image x : _listIMG) {
                 model.addRow(new Object[]{
                     x.getMaImage(), x.getTenHinh() + ""
                 });
@@ -3878,11 +3888,11 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckThuocTinhXX() {
         boolean check = false;
-        List<XuatXu> list = daoXX.selectAll();
+//        List<XuatXu> list = daoXX.selectAll();
         int maXX = Integer.parseInt(txtTTMaXuatXu.getText());
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getNhaSX().equalsIgnoreCase(txtTTNhaSanXuat.getText())
-                    && list.get(i).getNuocSX().equalsIgnoreCase(txtTTNuocSanXuat.getText())) {
+        for (int i = 0; i < _listXX.size(); i++) {
+            if (_listXX.get(i).getNhaSX().equalsIgnoreCase(txtTTNhaSanXuat.getText())
+                    && _listXX.get(i).getNuocSX().equalsIgnoreCase(txtTTNuocSanXuat.getText())) {
                 Msgbox.alert(this, "Xuất xứ đã tồn tại");
                 check = true;
                 break;
@@ -3894,8 +3904,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     void fillTableXuatXu() {
         DefaultTableModel model = (DefaultTableModel) tbTTXuatXu.getModel();
         model.setRowCount(0);
-        List<XuatXu> list = daoXX.selectAll();
-        for (XuatXu x : list) {
+//        List<XuatXu> list = daoXX.selectAll();
+        for (XuatXu x : _listXX) {
             model.addRow(new Object[]{
                 x.getMaXX() + "", x.getNhaSX(), x.getNuocSX()
             });
@@ -4096,8 +4106,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaBan.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaBan() > giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4118,8 +4128,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaBan.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaBan() >= giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4140,8 +4150,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaBan.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaBan() < giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4162,8 +4172,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaBan.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaBan() <= giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4184,8 +4194,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaBan = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaBan = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaBan.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaBan() == giaBan) {
                     modelTimKiemGiaBan.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4207,8 +4217,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaNhap.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaNhap() > giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4229,8 +4239,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaNhap.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaNhap() >= giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4251,8 +4261,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaNhap.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaNhap() < giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4273,8 +4283,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaNhap.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaNhap() <= giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4295,8 +4305,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Float giaNhap = Float.parseFloat(txtTimKiemGiaBan.getText());
             DefaultTableModel modelTimKiemGiaNhap = (DefaultTableModel) tblSanPhamChiTiet.getModel();
             modelTimKiemGiaNhap.setRowCount(0);
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
-            for (SanPhamChiTiet x : listSPCT) {
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+            for (SanPhamChiTiet x : _listSPCT) {
                 if (x.getGiaNhap() == giaNhap) {
                     modelTimKiemGiaNhap.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaNhap()) + " VND", XMoney.themDauCham(x.getGiaBan()) + " VND",
@@ -4359,10 +4369,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             cell.setCellValue("Trạng thái");
 
             // tạo list để lấy ra tất cả dữ liệu
-            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
+//            List<SanPhamChiTiet> listSPCT = daoSPCT.selectAll();
             // tạo vòng for để set giữ liệu cho từng hàng
-            for (int i = 0; i < listSPCT.size(); i++) {
-                SanPhamChiTiet SPCT = listSPCT.get(i);
+            for (int i = 0; i < _listSPCT.size(); i++) {
+                SanPhamChiTiet SPCT = _listSPCT.get(i);
                 row = spreadsheet.createRow((short) 4 + i);
                 row.setHeight((short) 400);
                 row.createCell(0).setCellValue(i + 1);
