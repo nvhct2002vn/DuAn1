@@ -2709,9 +2709,9 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     boolean isCheckTrung() {
         boolean check = false;
-//        List<SanPham> list = daoSP.selectAll();
-        for (int i = 0; i < _listSP.size(); i++) {
-            if (_listSP.get(i).getTenSp().equalsIgnoreCase(txtTenSP.getText())) {
+        List<SanPham> list = daoSP.selectAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getTenSp().equalsIgnoreCase(txtTenSP.getText())) {
                 Msgbox.alert(this, "Tên sản phẩm đã tồn tại");
                 check = true;
                 break;
@@ -3055,7 +3055,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         boolean check = false;
         List<SanPhamChiTiet> list = daoSPCT.selectAll();
         for (int i = 0; i < list.size(); i++) {
-            if (_listSPCT.get(i).getTenSPCT().equalsIgnoreCase(txtTenSPCT.getText())) {
+            if (list.get(i).getTenSPCT().equalsIgnoreCase(txtTenSPCT.getText())) {
                 Msgbox.alert(this, "Tên sản phẩm chi tiết đã tồn tại");
                 check = true;
                 break;
