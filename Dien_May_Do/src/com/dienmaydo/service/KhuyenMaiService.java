@@ -43,7 +43,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
             + "            						   JOIN SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
             + "            						   JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
             + "                        			   WHERE KHUYENMAI.TRANGTHAI LIKE N'%Đang áp dụng%' AND SANPHAMCHITIET.MASPCT = ?";
-
+    String SELECT_DANHMUC = "";
     @Override
     public void insertData(KhuyenMai entity) {
         try {
