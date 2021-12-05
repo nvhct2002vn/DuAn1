@@ -57,7 +57,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 /**
  *
- * @author DO TAT HOA
+ * @author DO TAT HOA 12-05-2021
  */
 public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, ThreadFactory {
 

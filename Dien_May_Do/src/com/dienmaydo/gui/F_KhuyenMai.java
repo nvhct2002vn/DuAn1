@@ -709,14 +709,20 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < tblSanPham.getRowCount(); i++) {
-            System.out.println(tblSanPham.getValueAt(i, 1));
-            System.out.println(tblSanPham.getValueAt(i, 0));
-            System.out.println(Boolean.valueOf(tblSanPham.getValueAt(i, 0).toString()));
-//            if (Boolean.parseBoolean(tblSanPham.getValueAt(i, 0).toString())) {
+        try {
+            for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+                if (tblSanPham.getValueAt(i, 0).toString().equalsIgnoreCase("true")) {
+                    System.out.println(tblSanPham.getValueAt(i, 1));
+                }
+            }
+        } catch (Exception e) {
+        }
+
+//        for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+//            if (!tblSanPham.getValueAt(i, 0).toString().equals(null)) {
 //                System.out.println(tblSanPham.getValueAt(i, 1));
 //            }
-        }
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -993,13 +999,17 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         KhuyenMai kmsp = getForm();
         try {
             kmSV.insertData(kmsp);
-            for (int i = 0; i < tblSanPham.getRowCount(); i++) {
-                if (Boolean.parseBoolean(tblSanPham.getValueAt(i, 0).toString()) == true) {
-                    KhuyenMai km2 = new KhuyenMai();
-                    km2.setMaKM(txtMaKM.getText());
-                    km2.setMaSPCT(tblSanPham.getValueAt(i, 1).toString());
-                    kmSV.insertBangChung(kmsp);
+            try {
+                for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+                    if (tblSanPham.getValueAt(i, 0).toString().equalsIgnoreCase("true")) {
+                        KhuyenMai km = new KhuyenMai();
+                        km.setMaKM(txtMaKM.getText());
+                        km.setMaSPCT(tblSanPham.getValueAt(i, 1).toString());
+                        System.out.println(km.getMaSPCT());
+                        kmSV.insertBangChung(km);
+                    }
                 }
+            } catch (Exception e) {
             }
             fillToTableSP();
             Msgbox.alert(this, "Thêm khuyến mại sản phẩm thành công");

@@ -38,11 +38,11 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
     String SQL_UpdateTrangThai = "Update dbo.KhuyenMai set TrangThai = ? where MaKM = ?";
 
     String SELECT_GIAMGIA = "SELECT KHUYENMAI.MAKM, SANPHAMCHITIET.MASPCT,TenCT,HINHTHUC ,GIAMGIA,TenDM,TENSP,TenSPCT,BatDau,KetThuc,KHUYENMAI.TrangThai,KHUYENMAI.MoTa\n"
-            + "            FROM KHUYENMAI JOIN SANPHAMCHITIET_KHUYENMAI ON SANPHAMCHITIET_KHUYENMAI.MAKM = KHUYENMAI.MAKM\n"
-            + "            			   JOIN SANPHAMCHITIET ON SANPHAMCHITIET.MASPCT = SANPHAMCHITIET_KHUYENMAI.MASPCT	\n"
-            + "						   JOIN SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
-            + "						   JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
-            + "            			   WHERE SANPHAMCHITIET.MASPCT = ?";
+            + "                        FROM KHUYENMAI JOIN SANPHAMCHITIET_KHUYENMAI ON SANPHAMCHITIET_KHUYENMAI.MAKM = KHUYENMAI.MAKM\n"
+            + "                        			   JOIN SANPHAMCHITIET ON SANPHAMCHITIET.MASPCT = SANPHAMCHITIET_KHUYENMAI.MASPCT	\n"
+            + "            						   JOIN SANPHAM ON SANPHAM.MASP = SANPHAMCHITIET.MASP\n"
+            + "            						   JOIN DANHMUC ON DANHMUC.MADANHMUC = SANPHAM.MADANHMUC\n"
+            + "                        			   WHERE KHUYENMAI.TRANGTHAI LIKE N'%Đang áp dụng%' AND SANPHAMCHITIET.MASPCT = ?";
 
     @Override
     public void insertData(KhuyenMai entity) {
@@ -56,7 +56,7 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
 
     public void insertBangChung(KhuyenMai entity) {
         try {
-            JdbcHelper.excuteUpdate(INSERT_SQL, entity.getMaKM(), entity.getMaSPCT());
+            JdbcHelper.excuteUpdate(INSERT_BANGCHUNG, entity.getMaKM(), entity.getMaSPCT());
         } catch (Exception e) {
             e.printStackTrace();
         }

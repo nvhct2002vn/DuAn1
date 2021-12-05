@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author DO TAT HOA
+ * @author DO TAT HOA 12-05-2021
  */
 public class F_HoaDon extends javax.swing.JInternalFrame {
 
