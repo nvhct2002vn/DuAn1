@@ -60,7 +60,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
      * Creates new form HangHoaJfame
      */
     SanPhamService daoSP = new SanPhamService();
-    List<SanPham> _listSP = daoSP.selectAll();
+//    List<SanPham> _listSP = daoSP.selectAll();
 
     XuatXuService daoXX = new XuatXuService();
 //    List<XuatXu> _listXX = daoXX.selectAll();
