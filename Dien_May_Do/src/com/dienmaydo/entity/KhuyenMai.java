@@ -14,6 +14,7 @@ public class KhuyenMai {
 
     private String MaKM;
     private String MaSPCT;
+    private String MaSP;
     private String TenDM;
     private String HinhThuc;
     private String TenChuongTrinh;
@@ -25,6 +26,15 @@ public class KhuyenMai {
     private String tenSP;
     private String TenSPCT;
 
+    public String getMaSP() {
+        return MaSP;
+    }
+
+    public void setMaSP(String MaSP) {
+        this.MaSP = MaSP;
+    }
+    
+    
     public String getTenSP() {
         return tenSP;
     }

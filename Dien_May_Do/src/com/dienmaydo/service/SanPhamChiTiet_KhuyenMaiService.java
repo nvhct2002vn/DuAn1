@@ -17,7 +17,7 @@ import com.dienmaydo.iservice.ISanPhamChiTiet_KhuyenMaiService;
  * @author MSI
  */
 public class SanPhamChiTiet_KhuyenMaiService implements ISanPhamChiTiet_KhuyenMaiService<SanPhamChiTietKhuyenMai, String>{
-    String INSERT_SQL = "INSERT INTO DBO.SANPHAMCHITIET_KHUYENMAI(MASPCTKM,MAKM,MASPCT) VALUES(?,?,?)";
+    String INSERT_SQL = "INSERT INTO DBO.SANPHAMCHITIET_KHUYENMAI(MAKM,MASPCT) VALUES(?,?)";
     String Update_SQL = "Update DBO.SANPHAMCHITIET_KHUYENMAI SET MAKM =? , MASPCT =? WHERE MASPCTKM =?";
     String DELTE_SEL ="DELETE FROM DBO.SANPHAMCHITIET_KHUYENMAI WHERE MASPCTKM=?";
     String SELECT_ALL_SQL="SELECT*FROM DBO.SANPHAMCHITIET_KHUYENMAI";
@@ -55,7 +55,6 @@ public class SanPhamChiTiet_KhuyenMaiService implements ISanPhamChiTiet_KhuyenMa
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
             while (rs.next()) {
                 SanPhamChiTietKhuyenMai entity = new SanPhamChiTietKhuyenMai();
-                entity.setMaSPCTKM(rs.getString("MASPCTKM"));
                 entity.setMaKM(rs.getString("MAKM"));
                 entity.setMaSPCT(rs.getString("MASPCT"));
                 list.add(entity);

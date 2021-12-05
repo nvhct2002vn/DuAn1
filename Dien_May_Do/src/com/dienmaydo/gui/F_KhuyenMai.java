@@ -6,6 +6,7 @@ import com.dienmaydo.utils.XDate;
 import com.dienmaydo.entity.KhuyenMai;
 import com.dienmaydo.entity.SanPham;
 import com.dienmaydo.entity.SanPhamChiTiet;
+import com.dienmaydo.entity.SanPhamChiTietKhuyenMai;
 import com.dienmaydo.service.DanhMucService;
 import com.dienmaydo.service.KhuyenMaiService;
 import com.dienmaydo.service.SanPhamChiTietService;
@@ -46,6 +47,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         fillToTableSP();
         fillToDM();
         fillToSP();
+        capnhapTrangthaiSP();
     }
 
     /**
@@ -763,6 +765,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         model.setRowCount(0);
         try {
             List<KhuyenMai> listKM = kmSV.selectAll();
+            
             for (KhuyenMai x : listKM) {
                 if (x.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                     model.addRow(new Object[]{
@@ -892,29 +895,29 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         chkSelectAllNSP.setSelected(false);
         chkSelectAllSP.setSelected(false);
     }
-
     KhuyenMai getForm() {
-        // SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
-//        String theDate = formater.format(dcBatDau.getDate());
-        //DanhMuc dm = (DanhMuc) cboTenDanhMuc.getSelectedItem();
-
-        LocalDate timenow = LocalDate.now();
         KhuyenMai km = new KhuyenMai();
         km.setMaKM(txtMaKM.getText());
         km.setTenChuongTrinh(txtTenCT.getText());
         km.setHinhThuc(cboHinhThuc.getSelectedItem() + "");
         if (cboHinhThuc.getSelectedIndex() == 0) {
-            km.setGiamGia(Long.parseLong(txtGiamGia.getText()));// lấy đến subtring -1
+            km.setGiamGia(Long.parseLong(txtGiamGia.getText().substring(0, txtGiamGia.getText().length() - 1)));// lấy đến subtring -1
         } else {
             km.setGiamGia(Long.parseLong(txtGiamGia.getText().substring(0, txtGiamGia.getText().length() - 4)));
         }
-
+        
+        for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+            if (Boolean.parseBoolean((String) tblSanPham.getValueAt(i, 0)) == true) {
+                km.setMaSPCT(tblSanPham.getValueAt(row, 1)+"");
+            }
+        }
+        
         SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
         Date nowDate = new Date();
         String hienTaiString = s.format(nowDate);
         String BatdauString = s.format(dcBatDau.getDate());
         String KetthucString = s.format(dcKetThuc.getDate());
-
+        
         try {
             Date hientai = s.parse(hienTaiString);
             Date BatDau = s.parse(BatdauString);
@@ -942,7 +945,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 // 2. bạn insert như dòng 957
 // 3. validate
 // 4. tạo thêm pt nữa là cập nhật trạng thái
-//------------------------------------------trạng thái-------------------------------------------------------------------
         km.setThoiGianBatDau(dcBatDau.getDate());
         km.setThoiGianKetThuc(dcKetThuc.getDate());
         km.setMoTa(txtMoTa.getText());
@@ -954,9 +956,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         try {
             kmSV.insertData(km);
             kmSV.insertBangChung(km);
-//            for (int i = 0; i < list; i++) {
-//                kmSV.i
-//            } nếu khuyến mại theo danh  mục thì phải lấy đc tất cả các mã sản phẩm có trong danh mục đấy, thực hieemn vòng for add từng thằng 1 vào với mã km là mmax vừa tạo
+//nếu khuyến mại theo danh  mục thì phải lấy đc tất cả các mã sản phẩm có trong danh mục đấy, thực hieemn vòng for add từng thằng 1 vào với mã km là mmax vừa tạo
             fillToTableNSP();
             Msgbox.alert(this, "Thêm khuyến mại nhóm sản phẩm thành công");
             clearForm();
@@ -970,6 +970,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         KhuyenMai kmsp = getForm();
         try {
             kmSV.insertData(kmsp);
+            kmSV.insertBangChung(kmsp);
+            
             fillToTableSP();
             Msgbox.alert(this, "Thêm khuyến mại sản phẩm thành công");
             clearForm();
@@ -1012,7 +1014,15 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             }
         }
     }
+    void capnhapTrangthaiSP(){
+        for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+            KhuyenMai km = new KhuyenMai();
 
+            km.setMaKM(tblSanPham.getValueAt(i, 0)+"");
+            kmSV.UpdateTrangThai(km);
+        }
+    }
+    
 //------------------------Điều kiện check--------------------------------------
     boolean Validate() {
         try {
@@ -1024,9 +1034,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 return true;
             } else if (txtGiamGia.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mức giảm giá đang để trống đang để trống!!");
-                return true;
-            } else if (txtMoTa.getText().trim().equals("")) {
-                Msgbox.alert(this, "Mô tả đang để trống!!");
                 return true;
             } else {
                 return false;

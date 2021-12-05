@@ -21,20 +21,12 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
     String INSERT_SQL = "insert into dbo.KHUYENMAI(MAKM, TENCT,HINHTHUC,BATDAU,KETTHUC,GIAMGIA,TRANGTHAI,MOTA) VALUES(?,?,?,?,?,?,?,?)";
     String INSERT_BANGCHUNG = "insert into dbo.SANPHAMCHITIET_KHUYENMAI values(?,?)";
     String UPDATE_SQL = "UPDATE dbo.KHUYENMAI SET TENCT = ? , HINHTHUC = ? , BATDAU = ? , KETTHUC = ? , GIAMGIA = ? , TRANGTHAI = ? , MOTA = ? WHERE MAKM = ?";
-    String DELETE_SQL = "BEGIN TRY\n"
-            + "	BEGIN TRAN\n"
-            + "		DELETE FROM dbo.SANPHAMCHITIET_KHUYENMAI WHERE MAKM = ?\n"
-            + "		DELETE FROM dbo.KHUYENMAI WHERE MAKM = ?\n"
-            + "	COMMIT TRAN\n"
-            + "END TRY\n"
-            + "BEGIN CATCH\n"
-            + "	ROLLBACK TRAN\n"
-            + "END CATCH";
-    String SELECT_ALL_SQL = "SELECT dbo.KHUYENMAI.MAKM ,dbo.SANPHAMCHITIET.MASPCT, TENCT,HINHTHUC,GIAMGIA ,dbo.SANPHAMCHITIET.TENSPCT,dbo.SANPHAM.TENSP,dbo.DANHMUC.TENDM,BATDAU,KETTHUC,KHUYENMAI.TRANGTHAI,KHUYENMAI.MOTA\n"
-            + "from DBO.KHUYENMAI JOIN DBO.SANPHAMCHITIET_KHUYENMAI ON DBO.KHUYENMAI.MAKM = DBO.SANPHAMCHITIET_KHUYENMAI.MAKM\n"
-            + "				   JOIN DBO.SANPHAMCHITIET ON DBO.SANPHAMCHITIET_KHUYENMAI.MASPCT = DBO.SANPHAMCHITIET.MASPCT\n"
-            + "				   JOIN dbo.SANPHAM ON dbo.SANPHAMCHITIET.MASP = dbo.SANPHAM.MASP\n"
-            + "				   JOIN dbo.DANHMUC ON DBO.SANPHAM.MADANHMUC = DBO.DANHMUC.MADANHMUC";
+    
+        String SELECT_ALL_SQL = "SELECT dbo.KHUYENMAI.MAKM ,dbo.SANPHAMCHITIET.MASPCT, TENCT,HINHTHUC,GIAMGIA ,dbo.SANPHAMCHITIET.TENSPCT,dbo.SANPHAM.TENSP,dbo.DANHMUC.TENDM,BATDAU,KETTHUC,KHUYENMAI.TRANGTHAI,KHUYENMAI.MOTA\n"
+                + "from DBO.KHUYENMAI JOIN DBO.SANPHAMCHITIET_KHUYENMAI ON DBO.KHUYENMAI.MAKM = DBO.SANPHAMCHITIET_KHUYENMAI.MAKM\n"
+                + "				   JOIN DBO.SANPHAMCHITIET ON DBO.SANPHAMCHITIET_KHUYENMAI.MASPCT = DBO.SANPHAMCHITIET.MASPCT\n"
+                + "				   JOIN dbo.SANPHAM ON dbo.SANPHAMCHITIET.MASP = dbo.SANPHAM.MASP\n"
+                + "				   JOIN dbo.DANHMUC ON DBO.SANPHAM.MADANHMUC = DBO.DANHMUC.MADANHMUC";
 
     String SELECT_BY_ID_SQL = "SELECT dbo.KHUYENMAI.MAKM , TENCT,HINHTHUC,GIAMGIA ,dbo.SANPHAMCHITIET.TENSPCT,dbo.SANPHAM.TENSP,dbo.DANHMUC.TENDM,BATDAU,KETTHUC,KHUYENMAI.TRANGTHAI,KHUYENMAI.MOTA\n"
             + "from DBO.KHUYENMAI JOIN DBO.SANPHAMCHITIET_KHUYENMAI ON DBO.KHUYENMAI.MAKM = DBO.SANPHAMCHITIET_KHUYENMAI.MAKM\n"
@@ -72,14 +64,6 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
         }
     }
 
-    @Override
-    public void deleteData(String key) {
-        try {
-            JdbcHelper.excuteUpdate(DELETE_SQL, key, key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public List<KhuyenMai> selectAll() {
@@ -121,6 +105,15 @@ public class KhuyenMaiService implements IKhuyenMaiService<KhuyenMai, String> {
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException();
+        }
+    }
+
+    @Override
+    public void UpdateTrangThai(KhuyenMai entity) {
+        try {
+            JdbcHelper.excuteUpdate(SQL_UpdateTrangThai, entity.getTrangThai(),entity.getMaKM());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
