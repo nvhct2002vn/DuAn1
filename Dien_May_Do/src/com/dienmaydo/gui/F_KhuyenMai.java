@@ -927,8 +927,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         cboApDung.setSelectedIndex(0);
         dcBatDau.setDate(null);
         dcKetThuc.setDate(null);
-        chkSelectAllNSP.setSelected(false);
-        chkSelectAllSP.setSelected(false);
     }
 
     KhuyenMai getForm() {
@@ -1005,7 +1003,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                         KhuyenMai km = new KhuyenMai();
                         km.setMaKM(txtMaKM.getText());
                         km.setMaSPCT(tblSanPham.getValueAt(i, 1).toString());
-                        System.out.println(km.getMaSPCT());
                         kmSV.insertBangChung(km);
                     }
                 }
