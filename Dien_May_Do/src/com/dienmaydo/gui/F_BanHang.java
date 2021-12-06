@@ -57,7 +57,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 /**
  *
- * @author DO TAT HOA 12-05-2021
+ * @author DO TAT HOA 12-06-2021
  */
 public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, ThreadFactory {
 
@@ -971,7 +971,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaHTTT(httt.getMaHTTT());
         hd.setMaTTTT("TT003");
         hd.setMaHTGH(htgh.getMaHTGH());
-        hd.setTienThuaTraKhach(XMoney.loaiBoDauCham(lblTienThuaTraKhach.getText()));
+        hd.setTienThuaTraKhach(0);
         hd.setTongTien(XMoney.loaiBoDauCham(lblTongTien.getText()));
         hd.setThanhToan(XMoney.loaiBoDauCham(lblThanhToan.getText()));
         hd.setGhiChu(txtghiChu.getText());
@@ -1061,8 +1061,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 } else {
                     if (km.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                         tblChonSanPham.setValueAt(km.getGiamGia() + "%", i, 3);
-                    }
-                    if (km.getHinhThuc().equalsIgnoreCase("Giảm theo tiền")) {
+                    } else {
                         tblChonSanPham.setValueAt(XMoney.themDauCham(km.getGiamGia()) + " VNĐ", i, 3);
                     }
                 }
@@ -1119,8 +1118,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                         giaTriKM = giaTriKM / 100;
                         float giatriGiam = giaTriKM * soLuong;
                         giamGia += (donGia * giatriGiam);
-                    }
-                    if (km.getHinhThuc().equalsIgnoreCase("Giảm theo tiền")) {
+                    } else {
                         giamGia += (km.getGiamGia() * soLuong);
                     }
                 }
@@ -1215,7 +1213,6 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setTienThuaTraKhach(XMoney.loaiBoDauCham(lblTienThuaTraKhach.getText()));
         hd.setTongTien(XMoney.loaiBoDauCham(lblTongTien.getText()));
         hd.setThanhToan(XMoney.loaiBoDauCham(lblThanhToan.getText()));
-        System.out.println(lblThanhToan.getText());
         hd.setGhiChu(txtghiChu.getText());
         return hd;
     }
@@ -1272,8 +1269,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 } else {
                     if (km.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                         tblChonSanPham.setValueAt(km.getGiamGia() + "%", i, 3);
-                    }
-                    if (km.getHinhThuc().equalsIgnoreCase("Giảm theo tiền")) {
+                    } else {
                         tblChonSanPham.setValueAt(XMoney.themDauCham(km.getGiamGia()) + " VNĐ", i, 3);
                     }
                 }
@@ -1339,8 +1335,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             } else {
                 if (km.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                     tblChonSanPham.setValueAt(km.getGiamGia() + "%", i, 3);
-                }
-                if (km.getHinhThuc().equalsIgnoreCase("Giảm theo tiền")) {
+                } else {
                     tblChonSanPham.setValueAt(XMoney.themDauCham(km.getGiamGia()) + " VNĐ", i, 3);
                 }
             }
@@ -1532,7 +1527,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
             XWPFParagraph paragraph22 = document.createParagraph();
             paragraph22.setAlignment(ParagraphAlignment.LEFT);
-            
+
             XWPFParagraph paragraph21 = document.createParagraph();
             paragraph21.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run21 = paragraph21.createRun();
@@ -1544,22 +1539,22 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             XWPFRun run20 = paragraph15.createRun();
             run20.setText("TỔNG TIỀN THANH TOÁN: " + lblThanhToan.getText() + " VNĐ");
             run20.setBold(true);
-            
+
             XWPFParagraph paragraph24 = document.createParagraph();
             paragraph24.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run24 = paragraph24.createRun();
-            run24.setText(cboHinhThucTT.getSelectedItem()+": " + txtTienKhachDua.getText() + " VNĐ");
- 
+            run24.setText(cboHinhThucTT.getSelectedItem() + ": " + txtTienKhachDua.getText() + " VNĐ");
+
             XWPFParagraph paragraph25 = document.createParagraph();
             paragraph25.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run25 = paragraph25.createRun();
             run25.setText("Tiền trả lại: " + lblTienThuaTraKhach.getText() + " VNĐ");
-            
+
             XWPFParagraph paragraph23 = document.createParagraph();
             paragraph23.setAlignment(ParagraphAlignment.RIGHT);
             XWPFRun run23 = paragraph23.createRun();
             run23.setText("------------------------------------------------------------------------------------------------------------------------------------------");
-            
+
             XWPFParagraph paragraph16 = document.createParagraph();
             paragraph16.setAlignment(ParagraphAlignment.RIGHT);
             XWPFRun run16 = paragraph16.createRun();
@@ -1641,6 +1636,18 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                         x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", "", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
                         x.getTheTich(), x.getSoLuong()
                     });
+                    for (int i = 0; i < tblChonSanPham.getRowCount(); i++) {
+                        KhuyenMai km = kmService.selectGiamGia(tblChonSanPham.getValueAt(i, 0).toString());
+                        if (km == null) {
+                            tblChonSanPham.setValueAt("0", i, 3);
+                        } else {
+                            if (km.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
+                                tblChonSanPham.setValueAt(km.getGiamGia() + "%", i, 3);
+                            } else {
+                                tblChonSanPham.setValueAt(XMoney.themDauCham(km.getGiamGia()) + " VNĐ", i, 3);
+                            }
+                        }
+                    }
                     cboDanhMuc.setSelectedIndex(0);
 
                 }
