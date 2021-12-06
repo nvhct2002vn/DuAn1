@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author lethu
  */
 public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
-    
+
     KhachHangService KHSV = new KhachHangService();  //tạo ra KHSV 
     LichSuGiaoDichService LSGDSV = new LichSuGiaoDichService();
     boolean _GioiTinh;
@@ -35,7 +35,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         FillTable();
-        
+
         rdoNam.setSelected(true);
         rdoConHoatDong.setSelected(true);
     }
@@ -101,6 +101,8 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Tên khách hàng:");
+
+        txtMaKH.setEditable(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Mã khách hàng:");
@@ -520,6 +522,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             return;
         } else {
             Them();
+            Lammoi();
         }
 
     }//GEN-LAST:event_btnthemActionPerformed
@@ -528,8 +531,11 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (isValidate()) {
             return;
+        } else if (isCheckTrung()) {
+            return;
         } else {
             Sua();
+            Lammoi();
         }
     }//GEN-LAST:event_btnsuaActionPerformed
 
@@ -634,15 +640,12 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             });
         }
     }
-    
+
     boolean isValidate() {
         try {
             String dinhDangEmail = "\\w+@\\w+(\\.\\w+){1,2}";
             String dinhDangSDT = "0\\d{9}";
-            if (txtMaKH.getText().trim().equals("")) {
-                Msgbox.alert(this, "Mã khách hàng không được để trống");
-                return true;
-            } else if (txtTenKH.getText().trim().equals("")) {
+            if (txtTenKH.getText().trim().equals("")) {
                 Msgbox.alert(this, "Tên khách hàng không được để trống");
                 return true;
             } else if (txtDiaChi.getText().trim().equals("")) {
@@ -671,21 +674,38 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             return true;
         }
     }
-    
+
     boolean isCheckTrung() {
         boolean check = false;
         List<KhachHang> list = KHSV.selectAll();
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaKH().equalsIgnoreCase(txtMaKH.getText())) {
-                Msgbox.alert(this, "Mã khách hàng đã tồn tại");
+            if (list.get(i).getSDT().equalsIgnoreCase(txtDienThoai.getText())) {
+                Msgbox.alert(this, "Số điện thoại khách hàng đã tồn tại");
                 check = true;
                 break;
             }
         }
         return check;
     }
-    
+
     KhachHang getform() {
+        KhachHang KH = new KhachHang(); //tạo kh mới
+        int SoLuongKH = tblQuanLyKhacHang.getRowCount();
+        KH.setMaKH("KH" + (SoLuongKH + 1));
+        KH.setTenKh(txtTenKH.getText());
+        if (rdoNam.isSelected()) {
+            KH.setGioiTinh(true);
+        } else {
+            KH.setGioiTinh(false);
+        }
+        KH.setSDT(txtDienThoai.getText());
+        KH.setEmail(txtEmail.getText());
+        KH.setDiaChi(txtDiaChi.getText());
+        KH.setTrangthai(rdoConHoatDong.isSelected());
+        return KH;
+    }
+
+    KhachHang getformUD() {
         KhachHang KH = new KhachHang(); //tạo kh mới
         KH.setMaKH(txtMaKH.getText());
         KH.setTenKh(txtTenKH.getText());
@@ -700,7 +720,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         KH.setTrangthai(rdoConHoatDong.isSelected());
         return KH;
     }
-    
+
     void Them() {
         try {
             KhachHang KH = getform();
@@ -711,10 +731,10 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-    
+
     void Sua() {
         try {
-            KhachHang KH = getform();
+            KhachHang KH = getformUD();
             KHSV.updateData(KH);
             FillTable();
             Msgbox.alert(this, "Sửa thành công");
@@ -722,7 +742,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             e.printStackTrace();  //in ra lỗi
         }
     }
-    
+
     void ClickTable() {
         int vitri = tblQuanLyKhacHang.getSelectedRow();
         txtMaKH.setText((String) tblQuanLyKhacHang.getValueAt(vitri, 0));
@@ -742,7 +762,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             rdoNgungHoatDong.setSelected(true);
         }
     }
-    
+
     void Lammoi() {
         txtMaKH.setText("");
         txtTenKH.setText("");
@@ -752,7 +772,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         txtDiaChi.setText("");
         rdoConHoatDong.setSelected(true);
     }
-    
+
     void LocGioiTinh() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
@@ -765,7 +785,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+
     void LocTrangThai() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel();
         Model.setRowCount(0);
@@ -778,7 +798,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+
     void TimKiem() {
         DefaultTableModel Model = (DefaultTableModel) tblQuanLyKhacHang.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
@@ -789,7 +809,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
             });
         }
     }
-    
+
     void FillTableLSGD() {
         Model = (DefaultTableModel) TbLSGD.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
