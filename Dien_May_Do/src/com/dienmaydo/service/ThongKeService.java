@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author VINH
@@ -1088,4 +1089,67 @@ public class ThongKeService {
         }
     }
 
+    public List<Integer> baoCaoDoanhThuHienTai() {
+        String sql = "SELECT SUM(TONGTIEN) DOANHTHU FROM HOADON where MONTH(NGAYLAP) = GETDATE()";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Integer> baoCaoSoHDHienTai() {
+        String sql = "SELECT COUNT(MAHD) SOHOADON FROM HOADON WHERE MONTH(NGAYLAP) = GETDATE()";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Integer> baoCaoSoHDHuyHienTai() {
+        String sql = "SELECT COUNT(MAHD) SOHOADONHUY FROM HOADON WHERE MONTH(NGAYLAP) = GETDATE() AND MATTTT = 'TT003'";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Integer> baoCaoSoKHHienTai() {
+        String sql = "SELECT COUNT(KHACHHANG.MAKH) SOKHACHHANG FROM KHACHHANG JOIN HOADON ON HOADON.MAKH = KHACHHANG.MAKH WHERE MONTH(NGAYLAP) = GETDATE()";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }

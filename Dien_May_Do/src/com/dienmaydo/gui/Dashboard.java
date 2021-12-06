@@ -488,7 +488,7 @@ public class Dashboard extends javax.swing.JFrame {
         KhachHang.setBackground(defaultColor);
         thoat.setBackground(defaultColor);
 
-       if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+        if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
             lblTaiKhoan.setIcon(new ImageIcon("logos/vinhtq.png"));
             txtTenNhanVien.setText("THIỀU QUANG VINH");
         } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
@@ -701,9 +701,15 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKhuyenMaiMouseClicked
 
     private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
-        F_ThongKe fThongKe = new F_ThongKe();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(fThongKe).setVisible(true);
+        if (Auth.isLogin()) {
+            if (!Auth.isManager()) {
+                Msgbox.alert(this, "Bạn không có quyền xem thống kê !!");
+            } else {
+                F_ThongKe fThongKe = new F_ThongKe();
+                jDesktopPane1.removeAll();
+                jDesktopPane1.add(fThongKe).setVisible(true);
+            }
+        }
         if (F_BanHang.webcam != null) {
             F_BanHang.webcam.close();
         }
