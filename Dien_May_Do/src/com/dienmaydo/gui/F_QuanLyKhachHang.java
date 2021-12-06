@@ -334,9 +334,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         jLabel1.setText("Giới tính:");
 
         cbLocGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Nam", "Nữ" }));
-        cbLocGioiTinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbLocGioiTinhActionPerformed(evt);
+        cbLocGioiTinh.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbLocGioiTinhItemStateChanged(evt);
             }
         });
 
@@ -344,9 +344,9 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         jLabel10.setText("Trạng thái:");
 
         cboLocTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Còn hoạt động", "Ngừng hoạt động" }));
-        cboLocTrangThai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboLocTrangThaiActionPerformed(evt);
+        cboLocTrangThai.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboLocTrangThaiItemStateChanged(evt);
             }
         });
 
@@ -553,38 +553,44 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblQuanLyKhacHangMouseClicked
 
-    private void cbLocGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLocGioiTinhActionPerformed
-        // TODO add your handling code here:
-        String GioiTinhCbb = (String) cbLocGioiTinh.getSelectedItem();  //lấy chuỗi trên cbb(giới tính) để gán vào giới tính cbb
-        if (GioiTinhCbb.equals("Nam")) {
-            _GioiTinh = true;
-            LocGioiTinh();
-        } else if (GioiTinhCbb.equals("All")) {
-            FillTable();
-        } else {
-            _GioiTinh = false;
-            LocGioiTinh();
-        }
-    }//GEN-LAST:event_cbLocGioiTinhActionPerformed
-
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
         TimKiem();
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
-    private void cboLocTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocTrangThaiActionPerformed
+    private void cbLocGioiTinhItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbLocGioiTinhItemStateChanged
+        String GioiTinhCbb = (String) cbLocGioiTinh.getSelectedItem();  //lấy chuỗi trên cbb(giới tính) để gán vào giới tính cbb
+        if (GioiTinhCbb.equals("Nam")) {
+            cboLocTrangThai.setSelectedIndex(0);
+            _GioiTinh = true;
+            LocGioiTinh();
+        } else if (GioiTinhCbb.equals("All")) {
+            cboLocTrangThai.setSelectedIndex(0);
+            FillTable();
+        } else {
+            cboLocTrangThai.setSelectedIndex(0);
+            _GioiTinh = false;
+            LocGioiTinh();
+        }
         // TODO add your handling code here:
+    }//GEN-LAST:event_cbLocGioiTinhItemStateChanged
+
+    private void cboLocTrangThaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboLocTrangThaiItemStateChanged
         String TrangThaiCbb = (String) cboLocTrangThai.getSelectedItem();  //lấy chuỗi trên cbb(giới tính) để gán vào giới tính cbb
         if (TrangThaiCbb.equals("Còn hoạt động")) {
+            cbLocGioiTinh.setSelectedIndex(0);
             _TrangThai = true;
             LocTrangThai();
         } else if (TrangThaiCbb.equals("All")) {
+            cbLocGioiTinh.setSelectedIndex(0);
             FillTable();
         } else {
+            cbLocGioiTinh.setSelectedIndex(0);
             _TrangThai = false;
             LocTrangThai();
         }
-    }//GEN-LAST:event_cboLocTrangThaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboLocTrangThaiItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
