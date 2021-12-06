@@ -12,6 +12,10 @@ public class XMoney {
         return vn.format(money);
     }
 
+    public static String themDauChamCuaVinh(int money) {
+        return vn.format(money);
+    }
+
     public static Long loaiBoVND(String money) {
         String moneyReplace = money.replace(".", "");
         String moeySubString = moneyReplace.substring(0, moneyReplace.length() - 4);

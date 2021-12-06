@@ -11,9 +11,18 @@ import com.dienmaydo.service.DanhMucService;
 import com.dienmaydo.service.HoaDonService;
 import com.dienmaydo.service.KhachHangService;
 import com.dienmaydo.service.ThongKeService;
+import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XMoney;
 import java.awt.CardLayout;
 import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -97,6 +106,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         cbbNamHangHuy = new javax.swing.JComboBox<>();
         jPanel16 = new javax.swing.JPanel();
         txtTimKiemHoaDonHuy = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         radTatCa = new javax.swing.JRadioButton();
         radThang = new javax.swing.JRadioButton();
         radNam = new javax.swing.JRadioButton();
@@ -422,8 +432,8 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     HÀNG HÓA     ", jPanel8);
@@ -438,9 +448,16 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                 "Mã hóa đơn", "Tổng tiền", "Hình thức thanh toán", "Ngày lập hóa đơn", "Tên khách hàng", "Ghi chú"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -523,23 +540,39 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     HÀNG BỊ HỦY     ", jPanel9);
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 0));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Gửi báo cáo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(341, 341, 341))
         );
 
         radTatCa.setBackground(new java.awt.Color(255, 255, 255));
@@ -755,6 +788,51 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         fillCbbTheoNam();
     }//GEN-LAST:event_cbbTheoNamActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        final String username = "dienmaydo02@gmail.com";
+        final String password = "vinhtq2002";
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+        // đăng nhập ngầm
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            if (Msgbox.confirm(this, "Bạn muốn gửi báo cáo không ?")) {
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
+                message.setRecipients(
+                        Message.RecipientType.TO,
+                        InternetAddress.parse("vinhche00@gmail.com")
+                );
+                message.setSubject("Báo cáo tháng này !");
+                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang1();
+                List<Integer> hoaDon = tksv.selectHDTheoThang1();
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang1(); 
+                List<Integer> khachHang = tksv.selectKHTheoThang1();
+                String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
+                dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
+                dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
+                dt += "Số khách hàng: " + khachHang.get(0);
+                message.setText(dt);
+
+                Transport.send(message);
+                Msgbox.alert(this, "Gửi báo cáo thành công !!");
+            }
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -764,6 +842,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbbNamHangHuy;
     private javax.swing.JComboBox<String> cbbTheoNam;
     private javax.swing.JComboBox<String> cbbTheoThang;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -812,7 +891,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         try {
             List<Integer> list = hdsv.selectDoanhThu();
             for (Integer doanhThu : list) {
-                lblDoanhThu.setText(XMoney.themDauCham(doanhThu)); 
+                lblDoanhThu.setText(XMoney.themDauCham(doanhThu));
             }
         } catch (Exception e) {
             e.printStackTrace();
