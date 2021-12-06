@@ -922,6 +922,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         cboApDung.setSelectedIndex(0);
         dcBatDau.setDate(null);
         dcKetThuc.setDate(null);
+        chkSelectAllNSP.setSelected(false);
+        chkSelectAllSP.setSelected(false);
     }
 
     KhuyenMai getForm() {
