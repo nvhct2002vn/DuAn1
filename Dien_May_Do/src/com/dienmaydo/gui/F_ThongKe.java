@@ -816,7 +816,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
                 message.setSubject("Báo cáo tháng này !");
                 List<Integer> doanhThu = tksv.selectDoanhThuTheoThang1();
                 List<Integer> hoaDon = tksv.selectHDTheoThang1();
-                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang1(); 
+                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang1();
                 List<Integer> khachHang = tksv.selectKHTheoThang1();
                 String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
                 dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";

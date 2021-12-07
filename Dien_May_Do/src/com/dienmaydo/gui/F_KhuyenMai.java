@@ -12,6 +12,7 @@ import com.dienmaydo.service.KhuyenMaiService;
 import com.dienmaydo.service.SanPhamChiTietService;
 import com.dienmaydo.service.SanPhamService;
 import com.dienmaydo.utils.Auth;
+import com.dienmaydo.utils.JavaMail;
 import com.dienmaydo.utils.XMoney;
 import java.awt.CardLayout;
 import java.text.ParseException;
@@ -932,9 +933,9 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         km.setTenChuongTrinh(txtTenCT.getText());
         km.setHinhThuc(cboHinhThuc.getSelectedItem() + "");
         if (cboHinhThuc.getSelectedIndex() == 0) {
-            km.setGiamGia(Long.parseLong(txtGiamGia.getText().substring(0, txtGiamGia.getText().length() - 1)));// lấy đến subtring -1
+            km.setGiamGia(Long.parseLong(txtGiamGia.getText()));// lấy đến subtring -1
         } else {
-            km.setGiamGia(Long.parseLong(txtGiamGia.getText().substring(0, txtGiamGia.getText().length() - 4)));
+            km.setGiamGia(Long.parseLong(txtGiamGia.getText()));
         }
         SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
         Date nowDate = new Date();
