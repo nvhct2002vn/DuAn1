@@ -13,6 +13,16 @@ public class SanPhamChiTietKhuyenMai {
     private String MaKM;
     private String MaSPCT;
 
+    public SanPhamChiTietKhuyenMai() {
+    }
+    
+    public SanPhamChiTietKhuyenMai( String MaKM, String MaSPCT) {
+     
+        this.MaKM = MaKM;
+        this.MaSPCT = MaSPCT;
+    }
+
+    
     public String getMaSPCTKM() {
         return MaSPCTKM;
     }
