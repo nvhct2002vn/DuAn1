@@ -11,6 +11,7 @@ import com.dienmaydo.service.DanhMucService;
 import com.dienmaydo.service.HoaDonService;
 import com.dienmaydo.service.KhachHangService;
 import com.dienmaydo.service.ThongKeService;
+import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XMoney;
 import java.awt.CardLayout;
@@ -24,8 +25,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  *
@@ -807,25 +811,127 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
 
         try {
             if (Msgbox.confirm(this, "Bạn muốn gửi báo cáo không ?")) {
-                Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
-                message.setRecipients(
-                        Message.RecipientType.TO,
-                        InternetAddress.parse("vinhche00@gmail.com")
-                );
-                message.setSubject("Báo cáo tháng này !");
-                List<Integer> doanhThu = tksv.selectDoanhThuTheoThang1();
-                List<Integer> hoaDon = tksv.selectHDTheoThang1();
-                List<Integer> hoaDonHuy = tksv.selectHDHuyTheoThang1();
-                List<Integer> khachHang = tksv.selectKHTheoThang1();
-                String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
-                dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
-                dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
-                dt += "Số khách hàng: " + khachHang.get(0);
-                message.setText(dt);
+                if (Auth.user.getMaNV().equalsIgnoreCase("NV001")) {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
+                    message.setRecipients(
+                            Message.RecipientType.TO,
+                            InternetAddress.parse("vinhche00@gmail.com")
+                    );
+                    message.setSubject("Thiều Quang Vinh báo cáo tháng này !");
+                    List<Integer> doanhThu = tksv.baoCaoDoanhThuHienTai();
+                    List<Integer> hoaDon = tksv.baoCaoSoHDHienTai();
+                    List<Integer> hoaDonHuy = tksv.baoCaoSoHDHuyHienTai();
+                    List<Integer> khachHang = tksv.baoCaoSoKHHienTai();
+                    String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
+                    dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
+                    dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
+                    dt += "Số khách hàng: " + khachHang.get(0);
+                    message.setText("Thời gian: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now() + "\n\n" + dt);
 
-                Transport.send(message);
-                Msgbox.alert(this, "Gửi báo cáo thành công !!");
+                    Transport.send(message);
+                    Msgbox.alert(this, "Gửi báo cáo thành công !!");
+                } else if (Auth.user.getMaNV().equalsIgnoreCase("NV002")) {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
+                    message.setRecipients(
+                            Message.RecipientType.TO,
+                            InternetAddress.parse("vinhche00@gmail.com")
+                    );
+                    message.setSubject("Đỗ Tất Hòa báo cáo tháng này !");
+                    List<Integer> doanhThu = tksv.baoCaoDoanhThuHienTai();
+                    List<Integer> hoaDon = tksv.baoCaoSoHDHienTai();
+                    List<Integer> hoaDonHuy = tksv.baoCaoSoHDHuyHienTai();
+                    List<Integer> khachHang = tksv.baoCaoSoKHHienTai();
+                    String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
+                    dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
+                    dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
+                    dt += "Số khách hàng: " + khachHang.get(0);
+                    message.setText("Thời gian: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now() + "\n\n" + dt);
+
+                    Transport.send(message);
+                    Msgbox.alert(this, "Gửi báo cáo thành công !!");
+                } else if (Auth.user.getMaNV().equalsIgnoreCase("NV003")) {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
+                    message.setRecipients(
+                            Message.RecipientType.TO,
+                            InternetAddress.parse("vinhche00@gmail.com")
+                    );
+                    message.setSubject("Nguyễn Viết Hiên báo cáo tháng này !");
+                    List<Integer> doanhThu = tksv.baoCaoDoanhThuHienTai();
+                    List<Integer> hoaDon = tksv.baoCaoSoHDHienTai();
+                    List<Integer> hoaDonHuy = tksv.baoCaoSoHDHuyHienTai();
+                    List<Integer> khachHang = tksv.baoCaoSoKHHienTai();
+                    String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
+                    dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
+                    dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
+                    dt += "Số khách hàng: " + khachHang.get(0);
+                    message.setText("Thời gian: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now() + "\n\n" + dt);
+
+                    Transport.send(message);
+                    Msgbox.alert(this, "Gửi báo cáo thành công !!");
+                } else if (Auth.user.getMaNV().equalsIgnoreCase("NV004")) {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
+                    message.setRecipients(
+                            Message.RecipientType.TO,
+                            InternetAddress.parse("vinhche00@gmail.com")
+                    );
+                    message.setSubject("Lê Thị Ngọc Thúy báo cáo tháng này !");
+                    List<Integer> doanhThu = tksv.baoCaoDoanhThuHienTai();
+                    List<Integer> hoaDon = tksv.baoCaoSoHDHienTai();
+                    List<Integer> hoaDonHuy = tksv.baoCaoSoHDHuyHienTai();
+                    List<Integer> khachHang = tksv.baoCaoSoKHHienTai();
+                    String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
+                    dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
+                    dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
+                    dt += "Số khách hàng: " + khachHang.get(0);
+                    message.setText("Thời gian: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now() + "\n\n" + dt);
+
+                    Transport.send(message);
+                    Msgbox.alert(this, "Gửi báo cáo thành công !!");
+                } else if (Auth.user.getMaNV().equalsIgnoreCase("NV005")) {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
+                    message.setRecipients(
+                            Message.RecipientType.TO,
+                            InternetAddress.parse("vinhche00@gmail.com")
+                    );
+                    message.setSubject("Lê Thành Vinh báo cáo tháng này !");
+                    List<Integer> doanhThu = tksv.baoCaoDoanhThuHienTai();
+                    List<Integer> hoaDon = tksv.baoCaoSoHDHienTai();
+                    List<Integer> hoaDonHuy = tksv.baoCaoSoHDHuyHienTai();
+                    List<Integer> khachHang = tksv.baoCaoSoKHHienTai();
+                    String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
+                    dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
+                    dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
+                    dt += "Số khách hàng: " + khachHang.get(0);
+                    message.setText("Thời gian: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now() + "\n\n" + dt);
+
+                    Transport.send(message);
+                    Msgbox.alert(this, "Gửi báo cáo thành công !!");
+                } else if (Auth.user.getMaNV().equalsIgnoreCase("NV006")) {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress("dienmaydo02@gmail.com"));
+                    message.setRecipients(
+                            Message.RecipientType.TO,
+                            InternetAddress.parse("vinhche00@gmail.com")
+                    );
+                    message.setSubject("Nguyễn Hồng Sơn báo cáo tháng này !");
+                    List<Integer> doanhThu = tksv.baoCaoDoanhThuHienTai();
+                    List<Integer> hoaDon = tksv.baoCaoSoHDHienTai();
+                    List<Integer> hoaDonHuy = tksv.baoCaoSoHDHuyHienTai();
+                    List<Integer> khachHang = tksv.baoCaoSoKHHienTai();
+                    String dt = "Số doanh thu: " + XMoney.themDauChamCuaVinh(doanhThu.get(0)) + " VNĐ\n";
+                    dt += "Số hóa đơn: " + hoaDon.get(0) + "\n";
+                    dt += "Số hàng hủy: " + hoaDonHuy.get(0) + "\n";
+                    dt += "Số khách hàng: " + khachHang.get(0);
+                    message.setText("Thời gian: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now() + "\n\n" + dt);
+
+                    Transport.send(message);
+                    Msgbox.alert(this, "Gửi báo cáo thành công !!");
+                }
             }
 
         } catch (MessagingException e) {
