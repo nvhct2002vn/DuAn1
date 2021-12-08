@@ -9,11 +9,12 @@ import com.dienmaydo.iservice.INhanVienService;
 
 public class NhanVienService implements INhanVienService<NhanVien, String> {
 
-    String Insert_SQL = "INSERT INTO dbo.NHANVIEN(MANV,MAVT,MATKHAU,TENNV,DIACHI,DIENTHOAI,GIOITINH,NGAYSINH,TRANGTHAI)VALUES(?,?,?,?,?,?,?,?,?)";
-    String Update_SQL = "UPDATE dbo.NHANVIEN SET VAITRO = ? ,MATKHAU = ?,TENNV = ? ,DIACHI = ? ,DIENTHOAI = ?,GIOITINH = ?,NGAYSINH = ?,TRANGTHAI = ? WHERE MANV = ?";
+    String Insert_SQL = "INSERT INTO dbo.NHANVIEN(MANV,MATKHAU,TENNV,DIACHI,DIENTHOAI,GIOITINH,NGAYSINH,VAITRO,EMAIL,TRANGTHAI)VALUES(?,?,?,?,?,?,?,?,?,?)";
+    String Update_SQL = "UPDATE dbo.NHANVIEN SET MATKHAU = ?,TENNV = ?,DIACHI = ?,DIENTHOAI = ?,GIOITINH = ?,NGAYSINH = ?,VAITRO = ?,EMAIL = ?,TRANGTHAI = ? WHERE MANV = ?";
     String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN";
     String SELECT_BY_ID = "SELECT * FROM NHANVIEN WHERE MANV LIKE ?";
     String Search_SQL = "SELECT * FROM dbo.NHANVIEN WHERE MANV LIKE  ? OR TENNV LIKE ? OR DIENTHOAI LIKE ?";
+
     @Override
     public List<NhanVien> selectAll() {
         return selectBySql(SELECT_ALL_SQL);
@@ -34,6 +35,7 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
                 nv.setGioiTinh(rs.getBoolean("GIOITINH"));
                 nv.setNgaySinh(rs.getDate("NGAYSINH"));
                 nv.setVaiTro(rs.getBoolean("VAITRO"));
+                nv.setEmail(rs.getString("EMAIL"));
                 nv.setTrangThai(rs.getBoolean("TRANGTHAI"));
                 list.add(nv);
             }
@@ -56,14 +58,14 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
 
     @Override
     public void insertData(NhanVien entity) {
-        JdbcHelper.excuteUpdate(Insert_SQL, entity.getMaNV(), entity.isVaiTro(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
-                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.isTrangThai());
+        JdbcHelper.excuteUpdate(Insert_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(), entity.getDienThoai(), entity.isGioiTinh(),
+                entity.getNgaySinh(), entity.isVaiTro(), entity.getEmail(), entity.isTrangThai());
     }
 
     @Override
     public void updateData(NhanVien entity) {
-        JdbcHelper.excuteUpdate(Update_SQL, entity.isVaiTro(), entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(),
-                entity.getDienThoai(), entity.isGioiTinh(), entity.getNgaySinh(), entity.isTrangThai(), entity.getMaNV());
+        JdbcHelper.excuteUpdate(Update_SQL, entity.getMatKhau(), entity.getTenNV(), entity.getDiaChi(), entity.getDienThoai(), entity.isGioiTinh(),
+                entity.getNgaySinh(), entity.isVaiTro(), entity.getEmail(), entity.isTrangThai(), entity.getMaNV());
     }
 
     @Override
@@ -73,6 +75,6 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
 
     @Override
     public List<NhanVien> selectByTimKiem(String key) {
-        return selectBySql(Search_SQL, "%" + key + "%", "%" + key + "%","%" + key + "%");
+        return selectBySql(Search_SQL, "%" + key + "%", "%" + key + "%", "%" + key + "%");
     }
 }

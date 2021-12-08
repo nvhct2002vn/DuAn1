@@ -21,12 +21,12 @@ VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
 
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','123', N'Thiều Quang Vinh', N'Thanh Hóa', '0986765543', 1, '2002-08-19',1,1),
-		('NV002','123', N'Đỗ Tất Hòa', N'Thanh Hóa', '0457392734', 1, '2002-09-21',1,1),
-		('NV003','123', N'Nguyễn Viết Hiên', N'Bắc Ninh', '0875647583', 1, '2002-01-01',1,1),
-		('NV004','123', N'Lê Thị Ngọc Thúy', N'Hà Nội', '0764536273', 0, '1998-02-02',0,1),
-		('NV005','123', N'Lê Thành Vinh', N'Hà Nội', '0123456789', 1, '1998-03-03',0,1),
-		('NV006','123', N'Nguyễn Hồng Sơn', N'Hải Dương', '0674347859', 1, '2002-04-04',0,1)
+VALUES  ('NV001','123', N'Thiều Quang Vinh', N'Thanh Hóa', '09867655439', 1, '2002-08-19',1,'vinhtq02@gmail.com',1),
+		('NV002','123', N'Đỗ Tất Hòa', N'Thanh Hóa', '04573927342', 1, '2002-09-21',1,'vinhtq02@gmail.com',1),
+		('NV003','123', N'Nguyễn Viết Hiên', N'Bắc Ninh', '08756475834', 1, '2002-01-01',1,'viethien123vn@gmail.com',1),
+		('NV004','123', N'Lê Thị Ngọc Thúy', N'Hà Nội', '07645362734', 0, '1998-02-02',0,'lethuy1898@gmail.com',1),
+		('NV005','123', N'Lê Thành Vinh', N'Hà Nội', '01234567898', 1, '1998-03-03',0,'lethanhvinh241998@gmail.com',1),
+		('NV006','123', N'Nguyễn Hồng Sơn', N'Hải Dương', '06743478596', 1, '2002-04-04',0,'vinhtq02@gmail.com',1)
 
 
 INSERT INTO XUATXU
@@ -53,8 +53,8 @@ INSERT INTO KHACHHANG
 VALUES	('KH00',N'Khách bán lẻ',1,'Not','Not',N'Not',1),
 		('KH01',N'Võ Thị Sáu',1,'0389456758','sdhsa@gmail.com',N'Thanh Hóa',1),
 		('KH02',N'Trịnh Thị Hoa',1,'0545465758','tring1323@gmail.com',N'Thanh Hóa',1),
-		('KH03',N'Hoàng Hoa Thám',0,'0568587587','tham234@gmail.com',N'Thanh Hóa',1),
-		('KH04',N'Nguyễn Thị Hoa',1,'0356856755','hoanguyen@gmail.com',N'Đà Nẵng',1),
+		('KH03',N'Hoàng Hoa Thám',0,'056858758','tham234@gmail.com',N'Thanh Hóa',1),
+		('KH04',N'Nguyễn Thị Hoa',1,'035685675','hoanguyen@gmail.com',N'Đà Nẵng',1),
 		('KH05',N'Trần Văn Bình',0,'0385896758','binhgold123@gmail.com',N'Thái Nguyên',1),
 		('KH06',N'Đỗ Thị Chanh',1,'0658456758','chanh987gmail.com',N'Hà Nội',1),
 		('KH07',N'Nguyễn Văn Quân',0,'0956856758','quan235@gmail.com',N'Bắc Cạn',1),

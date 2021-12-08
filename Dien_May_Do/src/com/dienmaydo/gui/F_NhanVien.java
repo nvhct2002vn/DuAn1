@@ -81,6 +81,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         txtMatKhau = new javax.swing.JTextField();
         rdoDangLamViec = new javax.swing.JRadioButton();
         rdoNghiViec = new javax.swing.JRadioButton();
+        jLabel12 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         cbbGTLoc = new javax.swing.JComboBox<>();
         cbbVaiTRoLoc = new javax.swing.JComboBox<>();
@@ -105,6 +107,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thiết lập thông in nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
+        txtManv.setEditable(false);
         txtManv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtManvActionPerformed(evt);
@@ -205,6 +208,9 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         buttonGroup2.add(rdoNghiViec);
         rdoNghiViec.setText("Nghỉ việc");
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("Email:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -249,7 +255,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel12))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -261,14 +268,15 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(rdoDangLamViec)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoNghiViec)))))
+                                .addComponent(rdoNghiViec))
+                            .addComponent(txtEmail))))
                 .addGap(109, 109, 109))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +286,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdNam)
                             .addComponent(jLabel6)
@@ -287,9 +299,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(rdoDangLamViec)
-                            .addComponent(rdoNghiViec))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLammoi))
+                            .addComponent(rdoNghiViec)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtManv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,13 +319,13 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtDiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnThem)
-                            .addComponent(btnSua))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(txtDiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnLammoi))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -404,14 +414,14 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã NV", "Mật khẩu", "Tên NV", "Vai trò", "Địa chỉ", "Điện thoại", "Ngày sinh", "Giới tính", "Trạng thái", "null"
+                "Mã NV", "Mật khẩu", "Tên NV", "Vai trò", "Địa chỉ", "Điện thoại", "Ngày sinh", "Giới tính", "Email", "Trạng thái", "null"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -449,11 +459,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã NV", "Mật khẩu", "Tên NV", "Vai trò", "Địa chỉ", "Điện thoại", "Ngày sinh", "Giới tính", "Trạng thái"
+                "Mã NV", "Mật khẩu", "Tên NV", "Vai trò", "Địa chỉ", "Điện thoại", "Ngày sinh", "Giới tính", "Email", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -562,9 +572,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (isValidate()) {
             return;
-        } else if (checkTrung()) {
-            return;
-        } else {
+        } //        else if (checkTrung()) {
+        //            Msgbox.alert(this, "Mã đã tồn tại");
+        //            return;
+        //        } 
+        else {
             Them();
         }
     }//GEN-LAST:event_btnThemActionPerformed
@@ -648,6 +660,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -674,6 +687,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbBangNghiViec;
     private javax.swing.JTextField txtDiachi;
     private javax.swing.JTextField txtDienthoai;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtManv;
     private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtNgaysinh;
@@ -689,7 +703,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             if (x.isTrangThai() == true) {
                 model.addRow(new Object[]{
                     x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
-                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
         }
@@ -703,7 +717,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             if (x.isTrangThai() == false) {
                 model.addRow(new Object[]{
                     x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
-                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
         }
@@ -723,8 +737,16 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
     boolean isValidate() {
         try {
+            String dinhDangEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+            String dinhDangSDT = "0\\d{9}";
             if (txtManv.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mã nhân viên không được để trống");
+                return true;
+            } else if (!txtDienthoai.getText().matches(dinhDangSDT)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng số điện thoại");
+                return true;
+            } else if (!txtEmail.getText().matches(dinhDangEmail)) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng Email");
                 return true;
             } else if (txtTennv.getText().trim().equals("")) {
                 Msgbox.alert(this, "Tên nhân viên không được để trống");
@@ -770,7 +792,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
     public void Them() {
         try {
-            NhanVien nv = getForm();
+            NhanVien nv = getFormInsert();
             daoNV.insertData(nv);
             FillTable();
             FillTableNghiViec();
@@ -792,6 +814,22 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         }
     }
 
+    NhanVien getFormInsert() {
+        NhanVien nv = new NhanVien();
+        int row = tbBang.getSelectedRow();
+        nv.setMaNV("NV" + (row + 1));
+        nv.setVaiTro(cbbVaitro.getSelectedIndex() == 0 ? true : false);
+        nv.setTenNV(txtTennv.getText());
+        nv.setMatKhau(txtMatKhau.getText());
+        nv.setTrangThai(rdoDangLamViec.isSelected());
+        nv.setDiaChi(txtDiachi.getText());
+        nv.setGioiTinh(rdNam.isSelected());
+        nv.setDienThoai(txtDienthoai.getText());
+        nv.setEmail(txtEmail.getText());
+        nv.setNgaySinh(XDate.toDate(txtNgaysinh.getText()));
+        return nv;
+    }
+
     NhanVien getForm() {
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtManv.getText());
@@ -802,6 +840,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         nv.setDiaChi(txtDiachi.getText());
         nv.setGioiTinh(rdNam.isSelected());
         nv.setDienThoai(txtDienthoai.getText());
+        nv.setEmail(txtEmail.getText());
         nv.setNgaySinh(XDate.toDate(txtNgaysinh.getText()));
         return nv;
     }
@@ -819,6 +858,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         }
         txtDiachi.setText((String) tbBang.getValueAt(vitri, 4));
         txtDienthoai.setText((String) tbBang.getValueAt(vitri, 5));
+        txtEmail.setText((String) tbBang.getValueAt(vitri, 8));
         String NgaySinh = String.valueOf(tbBang.getValueAt(vitri, 6));
         txtNgaysinh.setText(NgaySinh);
         String gt = ((String) tbBang.getValueAt(vitri, 7));
@@ -827,7 +867,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         } else {
             rdNu.setSelected(true);
         }
-        String trangThaiViecLam = tbBang.getValueAt(vitri, 8).toString();
+        String trangThaiViecLam = tbBang.getValueAt(vitri, 9).toString();
         if (trangThaiViecLam.equals("Đang làm việc")) {
             rdoDangLamViec.setSelected(true);
         } else {
@@ -842,7 +882,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         for (NhanVien x : SNV) {
             Model.addRow(new Object[]{
                 x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
-                x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
             });
         }
     }
@@ -855,7 +895,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             if (x.isVaiTro() == Loc) {
                 model.addRow(new Object[]{
                     x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
-                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
         }
@@ -870,7 +910,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             if (x.isGioiTinh() == LocGT) {
                 model.addRow(new Object[]{
                     x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
-                    x.isGioiTinh() ? "Nam" : "Nữ", x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
+                    x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
         }
@@ -889,6 +929,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         }
         txtDiachi.setText((String) tbBangNghiViec.getValueAt(vitri, 4));
         txtDienthoai.setText((String) tbBangNghiViec.getValueAt(vitri, 5));
+        txtEmail.setText((String) tbBang.getValueAt(vitri, 8));
         String NgaySinh = String.valueOf(tbBangNghiViec.getValueAt(vitri, 6));
         txtNgaysinh.setText(NgaySinh);
         String gt = ((String) tbBangNghiViec.getValueAt(vitri, 7));
@@ -897,7 +938,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         } else {
             rdNu.setSelected(true);
         }
-        String trangThaiViecLam = tbBangNghiViec.getValueAt(vitri, 8).toString();
+        String trangThaiViecLam = tbBangNghiViec.getValueAt(vitri, 9).toString();
         if (trangThaiViecLam.equals("Đang làm việc")) {
             rdoDangLamViec.setSelected(true);
         } else {
