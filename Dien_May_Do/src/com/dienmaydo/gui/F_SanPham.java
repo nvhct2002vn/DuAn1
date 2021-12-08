@@ -133,7 +133,6 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         fillTableChatlieu();
         fillTableData();
         fillTableSPCT();
-        clickTable();
     }
 
     /**
