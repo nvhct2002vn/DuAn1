@@ -57,7 +57,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 /**
  *
- * @author DO TAT HOA 12-06-2021
+ * @author DO TAT HOA 12-07-2021 9:52am
  */
 public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, ThreadFactory {
 
@@ -177,7 +177,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         jPanel1.setPreferredSize(new java.awt.Dimension(1146, 768));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Các sản phẩm đã chọn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giỏ hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         tblSanPhamChon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -809,6 +809,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
 
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
         // TODO add your handling code here:
+        if (txtTienKhachDua.getText().trim().equals("")) {
+            txtTienKhachDua.setText("0");
+        }
         KhachHangJframe kh = new KhachHangJframe();
         kh.setVisible(true);
     }//GEN-LAST:event_btnChonActionPerformed
@@ -883,6 +886,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     // End of variables declaration//GEN-END:variables
 
     public void themSanPham() {
+        if (txtTienKhachDua.getText().trim().equals("")) {
+            txtTienKhachDua.setText("0");
+        }
         row1 = tblChonSanPham.getSelectedRow();
         row3 = tblHoaDonCho.getSelectedRow();
         try {
@@ -962,6 +968,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     }
 
     public void huyHoaDon() {
+        if (txtTienKhachDua.getText().trim().equals("")) {
+            txtTienKhachDua.setText("0");
+        }
         HinhThucGiaoHang htgh = (HinhThucGiaoHang) cboHinhThucGiaoHang.getSelectedItem();
         HinhThucThanhToan httt = (HinhThucThanhToan) cboHinhThucTT.getSelectedItem();
 
@@ -996,6 +1005,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     }
 
     public void xoaSanPham() {
+        if (txtTienKhachDua.getText().trim().equals("")) {
+            txtTienKhachDua.setText("0");
+        }
         row2 = tblSanPhamChon.getSelectedRow();
         try {
             if (tblSanPhamChon.getRowCount() == 0) {
@@ -1022,6 +1034,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     }
 
     public void xoaTatCa() {
+        if (txtTienKhachDua.getText().trim().equals("")) {
+            txtTienKhachDua.setText("0");
+        }
         try {
             if (tblSanPhamChon.getRowCount() == 0) {
                 Msgbox.alert(this, "Không có sản phẩm để xóa");
@@ -1051,7 +1066,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             for (SanPhamChiTiet x : list) {
                 model1.addRow(new Object[]{
                     x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", "", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
-                    x.getTheTich(), x.getSoLuong()
+                    x.getTheTich() + " Lít", x.getSoLuong()
                 });
             }
             for (int i = 0; i < tblChonSanPham.getRowCount(); i++) {
@@ -1077,11 +1092,11 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             return;
         } else {
             try {
-                Long tienKhachDuaFormated = XMoney.loaiBoDauCham(txtTienKhachDua.getText());
+                long tienKhachDuaFormated = XMoney.loaiBoDauCham(txtTienKhachDua.getText().trim());
                 txtTienKhachDua.setText(XMoney.themDauCham(tienKhachDuaFormated));
 
                 long thanhToan = XMoney.loaiBoDauCham(lblThanhToan.getText());
-                long tienKhachDua = XMoney.loaiBoDauCham(txtTienKhachDua.getText());
+                long tienKhachDua = XMoney.loaiBoDauCham(txtTienKhachDua.getText().trim());
                 long tienThuTraKhach = tienKhachDua - thanhToan;
                 lblTienThuaTraKhach.setText(XMoney.themDauCham(tienThuTraKhach));
             } catch (NumberFormatException e) {
@@ -1124,11 +1139,17 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 }
                 lblGiamGia.setText(XMoney.themDauCham(giamGia));
                 lblThanhToan.setText(XMoney.themDauCham(tongTien - giamGia));
+                long thanhToan = tongTien - giamGia;
+                long tienKhachDua = XMoney.loaiBoDauCham(txtTienKhachDua.getText().trim());
+                lblTienThuaTraKhach.setText(XMoney.themDauCham(tienKhachDua - thanhToan));
             }
         }
     }
 
     public void thanhToan() {
+        if (txtTienKhachDua.getText().trim().equals("")) {
+            txtTienKhachDua.setText("0");
+        }
         HinhThucGiaoHang htgh = (HinhThucGiaoHang) cboHinhThucGiaoHang.getSelectedItem();
         HinhThucThanhToan httt = (HinhThucThanhToan) cboHinhThucTT.getSelectedItem();
 
@@ -1143,7 +1164,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setThanhToan(XMoney.loaiBoDauCham(lblThanhToan.getText()));
         hd.setGhiChu(txtghiChu.getText());
         try {
-            if (lblMaHoaDon.getText().equals("")) {
+            if (lblMaHoaDon.getText().equals("Vui lòng tạo!")) {
                 Msgbox.alert(this, "Vui lòng chọn hóa đơn trước khi nhấn thanh toán");
                 return;
             } else if (tblSanPhamChon.getRowCount() == 0) {
@@ -1151,7 +1172,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 return;
             } else {
                 long thanhToan = XMoney.loaiBoDauCham(lblThanhToan.getText());
-                long tienKhachDua = XMoney.loaiBoDauCham(txtTienKhachDua.getText());
+                long tienKhachDua = XMoney.loaiBoDauCham(txtTienKhachDua.getText().trim());
                 long tienTraKhach = XMoney.loaiBoDauCham(lblTienThuaTraKhach.getText());
 
                 if (Msgbox.confirm(this, "Bạn chắc chắn muốn thanh toán hóa đơn này chứ?")) {
@@ -1210,7 +1231,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         hd.setMaHTTT(httt.getMaHTTT());
         hd.setMaTTTT("TT001");
         hd.setMaHTGH(htgh.getMaHTGH());
-        hd.setTienThuaTraKhach(XMoney.loaiBoDauCham(lblTienThuaTraKhach.getText()));
+        hd.setTienThuaTraKhach(0);
         hd.setTongTien(XMoney.loaiBoDauCham(lblTongTien.getText()));
         hd.setThanhToan(XMoney.loaiBoDauCham(lblThanhToan.getText()));
         hd.setGhiChu(txtghiChu.getText());
@@ -1259,7 +1280,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             for (SanPhamChiTiet x : list) {
                 model1.addRow(new Object[]{
                     x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", "", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
-                    x.getTheTich(), x.getSoLuong()
+                    x.getTheTich() + " Lít", x.getSoLuong()
                 });
             }
             for (int i = 0; i < tblChonSanPham.getRowCount(); i++) {
@@ -1325,7 +1346,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
         for (SanPhamChiTiet x : list) {
             model1.addRow(new Object[]{
                 x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", "", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
-                x.getTheTich(), x.getSoLuong()
+                x.getTheTich() + " Lít", x.getSoLuong()
             });
         }
         for (int i = 0; i < tblChonSanPham.getRowCount(); i++) {
@@ -1362,7 +1383,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             lblThanhToan.setText(XMoney.themDauCham(hd.getThanhToan()));
             lblGiamGia.setText(XMoney.themDauCham(hd.getTongTien() - hd.getThanhToan()));
             txtTienKhachDua.setText("0");
-            lblTienThuaTraKhach.setText(hd.getTienThuaTraKhach() + "");
+            lblTienThuaTraKhach.setText("0");
             cboHinhThucTT.setSelectedItem(hd.getTenHTTT());
             cboHinhThucGiaoHang.setSelectedItem(hd.getTenHTGH());
 
@@ -1382,6 +1403,9 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
     }
 
     public void showTTKH() {
+        if (txtTienKhachDua.getText().trim().equals("")) {
+            txtTienKhachDua.setText("0");
+        }
         if (KhachHangJframe.maKH == null && KhachHangJframe.tenKH == null) {
             Msgbox.alert(this, "Vui lòng chọn khách hàng trước khi nhấn thay đổi!");
         } else {
@@ -1634,7 +1658,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                     SanPhamChiTiet x = spService.selectWebcam(result.getText());
                     model1.addRow(new Object[]{
                         x.getMaSPCT(), x.getTenSP() + " " + x.getTenSPCT(), XMoney.themDauCham(x.getGiaBan()) + " VNĐ", "", x.getTenMauSac(), x.getTenChatLieu(), x.getChieuDai() + "cm X " + x.getChieuRong() + "cm X " + x.getChieuCao() + "cm",
-                        x.getTheTich(), x.getSoLuong()
+                        x.getTheTich() + " Lít", x.getSoLuong()
                     });
                     for (int i = 0; i < tblChonSanPham.getRowCount(); i++) {
                         KhuyenMai km = kmService.selectGiamGia(tblChonSanPham.getValueAt(i, 0).toString());

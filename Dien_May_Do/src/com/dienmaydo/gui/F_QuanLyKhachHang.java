@@ -547,6 +547,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     private void tblQuanLyKhacHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyKhacHangMouseClicked
         // TODO add your handling code here:
         ClickTable();
+        FillTableLSGD();
         if (evt.getClickCount() == 2) {
             tabs.setSelectedIndex(1);
             FillTableLSGD();
@@ -819,7 +820,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
     void FillTableLSGD() {
         Model = (DefaultTableModel) TbLSGD.getModel(); //tạo ra model để lưu trữ dữ liệu từ bảng
         Model.setRowCount(0);  //xóa hết dự liệu trên table
-        List<KhachHang> LKH = LSGDSV.SelectLSGB_ByMaKH(txtMaKH.getText());
+        List<KhachHang> LKH = LSGDSV.SelectLSGB_ByMaKH(txtMaKH.getText().trim());
         for (KhachHang x : LKH) {
             Model.addRow(new Object[]{
                 x.getTenKh(), x.getSDT(), x.getNgayGD(), x.getTenSP() + " " + x.getTenSPCT(), x.getSoLuong(), XMoney.themDauCham(x.getGiaBan()) + " VND", XMoney.themDauCham(x.getTongTien()) + " VND", x.getTrangThaiTT()
