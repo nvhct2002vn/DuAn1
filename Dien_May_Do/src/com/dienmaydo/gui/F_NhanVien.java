@@ -7,6 +7,7 @@ package com.dienmaydo.gui;
 
 import com.dienmaydo.entity.NhanVien;
 import com.dienmaydo.service.NhanVienService;
+import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
 import java.util.List;
@@ -401,7 +402,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(txtTimKiem)
         );
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -414,19 +415,12 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã NV", "Mật khẩu", "Tên NV", "Vai trò", "Địa chỉ", "Điện thoại", "Ngày sinh", "Giới tính", "Email", "Trạng thái", "null"
+                "Mã NV", "Mật khẩu", "Tên NV", "Vai trò", "Địa chỉ", "Điện thoại", "Ngày sinh", "Giới tính", "Email", "Trạng thái"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -485,7 +479,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Nghỉ việc", jPanel6);
@@ -498,7 +492,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -524,7 +518,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -702,7 +696,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         for (NhanVien x : listNV) {
             if (x.isTrangThai() == true) {
                 model.addRow(new Object[]{
-                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), XDate.toString(x.getNgaySinh()),
                     x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
@@ -717,7 +711,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         for (NhanVien x : listNV) {
             if (x.isTrangThai() == false) {
                 model.addRow(new Object[]{
-                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), XDate.toString(x.getNgaySinh()),
                     x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
@@ -792,26 +786,36 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     }
 
     public void Them() {
-        try {
-            NhanVien nv = getFormInsert();
-            daoNV.insertData(nv);
-            FillTable();
-            FillTableNghiViec();
-            Msgbox.alert(this, "Thêm thành công");
-        } catch (Exception e) {
-            e.printStackTrace();  //in ra lỗi
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không được phân quyền");
+        }
+        else{
+            try {
+                NhanVien nv = getFormInsert();
+                daoNV.insertData(nv);
+                FillTable();
+                FillTableNghiViec();
+                Msgbox.alert(this, "Thêm thành công");
+            } catch (Exception e) {
+                e.printStackTrace();  //in ra lỗi
+            }
         }
     }
 
     public void Sua() {
-        try {
-            NhanVien nv = getForm();
-            daoNV.updateData(nv);
-            FillTable();
-            FillTableNghiViec();
-            Msgbox.alert(this, "Sửa thành công");
-        } catch (Exception e) {
-            e.printStackTrace();  //in ra lỗi
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không được phân quyền");
+        }
+        else{
+            try {
+                NhanVien nv = getForm();
+                daoNV.updateData(nv);
+                FillTable();
+                FillTableNghiViec();
+                Msgbox.alert(this, "Sửa thành công");
+            } catch (Exception e) {
+                e.printStackTrace();  //in ra lỗi
+            }
         }
     }
 
@@ -895,7 +899,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         for (NhanVien x : listNV) {
             if (x.isVaiTro() == Loc) {
                 model.addRow(new Object[]{
-                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(),XDate.toString(x.getNgaySinh()),
                     x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
@@ -910,7 +914,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         for (NhanVien x : listNV) {
             if (x.isGioiTinh() == LocGT) {
                 model.addRow(new Object[]{
-                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), x.getNgaySinh(),
+                    x.getMaNV(), x.getMatKhau(), x.getTenNV(), x.isVaiTro() ? "Quản lý" : "Nhân viên", x.getDiaChi(), x.getDienThoai(), XDate.toString(x.getNgaySinh()),
                     x.isGioiTinh() ? "Nam" : "Nữ", x.getEmail(), x.isTrangThai() ? "Đang làm việc" : "Nghỉ việc"
                 });
             }
