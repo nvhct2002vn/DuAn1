@@ -6,7 +6,7 @@ package com.dienmaydo.entity;
 
 /**
  *
- * @author letha
+ * @author lethanhvinh
  */
 import java.util.Date;
 

@@ -708,6 +708,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             }
         }
     }
+//hello
 
     public void FillTableNghiViec() {
         DefaultTableModel model = (DefaultTableModel) tbBangNghiViec.getModel();

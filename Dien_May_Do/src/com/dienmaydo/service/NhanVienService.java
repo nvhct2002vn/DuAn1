@@ -14,7 +14,7 @@ public class NhanVienService implements INhanVienService<NhanVien, String> {
     String SELECT_ALL_SQL = "SELECT * FROM NHANVIEN";
     String SELECT_BY_ID = "SELECT * FROM NHANVIEN WHERE MANV LIKE ?";
     String Search_SQL = "SELECT * FROM dbo.NHANVIEN WHERE MANV LIKE  ? OR TENNV LIKE ? OR DIENTHOAI LIKE ?";
-
+    //hello
     @Override
     public List<NhanVien> selectAll() {
         return selectBySql(SELECT_ALL_SQL);
