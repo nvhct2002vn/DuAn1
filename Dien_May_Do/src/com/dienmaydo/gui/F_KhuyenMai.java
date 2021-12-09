@@ -29,22 +29,23 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 public class F_KhuyenMai extends javax.swing.JInternalFrame {
-    
+
     DefaultTableModel model;
     KhuyenMaiService kmSV = new KhuyenMaiService();
     DanhMucService dmSV = new DanhMucService();
     SanPhamService spSV = new SanPhamService();
     SanPhamChiTietService spctSV = new SanPhamChiTietService();
-    
+    SanPhamChiTiet_KhuyenMaiService sp_km = new SanPhamChiTiet_KhuyenMaiService();
+
     int row = -1;
-    
+
     public F_KhuyenMai() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         setResizable(false);
-        
+
         fillToTableSP();
         fillToSP();
     }
@@ -475,7 +476,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 //            }
 //        }
         if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm?")) {
-            
+
             if (Validate()) {
                 return;
             } else if (ischeckTrungSPCT()) {
@@ -487,7 +488,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 insertKhuyenMaiSP();
             }
         }
-        
+
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnLammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLammoiActionPerformed
@@ -555,7 +556,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         model.setRowCount(0);
         try {
             List<KhuyenMai> listKM = kmSV.selectAll();
-            
+
             for (KhuyenMai x : listKM) {
                 if (x.getHinhThuc().equalsIgnoreCase("Giảm theo %")) {
                     model.addRow(new Object[]{
@@ -571,9 +572,9 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-    
+
     void clicktblKhuyenMaiSP() {
-        
+
         try {
             for (int i = 0; i < tblSanPham.getRowCount(); i++) {
                 tblSanPham.setValueAt(false, i, 0);
@@ -590,26 +591,26 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             } else {
                 cboHinhThuc.setSelectedIndex(1);
             }
-            
+
             txtMoTa.setText((String) tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 8));
-            
+
             for (int i = 0; i < tblSanPham.getRowCount(); i++) {
                 if (tblDanhSachSP.getValueAt(row, 4).toString().equals(tblSanPham.getValueAt(row, 2))) {
-                    
+
                     tblSanPham.setValueAt(true, row, 0);
-                    
+
                 }
             }
             dcBatDau.setDate(date);
             dcKetThuc.setDate(date1);
-            
+
             txtGiamGia.setText(String.valueOf(tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 3)));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
-        
+
     }
-    
+
     private void fillToSP() {
         DefaultTableModel model2 = (DefaultTableModel) tblSanPham.getModel();
         model2.setRowCount(0);
@@ -624,7 +625,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-    
+
     void clearForm() {
         txtMaKM.setText("");
         txtTenCT.setText("");
@@ -634,7 +635,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         dcBatDau.setDate(null);
         dcKetThuc.setDate(null);
     }
-    
+
     KhuyenMai getForm() {
         KhuyenMai km = new KhuyenMai();
         km.setMaKM(txtMaKM.getText());
@@ -650,7 +651,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         String hienTaiString = s.format(nowDate);
         String BatdauString = s.format(dcBatDau.getDate());
         String KetthucString = s.format(dcKetThuc.getDate());
-        
+
         try {
             Date hientai = s.parse(hienTaiString);
             Date BatDau = s.parse(BatdauString);
@@ -683,7 +684,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         km.setMoTa(txtMoTa.getText());
         return km;
     }
-    
+
     void insertKhuyenMaiSP() {
         KhuyenMai kmsp = getForm();
         try {
@@ -707,7 +708,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             Msgbox.alert(this, "Thêm khuyến mại sản phẩm thất bại");
         }
     }
-    
+
     void updatetSP() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
@@ -748,7 +749,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             return true;
         }
     }
-    
+
     boolean isCheckTrungSPCT() {
         boolean check = false;
         List<KhuyenMai> list = kmSV.selectAll();
@@ -761,14 +762,27 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         }
         return check;
     }
-    
+
     private boolean ischeckTrungSPCT() {
+        String maSPDaTonTai = "";
+        List<SanPhamChiTietKhuyenMai> list = sp_km.selectAll();
+        for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+            if (tblSanPham.getValueAt(i, 0).toString().equalsIgnoreCase("true")) {
+                System.out.println();
+                for (int j = 0; j < list.size(); j++) {
+                    if (tblSanPham.getValueAt(i, 1).toString().equalsIgnoreCase(list.get(j).getMaSPCT())) {
+                        maSPDaTonTai += tblSanPham.getValueAt(i, 1) + ", ";
+                    }
+                }
+            }
+        }
+        System.out.println(maSPDaTonTai);
         
         if (chkSelectAllSP.isSelected()) {
             return true;
         } else {
             for (int i = 0; i < tblDanhSachSP.getRowCount(); i++) {
-                
+
                 if (tblDanhSachSP.getValueAt(i, 4).toString().equalsIgnoreCase(tblSanPham.getValueAt(row, 2).toString()) && tblDanhSachSP.getValueAt(i, 7).toString().equalsIgnoreCase("Đang áp dụng")) {
                     return true;
                 } else if (tblDanhSachSP.getValueAt(i, 4).toString().equalsIgnoreCase(tblSanPham.getValueAt(row, 2).toString()) && tblDanhSachSP.getValueAt(i, 7).toString().equalsIgnoreCase("Chưa được áp dụng")) {
@@ -778,7 +792,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                     return false;
                 }
             }
-            
+
         }
         return false;
     }
