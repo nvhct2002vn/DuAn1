@@ -1090,7 +1090,7 @@ public class ThongKeService {
     }
 
     public List<Integer> baoCaoDoanhThuHienTai() {
-        String sql = "SELECT SUM(TONGTIEN) DOANHTHU FROM HOADON where MONTH(NGAYLAP) = GETDATE()";
+        String sql = "SELECT SUM(TONGTIEN) DOANHTHU FROM HOADON where MONTH(NGAYLAP) = MONTH(GETDATE())";
         List<Integer> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
@@ -1106,7 +1106,7 @@ public class ThongKeService {
     }
 
     public List<Integer> baoCaoSoHDHienTai() {
-        String sql = "SELECT COUNT(MAHD) SOHOADON FROM HOADON WHERE MONTH(NGAYLAP) = GETDATE()";
+        String sql = "SELECT COUNT(MAHD) SOHOADON FROM HOADON WHERE MONTH(NGAYLAP) = MONTH(GETDATE())";
         List<Integer> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
@@ -1122,7 +1122,7 @@ public class ThongKeService {
     }
 
     public List<Integer> baoCaoSoHDHuyHienTai() {
-        String sql = "SELECT COUNT(MAHD) SOHOADONHUY FROM HOADON WHERE MONTH(NGAYLAP) = GETDATE() AND MATTTT = 'TT003'";
+        String sql = "SELECT COUNT(MAHD) SOHOADONHUY FROM HOADON WHERE MONTH(NGAYLAP) = MONTH(GETDATE()) AND MATTTT = 'TT003'";
         List<Integer> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
@@ -1138,7 +1138,7 @@ public class ThongKeService {
     }
 
     public List<Integer> baoCaoSoKHHienTai() {
-        String sql = "SELECT COUNT(KHACHHANG.MAKH) SOKHACHHANG FROM KHACHHANG JOIN HOADON ON HOADON.MAKH = KHACHHANG.MAKH WHERE MONTH(NGAYLAP) = GETDATE()";
+        String sql = "SELECT COUNT(KHACHHANG.MAKH) SOKHACHHANG FROM KHACHHANG JOIN HOADON ON HOADON.MAKH = KHACHHANG.MAKH WHERE MONTH(NGAYLAP) = MONTH(GETDATE())";
         List<Integer> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);

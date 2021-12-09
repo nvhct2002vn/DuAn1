@@ -118,7 +118,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="60" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -151,7 +151,11 @@
                       <Font name="Tahoma" size="24" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
                       <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\revenue.png"/>
+=======
+                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\revenue.png"/>
+>>>>>>> 58bdedc53b74b2f082f1b81215646fc791918133
                     </Property>
                     <Property name="text" type="java.lang.String" value="Doanh Thu"/>
                   </Properties>
@@ -221,7 +225,11 @@
                       <Font name="Tahoma" size="24" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
                       <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\receipt.png"/>
+=======
+                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\receipt.png"/>
+>>>>>>> 58bdedc53b74b2f082f1b81215646fc791918133
                     </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; H&#xf3;a &#x110;&#x1a1;n"/>
                   </Properties>
@@ -283,7 +291,11 @@
                       <Font name="Tahoma" size="24" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
                       <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\cancelProduct.png"/>
+=======
+                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\cancelProduct.png"/>
+>>>>>>> 58bdedc53b74b2f082f1b81215646fc791918133
                     </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; H&#xe0;ng H&#x1ee7;y"/>
                   </Properties>
@@ -348,7 +360,11 @@
                       <Font name="Tahoma" size="24" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
                       <Image iconType="2" name="D:\FPT\PRO1041\SQL\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\client.png"/>
+=======
+                      <Image iconType="2" name="C:\Users\VINH\Documents\PRO1041\DuAn1\Dien_May_Do\src\com\dienmaydo\icon\client.png"/>
+>>>>>>> 58bdedc53b74b2f082f1b81215646fc791918133
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Kh&#xe1;ch H&#xe0;ng"/>
                   </Properties>
