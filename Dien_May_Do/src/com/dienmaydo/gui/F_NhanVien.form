@@ -100,7 +100,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Thi&#x1ebf;t l&#x1ead;p th&#xf4;ng in nh&#xe2;n vi&#xea;n">
+                <TitledBorder title="Thi&#x1ebf;t l&#x1ead;p th&#xf4;ng tin nh&#xe2;n vi&#xea;n">
                   <Font PropertyName="font" name="Tahoma" size="14" style="1"/>
                 </TitledBorder>
               </Border>
