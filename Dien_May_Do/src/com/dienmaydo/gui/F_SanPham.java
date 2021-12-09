@@ -70,7 +70,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     SanPhamChiTietService daoSPCT = new SanPhamChiTietService();
     List<SanPhamChiTiet> _listSPCT = daoSPCT.selectAll();
-
+    
     MauSacService daoMS = new MauSacService();
 //    List<MauSac> _listMS = daoMS.selectAll();
 
@@ -2163,6 +2163,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (!Msgbox.confirm(this, "Bạn có muốn thêm hình ảnh không?")) {
                 return;
             } else {
+                if (lblTTHinhAnh.getIcon() == null) {
+                    Msgbox.alert(this, "Bạn vui lòng chọn hình ảnh.");
+                    return;
+                }
                 if (isCheckThuocTinhIMG()) {
                     return;
                 } else {
@@ -2824,7 +2828,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isCheckTrung() {
         boolean check = false;
         List<SanPham> list = daoSP.selectAll();
@@ -2837,7 +2841,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void addDataCbbXX() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbXuatXu.getModel();
@@ -2850,7 +2854,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void addDataCbbDM() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbDanhMuc.getModel();
@@ -2863,7 +2867,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void addDataFillCbbDM() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillDanhMuc.getModel();
@@ -2877,7 +2881,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void addDataFillCbbXX() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillXuatXu.getModel();
@@ -2891,7 +2895,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void fillComBoBoxDanhMuc() {
         model1 = (DefaultTableModel) tblSanPham.getModel();
         model1.setRowCount(0);
@@ -2907,7 +2911,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void fillComBoBoxXuatXu() {
         model1 = (DefaultTableModel) tblSanPham.getModel();
         model1.setRowCount(0);
@@ -2939,7 +2943,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxTenSP(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -2954,7 +2958,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxDM(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -2969,7 +2973,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxXX(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -2984,7 +2988,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void clickTable() {
         try {
             txtMaSP.setText(model1.getValueAt(viTri, 0).toString());
@@ -2997,7 +3001,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void insertData() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm sản phẩm");
@@ -3016,7 +3020,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void updatetData() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
@@ -3038,7 +3042,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void refeshTextFiled() {
         txtMaSP.setText("");
         txtTenSP.setText("");
@@ -3051,7 +3055,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         cbbFillDanhMuc.setSelectedIndex(0);
         fillTableData();
     }
-
+    
     SanPham getFromSP() {
         XuatXu cd = (XuatXu) cbbXuatXu.getSelectedItem();
         DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
@@ -3070,7 +3074,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return sp;
     }
-
+    
     SanPham getFromSPUpdate() {
         XuatXu cd = (XuatXu) cbbXuatXu.getSelectedItem();
         DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
@@ -3087,7 +3091,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return sp;
     }
-
+    
     void locSPTheoTrangThai() {
         model1.setRowCount(0);
         List<SanPham> list = daoSP.selectAll();
@@ -3099,7 +3103,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     public void timKiemSP() {
         if (cbbFillTrangThaiSP.getSelectedIndex() > 0
                 || cbbFillXuatXu.getSelectedIndex() > 0
@@ -3119,7 +3123,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
     }
 
     // ------------------------------- SPCT ---------------------------------------
@@ -3169,7 +3173,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isCheckTrungSPCT() {
         boolean check = false;
         List<SanPhamChiTiet> list = daoSPCT.selectAll();
@@ -3182,7 +3186,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void addDataCbbTT() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTheTich.getModel();
@@ -3195,7 +3199,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void insertDataSPCT() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm sản phẩm chi tiết");
@@ -3213,7 +3217,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void updatetDataSPCT() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm chi tiết");
@@ -3230,7 +3234,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void fillTableSPCT() {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
@@ -3247,7 +3251,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void FillCbbMaSP() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMaSP.getModel();
@@ -3260,7 +3264,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void FillCbbMaSPFIll() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbFillMaSP.getModel();
@@ -3274,7 +3278,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void fillTableSPCT_MaSP() {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
@@ -3331,7 +3335,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void fillTableSPCT_SoLuongSPCT_DuoiDinhMucTon() {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
@@ -3350,7 +3354,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void fillTableSPCT_DangKinhDoanh() {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
@@ -3369,7 +3373,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void fillTableSPCT_NgungKinhDoanh() {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
@@ -3388,7 +3392,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void fillTableSPCT_MaSP_Combobox() {
         modelSPCT = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         modelSPCT.setRowCount(0);
@@ -3406,7 +3410,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void clickOpenSPCT() {
         if (viTri >= 0) {
             pnTongQuat.setSelectedIndex(1);
@@ -3416,7 +3420,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             Msgbox.alert(this, "Vui lòng chọn sản phẩm!");
         }
     }
-
+    
     SanPhamChiTiet getFromSPSPCT() {
         TheTich tt = (TheTich) cbbTheTich.getSelectedItem();
         KichThuoc kt = (KichThuoc) cbbKichThuoc.getSelectedItem();
@@ -3432,7 +3436,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         SanPhamChiTiet spct = new SanPhamChiTiet();
         SanPham sp = (SanPham) cbbMaSP.getSelectedItem();
         spct.setMaSp(sp.getMaSp());
-
+        
         String name = sp.getTenSp();
         String[] words = name.split("\\s");
         for (String x : words) {
@@ -3462,7 +3466,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         spct.setMoTa(AreaMoTa.getText());
         return spct;
     }
-
+    
     SanPhamChiTiet getFromSPSPCTUpdate() {
         TheTich tt = (TheTich) cbbTheTich.getSelectedItem();
         KichThuoc kt = (KichThuoc) cbbKichThuoc.getSelectedItem();
@@ -3501,7 +3505,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         spct.setMoTa(AreaMoTa.getText());
         return spct;
     }
-
+    
     void clickTabelSPCT() {
         try {
 //            long giaNhap = XMoney.loaiBoVND(tblSanPhamChiTiet.getValueAt(vitriSPCT, 3).toString());
@@ -3527,7 +3531,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     private void timKiemSPCT() {
         try {
             modelSPCT.setRowCount(0);
@@ -3543,7 +3547,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void chonAnh() {
         JFileChooser fileChooser = new JFileChooser();
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -3554,7 +3558,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             lblTTHinhAnh.setToolTipText(file.getName());
         }
     }
-
+    
     private void addDataCbbKL() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKhoiLuong.getModel();
@@ -3567,7 +3571,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     private void addDataCbbKT() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbKichThuoc.getModel();
@@ -3580,7 +3584,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     private void addDataCbbCL() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbChatLieu.getModel();
@@ -3593,7 +3597,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     private void addDataCbbMS() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbMauSac.getModel();
@@ -3606,7 +3610,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     private void addDataCbbIMG() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbIMG.getModel();
@@ -3619,7 +3623,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     private void addDataCbbDVT() {
         try {
             DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTTDonViTinh.getModel();
@@ -3632,7 +3636,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void clearFromSPCT() {
         cbbTheTich.setSelectedIndex(0);
         cbbKhoiLuong.setSelectedIndex(0);
@@ -3653,7 +3657,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         cbbFillMaSP.setSelectedIndex(0);
         cbbMaSP.setSelectedIndex(0);
     }
-
+    
     public void setSelectedComboboxTT(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -3668,7 +3672,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxKT(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -3684,7 +3688,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxKL(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -3699,7 +3703,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxCL(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -3714,7 +3718,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxMS(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -3729,7 +3733,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void setSelectedComboboxIMG(String cbbselected, JComboBox cbb) {
         try {
             for (int i = 0; i < cbb.getItemCount(); i++) {
@@ -3744,7 +3748,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void LamMoiLoc() {
         cbbFillMaSP.setSelectedItem(" ");
         txtTimKiemGiaBan.setText("");
@@ -3755,21 +3759,22 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     void LamMoiFromTT() {
         txtTTMaThuocTinh.setText("");
         txtTTTenThuocTinh.setText("");
+        lblTTHinhAnh.setIcon(null);
     }
-
+    
     void LamMoiFromTTKT() {
         txtMaKT.setText("");
         txtChieuDai.setText("");
         txtChieuRong.setText("");
         txtChieuCao.setText("");
     }
-
+    
     void LamMoiFromTTXX() {
         txtTTMaXuatXu.setText("");
         txtTTNhaSanXuat.setText("");
         txtTTNuocSanXuat.setText("");
     }
-
+    
     boolean isValidateThuocTinh() {
         try {
 //            if (txtTTMaThuocTinh.getText().trim().equals("")) {
@@ -3790,7 +3795,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isCheckThuocTinhTT() {
         boolean check = false;
         List<TheTich> list = daoTT.selectAll();
@@ -3803,7 +3808,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void fillTableTheTich() {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
@@ -3818,7 +3823,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void InsertTheTich() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm thuộc tính");
@@ -3834,7 +3839,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void UpdateTheTich() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa thuộc tính");
@@ -3850,7 +3855,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void fillTableKichThuoc() {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTKichThuoc.getModel();
@@ -3865,7 +3870,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     boolean isCheckThuocTinhKL() {
         boolean check = false;
         List<KhoiLuong> list = daoKL.selectAll();
@@ -3878,7 +3883,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void fillTableKhoiLuong() {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
@@ -3893,7 +3898,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void InsertKhoiLuong() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm khối lượng");
@@ -3909,7 +3914,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void UpdateKhoiLuong() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa khối lượng");
@@ -3925,7 +3930,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     boolean isCheckThuocTinhCL() {
         boolean check = false;
         List<ChatLieu> list = daoCL.selectAll();
@@ -3938,7 +3943,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void fillTableChatlieu() {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
@@ -3953,7 +3958,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void InsertChatLieu() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm chất liệu");
@@ -3969,7 +3974,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void UpdateChatLieu() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa chát liệu");
@@ -3985,7 +3990,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     boolean isCheckThuocTinhMS() {
         boolean check = false;
         List<MauSac> list = daoMS.selectAll();
@@ -3998,7 +4003,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void fillTableMauSac() {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
@@ -4013,7 +4018,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void InsertMauSac() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm màu sắc");
@@ -4029,7 +4034,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void UpdateMauSac() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa màu sắc");
@@ -4045,7 +4050,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     boolean isValidateThuocTinhKT() {
         try {
 //            if (txtMaKT.getText().trim().equals("")) {
@@ -4072,7 +4077,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isCheckThuocTinhKT() {
         boolean check = false;
         List<KichThuoc> list = daoKT.selectAll();
@@ -4087,7 +4092,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void InsertKichThuoc() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm kích thước");
@@ -4103,7 +4108,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void UpdateKichThuoc() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa kích thước");
@@ -4119,7 +4124,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     boolean isCheckThuocTinhIMG() {
         boolean check = false;
         List<Image> list = daoIMG.selectAll();
@@ -4132,7 +4137,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void fillTableImage() {
         try {
             DefaultTableModel model = (DefaultTableModel) tblTTThuocTinh.getModel();
@@ -4147,7 +4152,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void InsertImage() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm hình ảnh");
@@ -4157,13 +4162,13 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 daoIMG.insertData(img);
                 fillTableImage();
                 Msgbox.alert(this, "Thêm thành công!");
-//                LamMoiFromTT();
+                LamMoiFromTT();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
-
+    
     void UpdateImage() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa hình ảnh");
@@ -4173,13 +4178,13 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 daoIMG.updateData(img);
                 fillTableImage();
                 Msgbox.alert(this, "Sửa thành công!");
-//                LamMoiFromTT();
+                LamMoiFromTT();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
-
+    
     boolean isValidateThuocTinhXX() {
         try {
 //            if (txtTTNhaSanXuat.getText().trim().equals("")) {
@@ -4197,7 +4202,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isValidateThuocTinhXXUD() {
         try {
             if (txtTTMaXuatXu.getText().trim().equals("")) {
@@ -4217,7 +4222,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             return true;
         }
     }
-
+    
     boolean isCheckThuocTinhXX() {
         boolean check = false;
         List<XuatXu> list = daoXX.selectAll();
@@ -4232,7 +4237,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         }
         return check;
     }
-
+    
     void fillTableXuatXu() {
         DefaultTableModel model = (DefaultTableModel) tbTTXuatXu.getModel();
         model.setRowCount(0);
@@ -4243,7 +4248,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             });
         }
     }
-
+    
     void InsertXuatXu() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền thêm xuất xứ");
@@ -4259,7 +4264,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     void UpdateXuatXu() {
         if (!Auth.isManager()) {
             Msgbox.alert(this, "Bạn không có quyền sửa xuất xứ");
@@ -4283,14 +4288,14 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         tt.setTheTich(Float.valueOf(txtTTTenThuocTinh.getText()));
         return tt;
     }
-
+    
     ChatLieu GetFromCL() {
         ChatLieu cl = new ChatLieu();
         cl.setMaChatLieu(txtTTMaThuocTinh.getText());
         cl.setChatLieu(txtTTTenThuocTinh.getText());
         return cl;
     }
-
+    
     KhoiLuong GetFromKL() {
         KhoiLuong kl = new KhoiLuong();
         DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
@@ -4299,21 +4304,21 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         kl.setKhoiLuong(Float.valueOf(txtTTTenThuocTinh.getText()));
         return kl;
     }
-
+    
     MauSac GetFromMS() {
         MauSac ms = new MauSac();
         ms.setMaMauSac(txtTTMaThuocTinh.getText());
         ms.setTenMauSac(txtTTTenThuocTinh.getText());
         return ms;
     }
-
+    
     Image GetFromIMG() {
         Image img = new Image();
         img.setMaImage(txtTTMaThuocTinh.getText());
         img.setTenHinh(lblTTHinhAnh.getToolTipText());
         return img;
     }
-
+    
     KichThuoc GetFromKT() {
         KichThuoc kt = new KichThuoc();
         DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
@@ -4324,14 +4329,14 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         kt.setMaDV(dvt.getMaDV());
         return kt;
     }
-
+    
     XuatXu GetFromXX() {
         XuatXu xx = new XuatXu();
         xx.setNhaSX(txtTTNhaSanXuat.getText());
         xx.setNuocSX(txtTTNuocSanXuat.getText());
         return xx;
     }
-
+    
     XuatXu GetFromXXUD() {
         XuatXu xx = new XuatXu();
         xx.setMaXX(Integer.parseInt(txtTTMaXuatXu.getText()));
@@ -4348,7 +4353,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         tt.setTheTich(Float.valueOf(txtTTTenThuocTinh.getText()));
         return tt;
     }
-
+    
     ChatLieu GetFromCLInsert() {
         ChatLieu cl = new ChatLieu();
         int SoLuongChatLieu = tblTTThuocTinh.getRowCount();
@@ -4356,7 +4361,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         cl.setChatLieu(txtTTTenThuocTinh.getText());
         return cl;
     }
-
+    
     KhoiLuong GetFromKLInsert() {
         KhoiLuong kl = new KhoiLuong();
         int SoLuongKhoiLuong = tblTTThuocTinh.getRowCount();
@@ -4366,7 +4371,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         kl.setKhoiLuong(Float.valueOf(txtTTTenThuocTinh.getText()));
         return kl;
     }
-
+    
     MauSac GetFromMSInsert() {
         MauSac ms = new MauSac();
         int SoLuongMS = tblTTThuocTinh.getRowCount();
@@ -4374,7 +4379,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         ms.setTenMauSac(txtTTTenThuocTinh.getText());
         return ms;
     }
-
+    
     Image GetFromIMGInsert() {
         Image img = new Image();
         int SoLuongIMG = tblTTThuocTinh.getRowCount();
@@ -4382,7 +4387,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         img.setTenHinh(lblTTHinhAnh.getToolTipText());
         return img;
     }
-
+    
     KichThuoc GetFromKTInsert() {
         KichThuoc kt = new KichThuoc();
         int SoLuongKichThuoc = tblTTKichThuoc.getRowCount();
@@ -4408,7 +4413,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void clickTbaleThuocTinhKichThuoc() {
         try {
             int vitriThuocTinh = tblTTKichThuoc.getSelectedRow();
@@ -4420,7 +4425,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void clickTbaleThuocTinhXuatXu() {
         try {
             int vitriThuocTinh = tbTTXuatXu.getSelectedRow();
@@ -4431,20 +4436,20 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     void lamMoiThuocTinh() {
         txtTTMaThuocTinh.setText("");
         txtTTTenThuocTinh.setText("");
         lblTTHinhAnh.setIcon(null);
     }
-
+    
     void lamMoiKichThuoc() {
         txtMaKT.setText("");
         txtChieuCao.setText("");
         txtChieuDai.setText("");
         txtChieuRong.setText("");
     }
-
+    
     void lamMoiXuuatXu() {
         txtTTMaXuatXu.setText("");
         txtTTNhaSanXuat.setText("");
@@ -4473,7 +4478,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaBanLonHonHoacBang() {
         try {
             long giaBan = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4495,7 +4500,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             numberFormatException.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaBanNhoHon() {
         try {
             long giaBan = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4517,7 +4522,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             numberFormatException.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaBanNhoHonHoacBang() {
         try {
             long giaBan = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4539,7 +4544,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             numberFormatException.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaBanBang() {
         try {
             long giaBan = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4584,7 +4589,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             numberFormatException.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaNhapLonHonHoacBang() {
         try {
             long giaNhap = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4606,7 +4611,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             numberFormatException.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaNhapNhoHon() {
         try {
             long giaNhap = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4628,7 +4633,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             numberFormatException.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaNhapNhoHonHoacBang() {
         try {
             long giaNhap = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4650,7 +4655,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             numberFormatException.printStackTrace();
         }
     }
-
+    
     private void timKiemTheoGiaNhapBang() {
         try {
             long giaNhap = XMoney.loaiBoDauCham(txtTimKiemGiaBan.getText());
@@ -4682,12 +4687,12 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             // cell là 1 ô - row là 1 hàng - sheet là 1 trang tính - column là cột
             XSSFRow row = null;
             Cell cell = null;
-
+            
             row = spreadsheet.createRow((short) 2);
             row.setHeight((short) 500);
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("DANH SÁCH SẢN PHẨM CHI TIẾT");
-
+            
             row = spreadsheet.createRow((short) 3);
             row.setHeight((short) 500);
             cell = row.createCell(0, CellType.STRING);
@@ -4741,7 +4746,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 row.createCell(12).setCellValue(SPCT.getMoTa());
                 row.createCell(13).setCellValue(SPCT.isTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh");
             }
-
+            
             FileOutputStream out = new FileOutputStream(new File("src\\com\\dienmaydo\\excel\\SPCT.xlsx"));
             workbook.write(out);
             out.close();
