@@ -10,6 +10,8 @@ import com.dienmaydo.service.NhanVienService;
 import com.dienmaydo.utils.Auth;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -766,15 +768,29 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             } else if (txtNgaysinh.getText().trim().equals("")) {
                 Msgbox.alert(this, "Ngày sinh nhân viên không được để trống");
                 return true;
+            } else if (checkNgay() == false) {
+                Msgbox.alert(this, "Vui lòng nhập đúng định dạng dd-mm-yyyy!");
+                return true;
             } else {
                 return false;
             }
         } catch (Exception e) {
+
             e.printStackTrace();
             return true;
         }
     }
 
+    public boolean checkNgay() {
+        boolean check = false;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
+            Date d = sdf.parse(txtNgaysinh.getText());
+            check = true;
+        } catch (Exception e) {
+        }
+        return check;
+    }
 //    public void lamMoi() {
 //        txtManv.setText("");
 //        txtTennv.setText("");
@@ -789,6 +805,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 //        txtManv.setEditable(true);
 //        rdoDangLamViec.setSelected(true);
 //    }
+
     public void Them() {
         if (Auth.isManager()) {
             try {
