@@ -718,7 +718,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 //------------------------Điều kiện check--------------------------------------
     boolean Validate() {
         try {
-
+            Long so = Long.parseLong(txtGiamGia.getText());
             if (txtMaKM.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mã khuyến mại đang để trống!!");
                 return true;
