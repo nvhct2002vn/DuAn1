@@ -531,8 +531,6 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (isValidate()) {
             return;
-        } else if (isCheckTrung()) {
-            return;
         } else {
             Sua();
             Lammoi();
