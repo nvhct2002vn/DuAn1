@@ -20,6 +20,7 @@ public class NhanVien {
     private boolean GioiTinh;
     private Date NgaySinh;
     private boolean VaiTro;
+    private String Email;
     private boolean TrangThai;
 
     public String getMaNV() {
@@ -94,6 +95,15 @@ public class NhanVien {
     public void setVaiTro(boolean VaiTro) {
         this.VaiTro = VaiTro;
     }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+    
 
     @Override
     public String toString() {
