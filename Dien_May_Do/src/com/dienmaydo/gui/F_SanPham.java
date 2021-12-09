@@ -2147,82 +2147,120 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnTTThemActionPerformed
 
     private void btnTTSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTSuaActionPerformed
+        int rowSuaKT = tblTTKichThuoc.getSelectedRow();
+        int rowSuaTT = tblTTThuocTinh.getSelectedRow();
+        int rowSuaXX = tbTTXuatXu.getSelectedRow();
         if (rdTTChatLieu.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhCL()) {
-                return;
+            if (rowSuaTT < 0) {
+                Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                UpdateChatLieu();
-                addDataCbbCL();
-                fillTableSPCT();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhCL()) {
+                    return;
+                } else {
+                    UpdateChatLieu();
+                    addDataCbbCL();
+                    fillTableSPCT();
+                    rowSuaTT = -1;
+                }
             }
         }
         if (rdTTKhoiLuong.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhKL()) {
-                return;
+            if (rowSuaTT < 0) {
+                Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                UpdateKhoiLuong();
-                addDataCbbKL();
-                fillTableSPCT();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhKL()) {
+                    return;
+                } else {
+                    UpdateKhoiLuong();
+                    addDataCbbKL();
+                    fillTableSPCT();
+                    rowSuaTT = -1;
+                }
             }
         }
         if (rdTTMauSac.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhMS()) {
-                return;
+            if (rowSuaTT < 0) {
+                Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                UpdateMauSac();
-                addDataCbbMS();
-                fillTableSPCT();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhMS()) {
+                    return;
+                } else {
+                    UpdateMauSac();
+                    addDataCbbMS();
+                    fillTableSPCT();
+                    rowSuaTT = -1;
+                }
             }
         }
         if (rdTTTheTich.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhTT()) {
-                return;
+            if (rowSuaTT < 0) {
+                Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                UpdateTheTich();
-                addDataCbbTT();
-                fillTableSPCT();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhTT()) {
+                    return;
+                } else {
+                    UpdateTheTich();
+                    addDataCbbTT();
+                    fillTableSPCT();
+                    rowSuaTT = -1;
+                }
             }
         }
         if (rdTTKichThuoc.isSelected()) {
-            if (isValidateThuocTinhKT()) {
-                return;
-            } else if (isCheckThuocTinhKT()) {
-                return;
+            if (rowSuaKT < 0) {
+                Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                UpdateKichThuoc();
-                addDataCbbKT();
-                fillTableSPCT();
+                if (isValidateThuocTinhKT()) {
+                    return;
+                } else if (isCheckThuocTinhKT()) {
+                    return;
+                } else {
+                    UpdateKichThuoc();
+                    addDataCbbKT();
+                    fillTableSPCT();
+                    rowSuaKT = -1;
+                }
             }
         }
         if (rdTTXuatXu.isSelected()) {
-            if (isValidateThuocTinhXX()) {
-                return;
-            } else if (isCheckThuocTinhXX()) {
-                return;
+            if (rowSuaXX < 0) {
+                Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                UpdateXuatXu();
-                addDataCbbXX();
-                fillTableData();
-                addDataFillCbbXX();
+                if (isValidateThuocTinhXX()) {
+                    return;
+                } else if (isCheckThuocTinhXX()) {
+                    return;
+                } else {
+                    UpdateXuatXu();
+                    addDataCbbXX();
+                    fillTableData();
+                    addDataFillCbbXX();
+                    rowSuaXX = -1;
+                }
             }
         }
         if (rdTTHinhAnh.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhIMG()) {
-                return;
+            if (rowSuaTT < 0) {
+                Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                UpdateImage();
-                addDataCbbIMG();
-                fillTableSPCT();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhIMG()) {
+                    return;
+                } else {
+                    UpdateImage();
+                    addDataCbbIMG();
+                    fillTableSPCT();
+                    rowSuaTT = -1;
+                }
             }
         }
         // TODO add your handling code here:
