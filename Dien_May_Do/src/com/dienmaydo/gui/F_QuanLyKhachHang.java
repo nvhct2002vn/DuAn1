@@ -697,7 +697,8 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     KhachHang getform() {
         KhachHang KH = new KhachHang(); //tạo kh mới
-        int SoLuongKH = tblQuanLyKhacHang.getRowCount();
+        List<KhachHang> slkh = KHSV.selectAll();
+        int SoLuongKH = slkh.size();
         KH.setMaKH("KH" + (SoLuongKH + 1));
         KH.setTenKh(txtTenKH.getText());
         if (rdoNam.isSelected()) {

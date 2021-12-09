@@ -818,7 +818,8 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
     NhanVien getFormInsert() {
         NhanVien nv = new NhanVien();
-        int row = tbBang.getSelectedRow();
+        List<NhanVien> slnv = daoNV.selectAll();
+        int row = slnv.size();
         nv.setMaNV("NV00" + (row + 1));
         nv.setVaiTro(cbbVaitro.getSelectedIndex() == 0 ? true : false);
         nv.setTenNV(txtTennv.getText());
