@@ -430,6 +430,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbBang.setRowHeight(20);
         tbBang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbBangMouseClicked(evt);

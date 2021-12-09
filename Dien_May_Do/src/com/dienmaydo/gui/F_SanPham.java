@@ -655,6 +655,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblSanPham.setRowHeight(20);
         tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSanPhamMouseClicked(evt);
@@ -1245,6 +1246,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblSanPhamChiTiet.setRowHeight(20);
         tblSanPhamChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSanPhamChiTietMouseClicked(evt);
@@ -1706,6 +1708,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblTTThuocTinh.setRowHeight(20);
         tblTTThuocTinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblTTThuocTinhMouseClicked(evt);

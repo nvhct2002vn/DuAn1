@@ -1379,11 +1379,14 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                 lblTenKH.setText(hd.getTenKH());
                 lblTenKH.setForeground(Color.black);
             }
+            
             lblTongTien.setText(XMoney.themDauCham(hd.getTongTien()));
             lblThanhToan.setText(XMoney.themDauCham(hd.getThanhToan()));
             lblGiamGia.setText(XMoney.themDauCham(hd.getTongTien() - hd.getThanhToan()));
+            long tienKhachDua = XMoney.loaiBoDauCham(txtTienKhachDua.getText());
+            long thanhToan =  XMoney.loaiBoDauCham(lblThanhToan.getText());
             txtTienKhachDua.setText("0");
-            lblTienThuaTraKhach.setText("0");
+            lblTienThuaTraKhach.setText(XMoney.themDauCham(tienKhachDua - thanhToan));
             cboHinhThucTT.setSelectedItem(hd.getTenHTTT());
             cboHinhThucGiaoHang.setSelectedItem(hd.getTenHTGH());
 

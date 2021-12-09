@@ -131,7 +131,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\revenue.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\revenue.png")); // NOI18N
         jLabel1.setText("Doanh Thu");
 
         lblDoanhThu.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -148,7 +148,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jLabel1)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,7 +176,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel12.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\receipt.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\receipt.png")); // NOI18N
         jLabel13.setText("Số Hóa Đơn");
 
         lblHoaDon.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -214,7 +214,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel13.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\cancelProduct.png")); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\cancelProduct.png")); // NOI18N
         jLabel14.setText("Số Hàng Hủy");
 
         lblHangHuy.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -228,7 +228,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel14)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHangHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +252,7 @@ public class F_ThongKe extends javax.swing.JInternalFrame {
         jPanel14.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\VINH\\Documents\\PRO1041\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\client.png")); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon("D:\\FPT\\PRO1041\\SQL\\DuAn1\\Dien_May_Do\\src\\com\\dienmaydo\\icon\\client.png")); // NOI18N
         jLabel15.setText("Tổng Khách Hàng");
 
         lblKhachHang.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N

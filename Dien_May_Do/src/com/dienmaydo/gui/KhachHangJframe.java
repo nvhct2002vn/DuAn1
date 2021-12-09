@@ -9,6 +9,7 @@ import com.dienmaydo.entity.KhachHang;
 import com.dienmaydo.service.KhachHangService;
 import com.dienmaydo.utils.Msgbox;
 import com.dienmaydo.utils.XImage;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;

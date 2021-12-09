@@ -311,6 +311,7 @@ public class F_QuanLyKhachHang extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblQuanLyKhacHang.setRowHeight(20);
         tblQuanLyKhacHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblQuanLyKhacHangMouseClicked(evt);
