@@ -741,10 +741,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         try {
             String dinhDangEmail = "\\w+@\\w+(\\.\\w+){1,2}";
             String dinhDangSDT = "0\\d{9}";
-            if (txtManv.getText().trim().equals("")) {
-                Msgbox.alert(this, "Mã nhân viên không được để trống");
-                return true;
-            } else if (!txtDienthoai.getText().matches(dinhDangSDT)) {
+            if (!txtDienthoai.getText().matches(dinhDangSDT)) {
                 Msgbox.alert(this, "Vui lòng nhập đúng định dạng số điện thoại");
                 return true;
             } else if (!txtEmail.getText().matches(dinhDangEmail)) {
