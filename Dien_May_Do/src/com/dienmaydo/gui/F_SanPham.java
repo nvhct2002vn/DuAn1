@@ -2936,9 +2936,10 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     SanPham getFromSP() {
         XuatXu cd = (XuatXu) cbbXuatXu.getSelectedItem();
         DanhMuc dm = (DanhMuc) cbbDanhMuc.getSelectedItem();
+        List<SanPham> slsp = daoSP.selectAll();
+        int soLuongSP = slsp.size();
         SanPham sp = new SanPham();
-        int soLuongSP = tblSanPham.getRowCount();
-        sp.setMaSp("SP" + (soLuongSP + 1));
+        sp.setMaSp("SP00" + (soLuongSP + 1));
         sp.setMaDanhMuc(dm.getMaDanhMuc());
         sp.setTenSp(txtTenSP.getText());
         sp.setMaXX(cd.getMaXX());
@@ -3306,7 +3307,8 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         Image img = (Image) cbbIMG.getSelectedItem();
         String trangThaiSPCT = (String) cbbTrangThaiSPCT.getSelectedItem();
         String nhomPhoBien = (String) cbbNhomPhoBien.getSelectedItem();
-        int soLuongSPCT = tblSanPhamChiTiet.getRowCount();
+        List<SanPhamChiTiet> slspct = daoSPCT.selectAll();
+        int soLuongSPCT = slspct.size();
         // ----------------------------------------------------------------------
         SanPhamChiTiet spct = new SanPhamChiTiet();
         SanPham sp = (SanPham) cbbMaSP.getSelectedItem();
@@ -3317,7 +3319,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         for (String x : words) {
             ganText += x.substring(0, 1);
         }
-        spct.setMaSPCT(ganText + (soLuongSPCT + 1));
+        spct.setMaSPCT(ganText + "00" + (soLuongSPCT + 1));
         spct.setTenSPCT(txtTenSPCT.getText());
         spct.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
         spct.setGiaNhap(XMoney.loaiBoDauCham(txtGiaNhap.getText()));
@@ -4223,7 +4225,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     TheTich GetFromTTInsert() {
         TheTich tt = new TheTich();
         int SoLuongTheTich = tblTTThuocTinh.getRowCount();
-        tt.setMaTheTich("TT" + (SoLuongTheTich + 1));
+        tt.setMaTheTich("TT00" + (SoLuongTheTich + 1));
         tt.setTheTich(Float.valueOf(txtTTTenThuocTinh.getText()));
         return tt;
     }
@@ -4231,7 +4233,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     ChatLieu GetFromCLInsert() {
         ChatLieu cl = new ChatLieu();
         int SoLuongChatLieu = tblTTThuocTinh.getRowCount();
-        cl.setMaChatLieu("CL" + (SoLuongChatLieu + 1));
+        cl.setMaChatLieu("CL00" + (SoLuongChatLieu + 1));
         cl.setChatLieu(txtTTTenThuocTinh.getText());
         return cl;
     }
@@ -4240,7 +4242,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         KhoiLuong kl = new KhoiLuong();
         int SoLuongKhoiLuong = tblTTThuocTinh.getRowCount();
         DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
-        kl.setMaKL("KL" + (SoLuongKhoiLuong + 1));
+        kl.setMaKL("KL00" + (SoLuongKhoiLuong + 1));
         kl.setMaDV(dvt.getMaDV());
         kl.setKhoiLuong(Float.valueOf(txtTTTenThuocTinh.getText()));
         return kl;
@@ -4249,7 +4251,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     MauSac GetFromMSInsert() {
         MauSac ms = new MauSac();
         int SoLuongMS = tblTTThuocTinh.getRowCount();
-        ms.setMaMauSac("MS" + (SoLuongMS + 1));
+        ms.setMaMauSac("MS00" + (SoLuongMS + 1));
         ms.setTenMauSac(txtTTTenThuocTinh.getText());
         return ms;
     }
@@ -4257,7 +4259,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     Image GetFromIMGInsert() {
         Image img = new Image();
         int SoLuongIMG = tblTTThuocTinh.getRowCount();
-        img.setMaImage("IMG" + (SoLuongIMG + 1));
+        img.setMaImage("IMG00" + (SoLuongIMG + 1));
         img.setTenHinh(lblTTHinhAnh.getToolTipText());
         return img;
     }
@@ -4266,7 +4268,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
         KichThuoc kt = new KichThuoc();
         int SoLuongKichThuoc = tblTTKichThuoc.getRowCount();
         DonViTinh dvt = (DonViTinh) cbbTTDonViTinh.getSelectedItem();
-        kt.setMaKichThuoc("KT" + (SoLuongKichThuoc + 1));
+        kt.setMaKichThuoc("KT00" + (SoLuongKichThuoc + 1));
         kt.setChieuDai(Float.parseFloat(txtChieuDai.getText()));
         kt.setChieuRong(Float.parseFloat(txtChieuRong.getText()));
         kt.setChieuCao(Float.parseFloat(txtChieuCao.getText()));

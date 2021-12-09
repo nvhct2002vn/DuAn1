@@ -190,6 +190,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         btnLammoi.setBackground(new java.awt.Color(255, 204, 0));
         btnLammoi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnLammoi.setText("Làm mới");
+        btnLammoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLammoiActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Trạng thái");
@@ -564,22 +569,30 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        if (isValidate()) {
-            return;
-        } //        else if (checkTrung()) {
-        //            Msgbox.alert(this, "Mã đã tồn tại");
-        //            return;
-        //        } 
-        else {
-            Them();
+        if (Msgbox.confirm(this, "Bạn có muốn thêm nhân viên không?")) {
+            if (isValidate()) {
+                return;
+            } else if (checkTrung()) {
+                Msgbox.alert(this, "SDT nhân viên đã tồn tại!");
+                return;
+            } else {
+                Them();
+            }
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        if (isValidate()) {
-            return;
+        int chonNhanVien = tbBang.getSelectedRow();
+        if (chonNhanVien < 0) {
+            Msgbox.alert(this, "Vui lòng chọn nhân viên để sửa!");
         } else {
-            Sua();
+            if (Msgbox.confirm(this, "Bạn có muốn sửa nhân viên không?")) {
+                if (isValidate()) {
+                    return;
+                } else {
+                    Sua();
+                }
+            }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -638,6 +651,11 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         clickTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_tbBangMouseClicked
+
+    private void btnLammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLammoiActionPerformed
+        LamMoi();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLammoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -722,7 +740,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         boolean check = false;
         List<NhanVien> list = daoNV.selectAll();
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaNV().equalsIgnoreCase(txtManv.getText())) {
+            if (list.get(i).getDienThoai().equalsIgnoreCase(txtDienthoai.getText())) {
                 check = true;
                 break;
             }
@@ -770,21 +788,20 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         }
     }
 
-    public void lamMoi() {
-        txtManv.setText("");
-        txtTennv.setText("");
-        txtDienthoai.setText("");
-        txtMatKhau.setText("");
-        txtDiachi.setText("");
-        rdNam.setSelected(true);
-        cbbVaitro.setSelectedIndex(0);
-        txtNgaysinh.setText("");
-        int row;
-        row = -1;
-        txtManv.setEditable(true);
-        rdoDangLamViec.setSelected(true);
-    }
-
+//    public void lamMoi() {
+//        txtManv.setText("");
+//        txtTennv.setText("");
+//        txtDienthoai.setText("");
+//        txtMatKhau.setText("");
+//        txtDiachi.setText("");
+//        rdNam.setSelected(true);
+//        cbbVaitro.setSelectedIndex(0);
+//        txtNgaysinh.setText("");
+//        int row;
+//        row = -1;
+//        txtManv.setEditable(true);
+//        rdoDangLamViec.setSelected(true);
+//    }
     public void Them() {
         if (Auth.isManager()) {
             try {
@@ -792,6 +809,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
                 daoNV.insertData(nv);
                 FillTable();
                 FillTableNghiViec();
+                LamMoi();
                 Msgbox.alert(this, "Thêm thành công");
             } catch (Exception e) {
                 e.printStackTrace();  //in ra lỗi
@@ -805,6 +823,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
             daoNV.updateData(nv);
             FillTable();
             FillTableNghiViec();
+            LamMoi();
             Msgbox.alert(this, "Sửa thành công");
         } catch (Exception e) {
             e.printStackTrace();  //in ra lỗi
@@ -814,7 +833,7 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
     NhanVien getFormInsert() {
         NhanVien nv = new NhanVien();
         int row = tbBang.getSelectedRow();
-        nv.setMaNV("NV" + (row + 1));
+        nv.setMaNV("NV00" + (row + 1));
         nv.setVaiTro(cbbVaitro.getSelectedIndex() == 0 ? true : false);
         nv.setTenNV(txtTennv.getText());
         nv.setMatKhau(txtMatKhau.getText());
@@ -941,5 +960,18 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
         } else {
             rdoNghiViec.setSelected(true);
         }
+    }
+
+    private void LamMoi() {
+        txtManv.setText("");
+        txtMatKhau.setText("");
+        txtTennv.setText("");
+        cbbVaitro.setSelectedIndex(0);
+        txtDiachi.setText("");
+        txtDienthoai.setText("");
+        txtEmail.setText("");
+        txtNgaysinh.setText("");
+        rdNam.setSelected(true);
+        rdoDangLamViec.setSelected(true);
     }
 }
