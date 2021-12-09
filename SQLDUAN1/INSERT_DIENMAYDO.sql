@@ -21,12 +21,12 @@ VALUES  ('DM001', N'Tivi,Loa,Dàn Karaoke',1, N'...'),
 
 
 INSERT INTO NHANVIEN
-VALUES  ('NV001','123', N'Thiều Quang Vinh', N'Thanh Hóa', '0986765543', 1, '2002-08-19',1,1),
-		('NV002','123', N'Đỗ Tất Hòa', N'Thanh Hóa', '0457392734', 1, '2002-09-21',1,1),
-		('NV003','123', N'Nguyễn Viết Hiên', N'Bắc Ninh', '0875647583', 1, '2002-01-01',1,1),
-		('NV004','123', N'Lê Thị Ngọc Thúy', N'Hà Nội', '0764536273', 0, '1998-02-02',0,1),
-		('NV005','123', N'Lê Thành Vinh', N'Hà Nội', '0123456789', 1, '1998-03-03',0,1),
-		('NV006','123', N'Nguyễn Hồng Sơn', N'Hải Dương', '0674347859', 1, '2002-04-04',0,1)
+VALUES  ('NV001','123', N'Thiều Quang Vinh', N'Thanh Hóa', '0986765543', 1, '2002-08-19',1,'vinhtqph13704@fpt.edu.vn',1),
+		('NV002','123', N'Đỗ Tất Hòa', N'Thanh Hóa', '0457392734', 1, '2002-09-21',1,'hoadtph13703@fpt.edu.vn',1),
+		('NV003','123', N'Nguyễn Viết Hiên', N'Bắc Ninh', '0875647583', 1, '2002-01-01',1,'hiennvph13697@fpt.edu.vn',1),
+		('NV004','123', N'Lê Thị Ngọc Thúy', N'Hà Nội', '0764536273', 0, '1998-02-02',0,'thuyltnph13652@fpt.edu.vn',1),
+		('NV005','123', N'Lê Thành Vinh', N'Hà Nội', '0123456789', 1, '1998-03-03',0,'vinhltph13651@fpt.edu.vn',1),
+		('NV006','123', N'Nguyễn Hồng Sơn', N'Hải Dương', '0674347859', 1, '2002-04-04',0,'sonnhph13627@fpt.edu.vn',1)
 
 
 INSERT INTO XUATXU
@@ -106,8 +106,7 @@ VALUES  ('MS001', N'Trắng đen'),
 
 INSERT INTO DONVITINH
 VALUES  ('KG', N'Kilogam'),
-		('CM', N'Centimet'),
-		('G', N'Gam')
+		('CM', N'Centimet')
 
 INSERT INTO KICHTHUOC
 VALUES  ('KT001', 'CM', 74, 25.5, 48.2),
