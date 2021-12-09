@@ -150,6 +150,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         });
         jScrollPane8.setViewportView(tblSanPham);
 
+        chkSelectAllSP.setSelected(true);
         chkSelectAllSP.setText("Select All");
         chkSelectAllSP.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -354,7 +355,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -409,7 +410,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -451,36 +452,25 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkSelectAllSPItemStateChanged
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        // TODO add your handling code here:
-//        SanPhamChiTietKhuyenMai spctkm;
-//        SanPhamChiTiet_KhuyenMaiService spctkmSV = new SanPhamChiTiet_KhuyenMaiService();
-//        if (chkSelectAllSP.isSelected()) {
-//            for (int i = 0; i < tblDanhSachSP.getRowCount(); i++) {
-//                for (int j = 0; j < tblSanPham.getRowCount(); j++) {
-//                    if (tblDanhSachSP.getValueAt(i, 4).toString().equalsIgnoreCase(tblSanPham.getValueAt(j, 2).toString()) && tblDanhSachSP.getValueAt(i, 7).toString().equalsIgnoreCase("Hết hạn")) {
-//                        spctkm = new SanPhamChiTietKhuyenMai(txtMaKM.getText(), tblSanPham.getValueAt(j, 1).toString());
-//                    }
-//                }
-//            }
-//        } else if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm?")) {
-//            
-//            if (Validate()) {
-//                return;
-//            } else if (ischeckTrungSPCT()) {
-//                Msgbox.alert(this, "Sản phẩm đã được khuyến mãi.Vui lòng chọn sản phẩm khác!!");
-//                return;
-//            } else if (isCheckTrungSPCT()) {
-//                return;
-//            } else {
-//                insertKhuyenMaiSP();
-//            }
-//        }
-        if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm?")) {
+      if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm?")) {
 
             if (Validate()) {
                 return;
             } else if (ischeckTrungSPCT()) {
-                Msgbox.alert(this, "Sản phẩm đã được khuyến mãi.Vui lòng chọn sản phẩm khác!!");
+                String maSPDaTonTai = "";
+                List<SanPhamChiTietKhuyenMai> list = sp_km.selectAll();
+                for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+                    if (tblSanPham.getValueAt(i, 0).toString().equalsIgnoreCase("true")) {
+                        System.out.println();
+                        for (int j = 0; j < list.size(); j++) {
+                            if (tblSanPham.getValueAt(i, 1).toString().equalsIgnoreCase(list.get(j).getMaSPCT())) {
+                                maSPDaTonTai += tblSanPham.getValueAt(i, 1) + ", ";
+                            }
+                        }
+                    }
+
+                }
+                Msgbox.alert(this, "Sản phẩm đã được chọn vui lòng chọn sản phẩm khác " + maSPDaTonTai);
                 return;
             } else if (isCheckTrungSPCT()) {
                 return;
@@ -488,7 +478,6 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
                 insertKhuyenMaiSP();
             }
         }
-
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnLammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLammoiActionPerformed
@@ -729,6 +718,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
 //------------------------Điều kiện check--------------------------------------
     boolean Validate() {
         try {
+
             if (txtMaKM.getText().trim().equals("")) {
                 Msgbox.alert(this, "Mã khuyến mại đang để trống!!");
                 return true;
@@ -747,6 +737,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             e.printStackTrace();
             return true;
+
         }
     }
 
@@ -764,23 +755,11 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
     }
 
     private boolean ischeckTrungSPCT() {
-        String maSPDaTonTai = "";
-        List<SanPhamChiTietKhuyenMai> list = sp_km.selectAll();
-        for (int i = 0; i < tblSanPham.getRowCount(); i++) {
-            if (tblSanPham.getValueAt(i, 0).toString().equalsIgnoreCase("true")) {
-                System.out.println();
-                for (int j = 0; j < list.size(); j++) {
-                    if (tblSanPham.getValueAt(i, 1).toString().equalsIgnoreCase(list.get(j).getMaSPCT())) {
-                        maSPDaTonTai += tblSanPham.getValueAt(i, 1) + ", ";
-                    }
-                }
-            }
-        }
-        System.out.println(maSPDaTonTai);
-        
+
         if (chkSelectAllSP.isSelected()) {
             return true;
         } else {
+
             for (int i = 0; i < tblDanhSachSP.getRowCount(); i++) {
 
                 if (tblDanhSachSP.getValueAt(i, 4).toString().equalsIgnoreCase(tblSanPham.getValueAt(row, 2).toString()) && tblDanhSachSP.getValueAt(i, 7).toString().equalsIgnoreCase("Đang áp dụng")) {
@@ -794,6 +773,8 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
             }
 
         }
+
         return false;
     }
+
 }
