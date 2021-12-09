@@ -2075,72 +2075,100 @@ public class F_SanPham extends javax.swing.JInternalFrame {
 
     private void btnTTThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTThemActionPerformed
         if (rdTTChatLieu.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhCL()) {
+            if (!Msgbox.confirm(this, "Bạn có muốn thêm chất liệu không?")) {
                 return;
             } else {
-                InsertChatLieu();
-                addDataCbbCL();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhCL()) {
+                    return;
+                } else {
+                    InsertChatLieu();
+                    addDataCbbCL();
+                }
             }
         }
         if (rdTTKhoiLuong.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhKL()) {
+            if (!Msgbox.confirm(this, "Bạn có muốn thêm khối lượng không?")) {
                 return;
             } else {
-                InsertKhoiLuong();
-                addDataCbbKL();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhKL()) {
+                    return;
+                } else {
+                    InsertKhoiLuong();
+                    addDataCbbKL();
+                }
             }
         }
         if (rdTTMauSac.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhMS()) {
+            if (!Msgbox.confirm(this, "Bạn có muốn thêm màu sắc không?")) {
                 return;
             } else {
-                InsertMauSac();
-                addDataCbbMS();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhMS()) {
+                    return;
+                } else {
+                    InsertMauSac();
+                    addDataCbbMS();
+                }
             }
         }
         if (rdTTTheTich.isSelected()) {
-            if (isValidateThuocTinh()) {
-                return;
-            } else if (isCheckThuocTinhTT()) {
+            if (!Msgbox.confirm(this, "Bạn có muốn thêm thể tích không?")) {
                 return;
             } else {
-                InsertTheTich();
-                addDataCbbTT();
+                if (isValidateThuocTinh()) {
+                    return;
+                } else if (isCheckThuocTinhTT()) {
+                    return;
+                } else {
+                    InsertTheTich();
+                    addDataCbbTT();
+                }
             }
         }
         if (rdTTKichThuoc.isSelected()) {
-            if (isValidateThuocTinhKT()) {
-                return;
-            } else if (isCheckThuocTinhKT()) {
+            if (!Msgbox.confirm(this, "Bạn có muốn thêm kích thước không?")) {
                 return;
             } else {
-                InsertKichThuoc();
-                addDataCbbKT();
+                if (isValidateThuocTinhKT()) {
+                    return;
+                } else if (isCheckThuocTinhKT()) {
+                    return;
+                } else {
+                    InsertKichThuoc();
+                    addDataCbbKT();
+                }
             }
         }
         if (rdTTXuatXu.isSelected()) {
-            if (isValidateThuocTinhXX()) {
-                return;
-            } else if (isCheckThuocTinhXX()) {
+            if (!Msgbox.confirm(this, "Bạn có muốn thêm xuất xứ không?")) {
                 return;
             } else {
-                InsertXuatXu();
-                addDataCbbXX();
-                addDataFillCbbXX();
+                if (isValidateThuocTinhXX()) {
+                    return;
+                } else if (isCheckThuocTinhXX()) {
+                    return;
+                } else {
+                    InsertXuatXu();
+                    addDataCbbXX();
+                    addDataFillCbbXX();
+                }
             }
         }
         if (rdTTHinhAnh.isSelected()) {
-            if (isCheckThuocTinhIMG()) {
+            if (!Msgbox.confirm(this, "Bạn có muốn thêm hình ảnh không?")) {
                 return;
             } else {
-                InsertImage();
-                addDataCbbIMG();
+                if (isCheckThuocTinhIMG()) {
+                    return;
+                } else {
+                    InsertImage();
+                    addDataCbbIMG();
+                }
             }
         }
         // TODO add your handling code here:
@@ -2154,15 +2182,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (rowSuaTT < 0) {
                 Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                if (isValidateThuocTinh()) {
-                    return;
-                } else if (isCheckThuocTinhCL()) {
+                if (!Msgbox.confirm(this, "Bạn có muốn sửa chất liệu không?")) {
                     return;
                 } else {
-                    UpdateChatLieu();
-                    addDataCbbCL();
-                    fillTableSPCT();
-                    rowSuaTT = -1;
+                    if (isValidateThuocTinh()) {
+                        return;
+                    } else if (isCheckThuocTinhCL()) {
+                        return;
+                    } else {
+                        UpdateChatLieu();
+                        addDataCbbCL();
+                        fillTableSPCT();
+                        rowSuaTT = -1;
+                    }
                 }
             }
         }
@@ -2170,15 +2202,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (rowSuaTT < 0) {
                 Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                if (isValidateThuocTinh()) {
-                    return;
-                } else if (isCheckThuocTinhKL()) {
+                if (!Msgbox.confirm(this, "Bạn có muốn sửa khối lượng không?")) {
                     return;
                 } else {
-                    UpdateKhoiLuong();
-                    addDataCbbKL();
-                    fillTableSPCT();
-                    rowSuaTT = -1;
+                    if (isValidateThuocTinh()) {
+                        return;
+                    } else if (isCheckThuocTinhKL()) {
+                        return;
+                    } else {
+                        UpdateKhoiLuong();
+                        addDataCbbKL();
+                        fillTableSPCT();
+                        rowSuaTT = -1;
+                    }
                 }
             }
         }
@@ -2186,15 +2222,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (rowSuaTT < 0) {
                 Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                if (isValidateThuocTinh()) {
-                    return;
-                } else if (isCheckThuocTinhMS()) {
+                if (!Msgbox.confirm(this, "Bạn có muốn sửa màu sắc không?")) {
                     return;
                 } else {
-                    UpdateMauSac();
-                    addDataCbbMS();
-                    fillTableSPCT();
-                    rowSuaTT = -1;
+                    if (isValidateThuocTinh()) {
+                        return;
+                    } else if (isCheckThuocTinhMS()) {
+                        return;
+                    } else {
+                        UpdateMauSac();
+                        addDataCbbMS();
+                        fillTableSPCT();
+                        rowSuaTT = -1;
+                    }
                 }
             }
         }
@@ -2202,15 +2242,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (rowSuaTT < 0) {
                 Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                if (isValidateThuocTinh()) {
-                    return;
-                } else if (isCheckThuocTinhTT()) {
+                if (!Msgbox.confirm(this, "Bạn có muốn sửa thể tích không?")) {
                     return;
                 } else {
-                    UpdateTheTich();
-                    addDataCbbTT();
-                    fillTableSPCT();
-                    rowSuaTT = -1;
+                    if (isValidateThuocTinh()) {
+                        return;
+                    } else if (isCheckThuocTinhTT()) {
+                        return;
+                    } else {
+                        UpdateTheTich();
+                        addDataCbbTT();
+                        fillTableSPCT();
+                        rowSuaTT = -1;
+                    }
                 }
             }
         }
@@ -2218,15 +2262,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (rowSuaKT < 0) {
                 Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                if (isValidateThuocTinhKT()) {
-                    return;
-                } else if (isCheckThuocTinhKT()) {
+                if (!Msgbox.confirm(this, "Bạn có muốn sửa kích thước không?")) {
                     return;
                 } else {
-                    UpdateKichThuoc();
-                    addDataCbbKT();
-                    fillTableSPCT();
-                    rowSuaKT = -1;
+                    if (isValidateThuocTinhKT()) {
+                        return;
+                    } else if (isCheckThuocTinhKT()) {
+                        return;
+                    } else {
+                        UpdateKichThuoc();
+                        addDataCbbKT();
+                        fillTableSPCT();
+                        rowSuaKT = -1;
+                    }
                 }
             }
         }
@@ -2234,16 +2282,20 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (rowSuaXX < 0) {
                 Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                if (isValidateThuocTinhXX()) {
-                    return;
-                } else if (isCheckThuocTinhXX()) {
+                if (!Msgbox.confirm(this, "Bạn có muốn sửa xuất xứ không?")) {
                     return;
                 } else {
-                    UpdateXuatXu();
-                    addDataCbbXX();
-                    fillTableData();
-                    addDataFillCbbXX();
-                    rowSuaXX = -1;
+                    if (isValidateThuocTinhXX()) {
+                        return;
+                    } else if (isCheckThuocTinhXX()) {
+                        return;
+                    } else {
+                        UpdateXuatXu();
+                        addDataCbbXX();
+                        fillTableData();
+                        addDataFillCbbXX();
+                        rowSuaXX = -1;
+                    }
                 }
             }
         }
@@ -2251,15 +2303,19 @@ public class F_SanPham extends javax.swing.JInternalFrame {
             if (rowSuaTT < 0) {
                 Msgbox.alert(this, "Vui lòng chọn đối tượng để sửa!");
             } else {
-                if (isValidateThuocTinh()) {
-                    return;
-                } else if (isCheckThuocTinhIMG()) {
+                if (!Msgbox.confirm(this, "Bạn có muốn sửa hình ảnh không?")) {
                     return;
                 } else {
-                    UpdateImage();
-                    addDataCbbIMG();
-                    fillTableSPCT();
-                    rowSuaTT = -1;
+                    if (isValidateThuocTinh()) {
+                        return;
+                    } else if (isCheckThuocTinhIMG()) {
+                        return;
+                    } else {
+                        UpdateImage();
+                        addDataCbbIMG();
+                        fillTableSPCT();
+                        rowSuaTT = -1;
+                    }
                 }
             }
         }
@@ -2562,9 +2618,34 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbbLocChiTietSanPhamItemStateChanged
 
     private void btnLamMoiTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiTTActionPerformed
-        lamMoiKichThuoc();
-        lamMoiThuocTinh();
-        lamMoiXuuatXu();
+        if (rdTTChatLieu.isSelected()) {
+            lamMoiThuocTinh();
+            fillTableChatlieu();
+        }
+        if (rdTTKhoiLuong.isSelected()) {
+            lamMoiThuocTinh();
+            fillTableKhoiLuong();
+        }
+        if (rdTTMauSac.isSelected()) {
+            lamMoiThuocTinh();
+            fillTableMauSac();
+        }
+        if (rdTTTheTich.isSelected()) {
+            lamMoiThuocTinh();
+            fillTableTheTich();
+        }
+        if (rdTTKichThuoc.isSelected()) {
+            lamMoiKichThuoc();
+            fillTableKichThuoc();
+        }
+        if (rdTTXuatXu.isSelected()) {
+            lamMoiXuuatXu();
+            fillTableXuatXu();
+        }
+        if (rdTTHinhAnh.isSelected()) {
+            lamMoiThuocTinh();
+            fillTableImage();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLamMoiTTActionPerformed
 
@@ -4354,6 +4435,7 @@ public class F_SanPham extends javax.swing.JInternalFrame {
     void lamMoiThuocTinh() {
         txtTTMaThuocTinh.setText("");
         txtTTTenThuocTinh.setText("");
+        lblTTHinhAnh.setIcon(null);
     }
 
     void lamMoiKichThuoc() {
