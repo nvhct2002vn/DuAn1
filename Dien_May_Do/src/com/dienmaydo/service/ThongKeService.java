@@ -1089,7 +1089,7 @@ public class ThongKeService {
         }
     }
 
-    public List<Integer> baoCaoDoanhThuHienTai() {
+public List<Integer> baoCaoDoanhThuHienTai() {
         String sql = "SELECT SUM(TONGTIEN) DOANHTHU FROM HOADON where MONTH(NGAYLAP) = MONTH(GETDATE())";
         List<Integer> list = new ArrayList<>();
         try {

@@ -27,9 +27,6 @@ public class F_DangNhap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
-        txtUserName.setText("NV002");
-        txtPasss.setText("123");
     }
 
     /**
