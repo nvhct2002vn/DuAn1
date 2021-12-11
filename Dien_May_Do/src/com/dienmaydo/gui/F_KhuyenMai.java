@@ -458,7 +458,7 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkSelectAllSPItemStateChanged
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-      if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm?")) {
+        if (Msgbox.confirm(this, "Bạn muốn thêm sản phẩm?")) {
 
             if (Validate()) {
                 return;
@@ -681,32 +681,36 @@ public class F_KhuyenMai extends javax.swing.JInternalFrame {
     }
 
     void insertKhuyenMaiSP() {
-        KhuyenMai kmsp = getForm();
-        try {
-            kmSV.insertData(kmsp);
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền thêm khuyến mãi");
+        } else {
+            KhuyenMai kmsp = getForm();
             try {
-                for (int i = 0; i < tblSanPham.getRowCount(); i++) {
-                    if (tblSanPham.getValueAt(i, 0).toString().equalsIgnoreCase("true")) {
-                        KhuyenMai km = new KhuyenMai();
-                        km.setMaKM(txtMaKM.getText());
-                        km.setMaSPCT(tblSanPham.getValueAt(i, 1).toString());
-                        kmSV.insertBangChung(km);
+                kmSV.insertData(kmsp);
+                try {
+                    for (int i = 0; i < tblSanPham.getRowCount(); i++) {
+                        if (tblSanPham.getValueAt(i, 0).toString().equalsIgnoreCase("true")) {
+                            KhuyenMai km = new KhuyenMai();
+                            km.setMaKM(txtMaKM.getText());
+                            km.setMaSPCT(tblSanPham.getValueAt(i, 1).toString());
+                            kmSV.insertBangChung(km);
+                        }
                     }
+                } catch (Exception e) {
                 }
+                fillToTableSP();
+                Msgbox.alert(this, "Thêm khuyến mại sản phẩm thành công");
+                clearForm();
             } catch (Exception e) {
+                e.printStackTrace();
+                Msgbox.alert(this, "Thêm khuyến mại sản phẩm thất bại");
             }
-            fillToTableSP();
-            Msgbox.alert(this, "Thêm khuyến mại sản phẩm thành công");
-            clearForm();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Msgbox.alert(this, "Thêm khuyến mại sản phẩm thất bại");
         }
     }
 
     void updatetSP() {
         if (!Auth.isManager()) {
-            Msgbox.alert(this, "Bạn không có quyền sửa sản phẩm");
+            Msgbox.alert(this, "Bạn không có quyền sửa khuyến mãi");
         } else {
             KhuyenMai km = getForm();
             try {

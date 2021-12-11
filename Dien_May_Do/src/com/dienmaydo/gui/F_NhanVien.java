@@ -807,30 +807,44 @@ public class F_NhanVien extends javax.swing.JInternalFrame {
 //    }
 
     public void Them() {
-        if (Auth.isManager()) {
-            try {
-                NhanVien nv = getFormInsert();
-                daoNV.insertData(nv);
-                FillTable();
-                FillTableNghiViec();
-                LamMoi();
-                Msgbox.alert(this, "Thêm thành công");
-            } catch (Exception e) {
-                e.printStackTrace();  //in ra lỗi
+        try {
+            if (!Auth.isManager()) {
+                Msgbox.alert(this, "Bạn không có quyền thêm nhân viên!");
+            } else {
+                try {
+                    NhanVien nv = getFormInsert();
+                    daoNV.insertData(nv);
+                    FillTable();
+                    FillTableNghiViec();
+                    LamMoi();
+                    Msgbox.alert(this, "Thêm thành công");
+                } catch (Exception e) {
+                    e.printStackTrace();  //in ra lỗi
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void Sua() {
         try {
-            NhanVien nv = getForm();
-            daoNV.updateData(nv);
-            FillTable();
-            FillTableNghiViec();
-            LamMoi();
-            Msgbox.alert(this, "Sửa thành công");
+            if (!Auth.isManager()) {
+                Msgbox.alert(this, "Bạn không có quyền sửa nhân viên!");
+            } else {
+                try {
+                    NhanVien nv = getForm();
+                    daoNV.updateData(nv);
+                    FillTable();
+                    FillTableNghiViec();
+                    LamMoi();
+                    Msgbox.alert(this, "Sửa thành công");
+                } catch (Exception e) {
+                    e.printStackTrace();  //in ra lỗi
+                }
+            }
         } catch (Exception e) {
-            e.printStackTrace();  //in ra lỗi
+            e.printStackTrace();
         }
     }
 

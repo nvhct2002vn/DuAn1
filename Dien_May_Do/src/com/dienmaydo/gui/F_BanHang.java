@@ -1017,7 +1017,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
                     Msgbox.alert(this, "Vui lòng chọn sản phẩm để xóa!");
                     return;
                 } else {
-                    if (Msgbox.confirm(this, "Bạn chắc chắn muốn xóa sản phẩm này khỏi danh sách đã chọn?")) {
+                    if (Msgbox.confirm(this, "Bạn chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?")) {
                         capNhatSoLuongXoaSP();
                         model2.removeRow(row2);
                         donHang();
@@ -1041,7 +1041,7 @@ public class F_BanHang extends javax.swing.JInternalFrame implements Runnable, T
             if (tblSanPhamChon.getRowCount() == 0) {
                 Msgbox.alert(this, "Không có sản phẩm để xóa");
             } else {
-                if (Msgbox.confirm(this, "Bạn chắc chắn muốn xóa hết tất cả sản phẩm này khỏi danh sách đã chọn ?")) {
+                if (Msgbox.confirm(this, "Bạn chắc chắn muốn xóa hết tất cả sản phẩm này khỏi giỏ hàng?")) {
                     capNhatSoluongXoaAll();
                     model2.setRowCount(0);
                     donHang();
