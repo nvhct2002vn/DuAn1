@@ -6,7 +6,7 @@ public class JdbcHelper {
 
     private static String url = "jdbc:sqlserver://localhost;database = QLBH_DIENMAYDO1;";
     private static String usename = "sa";
-    private static String password = "123";
+    private static String password = "123456";
 
     public static PreparedStatement preparedStatement(String sql, Object... args) throws SQLException {
         Connection connection = DriverManager.getConnection(url, usename, password);
